@@ -1,0 +1,7 @@
+In your home directory make the following soft links:
+
+ln -s dotfiles/bashrc .bashrc
+ln -s dotfiles/emacs .emacs
+ln -s dotfiles/viper .viper
+ln -s dotfiles/tmux.conf .tmux.conf
+ln -s dotfiles/vimrc .vimrc
