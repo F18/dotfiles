@@ -218,8 +218,6 @@ export EDITOR="vi"
 # **********************************
 alias CleanFirefox='rm -f .mozilla/firefox/3rd8d8wt.default/.parentlock .mozilla/firefox/h4p7qmwr.default/lock'
 
-PATH=$PATH:/usr/bin
-export PATH
 
 # **********************************
 #  Thunderbird  clean-up           *
@@ -238,18 +236,15 @@ fi
 TEC360HOME=/usr/local/tec360_2012R1
 export TEC360HOME
 
-PATH=$PATH:$TEC360HOME/bin
-export PATH
+PATH=$TEC360HOME/bin:$PATH
 
 # **********************************
 #       Script Path and bin          *
 # **********************************
-PATH=$PATH:/home/ramy/01_utias/01_local/bin/scripts
-export PATH
-PATH=$PATH:/home/ramy/bin
-export PATH
-PATH=$PATH:/home/ramy/bin/scripts
-export PATH
+export PATH=$HOME/usr/local/bin:/usr/bin:$PATH
+PATH=/home/ramy/01_utias/01_local/bin/scripts:$PATH
+PATH=/home/ramy/bin:$PATH
+PATH=/home/ramy/bin/scripts:$PATH
 
 # **********************************
 #       CFFC Path and bin          *
@@ -257,8 +252,7 @@ export PATH
 
 export CFFC_Path=~/01_utias/01_local/CFFC
 
-PATH=$PATH:$CFFC_Path/bin
-export PATH
+PATH=$CFFC_Path/bin:$PATH
 
 # **********************************
 #       OPTIMA 2D 
@@ -267,14 +261,13 @@ export PATH
 export CVSROOT=/home/ramy/01_utias/01_local/optima
 export CVS_RSH=/usr/bin/ssh
 export CVSEDITOR=vim
-PATH=$PATH:~/01_utias/01_local/grid_utils
-export PATH
+PATH=~/01_utias/01_local/grid_utils:$PATH
 
 
 # **********************************
 #      Xfoil Path
 # **********************************
-PATH=$PATH:~/01_utias/01_local/01_thesis/Xfoil/bin
+PATH=~/01_utias/01_local/01_thesis/Xfoil/bin:$PATH
 
 # Fortran Compiler Path 
 ##PATH=$PATH:/usr/local/compiler80/bin
@@ -362,6 +355,6 @@ if [ $TERM = "screen" ]; then
    echo -n -e "\033k$MYPWD\033\\" 
 fi 
 '
-
+export PATH
 # reverse the order of a file (last line first)
 #function reverseFile() {perl -e 'print reverse <>' "$@";}
