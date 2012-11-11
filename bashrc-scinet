@@ -1,0 +1,368 @@
+# .bashrc
+
+# Set terminal to 256 color
+#export TERM=xterm-color # works for gnu-screen
+export TERM=screen-256color # works for tmux
+
+# define some colors
+NONE='\[\e[01;32m\]'
+WHITE_1='\[\033[0;1m\]'
+BLACK='\[\033[0;30m\]'
+GRAY='\[\033[1;30m\]'
+RED='\[\033[0;31m\]'
+LIGHT_RED='\[\033[1;31m\]'
+GREEN='\[\033[0;32m\]'
+LIGHT_GREEN='\[\033[1;32m\]'
+BROWN='\[\033[0;33m\]'
+YELLOW='\[\033[1;33m\]'
+BLUE='\[\033[0;34m\]'
+LIGHT_BLUE='\[\033[1;34m\]'
+PURPLE='\[\033[0;35m\]'
+LIGHT_PURPLE='\[\033[1;35m\]'
+CYAN='\[\033[0;36m\]'
+LIGHT_CYAN='\[\033[0;1;36m\]'
+LIGHT_GRAY='\[\033[0;37m\]'
+WHITE='\[\033[1;37m\]'
+BRACE_COLOR=$LIGHT_GRAY
+LBRACE=$BRACE_COLOR[$BRACE_COLOR
+RBRACE=$BRACE_COLOR]$BRACE_COLOR
+SYMBOL="\\$"
+WD="\W"
+
+# Get the prompt to display the current path
+#PS1=[\\w]\\$
+#export PS1
+
+#PS1='\[\e[01;32m\][\u\[\e[01;32m\]@\[\e[01;31m\]\h\[\e[01;32m\] \[\e[01;33m\]\W\[\e[01;32m\]] '
+#PS1="$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW['textdir']/\W$RBRACE$NONE "
+#PROMPT_COMMAND='DIR=`pwd|sed -e "s!$HOME!~!"`; if [ ${#DIR} -gt 15 ]; then CurDir=${DIR:0:12}...${DIR:${#DIR}-15}; else CurDir=$DIR; fi'
+
+# PROMPT_COMMAND='DIR=`pwd|sed -e "s!$HOME!~!"`; if [ ${#DIR} -gt 30 ]; then CurDir=.${DIR:${#DIR}-30}; else CurDir=$DIR; fi'
+# PS1="$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW\$CurDir$RBRACE$NONE$ "
+#CurDir=${PWD%/*} <-- RR: this gets you one the parent directory
+PS1="$LBRACE$RED\w$RBRACE\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW\W$RBRACE$NONE$ "
+export PS1
+
+# enable color support of ls and also add handy aliases
+if [ "$TERM" != "dumb" ]; then
+    [ -e "$HOME/dircolors/LS_COLORS" ] && DIR_COLORS="$HOME/dircolors/LS_COLORS"
+    [ -e "$DIR_COLORS" ] || DIR_COLORS=""
+    eval "`dircolors -b $DIR_COLORS`"
+    alias ls='ls --color=auto'
+    alias dir='ls --color=auto --format=vertical'
+    alias vdir='ls --color=auto --format=long'
+fi
+
+# User specific aliases and functions
+
+alias ...='cd ..'                   # Go up one directory
+alias ..='cd ..; l'                # Go up one directory clear and list files
+
+alias .='pwd'                       # list the current directory path
+alias bye='exit'                    # Close connection
+alias brc='cd; emacs .bashrc &'     # Open the .bashrc file for editing
+
+alias cdarc='cd /home/z/zingg/rashad/01_utias/01_local/02_courses/04_CFD2/02_Assignment'
+alias cdc='cd /scratch/z/zingg/rashad/optima-verify/summerStudents/chris/report' 
+alias cdcl='cd /scratch/z/zingg/clee/n0012/rev3_cpphis/dvs_study/re10_ma02_alpha0/CP15DV12/report'
+alias cdh='cd /home/z/zingg/rashad/03_hpacf/'
+alias cdhc='cd /home/z/zingg/rashad/CFFC/itanium_CFFC'
+alias cdo='cd /home/z/zingg/rashad/optima'
+alias cdoc='cd /home/z/zingg/rashad/CFFC'
+alias cdoo='cd /home/z/zingg/rashad/optima/optima2D'
+alias cdp='cd /home/z/zingg/rashad/01_thesis/seminars/utias/20111007_research_update_to_group'
+
+alias cdwd='cd /windows/Users/Owner/Documents'
+alias cdwdb='cd /windows/Users/Owner/Documents/03_Play/2006-2008\ Banking'
+alias cdt='cd ~/01_utias/01_local/01_thesis/myPapers/conferences/2012_cfdsc/publication/paper'
+alias cds='cd /scratch/z/zingg/rashad'
+alias cdv='cd ~/optima-verify/08_optimize/y2012/m09'
+alias cdvo='cd /scratch/z/zingg/rashad/optima-verify/08_optimize/y2012/m10'
+alias cdva='cd /scratch/z/zingg/rashad/optima-verify/09_adjoint/y2012/m10'
+
+alias chmodf='find . -type f -print | xargs chmod' # chmod files only (recursively)
+alias cj='checkjob'
+alias cll='clear'                   # Clear the screen
+alias cl='clear; ls'                # Clear and list
+alias courses='cd ~/01_utias/01_local/02_courses'
+alias cp='cp -i'                    # Copy, but ask me first
+alias crop='mogrify -trim'          # crop the given filename using imagemagik
+                                    # (allows you to crop multiple files at one)
+
+alias dec='cd ~/01_utias/01_local/01_thesis/DECs/dec1' # go to local DECs directory
+alias df='df -h'
+alias dirr='ls -al | more'  
+alias dus='sudo du -sm * | sort -n'
+alias duf='du -sm * | sort -n'     # list folders in order of increasing size
+alias digitizeit='cd ~/digitizeit; java -cp libs/JimiProClasses.zip:libs/jh.jar:libs/kunststoff.jar:libs/foxtrot.jar:DigitizeIt.jar de.ibo.digitizer.DigitizeIt'   # Start the digitizeit software
+
+alias e='emacs'             # Open the text editor emacs
+alias ed='ee'  # Open the text editor emacs with emacsclient daemon
+# Note: ee is a bash script with the following command:
+# estart='exec emacsclient --alternate-editor="" -c "$@" -n'
+alias eall='e *.cc *.h' # Open all C++ related files in current directory
+alias eb='cd; e .bashrc &'     # Open the .bashrc file for editing
+alias emptytrash='sudo rm -rf ~/.local/share/Trash/files/*'
+alias ett='emacs -nw -q'     # Open emacs in terminal mode (-nw) without loading the init-file (-q)
+alias et='emacs -nw'     # Open emacs in terminal mode (-nw)
+alias ec='emacsclient -nw'     # Open emacs in terminal mode (-nw)
+alias ev='evince'     # Open evince pdf viewer
+
+
+alias gn='gnuplot'           # run gnuplot 
+alias gb='git branch -a'    # display all git branches
+alias gk='gitk --all'       # open git repository GUI
+alias gl='git log'          # display git log
+alias gt='git status'       # display git status
+alias gu='git remote update' # update remote repositories
+alias gv='gvim'              # open gvim
+alias g='gvim'              # open gvim
+#alias gmail='google-chrome www.gmail.com &' # open gmail in chrome
+
+alias head='head -100'      # Display the first 100 lines of a file
+alias hist='history'        # Display history
+
+alias imindmapV2='cd /home/z/zingg/rashad/ProgramFiles/iMindMap2.2.3; ./iMindMap'
+
+alias l='ls -lh'          # List all files in short format
+alias ll='ls -laSh'     # List all files in long format
+alias la='ls -a'      # List all including hidden 
+alias lm='ls -lrth'   # List all files in order of date modified
+alias ld='ls -lrSh'   # List all files in order of file size
+alias lf='ls -l | grep ^-' # List files only (not directories)
+alias lt='ll --sort=extension' # List files only (not directories)
+
+alias m='more'
+alias m0='more rest00-00'
+alias mv='mv -i'      # Move, but ask me first
+alias myzip='tar -cvzf'   # use as "myzip filearchive.tar.gz  foldername/"
+alias myunzip='tar -xvpzf' # extract archive, verbose, keep file permissions, unzip using gunzip, and filename to follow
+alias mousefix='gpointing-device-settings'
+
+alias oo='openoffice.org' # Open the openoffice software
+alias office='openoffice.org'
+
+
+alias pdf='PDFStudio'     # For a launcher you can use PDFStudio as the command
+alias pg='ping www.google.ca'  # ping the google website
+alias ps2pdf='ps2pdf -sPAPERSIZE=a4'   # Force the papersize to be the standard a4 letter
+alias pmem='pidstat -r -p'   # Outputs the memory statistics for a particular job id
+                               # Enter the following: "pmem 6218 2 5 > memlog.txt" for 
+                               # 5 outputs every 2 seconds written to file memlog.txt
+
+alias re='reset'      # Reset the terminal
+alias rm='rm -i'      # Remove, but ask me first
+alias rme='rm *~ -i'  # Remove emacs backup files, but ask me first
+alias rmef='rm *~ -f'  # Remove emacs backup files, but ask me first
+alias rmout='rm output.2012* -rf'
+alias rmrest='rm rest* screen -f'
+alias rename0100='rename "s/01/00/g" rest01*' # rename all rest01 files to rest00 in a directory
+alias sbash='source ~/.bashrc' # refresh terminal with new .bashrc file
+alias sls='screen -ls' # lists the GNU screen sessions
+alias sc='screen -t " "'  # attaches to a given screen session (use session PID)
+alias sr='screen -r'  # attaches to a given screen session (use session PID)
+alias sn='tail -100f SNOPT.out00'
+alias ss='showstart'
+
+#alias tail='tail -100' # Display the last 100 lines of a file
+alias t='tec360 -mesa' # use -mesa flag if compositing causes issues
+alias tecplot='tec360' # Run tec360 based on the tecplot path set below
+alias tf='tail --lines=300 -F' # run tail with 100 lines and live following
+alias t1='tail --lines=1'
+alias t1q='tail -q -n 1'
+alias t2q='tail -q -n 2'
+alias t5='tail --lines=5'
+alias t10='tail --lines=10 '
+alias t20='tail --lines=20 '
+alias tg0='tail -50f rest00-00.gnu'  # view the end of the optima gnuplot file
+alias tg1='tail -50f rest00-01.gnu'  # view the end of the optima gnuplot file
+alias tg2='tail -50f rest00-02.gnu'  # view the end of the optima gnuplot file
+alias tg3='tail -50f rest00-03.gnu'  # view the end of the optima gnuplot file
+alias tg4='tail -50f rest00-04.gnu'  # view the end of the optima gnuplot file
+alias tg5='tail -50f rest00-05.gnu'  # view the end of the optima gnuplot file
+alias tg6='tail -50f rest00-06.gnu'  # view the end of the optima gnuplot file
+alias tg7='tail -50f rest00-07.gnu'  # view the end of the optima gnuplot file
+alias tml='tmux list-sessions'
+alias tmd='tmux detach'
+alias tma='tmux attach -t'
+alias tp='tf *.tp'  # view the end of the optima gnuplot file
+alias tpout='m *.tpout'  # view the end of the optima gnuplot file
+alias tpsum='m *.tpsum'  # view the end of the optima gnuplot file
+alias tree='tree -C -I "*.git"' # list all files and directories as a tree
+alias treed='tree -C -d -I "*.git"' # list all directories
+
+alias v='~/usr/local/bin/vim'
+alias vi='v'
+alias vg='valgrind --tool=memcheck --leak-check=yes' # Execute program with valgrind debuger
+
+### Login to remote servers
+alias hpacf='cd ~/01_utias/03_hpacf; ssh -X ramy@hpacf.utias.utoronto.ca'
+alias oddjob='cd ~/01_utias/; ssh -X ramy@oddjob.utias.utoronto.ca;'
+alias scinet='ssh -l rashad login.scinet.utoronto.ca' # ssh into scinet
+### Mounting File Systems and SSH commands - from personal laptop###
+alias moddjob='cd ~/01_utias/; sshfs ramy@oddjob.utias.utoronto.ca: 02_oddjob/; cd 02_oddjob/'  # Mount your file system from school
+alias uoddjob='cd ~/01_utias/; fusermount -u 02_oddjob/'  #Unmount your file system from school
+alias mhpacf='cd ~/01_utias/; sshfs ramy@hpacf.utias.utoronto.ca: 03_hpacf/; cd 03_hpacf/'
+alias uhpacf='cd ~/01_utias/; fusermount -u 03_hpacf/'  #Unmount your file system from school
+alias mscinet='cd ~/01_utias/; sshfs rashad@login.scinet.utoronto.ca: 04_scinet/; cd 04_scinet/'  # Mount your file system from school
+alias uscinet='cd ~/01_utias/; fusermount -u 04_scinet/'  #Unmount your file system from school
+
+# scinet related aliases
+alias gpc='ssh -X gpc02'    # ssh into gpc node
+alias scr='cd /scratch/z/zingg/rashad'
+alias qr='showq | grep "rashad"'
+alias qr='showq | grep "rashad"'
+alias qs='qstat'
+alias qss='showq -u rashad'
+alias tr='top | grep "rashad"'
+alias debug1='qsub -l nodes=1:ppn=8,walltime=2:00:00 -q debug -I'
+alias debug2='qsub -l nodes=2:ppn=8,walltime=1:00:00 -q debug -I'
+alias debug3='qsub -l nodes=3:ppn=8,walltime=00:30:00 -q debug -I'
+alias debug4='qsub -l nodes=4:ppn=8,walltime=00:30:00 -q debug -I'
+alias debug5='qsub -l nodes=5:ppn=8,walltime=00:30:00 -q debug -I'
+alias debug6='qsub -l nodes=6:ppn=8,walltime=00:30:00 -q debug -I'
+alias debug7='qsub -l nodes=7:ppn=8,walltime=00:30:00 -q debug -I'
+alias debug8='qsub -l nodes=8:ppn=8,walltime=00:30:00 -q debug -I'
+
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
+# Editor
+export EDITOR="vi"
+PATH=$PATH:/usr/bin
+export PATH
+
+# Export custom vimruntime directory
+export VIMRUNTIME=~/usr/local/vim/runtime
+
+
+PATH=$PATH:~/bin:~/scripts:$HOME/usr/local/bin
+export PATH
+
+# prevent core dumps and segmentation faults
+ulimit -c 0                   # limit coredumpsize 0
+#ulimit -m unlimited           # limit memoryuse unlimited
+ulimit -s unlimited           # limit stacksize unlimited
+F_UFMTENDIAN=big       # setenv F_UFMTENDIAN big
+export F_UFMTENDIAN
+
+
+# **********************************
+#       Custom Functions           *
+# **********************************
+
+# Find a file with a pattern in name:
+function ff() { find . -type f -name '*'$@'*' ; }
+
+# grep
+# Make it highlight the search string
+alias grep="grep --color=auto"
+
+# Recursively searches all the files for the given string
+function rgrep() { grep -irn --include="*" -- "$@" . ; }
+
+# C++ .cc grep, only searches C++ source (.cc) files
+## Current directory
+function grepc() { grep -in --include="*.cc" -- "$@" * ; }
+## Recursive
+function rgrepc() { grep -irn --include="*.cc" -- "$@" . ; }
+
+# C++ .h grep, only searches C++ header (.h) files
+## Current directory
+function greph() { grep -in --include="*.h" -- "$@" * ; }
+## Recursive
+function rgreph() { grep -irn --include="*.h" -- "$@" . ; }
+
+# Fortran grep, only searches Fortran source 
+## Current directory
+function grepf() { grep -in --include="*.[fFinc]*" -- "$@" * ; }
+## Recursive
+function rgrepf() { grep -irn --include=*.{f,F,f90,F90,inc} -- "$@" . ; }
+function gf() { grep -irn --include=*.{f,F,f90,F90,inc} -- "$@" . ; }
+function gfc() { grep -irn --include=*.{f,F,f90,F90,inc} -- "call $@" . ; }
+function gfs() { grep -irn --include=*.{f,F,f90,F90,inc} -- "subroutine $@" . ; }
+function gfe() { grep -irn --include=*.{f,F,f90,F90,inc} -- "$@[\t ]*=[^=]" . ; }
+
+# Python grep, only searches Python source
+## Current directory
+function grepy() { grep -in --include="*.py" -- "$@" * ; }
+## Recursive
+function rgrepy() { grep -irn --include="*.py" -- "$@" . ; }
+
+# convert ogv file to avi (input is the filename without the extension)
+function ogv2avi() { mencoder -idx "$@".ogv -ovc lavc -oac mp3lame -o "$@".avi ; }
+
+# convert avi file to mpg (input is the filename without the extension)
+function avi2mpg() { ffmpeg -i "$@".avi "$@".mpg ; }
+
+# convert ogv file to mpg (input is the filename without the extension)
+function ogv2mpg() { mencoder -idx "$@".ogv -ovc lavc -oac mp3lame -o "$@".avi ; ffmpeg -i "$@".avi "$@".mpg ; }
+
+# tail the rest00-##.gnu file
+function tg() { tail -50f rest00-$@.gnu; }
+
+## cd and list 
+function c() { cd "$@" ; l ;}
+
+## cd and list 
+function cs() { cd *"$@"* ; l ;}
+
+# reverse the order of a file (last line first)
+#function reverseFile() {perl -e 'print reverse <>' "$@";}
+
+
+# ************************************
+#      SCINET Specific Customizations
+# ************************************
+# commands which work for both GPC and TCS can go here 
+export PATH=/home/z/zingg/rashad/bin:/home/z/zingg/rashad/grid_utils:${PATH} 
+export PYTHONPATH=/home/z/zingg/rashad/mdo_import_helper:${PYTHONPATH} 
+HOST=$(uname) 
+ARCH=$(uname)_$(uname -m) 
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/$ARCH/lib:$HOME/jetstream/cgnslib_2.5/LINUX:$HOME/usr/local/lib
+export SCPODD=ramy@oddjob.utias.utoronto.ca:/nfs/carv/d1/people/ramy
+# Location of jetstream Test Suite 
+export JSTS=/project/z/zingg/jetstream_testSuite 
+ 
+#Location of grid library 
+export GRIDLIB=/project/z/zingg/grid_library 
+ 
+# Location of X11 Libraries 
+export XLIB_PATH=-L/scinet/gpc/lib64 
+ 
+export MPI_DEBUG='mpirun -env I_MPI_FABRICS shm:tcp' 
+
+ 
+if [ "${HOST}" == "AIX" ]; then 
+   # do things for the TCS machine 
+   # user environment for all shells goes here 
+   # replace colon with your own commands 
+   : 
+else 
+   # do things for the GPC machine 
+ 
+   module load intel  
+   module load intelmpi 
+   module load extras 
+   module load git  
+   module load gcc  
+   module load python 
+   module load emacs 
+   module load Xlibraries/X11-64 
+   module load gnuplot
+   module load ImageMagick
+   module load gnu-parallel
+   module load valgrind
+   #module load hdf5/187-v18-serial-intel # Req'd for Graham's TACS code? 
+   #module load intelmpi intel utils  
+        #module load intelmpi intel/intel-v11.1.056 utils 
+ 
+        #module load intel openmpi/1.3.2-intel-v11.0-ofed utils 
+ 
+   # user environment for all shells goes here 
+   # replace colon with your own commands 
+   : 
+fi 

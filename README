@@ -1,8 +1,8 @@
-In your home directory make the following soft links:
+To install your dotfiles on a new system:
+git clone -o origin ramy@oddjob.utias.utoronto.ca:~/dotfiles.git
+cd dotfiles
+git checkout -b allsys origin/allsys
+cp ~/.bashrc ~/dotfiles/bashrc-SYSTEM_NAME
+edit installLinks.sh to include SYSTEM_NAME in echo statement
+./installLinks.sh
 
-ln -s dotfiles/bashrc .bashrc
-ln -s dotfiles/emacs .emacs
-ln -s dotfiles/viper .viper
-ln -s dotfiles/tmux.conf .tmux.conf
-ln -s dotfiles/vimrc .vimrc
-ln -s dotfiles/screenrc .screenrc
