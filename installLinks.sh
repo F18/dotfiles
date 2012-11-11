@@ -1,5 +1,9 @@
 #!/bin/bash
 
+echo " "
+echo -n "Pick a system from (case sensitive) options: laptop, oddjob, guillimin, scinet, westgrid: "
+read -e LOCALSYS
+
 DIRBKP=~/.dotfiles-bkp-$(date +%Y%m%d.%H%M)
 
 mkdir $DIRBKP
@@ -18,7 +22,7 @@ rm -f ~/.tmux.conf
 rm -f ~/.vimrc
 rm -f ~/.screenrc 
 
-ln -s ~/dotfiles/bashrc ~/.bashrc
+ln -s ~/dotfiles/bashrc-$LOCALSYS ~/.bashrc
 ln -s ~/dotfiles/vimrc ~/.vimrc
 ln -s ~/dotfiles/emacs ~/.emacs
 ln -s ~/dotfiles/viper ~/.viper
