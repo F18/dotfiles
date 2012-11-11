@@ -1,0 +1,429 @@
+" MY CUSTOM VIM SETTINGS
+
+" Add plugin directories to runtimepath
+set runtimepath+=~/vim-local/myPlugins/vim-fuzzyfinder
+set runtimepath+=~/vim-local/myPlugins/l9
+set runtimepath+=~/vim-local/myPlugins/ctrlp
+set runtimepath+=~/vim-local/myPlugins/vim-surround
+
+" With a map leader it's possible to do extra key combinations
+" like <leader>w saves the current file
+let mapleader = ","
+let g:mapleader = ","
+
+syntax enable "Enable syntax hl
+
+set gfn=Consolas\ 13
+set shell=/bin/bash
+
+set t_Co=256
+"let g:zenburn_high_Contrast=1
+"let g:zenburn_alternate_Visual = 1
+colorscheme zenburn
+"
+" faster buffering in xterm
+set ttyfast
+" new buffers opened to the right and below on split windows
+set splitbelow
+set splitright
+
+" disable jump targets  (allows you to bind <C-J>)
+let g:BASH_Ctrl_j = 'off'
+
+" dummy mapping to avoid going into insert mode with <C-j>
+map <C-j> jk
+" map the escape key 
+map! jj <Esc>
+imap <C-j> <Esc>
+
+" scrolling
+"noremap <expr> <C-u> repeat("\<C-y>", 20)
+"map <silent> <M-,> ^u
+"map <silent> <M-.> ^d
+map <space> 30<C-D>
+map ; 30<C-U>
+map <silent> <PageUp> 30<C-U>
+map <silent> <PageDown> 30<C-D>
+imap <silent> <PageUp> <C-O>30<C-U>
+imap <silent> <PageDown> <C-O>30<C-D>
+"imap <silent> <PageUp> <C-O>1000<C-U>
+"imap <silent> <PageDown> <C-O>1000<C-D>
+" move to end of line
+map - $
+set nostartofline
+
+" Custom Commands (ramy rashad)
+"map <leader>bb :cd ..<cr>
+map <leader>co :cd ~/01_utias/02_oddjob/optima/optima2D<cr>
+"map <leader>s :w <cr> ,ll <cr>
+"map <leader>s :w <cr> :make 
+"map <leader>a :w <cr>:make <cr> <C-o>
+
+" Compile command in gnu-screen
+" - sends the command to window 1 in the same 
+"   gnu-screen session the ^M is from typing (Ctrl-v Enter)
+function! GNUscreenCmd1()
+  :!screen -X at 1 stuff make
+endfunction
+function! GNUscreenCmd2()
+  :!screen -X at 1 stuff moo.sh
+endfunction
+map <leader>a :w <cr>:call GNUscreenCmd1() <cr><cr>
+map <leader>c :w <cr>:call GNUscreenCmd2() <cr><cr>
+
+map <leader>q <C-W><C-K>q
+map <leader>d :noh <cr>
+" buffer movement
+map <leader>. :bn <cr>
+map <leader>m :bp <cr>
+"CtrlP
+nmap <leader>f :CtrlPBuffer<cr>
+nmap <C-f> :CtrlP<cr>
+let g:ctrlp_map = '<leader>e'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_root_markers = ['.ctrlp']
+"let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+"let g:ctrlp_custom_ignore = '\v[\/]\(optimaMB)$'
+"let g:ctrlp_custom_ignore = '\v[\/]\(hybropt)$'
+" fuzzy finder
+"map <C-f> :FufBuffer<cr>
+nmap <C-p> :FufFile<cr>
+let g:fuf_maxMenuWidth = 150
+" runs the buffer select plugin
+"map <C-f> <F4>
+" indent code in visual mode
+"noremap <leader>f ==<Esc>
+" Fast opening (replaced with buffer searcher)
+"nmap <leader>e :e 
+" Fast close buffer
+nmap <leader>b :bd <cr>
+" Fast saving
+nmap <leader>w :w!<cr>
+" Fast save and quit vim
+nmap <leader>s :w <cr> :bd <cr>
+" Fast quit vim
+nmap <leader>q :q <cr>
+"map <C-C> "+y
+"map <C-P> "+gP
+" Format paragraph (auto wrap/fill)
+map <leader>g gwap
+" past from clipboard
+map <leader>p "+gP
+
+"map ; :
+"noremap ;; ;
+
+" Use the arrows to something usefull
+map <right> :bn<cr>
+map <left> :bp<cr>
+
+" Enter Paste mode when you want to paste w/out formatting
+set pastetoggle=<F2>
+
+" always move down a line, even if long line is not wrapped
+nnoremap j gj
+nnoremap k gk
+
+" fontsize plugin
+nmap <silent> <leader>+  <Plug>FontsizeBegin 
+nmap <silent> <leader>=  <Plug>FontsizeInc 
+nmap <silent> <leader>-  <Plug>FontsizeDec 
+nmap <silent> <leader>0  <Plug>FontsizeDefault 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => VIM user interface
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Set to auto read when a file is changed from the outside
+set autoread
+
+" Set auto change directory to current file's directory
+if exists('+autochdir')
+  set autochdir
+endif
+
+set hid "Change buffer - without saving
+
+" Set backspace config
+set backspace=eol,start,indent
+set whichwrap+=<,>,h,l
+
+set ignorecase "Ignore case when searching
+set smartcase
+
+set hlsearch "Highlight search things
+
+set incsearch "Make search act like search in modern browsers
+set nolazyredraw "Don't redraw while executing macros 
+
+" Center the search results
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap * *zz
+nnoremap # #zz
+nnoremap g* g*zz
+nnoremap g# g#zz
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Text, tab and indent related
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set expandtab
+set shiftwidth=2
+set tabstop=3
+set smarttab
+set cindent
+
+set lbr
+set tw=500
+
+set ai "Auto indent
+set si "Smart indent
+set wrap "Wrap lines
+
+" bash-like tab completion with opening files
+set wildmode=longest,list,full
+set wildmenu
+
+""""""""""""""""""""""""""""""
+" => Command-T
+""""""""""""""""""""""""""""""
+let g:CommandTMaxHeight = 15
+set wildignore+=*.o,*.obj,.git,*.pyc,*~
+nnoremap <leader>y :CommandTFlush<cr>
+"
+""""""""""""""""""""""""""""""
+" => Fuzzy Finder
+""""""""""""""""""""""""""""""
+function! ProjectFuzzyFind()
+  let origcurdir = getcwd()
+  let curdir = origcurdir
+  let prevdir = ""
+ 
+  while curdir != prevdir
+    if filereadable(".fuzzyfinder")
+      break
+    endif
+    cd ..
+    let prevdir = curdir
+    let curdir = getcwd()
+  endwhile
+ 
+  if filereadable(".fuzzyfinder")
+    let items = readfile(".fuzzyfinder")
+    let files = []
+    for n in items
+      let files += split(glob(curdir . "/" . n), "\n")
+    endfor
+ 
+    call fuf#givenfile#launch('', 0, '>', files)
+  endif
+endfunction
+map <leader>, :call ProjectFuzzyFind()<CR>
+
+""""""""""""""""""""""""""""""
+" => No backups
+""""""""""""""""""""""""""""""
+set nobackup
+set noswapfile
+set history=1000         " remember more commands and search history
+set undolevels=1000      " use many muchos levels of undo
+
+""""""""""""""""""""""""""""""
+" => Statusline
+""""""""""""""""""""""""""""""
+" Always hide the statusline
+set laststatus=2
+
+"  function! CurDir()
+"      return substitute(getcwd(), '/Users/amir/', "~/", "g")
+"  endfunction
+"  
+"  function! HasPaste()
+"      if &paste
+"          return 'PASTE MODE  '
+"      en
+"      return ''
+"  endfunction
+"  
+"  " Format the statusline
+"  " set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{CurDir()}%h\ \ \ Line:\ %l/%L
+"  set statusline=\ %{HasPaste()}%f\ %y\ %.40F%m%r%h\ %w\ \ %h\ \ \ %=C:%c\ L:%l\ /\%L\ (%p%%) 
+
+" Replace with new statusline:
+"set statusline=%2*%t%*\ "tail of the filename
+set statusline=%t       "tail of the filename
+set statusline+=%m      "modified flag
+set statusline+=%r      "read only flag
+set statusline+=\ \ (%<%F)    " file full path, truncate 
+set statusline+=%=      "left/right separator
+set statusline+=%y       "filetype
+set statusline+=%10((%l,%c)%)\            " line and column
+set statusline+=%P\ /                     " percentage of file 
+set statusline+=%L                        " total number of lines
+
+
+""" Remove Gui Toolbar
+set guioptions-=T
+
+
+" Latex Recommended settings
+" REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
+filetype plugin on
+" redef C-j to C-g
+imap <C-g> <Plug>IMAP_JumpForward
+nmap <C-g> <Plug>IMAP_JumpForward
+
+map <leader>sm :w <cr> :make <cr>
+
+" IMPORTANT: win32 users will need to have 'shellslash' set so that latex
+" can be called correctly.
+set shellslash
+
+" IMPORTANT: grep will sometimes skip displaying the file name if you
+" search in a singe file. This will confuse Latex-Suite. Set your grep
+" program to always generate a file-name.
+set grepprg=grep\ -nH\ $*
+
+" Grepping Tools
+" Grep current file for word under cursor and change to quicklist window
+map <F2> :execute "noautocmd vimgrep /\\<" . expand("<cword>") . "\\>/gj " .  expand("%") <Bar> :copen 7<CR><C-W>K
+" Grep project for word under cursor and change to quicklist window
+map <F3> :execute "noautocmd vimgrep /\\<" . expand("<cword>") . "\\>/gj ../**/*." .  expand("%:e") <Bar> :copen 7<CR><C-W>K
+"nmap \x :call GetFoo()<CR>:exe "/" . Foo<CR>
+" Grep user input and change to quicklist window (see MyGrep() function)
+" -- current file
+nmap \z :call MyGrep()<CR>:execute "noautocmd vimgrep /\\<" . Foo . "\\>/gj " .  expand("%") <Bar> :copen 7<CR><C-W>K
+" -- project directory
+nmap \x :call MyGrep()<CR>:execute "noautocmd vimgrep /\\<" . Foo . "\\>/gj ../**/*." .  expand("%:e") <Bar> :copen 7<CR><C-W>K
+nmap \c :copen 5<CR>
+
+function! MyGrep()
+  call inputsave()
+  let g:Foo = input("enter search pattern: ")
+  call inputrestore()
+endfunction
+
+" mappings to navigate the quickfix list 
+"nmap <S-F1>  :cc 
+" These don't work well for some reason
+"nmap P :cn<CR> 
+"nmap N :cp<CR> 
+"map <F3>    :cnfile<CR> 
+"map <S-F3>  :cpfile<CR> 
+"map <F4>    :clast<CR> 
+"map <S-F4>  :cfirst<CR> 
+
+" move around windows quickly
+nnoremap <C-n> <C-W>j
+nnoremap <C-k> <C-W>k
+nnoremap <C-h> <C-W>h
+nnoremap <C-l> <C-W>l
+
+
+" OPTIONAL: This enables automatic indentation as you type.
+filetype indent on
+
+" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
+" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
+" The following changes the default filetype back to 'tex':
+let g:tex_flavor='latex'
+" Compiler options (see ~/vim-local/ftplugin/tex.vim)
+"let g:Tex_DefaultTargetFormat='pdf'
+"let g:Tex_UseMakefile=0
+"let g:Tex_CompileRule_pdf='make'
+"let g:Tex_IgnoredWarnings=4
+"
+" change directory to home
+" :cd ~
+" Set up the ctags command
+" let Tlist_Ctags_Cmd='/usr/bin/etags'
+":set tags=~/01_utias/01_local/optima/optima2D/tags
+
+" add filetypes to fortran 
+syntax on
+filetype on
+au BufNewFile,BufRead *.inc set filetype=fortran
+au BufNewFile,BufRead *.INC set filetype=fortran
+au BufNewFile,BufRead *.inp set filetype=cterm
+
+" ______________________
+" Fortran Customizations
+"
+" Indentation If you use only structured loops of the do/enddo form, you should
+" declare this by setting the fortran_do_enddo:
+let fortran_do_enddo=1
+" only for f90 files:
+"au! BufRead,BufNewFile *.f90 let b:fortran_do_enddo=1
+
+" _____________
+" Color Columns
+"
+"if exists('+colorcolumn')
+"   "
+"   "vim 7.3 and newer with colorcolumn
+"   "
+"   hi ColorColumn guibg=#3d3d3d
+"   if &t_Co > 255
+"      hi ColorColumn ctermbg=236
+"   endif
+"   autocmd FileType fortran set colorcolumn=6,73 
+"else
+"   "
+"   "vim 7.2 and older without colorcolumn
+"   "
+"   hi ColorColumn guibg=#3d3d3d
+"   if &t_Co > 255
+"      hi ColorColumn ctermbg=236
+"   endif
+"   :au BufWinEnter *.f let w:m1=matchadd('ColorColumn', '\%<75v.\%>72v', -1)
+"   :au BufWinEnter *.f let w:m2=matchadd('ErrorMsg', '\%>72v.\+', -1)
+"   :au BufWinEnter *.f let w:m3=matchadd('ColorColumn', '\%<7v.\%>6v', -1)
+"endif
+
+" set text width for latex files
+au BufNewFile,BufRead *.tex set textwidth=90
+" add auto formatting of paragraphs and with w option
+if has('autocmd')
+   autocmd FileType tex set list
+   autocmd FileType tex set listchars=tab:>>,trail:>
+   autocmd FileType tex set formatoptions+=aw
+endif
+
+" set initial gvim window size
+if has("gui_running")
+  " GUI is running or is about to start.
+  " Maximize gvim window.
+  "set lines=999 columns=999
+  " Custom size
+  set lines=50 columns=105
+endif
+
+"augroup tex
+
+"                \ call system('touch ' . 'errors.err') |
+"                \ silent execute ":!make > errors.err 2>&1 &" |
+"                \ redraw! |
+"                \ cgetfile errors.err
+"                "\ cw ~/vim-local/errors.err
+"augroup END
+"
+
+" Swap and Backup files
+" Automatically create .backup directory, writable by the group.
+"if filewritable(".") && ! filewritable(".backup")
+"  silent execute '!umask 002; mkdir .backup'
+"endif
+" Store swap files in fixed location, not current directory.
+" set dir=~/.vimswap//,/var/tmp//,/tmp//,.
+" set nobackup
+" set nowritebackup
+map <S-F12> :W <CR> ; :exec "!makebg" v:servername "'" . &makeprg . "'" &makeef<CR><CR>
+"map <F12> :w <CR> ; :exec "!rm " &makeef "; makebg" v:servername "'" . &makeprg . "'"  
+map <F12> :w <CR> ; :exec "!rm error.err" "; makebg" v:servername "'" . &makeprg . "'" "&makeef<CR><CR>
+
+" MACROS
+" places a continuation character (&) in column number 6 and adds two spaces (fortran 77)
+let @a='0llllli& 0ww'
+noremap \ @a
+"let @q='0lllllli! j'
+"noremap <Ctrl-\> @q

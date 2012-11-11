@@ -1,0 +1,7 @@
+" MySys can be linux, mac, or windows
+fun! MySys()
+   return "linux"
+endfun
+set runtimepath=~/vim-local,~/vim-local/after,\$VIMRUNTIME
+source ~/vim-local/vimrc
+helptags ~/vim-local/doc
