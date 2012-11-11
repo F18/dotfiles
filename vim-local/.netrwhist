@@ -1,8 +1,10 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_cnt =8
 let g:netrw_dirhist_1='/nfs/carv/d1/people/ramy/01_thesis/myPapers/conferences'
 let g:netrw_dirhist_2='/nfs/carv/d1/people/ramy/optima-verify/06_transPredict/y2012/m07/d05-backwardTP-n0012/02-R3-M20-N9/2-cAHD/A00'
 let g:netrw_dirhist_3='/nfs/carv/d1/people/ramy/optima-verify/06_transPredict/y2012/m07/d05-backwardTP-n0012/02-R3-M20-N9/2-cAHD/A04'
 let g:netrw_dirhist_4='/nfs/carv/d1/people/ramy/optima-verify/06_transPredict/y2012/m07/d05-backwardTP-n0012/01-R10-M20-N9/2-cAHD/A06'
 let g:netrw_dirhist_5='/nfs/carv/d1/people/ramy/usr/local/vim73'
 let g:netrw_dirhist_6='/nfs/carv/d1/people/ramy/.themes/Ramy-20121024'
+let g:netrw_dirhist_7='/nfs/carv/d1/people/ramy/optima-verify/08_optimize/y2012/m11'
+let g:netrw_dirhist_8='/nfs/carv/d1/people/ramy/optima-verify/08_optimize/y2012/m11/01-R18M75-fullyTurb'

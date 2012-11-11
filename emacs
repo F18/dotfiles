@@ -6,18 +6,18 @@
 ;; APPEND LOAD PATH
 ;; ----------------
 (defvar *emacs-load-start* (current-time)) ;; used to display emacs start-up time
-(setq load-path (cons "~/dotfiles/.emacs.el/" load-path))
-;;(add-to-list 'load-path "~/dotfiles/.emacs.el/python-mode-1.0")
-(add-to-list 'load-path "~/dotfiles/.emacs.el/color-theme-6.6.0")
-(add-to-list 'load-path "~/dotfiles/.emacs.el/yasnippet-0.6.1c")
-;;(setq load-path (cons "~/dotfiles/.emacs.el/python-mode-1.0" load-path))
-;;(add-to-list 'load-path "~/dotfiles/.emacs.el/EmacsTools/speedbar-0.14beta4")
+(setq load-path (cons "~/dotfiles/emacs.el/" load-path))
+;;(add-to-list 'load-path "~/dotfiles/emacs.el/python-mode-1.0")
+(add-to-list 'load-path "~/dotfiles/emacs.el/color-theme-6.6.0")
+(add-to-list 'load-path "~/dotfiles/emacs.el/yasnippet-0.6.1c")
+;;(setq load-path (cons "~/dotfiles/emacs.el/python-mode-1.0" load-path))
+;;(add-to-list 'load-path "~/dotfiles/emacs.el/EmacsTools/speedbar-0.14beta4")
 ;;(add-to-list 'load-path "~/emacs-cedet/cedet/common" )
-;;;;(add-to-list 'load-path "~/dotfiles/.emacs.el/ecb/semantic-2.0" )
-;;;;(add-to-list 'load-path "~/dotfiles/.emacs.el/ecb/speedbar-1.0.2" )
-;;(add-to-list 'load-path "~/dotfiles/.emacs.el/ecb/ecb-2.32")
-;;(add-to-list 'load-path "~/dotfiles/.emacs.el/EmacsTools/eieio-0.17")
-;;(add-to-list 'load-path "~/dotfiles/.emacs.el/EmacsTools/semantic-1.4.4")
+;;;;(add-to-list 'load-path "~/dotfiles/emacs.el/ecb/semantic-2.0" )
+;;;;(add-to-list 'load-path "~/dotfiles/emacs.el/ecb/speedbar-1.0.2" )
+;;(add-to-list 'load-path "~/dotfiles/emacs.el/ecb/ecb-2.32")
+;;(add-to-list 'load-path "~/dotfiles/emacs.el/EmacsTools/eieio-0.17")
+;;(add-to-list 'load-path "~/dotfiles/emacs.el/EmacsTools/semantic-1.4.4")
 
 
 ;; --------
@@ -42,7 +42,7 @@
 (require 'yasnippet)         ;; loads code snippet completions
 (require 'column-marker)     ;; highlights a given column
 (yas/initialize)
-(yas/load-directory "~/dotfiles/.emacs.el/yasnippet-0.6.1c")
+(yas/load-directory "~/dotfiles/emacs.el/yasnippet-0.6.1c")
 
 ;;(require 'printing)          ;; Use the printing package
 ;;(require 'modeline-posn)
@@ -356,7 +356,7 @@
 (add-hook 'matlab-mode-hook 'my-matlab-mode-hook)
 
 ;; html-helper-mode
-(autoload 'html-helper-mode "~/dotfiles/.emacs.el/html-helper-mode" "Yay HTML" t)
+(autoload 'html-helper-mode "~/dotfiles/emacs.el/html-helper-mode" "Yay HTML" t)
 (setq auto-mode-alist (cons '("\\.html$" . html-helper-mode) auto-mode-alist))
 (global-set-key [(f1)] (lambda () (interactive) (manual-entry (current-word))))
 
