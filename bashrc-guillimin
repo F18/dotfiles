@@ -74,9 +74,8 @@ alias cdp='cd /home/rashad/01_thesis/seminars/utias/20111007_research_update_to_
 alias cdwd='cd /windows/Users/Owner/Documents'
 alias cdwdb='cd /windows/Users/Owner/Documents/03_Play/2006-2008\ Banking'
 alias cdt='cd ~/01_utias/01_local/01_thesis/myPapers/conferences/2012_cfdsc/publication/paper'
-alias cds='cd /global/scratch/rashad'
-alias cdvoo='cd /global/scratch/rashad/y2012/m10'
-alias cdvo='cd /global/scratch/rashad/y2012/m11'
+alias cds='cd /sb/scratch/rashad'
+alias cdvo='cd /sb/scratch/rashad/y2012/m09'
 alias cdv='cd optima-verify/y2012/m09'
 
 alias chmodf='find . -type f -print | xargs chmod' # chmod files only (recursively)
@@ -136,7 +135,6 @@ alias mv='mv -i'      # Move, but ask me first
 alias myzip='tar -cvzf'   # use as "myzip filearchive.tar.gz  foldername/"
 alias myunzip='tar -xvpzf' # extract archive, verbose, keep file permissions, unzip using gunzip, and filename to follow
 alias mousefix='gpointing-device-settings'
-#alias mpif90='/global/software/mvapich/mvapich2-1.7/bin/mpif90'
 
 alias oo='openoffice.org' # Open the openoffice software
 alias office='openoffice.org'
@@ -187,7 +185,7 @@ alias tp='tf *.tp'  # view the end of the optima gnuplot file
 alias tree='tree -C -I "*.git"' # list all files and directories as a tree
 alias treed='tree -C -d -I "*.git"' # list all directories
 
-alias v='~/usr/local/bin/vim -X' # The -X prevents vim from checking for an X11 connection (faster startup)
+alias v='~/usr/local/bin/vim -X'
 alias vi='v'
 alias vg='valgrind --tool=memcheck --leak-check=yes' # Execute program with valgrind debuger
 
@@ -195,7 +193,6 @@ alias vg='valgrind --tool=memcheck --leak-check=yes' # Execute program with valg
 alias hpacf='cd ~/01_utias/03_hpacf; ssh -X ramy@hpacf.utias.utoronto.ca'
 alias oddjob='cd ~/01_utias/; ssh -X ramy@oddjob.utias.utoronto.ca;'
 alias scinet='ssh -l rashad login.scinet.utoronto.ca' # ssh into scinet
-alias gpc='ssh -X gpc02'    # ssh into gpc node
 ### Mounting File Systems and SSH commands - from personal laptop###
 alias moddjob='cd ~/01_utias/; sshfs ramy@oddjob.utias.utoronto.ca: 02_oddjob/; cd 02_oddjob/'  # Mount your file system from school
 alias uoddjob='cd ~/01_utias/; fusermount -u 02_oddjob/'  #Unmount your file system from school
@@ -204,34 +201,23 @@ alias uhpacf='cd ~/01_utias/; fusermount -u 03_hpacf/'  #Unmount your file syste
 alias mscinet='cd /home/rashad/; sshfs rashad@login.scinet.utoronto.ca: 04_scinet/; cd 04_scinet/'  # Mount your file system from school
 alias uscinet='cd /home/rashad/; fusermount -u 04_scinet/'  #Unmount your file system from school
 
-# scratch
-alias scr='cd /global/scratch/rashad'
-# queue related aliases
+# guillimin related aliases
+alias gpc='ssh -X gpc02'    # ssh into gpc node
+alias scr='cd /sb/scratch/rashad'
 alias qr='showq | grep "rashad"'
-alias qs='qstat | grep "rashad"'
+alias qs='qr'
 alias qss='showq -u rashad'
 alias qg='clear; showq -w group=syu-780-01'
 alias qw='clear; showq -i -w group=syu-780-01'
 alias tr='top | grep "rashad"'
-alias ss='showstart'
-alias cj='checkjob'
-# interactive jobs
-alias debug1latt='qsub -X -I -q interactive -l walltime=03:00:00,nodes=1:ppn=8,mem=11gb'
-alias debug2latt='qsub -X -I -q interactive -l walltime=03:00:00,nodes=2:ppn=8,mem=22gb'
-alias debug3latt='qsub -X -I -q interactive -l walltime=03:00:00,nodes=3:ppn=8,mem=33gb'
-alias debug4latt='qsub -X -I -q interactive -l walltime=03:00:00,nodes=4:ppn=8,mem=44gb'
-alias debug1para='qsub -X -I -q interactive -l walltime=03:00:00,nodes=1:ppn=12,mem=23gb'
-alias debug2para='qsub -X -I -q interactive -l walltime=03:00:00,nodes=2:ppn=12,mem=46gb'
-alias debug3para='qsub -X -I -q interactive -l walltime=03:00:00,nodes=3:ppn=12,mem=69gb'
-alias debug4para='qsub -X -I -q interactive -l walltime=03:00:00,nodes=4:ppn=12,mem=92gb'
-alias debug1='qsub -q interactive -l walltime=03:00:00,nodes=1:ppn=12:gpus=1'
-alias debug2='qsub -q interactive -l walltime=03:00:00,nodes=2:ppn=12:gpus=1'
-alias debug3='qsub -l nodes=3:ppn=8,walltime=00:30:00 -q debug -I'
-alias debug4='qsub -l nodes=4:ppn=8,walltime=00:30:00 -q debug -I'
-alias debug5='qsub -l nodes=5:ppn=8,walltime=00:30:00 -q debug -I'
-alias debug6='qsub -l nodes=6:ppn=8,walltime=00:30:00 -q debug -I'
-alias debug7='qsub -l nodes=7:ppn=8,walltime=00:30:00 -q debug -I'
-alias debug8='qsub -l nodes=8:ppn=8,walltime=00:30:00 -q debug -I'
+alias debug1='msub -l nodes=1:ppn=8,walltime=2:00:00 -q debug -I'
+alias debug2='msub -l nodes=2:ppn=8,walltime=1:00:00 -q debug -I'
+alias debug3='msub -l nodes=3:ppn=8,walltime=00:30:00 -q debug -I'
+alias debug4='msub -l nodes=4:ppn=8,walltime=00:30:00 -q debug -I'
+alias debug5='msub -l nodes=5:ppn=8,walltime=00:30:00 -q debug -I'
+alias debug6='msub -l nodes=6:ppn=8,walltime=00:30:00 -q debug -I'
+alias debug7='msub -l nodes=7:ppn=8,walltime=00:30:00 -q debug -I'
+alias debug8='msub -l nodes=8:ppn=8,walltime=00:30:00 -q debug -I'
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
@@ -241,15 +227,22 @@ fi
 # Editor
 export EDITOR="vi"
 
+
+#PATH=~/bin:~/scripts:$PATH
+#export PATH
+#
+#PATH=~/usr/bin:$PATH
+#export PATH
+
 # Export custom vimruntime directory
-export VIMRUNTIME=~/usr/local/vim73/runtime
+export VIMRUNTIME=~/usr/local/vim/vim73/runtime
 
 # prevent core dumps and segmentation faults
-#ulimit -c 0                   # limit coredumpsize 0
-##ulimit -m unlimited           # limit memoryuse unlimited
-#ulimit -s unlimited           # limit stacksize unlimited
-#F_UFMTENDIAN=big       # setenv F_UFMTENDIAN big
-#export F_UFMTENDIAN
+ulimit -c 0                   # limit coredumpsize 0
+#ulimit -m unlimited           # limit memoryuse unlimited
+ulimit -s unlimited           # limit stacksize unlimited
+F_UFMTENDIAN=big       # setenv F_UFMTENDIAN big
+export F_UFMTENDIAN
 
 
 
@@ -317,21 +310,19 @@ function cs() { cd *"$@"* ; l ;}
 #function reverseFile() {perl -e 'print reverse <>' "$@";}
 
 
-
 # ************************************
-#   WESTGRID Specific Customizations
+#      CLUMEQ Specific Customizations
 # ************************************
-HOST=$(uname)
-ARCH=$(uname)_$(uname -m)
+HOST=$(uname) 
+ARCH=$(uname)_$(uname -m) 
 
 #-- Location Add your own installation of git
 export PATH=~/usr/local/git-1.7.12.1:$PATH
 export PATH=~/usr/local/git-1.7.12.1/gitk-git:$PATH
 #-- Location of bin and scripts
-export PATH=/home/rashad/bin:/home/rashad/bin/scripts:/home/rashad/grid_utils:$HOME/usr/local/bin:${PATH} 
-#export PATH=/home/rashad/bin:/home/rashad/bin/scripts:/home/rashad/grid_utils:${PATH} 
+export PATH=$HOME/usr/local/bin/:/home/rashad/bin:/home/rashad/scripts:/home/rashad/grid_utils:${PATH} 
 #-- Location of personal scratch space
-export SCRATCH=/global/scratch/rashad
+export SCRATCH=/sb/scratch/rashad
 #-- Location of group project directory
 export PROJECT=/sb/project/syu-780-aa
 #-- Location of jetstream Test Suite
@@ -343,17 +334,15 @@ export ODD=ramy@oddjob.utias.utoronto.ca:/nfs/carv/d1/people/ramy/
 export ODDT=ramy@oddjob.utias.utoronto.ca:/nfs/carv/d1/people/ramy/transfer/
 export SCI=ramy@scinet.utoronto.ca:/home/z/zingg/rashad/
 #-- Jetstream related paths
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/$ARCH/lib:$HOME/jetstream/cgnslib_2.5/LINUX:$HOME/usr/local/lib
 export PATH=$PATH:$HOME/jetstream/grid_utils
-export LD_LIBRARY_PATH={$LD_LIBRARY_PATH}:$HOME/$ARCH/lib:$HOME/jetstream/cgnslib_2.5/LINUX:$HOME/usr/local/lib
-#export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:$HOME/jetstream/cgnslib_2.5/LINUX:$HOME/usr/local/lib
-#export LD_LIBRARY_PATH={$LD_LIBRARY_PATH}:$HOME/$ARCH/lib:$HOME/jetstream/cgnslib_2.5/LINUX
 export PYTHONPATH=/home/rashad/mdo_import_helper:${PYTHONPATH} 
 #-- Optima2D related sources
 #source /opt/intel/Compiler/11.1/059/bin/intel64/ifortvars_intel64.sh
 #source /opt/intel/Compiler/11.1/059/bin/intel64/iccvars_intel64.sh
 #source /software/compilers/Intel/2011-4-12.0.4/bin/iccvars_intel64.sh
 #source /software/compilers/Intel/2011-4-12.0.4/bin/ifortvars_intel64.sh
-#source /software/compilers/Intel/2011-4-12.0.4/composerxe-2011/bin/compilervars.sh intel64
+source /software/compilers/Intel/2011-4-12.0.4/composerxe-2011/bin/compilervars.sh intel64
 
 #-- Set environment variable that controls how Fortran unformatted 
 #   input/output operations are handled
@@ -363,17 +352,8 @@ ulimit -c 0
 ulimit -s unlimited
 
 #-- Load modules
-module unload intel/11.1
-module load intel/12
-module load intel/2011-sp1.10.319
-module load mvapich
-module load python
-module load git
-#module load openmpi/parallel
-#source /global/software/mvapich/mvapich2-1.7/bin/mpif90
-
-# testing
-#module unload intel
-#module load intel/12
-#module load python
-#module load git
+module add ifort_icc
+module add MKL/10.3
+module add mvapich2/1.6-intel
+module add python/2.6.7
+module add HDF5
