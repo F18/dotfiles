@@ -180,9 +180,12 @@ alias tg4='tail -50f rest00-04.gnu'  # view the end of the optima gnuplot file
 alias tg5='tail -50f rest00-05.gnu'  # view the end of the optima gnuplot file
 alias tg6='tail -50f rest00-06.gnu'  # view the end of the optima gnuplot file
 alias tg7='tail -50f rest00-07.gnu'  # view the end of the optima gnuplot file
+
+alias tmk='tmux kill-session -t'
 alias tml='tmux list-sessions'
 alias tmd='tmux detach'
 alias tma='tmux attach -t' 
+
 alias tp='tf *.tp'  # view the end of the optima gnuplot file
 alias tree='tree -C -I "*.git"' # list all files and directories as a tree
 alias treed='tree -C -d -I "*.git"' # list all directories

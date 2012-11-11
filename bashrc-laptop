@@ -163,9 +163,12 @@ alias t='tec360' # use -mesa flag if compositing causes issues
 alias tecplot='tec360' # Run tec360 based on the tecplot path set below
 alias tf='tail --lines=300 -F' # run tail with 100 lines and live following
 alias tg='tail -50f rest00-00.gnu'  # view the end of the optima gnuplot file
+
+alias tmk='tmux kill-session -t'
 alias tml='tmux list-sessions'
 alias tmd='tmux detach'
 alias tma='tmux attach -t' 
+
 alias tp='tf *.tp'  # view the end of the optima gnuplot file
 alias tree='tree -C -I "*.git"' # list all files and directories as a tree
 alias treed='tree -C -d -I "*.git"' # list all directories
