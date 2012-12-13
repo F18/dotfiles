@@ -122,6 +122,9 @@ alias hist='history'        # Display history
 
 alias imindmapV2='cd /home/rashad/ProgramFiles/iMindMap2.2.3; ./iMindMap'
 
+alias ejobs='v ~/bin/scripts/script-lm.sh'
+alias jobs='~/bin/scripts/script-lm.sh'
+
 alias l='ls -lh'          # List all files in short format
 alias ll='ls -laSh'     # List all files in long format
 alias la='ls -a'      # List all including hidden 
@@ -160,7 +163,7 @@ alias sbash='source ~/.bashrc' # refresh terminal with new .bashrc file
 alias sls='screen -ls' # lists the GNU screen sessions
 alias sc='screen -t " "'  # attaches to a given screen session (use session PID)
 alias sr='screen -r'  # attaches to a given screen session (use session PID)
-alias sn='tail -100f SNOPT.out00'
+alias sn='tail -100f SNOPT.sum00'
 
 #alias tail='tail -100' # Display the last 100 lines of a file
 alias t='tec360 -mesa' # use -mesa flag if compositing causes issues
@@ -187,6 +190,7 @@ alias tmd='tmux detach'
 alias tma='tmux attach -t' 
 
 alias tp='tf *.tp'  # view the end of the optima gnuplot file
+alias tpout='m *.tpout'
 alias tree='tree -C -I "*.git"' # list all files and directories as a tree
 alias treed='tree -C -d -I "*.git"' # list all directories
 
@@ -227,6 +231,7 @@ alias debug1para='qsub -X -I -q interactive -l walltime=03:00:00,nodes=1:ppn=12,
 alias debug2para='qsub -X -I -q interactive -l walltime=03:00:00,nodes=2:ppn=12,mem=46gb'
 alias debug3para='qsub -X -I -q interactive -l walltime=03:00:00,nodes=3:ppn=12,mem=69gb'
 alias debug4para='qsub -X -I -q interactive -l walltime=03:00:00,nodes=4:ppn=12,mem=92gb'
+alias debug5para='qsub -X -I -q interactive -l walltime=03:00:00,nodes=4:ppn=12,mem=105gb'
 alias debug1='qsub -q interactive -l walltime=03:00:00,nodes=1:ppn=12:gpus=1'
 alias debug2='qsub -q interactive -l walltime=03:00:00,nodes=2:ppn=12:gpus=1'
 alias debug3='qsub -l nodes=3:ppn=8,walltime=00:30:00 -q debug -I'
@@ -291,6 +296,12 @@ function gf() { grep -irn --include=*.{f,F,f90,F90,inc} -- "$@" . ; }
 function gfc() { grep -irn --include=*.{f,F,f90,F90,inc} -- "call $@" . ; }
 function gfs() { grep -irn --include=*.{f,F,f90,F90,inc} -- "subroutine $@" . ; }
 function gfe() { grep -irn --include=*.{f,F,f90,F90,inc} -- "$@[\t ]*=[^=]" . ; }
+# specify file type and expression
+function gg() { 
+args=("$@") ;
+echo "Arguments are ${args[$((0))]} and ${args[$((1))]}";
+grep -irn --include="*.${args[$((0))]}" -- "${args[$((1))]}" . ; 
+}
 
 # Python grep, only searches Python source
 ## Current directory
@@ -380,3 +391,4 @@ module load git
 #module load intel/12
 #module load python
 #module load git
+export MV2_USE_BLOCKING=1

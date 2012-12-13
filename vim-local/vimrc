@@ -358,27 +358,29 @@ let fortran_do_enddo=1
 " _____________
 " Color Columns
 "
-"if exists('+colorcolumn')
-"   "
-"   "vim 7.3 and newer with colorcolumn
-"   "
-"   hi ColorColumn guibg=#3d3d3d
-"   if &t_Co > 255
-"      hi ColorColumn ctermbg=236
-"   endif
-"   autocmd FileType fortran set colorcolumn=6,73 
-"else
-"   "
-"   "vim 7.2 and older without colorcolumn
-"   "
-"   hi ColorColumn guibg=#3d3d3d
-"   if &t_Co > 255
-"      hi ColorColumn ctermbg=236
-"   endif
-"   :au BufWinEnter *.f let w:m1=matchadd('ColorColumn', '\%<75v.\%>72v', -1)
-"   :au BufWinEnter *.f let w:m2=matchadd('ErrorMsg', '\%>72v.\+', -1)
-"   :au BufWinEnter *.f let w:m3=matchadd('ColorColumn', '\%<7v.\%>6v', -1)
-"endif
+if exists('+colorcolumn')
+   "
+   "vim 7.3 and newer with colorcolumn
+   "
+   hi ColorColumn guibg=#3d3d3d
+   "if &t_Co > 255
+   "   hi ColorColumn ctermbg=236
+   "endif
+   hi ColorColumn ctermbg=236
+   autocmd FileType fortran set colorcolumn=6,73 
+else
+   "
+   "vim 7.2 and older without colorcolumn
+   "
+   hi ColorColumn guibg=#3d3d3d
+   "if &t_Co > 255
+   "   hi ColorColumn ctermbg=236
+   "endif
+   hi ColorColumn ctermbg=236
+   :au BufWinEnter *.f let w:m1=matchadd('ColorColumn', '\%<75v.\%>72v', -1)
+   :au BufWinEnter *.f let w:m2=matchadd('ErrorMsg', '\%>72v.\+', -1)
+   :au BufWinEnter *.f let w:m3=matchadd('ColorColumn', '\%<7v.\%>6v', -1)
+endif
 
 " set text width for latex files
 au BufNewFile,BufRead *.tex set textwidth=90
