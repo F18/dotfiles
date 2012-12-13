@@ -1,8 +1,8 @@
 # .bashrc
 
 # Set terminal to 256 color
-#export TERM=xterm-256color
-export TERM=screen-256color
+#export TERM=xterm-color # works for gnu-screen
+export TERM=screen-256color # works for tmux
 
 # define some colors
 NONE='\[\e[01;32m\]'
