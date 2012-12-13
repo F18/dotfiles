@@ -266,23 +266,12 @@ set statusline+=%L                        " total number of lines
 set guioptions-=T
 
 
-" Latex Recommended settings
-" REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
-filetype plugin on
 " redef C-j to C-g
 imap <C-g> <Plug>IMAP_JumpForward
 nmap <C-g> <Plug>IMAP_JumpForward
 
 map <leader>sm :w <cr> :make <cr>
 
-" IMPORTANT: win32 users will need to have 'shellslash' set so that latex
-" can be called correctly.
-set shellslash
-
-" IMPORTANT: grep will sometimes skip displaying the file name if you
-" search in a singe file. This will confuse Latex-Suite. Set your grep
-" program to always generate a file-name.
-set grepprg=grep\ -nH\ $*
 
 " Grepping Tools
 " Grep current file for word under cursor and change to quicklist window
@@ -319,6 +308,19 @@ nnoremap <C-k> <C-W>k
 nnoremap <C-h> <C-W>h
 nnoremap <C-l> <C-W>l
 
+" Latex Recommended settings
+"
+" REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
+filetype plugin on
+
+" IMPORTANT: win32 users will need to have 'shellslash' set so that latex
+" can be called correctly.
+set shellslash
+
+" IMPORTANT: grep will sometimes skip displaying the file name if you
+" search in a singe file. This will confuse Latex-Suite. Set your grep
+" program to always generate a file-name.
+set grepprg=grep\ -nH\ $*
 
 " OPTIONAL: This enables automatic indentation as you type.
 filetype indent on
@@ -332,6 +334,9 @@ let g:tex_flavor='latex'
 "let g:Tex_UseMakefile=0
 "let g:Tex_CompileRule_pdf='make'
 "let g:Tex_IgnoredWarnings=4
+
+
+
 "
 " change directory to home
 " :cd ~

@@ -243,10 +243,10 @@ alias uwest='fusermount -u ~/06_westgrid/'  #Unmount your file system from scine
 #       Find and Grep Tools        *
 # **********************************
 
-# Find a file with a pattern in name:
-function ff() { find . -type f -name '*'$@'*' ; }
-function fe() { find . -type f -name '*'$@'' | xargs emacs; }
-function fl() { find . -type f -name '*'$@'' | xargs ls -lash; }
+# Find a file with a pattern in name (iname for case insensitive, name for case sensitive):
+function ff() { find . -type f -iname '*'$@'*' ; }
+function fe() { find . -type f -iname '*'$@'' | xargs emacs; }
+function fl() { find . -type f -iname '*'$@'' | xargs ls -lash; }
 
 # grep
 # Make it highlight the search string
