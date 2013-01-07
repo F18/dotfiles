@@ -29,19 +29,24 @@ RBRACE=$BRACE_COLOR]$BRACE_COLOR
 SYMBOL="\\$"
 WD="\W"
 
-# Get the prompt to display the current path
+# PROMPT DISPLAYS
+#
+# Good ones:
+#
+#PS1="$LBRACE$RED\w$RBRACE\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW\W$RBRACE$NONE$ "
+PS1="$RED\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW\W$RBRACE$NONE$ "
+export PS1
+#
+# Old ones:
+#
 #PS1=[\\w]\\$
 #export PS1
-
 #PS1='\[\e[01;32m\][\u\[\e[01;32m\]@\[\e[01;31m\]\h\[\e[01;32m\] \[\e[01;33m\]\W\[\e[01;32m\]] '
 #PS1="$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW['textdir']/\W$RBRACE$NONE "
 #PROMPT_COMMAND='DIR=`pwd|sed -e "s!$HOME!~!"`; if [ ${#DIR} -gt 15 ]; then CurDir=${DIR:0:12}...${DIR:${#DIR}-15}; else CurDir=$DIR; fi'
-
 # PROMPT_COMMAND='DIR=`pwd|sed -e "s!$HOME!~!"`; if [ ${#DIR} -gt 30 ]; then CurDir=.${DIR:${#DIR}-30}; else CurDir=$DIR; fi'
 # PS1="$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW\$CurDir$RBRACE$NONE$ "
 #CurDir=${PWD%/*} <-- RR: this gets you one the parent directory
-PS1="$LBRACE$RED\w$RBRACE\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW\W$RBRACE$NONE$ "
-export PS1
 
 # enable color support of ls and also add handy aliases
 if [ "$TERM" != "dumb" ]; then
