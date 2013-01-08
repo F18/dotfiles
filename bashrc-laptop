@@ -73,7 +73,7 @@ alias cdp='cd /home/ramy/01_utias/01_local/01_thesis/seminars/utias/20111007_res
 
 alias cdwd='cd /windows/Users/Owner/Documents'
 alias cdwdb='cd /windows/Users/Owner/Documents/03_Play/2006-2008\ Banking'
-alias cdt='cd ~/01_utias/01_local/01_thesis/myPapers/conferences/201306_aiaa_sandiego/publication/abstract'
+alias cdt='cd ~/01_utias/01_local/01_thesis/DECs/dec4'
 alias cds='cd /scratch'
 alias cdv='cd ~/01_utias/02_oddjob/optima-verify/06_transPredict/y2012/m03'
 alias cdvo='cd ~/01_utias/02_oddjob/optima-verify/08_optimize/y2012/m04'
