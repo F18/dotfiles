@@ -23,6 +23,11 @@ colorscheme zenburn
 "
 " faster buffering in xterm
 set ttyfast
+" faster buffering in tmux
+set notimeout
+set ttimeout
+set timeoutlen=50
+
 " new buffers opened to the right and below on split windows
 set splitbelow
 set splitright
@@ -71,7 +76,7 @@ endfunction
 map <leader>a :w <cr>:call GNUscreenCmd1() <cr><cr>
 map <leader>c :w <cr>:call GNUscreenCmd2() <cr><cr>
 
-map <leader>q <C-W><C-K>q
+"map <leader>q <C-W><C-K>q
 map <leader>d :noh <cr>
 " buffer movement
 map <leader>. :bn <cr>
@@ -102,7 +107,7 @@ nmap <leader>w :w!<cr>
 " Fast save and quit vim
 nmap <leader>s :w <cr> :bd <cr>
 " Fast quit vim
-nmap <leader>q :q <cr>
+nmap <leader>q :wq <cr>
 "map <C-C> "+y
 "map <C-P> "+gP
 " Format paragraph (auto wrap/fill)
@@ -118,7 +123,7 @@ map <right> :bn<cr>
 map <left> :bp<cr>
 
 " Enter Paste mode when you want to paste w/out formatting
-set pastetoggle=<F2>
+"set pastetoggle=<F2>
 
 " always move down a line, even if long line is not wrapped
 nnoremap j gj
@@ -272,18 +277,26 @@ nmap <C-g> <Plug>IMAP_JumpForward
 
 map <leader>sm :w <cr> :make <cr>
 
+" Speed up vim over ssh
 
 " Grepping Tools
-" Grep current file for word under cursor and change to quicklist window
+"
+" Grep for word under cursor and change to quicklist window
+" -- current file
 map <F2> :execute "noautocmd vimgrep /\\<" . expand("<cword>") . "\\>/gj " .  expand("%") <Bar> :copen 7<CR><C-W>K
-" Grep project for word under cursor and change to quicklist window
-map <F3> :execute "noautocmd vimgrep /\\<" . expand("<cword>") . "\\>/gj ../**/*." .  expand("%:e") <Bar> :copen 7<CR><C-W>K
-"nmap \x :call GetFoo()<CR>:exe "/" . Foo<CR>
+" -- project directory
+map <F3> :execute "noautocmd vimgrep /\\<" . expand("<cword>") . "\\>/gj ../**/*.{f,inc,INC,f90}" <Bar> :copen 7<CR><C-W>K
+" -- current filetype in project directory:
+"map <F3> :execute "noautocmd vimgrep /\\<" . expand("<cword>") . "\\>/gj ../**/*." .  expand("%:e") <Bar> :copen 7<CR><C-W>K
+"
 " Grep user input and change to quicklist window (see MyGrep() function)
 " -- current file
 nmap \z :call MyGrep()<CR>:execute "noautocmd vimgrep /\\<" . Foo . "\\>/gj " .  expand("%") <Bar> :copen 7<CR><C-W>K
 " -- project directory
-nmap \x :call MyGrep()<CR>:execute "noautocmd vimgrep /\\<" . Foo . "\\>/gj ../**/*." .  expand("%:e") <Bar> :copen 7<CR><C-W>K
+nmap \x :call MyGrep()<CR>:execute "noautocmd vimgrep /\\<" . Foo . "\\>/gj ../**/*.{f,inc,INC,f90}" <Bar> :copen 7<CR><C-W>K
+" -- current filetype in project directory:
+"nmap \x :call MyGrep()<CR>:execute "noautocmd vimgrep /\\<" . Foo . "\\>/gj ../**/*." .  expand("%:e") <Bar> :copen 7<CR><C-W>K
+"
 nmap \c :copen 5<CR>
 
 function! MyGrep()

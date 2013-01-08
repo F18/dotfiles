@@ -29,19 +29,25 @@ RBRACE=$BRACE_COLOR]$BRACE_COLOR
 SYMBOL="\\$"
 WD="\W"
 
-# Get the prompt to display the current path
+# PROMPT DISPLAYS
+#
+# Good ones:
+#
+#PS1="$LBRACE$RED\w$RBRACE\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW\W$RBRACE$NONE$ "
+PS1="$RED\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW\W$RBRACE$NONE$ "
+export PS1
+#
+# Old ones:
+#
 #PS1=[\\w]\\$
 #export PS1
-
 #PS1='\[\e[01;32m\][\u\[\e[01;32m\]@\[\e[01;31m\]\h\[\e[01;32m\] \[\e[01;33m\]\W\[\e[01;32m\]] '
 #PS1="$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW['textdir']/\W$RBRACE$NONE "
 #PROMPT_COMMAND='DIR=`pwd|sed -e "s!$HOME!~!"`; if [ ${#DIR} -gt 15 ]; then CurDir=${DIR:0:12}...${DIR:${#DIR}-15}; else CurDir=$DIR; fi'
-
 # PROMPT_COMMAND='DIR=`pwd|sed -e "s!$HOME!~!"`; if [ ${#DIR} -gt 30 ]; then CurDir=.${DIR:${#DIR}-30}; else CurDir=$DIR; fi'
 # PS1="$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW\$CurDir$RBRACE$NONE$ "
-#CurDir=${PWD%/*} <-- RR: this gets you one the parent directory
-PS1="$LBRACE$RED\w$RBRACE\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW\W$RBRACE$NONE$ "
-export PS1
+# CurDir=${PWD%/*} <-- RR: this gets you one the parent directory
+
 
 # enable color support of ls and also add handy aliases
 if [ "$TERM" != "dumb" ]; then
@@ -75,8 +81,8 @@ alias cdwd='cd /windows/Users/Owner/Documents'
 alias cdwdb='cd /windows/Users/Owner/Documents/03_Play/2006-2008\ Banking'
 alias cdt='cd ~/01_utias/01_local/01_thesis/myPapers/conferences/2012_cfdsc/publication/paper'
 alias cds='cd /global/scratch/rashad'
-alias cdvoo='cd /global/scratch/rashad/y2012/m10'
-alias cdvo='cd /global/scratch/rashad/y2012/m11'
+alias cdvoo='cd /global/scratch/rashad/y2012/m12'
+alias cdvo='cd /global/scratch/rashad/y2013/m01'
 alias cdv='cd optima-verify/y2012/m09'
 
 alias chmodf='find . -type f -print | xargs chmod' # chmod files only (recursively)
@@ -191,6 +197,7 @@ alias tma='tmux attach -t'
 
 alias tp='tf *.tp'  # view the end of the optima gnuplot file
 alias tpout='m *.tpout'
+alias tpsum='m *.tpsum'
 alias tree='tree -C -I "*.git"' # list all files and directories as a tree
 alias treed='tree -C -d -I "*.git"' # list all directories
 
