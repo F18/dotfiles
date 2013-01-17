@@ -197,7 +197,7 @@ alias rm='rm -i'      # Remove, but ask me first
 alias rme='rm *~ -i'  # Remove emacs backup files, but ask me first
 alias rmef='rm *~ -f'  # Remove emacs backup files, but ask me first
 alias rmrest='rm -f rest*' # Remove optima results files
-alias rmout='rm -rf output.2012*' # Remove optima results files
+alias rmout='rm -rf output.201*' # Remove optima results files
 #alias rename0100='rename "s/01/00/g" rest01*' # rename all rest01 files to rest00 in a directory
 
 alias run='nice -n 19 ~/optima/optima2D/OPTIMA2D_i686 < opt.inp &' # run the optima2D code
