@@ -29,21 +29,26 @@ RBRACE=$BRACE_COLOR]$BRACE_COLOR
 SYMBOL="\\$"
 WD="\W"
 
-# Get the prompt to display the current path
+# PROMPT DISPLAYS
+#
+# Good ones:
+#
+#PS1="$LBRACE$RED\w$RBRACE\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW\W$RBRACE$NONE$ "
+PS1="$RED\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW\W$RBRACE$NONE$ "
+export PS1
+#
+# Old ones:
+#
 #PS1=[\\w]\\$
 #export PS1
-
-
-#
-# PS1 sets the command prompt
-# PROMPT_COMMAND sets the window title
-#
 #PS1='\[\e[01;32m\][\u\[\e[01;32m\]@\[\e[01;31m\]\h\[\e[01;32m\] \[\e[01;33m\]\W\[\e[01;32m\]] '
-#PS1="$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW\W$RBRACE$NONE "
-PS1="$LBRACE$RED\w$RBRACE\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW\W$RBRACE$NONE$ "
-export PS1
-PROMPT_COMMAND='echo -ne "\033]0;$USER@${HOSTNAME%%.*}:${PWD/#$HOME/~}\007"'
+#PS1="$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW['textdir']/\W$RBRACE$NONE "
+#PROMPT_COMMAND='DIR=`pwd|sed -e "s!$HOME!~!"`; if [ ${#DIR} -gt 15 ]; then CurDir=${DIR:0:12}...${DIR:${#DIR}-15}; else CurDir=$DIR; fi'
+# PROMPT_COMMAND='DIR=`pwd|sed -e "s!$HOME!~!"`; if [ ${#DIR} -gt 30 ]; then CurDir=.${DIR:${#DIR}-30}; else CurDir=$DIR; fi'
+# PS1="$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW\$CurDir$RBRACE$NONE$ "
+# CurDir=${PWD%/*} <-- RR: this gets you one the parent directory
 
+#PROMPT_COMMAND='echo -ne "\033]0;$USER@${HOSTNAME%%.*}:${PWD/#$HOME/~}\007"'
 #export PROMPT_DIRTRIM=1
 #PROMPT_COMMAND='echo -ne "\033]0;$USER@${HOSTNAME%%.*}:$PROMPT_DIRTRIM\007"'
 
@@ -192,7 +197,7 @@ alias rm='rm -i'      # Remove, but ask me first
 alias rme='rm *~ -i'  # Remove emacs backup files, but ask me first
 alias rmef='rm *~ -f'  # Remove emacs backup files, but ask me first
 alias rmrest='rm -f rest*' # Remove optima results files
-alias rmout='rm -rf output.2012*' # Remove optima results files
+alias rmout='rm -rf output.201*' # Remove optima results files
 #alias rename0100='rename "s/01/00/g" rest01*' # rename all rest01 files to rest00 in a directory
 
 alias run='nice -n 19 ~/optima/optima2D/OPTIMA2D_i686 < opt.inp &' # run the optima2D code

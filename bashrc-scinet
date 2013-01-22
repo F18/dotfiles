@@ -29,19 +29,24 @@ RBRACE=$BRACE_COLOR]$BRACE_COLOR
 SYMBOL="\\$"
 WD="\W"
 
-# Get the prompt to display the current path
+# PROMPT DISPLAYS
+#
+# Good ones:
+#
+#PS1="$LBRACE$RED\w$RBRACE\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW\W$RBRACE$NONE$ "
+PS1="$RED\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW\W$RBRACE$NONE$ "
+export PS1
+#
+# Old ones:
+#
 #PS1=[\\w]\\$
 #export PS1
-
 #PS1='\[\e[01;32m\][\u\[\e[01;32m\]@\[\e[01;31m\]\h\[\e[01;32m\] \[\e[01;33m\]\W\[\e[01;32m\]] '
 #PS1="$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW['textdir']/\W$RBRACE$NONE "
 #PROMPT_COMMAND='DIR=`pwd|sed -e "s!$HOME!~!"`; if [ ${#DIR} -gt 15 ]; then CurDir=${DIR:0:12}...${DIR:${#DIR}-15}; else CurDir=$DIR; fi'
-
 # PROMPT_COMMAND='DIR=`pwd|sed -e "s!$HOME!~!"`; if [ ${#DIR} -gt 30 ]; then CurDir=.${DIR:${#DIR}-30}; else CurDir=$DIR; fi'
 # PS1="$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW\$CurDir$RBRACE$NONE$ "
 #CurDir=${PWD%/*} <-- RR: this gets you one the parent directory
-PS1="$LBRACE$RED\w$RBRACE\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW\W$RBRACE$NONE$ "
-export PS1
 
 # enable color support of ls and also add handy aliases
 if [ "$TERM" != "dumb" ]; then
@@ -77,7 +82,8 @@ alias cdwdb='cd /windows/Users/Owner/Documents/03_Play/2006-2008\ Banking'
 alias cdt='cd ~/01_utias/01_local/01_thesis/myPapers/conferences/2012_cfdsc/publication/paper'
 alias cds='cd /scratch/z/zingg/rashad'
 alias cdv='cd ~/optima-verify/08_optimize/y2012/m09'
-alias cdvo='cd /scratch/z/zingg/rashad/optima-verify/08_optimize/y2012/m10'
+alias cdvoo='cd /scratch/z/zingg/rashad/optima-verify/08_optimize/y2012'
+alias cdvo='cd /scratch/z/zingg/rashad/optima-verify/08_optimize/y2013/m01'
 alias cdva='cd /scratch/z/zingg/rashad/optima-verify/09_adjoint/y2012/m10'
 
 alias chmodf='find . -type f -print | xargs chmod' # chmod files only (recursively)
@@ -124,6 +130,9 @@ alias hist='history'        # Display history
 
 alias imindmapV2='cd /home/z/zingg/rashad/ProgramFiles/iMindMap2.2.3; ./iMindMap'
 
+alias ejobs='v ~/bin/scripts/script-lm.sh'
+alias jobs='~/bin/scripts/script-lm.sh'
+
 alias l='ls -lh'          # List all files in short format
 alias ll='ls -laSh'     # List all files in long format
 alias la='ls -a'      # List all including hidden 
@@ -154,14 +163,14 @@ alias re='reset'      # Reset the terminal
 alias rm='rm -i'      # Remove, but ask me first
 alias rme='rm *~ -i'  # Remove emacs backup files, but ask me first
 alias rmef='rm *~ -f'  # Remove emacs backup files, but ask me first
-alias rmout='rm output.2012* -rf'
+alias rmout='rm output.201* -rf'
 alias rmrest='rm rest* screen -f'
-alias rename0100='rename "s/01/00/g" rest01*' # rename all rest01 files to rest00 in a directory
+#alias rename0100='rename "s/01/00/g" rest01*' # rename all rest01 files to rest00 in a directory
 alias sbash='source ~/.bashrc' # refresh terminal with new .bashrc file
 alias sls='screen -ls' # lists the GNU screen sessions
 alias sc='screen -t " "'  # attaches to a given screen session (use session PID)
 alias sr='screen -r'  # attaches to a given screen session (use session PID)
-alias sn='tail -100f SNOPT.out00'
+alias sn='tail -100f SNOPT.sum00'
 alias ss='showstart'
 
 #alias tail='tail -100' # Display the last 100 lines of a file
@@ -243,7 +252,7 @@ export PATH
 export VIMRUNTIME=~/usr/local/vim/runtime
 
 
-PATH=$PATH:~/bin:~/scripts:$HOME/usr/local/bin
+PATH=$PATH:~/bin:~/bin/scripts:$HOME/usr/local/bin
 export PATH
 
 # prevent core dumps and segmentation faults

@@ -29,19 +29,24 @@ RBRACE=$BRACE_COLOR]$BRACE_COLOR
 SYMBOL="\\$"
 WD="\W"
 
-# Get the prompt to display the current path
+# PROMPT DISPLAYS
+#
+# Good ones:
+#
+#PS1="$LBRACE$RED\w$RBRACE\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW\W$RBRACE$NONE$ "
+PS1="$RED\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW\W$RBRACE$NONE$ "
+export PS1
+#
+# Old ones:
+#
 #PS1=[\\w]\\$
 #export PS1
-
 #PS1='\[\e[01;32m\][\u\[\e[01;32m\]@\[\e[01;31m\]\h\[\e[01;32m\] \[\e[01;33m\]\W\[\e[01;32m\]] '
 #PS1="$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW['textdir']/\W$RBRACE$NONE "
 #PROMPT_COMMAND='DIR=`pwd|sed -e "s!$HOME!~!"`; if [ ${#DIR} -gt 15 ]; then CurDir=${DIR:0:12}...${DIR:${#DIR}-15}; else CurDir=$DIR; fi'
-
 # PROMPT_COMMAND='DIR=`pwd|sed -e "s!$HOME!~!"`; if [ ${#DIR} -gt 30 ]; then CurDir=.${DIR:${#DIR}-30}; else CurDir=$DIR; fi'
 # PS1="$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW\$CurDir$RBRACE$NONE$ "
-#CurDir=${PWD%/*} <-- RR: this gets you one the parent directory
-PS1="$LBRACE$RED\w$RBRACE\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW\W$RBRACE$NONE$ "
-export PS1
+# CurDir=${PWD%/*} <-- RR: this gets you one the parent directory
 
 # enable color support of ls and also add handy aliases
 if [ "$TERM" != "dumb" ]; then
@@ -151,14 +156,14 @@ alias re='reset'      # Reset the terminal
 alias rm='rm -i'      # Remove, but ask me first
 alias rme='rm *~ -i'  # Remove emacs backup files, but ask me first
 alias rmef='rm *~ -f'  # Remove emacs backup files, but ask me first
-alias rmout='rm output.2012* -rf'
+alias rmout='rm output.201* -rf'
 alias rmrest='rm rest* screen -f'
 alias rename0100='rename "s/01/00/g" rest01*' # rename all rest01 files to rest00 in a directory
 alias sbash='source ~/.bashrc' # refresh terminal with new .bashrc file
 alias sls='screen -ls' # lists the GNU screen sessions
 alias sc='screen -t " "'  # attaches to a given screen session (use session PID)
 alias sr='screen -r'  # attaches to a given screen session (use session PID)
-alias sn='tail -100f SNOPT.out00'
+alias sn='tail -100f SNOPT.sum00'
 
 #alias tail='tail -100' # Display the last 100 lines of a file
 alias t='tec360 -mesa' # use -mesa flag if compositing causes issues
