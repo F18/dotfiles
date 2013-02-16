@@ -1,10 +1,11 @@
 " MY CUSTOM VIM SETTINGS
 
 " Add plugin directories to runtimepath
-set runtimepath+=~/vim-local/myPlugins/vim-fuzzyfinder
-set runtimepath+=~/vim-local/myPlugins/l9
-set runtimepath+=~/vim-local/myPlugins/ctrlp
-set runtimepath+=~/vim-local/myPlugins/vim-surround
+set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-fuzzyfinder
+set runtimepath+=~/dotfiles/vim-local/myPlugins/l9
+set runtimepath+=~/dotfiles/vim-local/myPlugins/ctrlp
+set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-surround
+set runtimepath+=~/dotfiles/vim-local/myPlugins/mpage
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
@@ -57,6 +58,15 @@ imap <silent> <PageDown> <C-O>30<C-D>
 map - $
 set nostartofline
 
+" Multi-pager
+map <leader>e0 :MPage <CR>
+map <leader>e2 :2MPage <CR>
+map <leader>e3 :3MPage <CR>
+map <leader>e4 :4MPage <CR>
+map <leader>e5 :5MPage <CR>
+map <leader>ek :MPN <CR>
+map <leader>ej :MPP <CR>
+
 " Custom Commands (ramy rashad)
 "map <leader>bb :cd ..<cr>
 map <leader>co :cd ~/01_utias/02_oddjob/optima/optima2D<cr>
@@ -84,7 +94,7 @@ map <leader>m :bp <cr>
 "CtrlP
 nmap <leader>f :CtrlPBuffer<cr>
 nmap <C-f> :CtrlP<cr>
-let g:ctrlp_map = '<leader>e'
+"let g:ctrlp_map = '<leader>e'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_root_markers = ['.ctrlp']
 "let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
