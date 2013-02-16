@@ -81,9 +81,9 @@ alias cdwd='cd /windows/Users/Owner/Documents'
 alias cdwdb='cd /windows/Users/Owner/Documents/03_Play/2006-2008\ Banking'
 alias cdt='cd ~/01_utias/01_local/01_thesis/myPapers/conferences/2012_cfdsc/publication/paper'
 alias cds='cd /scratch/z/zingg/rashad'
-alias cdv='cd ~/optima-verify/08_optimize/y2012/m09'
-alias cdvoo='cd /scratch/z/zingg/rashad/optima-verify/08_optimize/y2012'
-alias cdvo='cd /scratch/z/zingg/rashad/optima-verify/08_optimize/y2013/m01'
+alias cdv='cd ~/optima-verify/08_optimize/y2013/m02'
+alias cdvoo='cd /scratch/z/zingg/rashad/optima-verify/08_optimize/y2013/m01'
+alias cdvo='cd /scratch/z/zingg/rashad/optima-verify/08_optimize/y2013/m02'
 alias cdva='cd /scratch/z/zingg/rashad/optima-verify/09_adjoint/y2012/m10'
 
 alias chmodf='find . -type f -print | xargs chmod' # chmod files only (recursively)
@@ -92,6 +92,7 @@ alias cll='clear'                   # Clear the screen
 alias cl='clear; ls'                # Clear and list
 alias courses='cd ~/01_utias/01_local/02_courses'
 alias cp='cp -i'                    # Copy, but ask me first
+alias cpo='cp ~/optima/optima2D/OPTIMA2D_x86_64 .'                    # Copy, but ask me first
 alias crop='mogrify -trim'          # crop the given filename using imagemagik
                                     # (allows you to crop multiple files at one)
 
@@ -155,6 +156,7 @@ alias office='openoffice.org'
 alias pdf='PDFStudio'     # For a launcher you can use PDFStudio as the command
 alias pg='ping www.google.ca'  # ping the google website
 alias ps2pdf='ps2pdf -sPAPERSIZE=a4'   # Force the papersize to be the standard a4 letter
+alias psopt='ps aux | grep OPTIMA2D'
 alias pmem='pidstat -r -p'   # Outputs the memory statistics for a particular job id
                                # Enter the following: "pmem 6218 2 5 > memlog.txt" for 
                                # 5 outputs every 2 seconds written to file memlog.txt
@@ -225,7 +227,8 @@ alias gpc='ssh -X gpc02'    # ssh into gpc node
 alias scr='cd /scratch/z/zingg/rashad'
 alias qr='showq | grep "rashad"'
 alias qr='showq | grep "rashad"'
-alias qs='qstat'
+alias qs='qstat -u rashad'
+alias qc='qstat -f | grep -A 1 "Job Id\|work_dir"'
 alias qss='showq -u rashad'
 alias tr='top | grep "rashad"'
 alias debug1='qsub -l nodes=1:ppn=8,walltime=2:00:00 -q debug -I'
