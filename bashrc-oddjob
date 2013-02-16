@@ -96,7 +96,7 @@ alias cdd='cd ~/01_thesis/jon_driver/optima10/optima2D'
 alias cdg='cd ~/optima-grids/ramy-icem-grids/'
 alias cdj='cd ~/01_thesis/jabref_database'
 alias cdm='cd ~/myResults'
-alias cdo='cd ~/optima/optima2D'
+alias cdoo='cd ~/optima/optima2D'
 alias cdp='cd ~/02_courses/10_PPIT/teachingPortfolio'
 alias cdt='cd ~/01_thesis/DECs/dec4/report'
 alias cds='cd /d1/scratch/ramy'
@@ -155,6 +155,8 @@ alias go='nice -n 19 ~/CFFC/src_3D/euler3Dpolytropic' # RUN euler3Dpolytropic
 #alias head='head -100' # Display the first 100 lines of a file
 alias hist='history'  # Display history
 
+alias icemlicManager='cd /usr2/local_net2/icemcfd/shared_files/licensing/lic_admin; ./anslic_admin'
+
 alias jabref='~/usr/local/java/jre1.7.0/bin/java -jar ~/usr/local/jabref/JabRef-2.7.jar'
 
 alias l='ls -lsh'      # List files in short format
@@ -191,6 +193,7 @@ alias sbash='source ~/.bashrc' # refresh terminal with new .bashrc file
 alias sc='screen -t " "'  # attaches to a given screen session (use session PID)
 alias sls='screen -ls' # lists the GNU screen sessions
 alias sr='screen -r'  # attaches to a given screen session (use session PID)
+alias ssh='ssh -X -i ~/.ssh/id_rsa_oddjob' # hack to get ssh keys working (use as 'ssh zaphod')
 
 alias re='reset'      # Reset the terminal
 alias rm='rm -i'      # Remove, but ask me first

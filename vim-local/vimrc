@@ -1,10 +1,12 @@
 " MY CUSTOM VIM SETTINGS
 
 " Add plugin directories to runtimepath
-set runtimepath+=~/vim-local/myPlugins/vim-fuzzyfinder
-set runtimepath+=~/vim-local/myPlugins/l9
-set runtimepath+=~/vim-local/myPlugins/ctrlp
-set runtimepath+=~/vim-local/myPlugins/vim-surround
+set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-fuzzyfinder
+set runtimepath+=~/dotfiles/vim-local/myPlugins/l9
+set runtimepath+=~/dotfiles/vim-local/myPlugins/ctrlp
+set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-surround
+set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-indent-guides
+
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
@@ -372,6 +374,14 @@ au BufNewFile,BufRead *.inp set filetype=cterm
 let fortran_do_enddo=1
 " only for f90 files:
 "au! BufRead,BufNewFile *.f90 let b:fortran_do_enddo=1
+"
+" ________________
+" Vim Indent Guides
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=black   ctermbg=black
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=darkgrey ctermbg=darkgrey
+let g:indent_guides_start_level = 4
+
 
 " _____________
 " Color Columns
