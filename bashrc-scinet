@@ -81,8 +81,9 @@ alias cdwd='cd /windows/Users/Owner/Documents'
 alias cdwdb='cd /windows/Users/Owner/Documents/03_Play/2006-2008\ Banking'
 alias cdt='cd ~/01_utias/01_local/01_thesis/myPapers/conferences/2012_cfdsc/publication/paper'
 alias cds='cd /scratch/z/zingg/rashad'
-alias cdv='cd ~/optima-verify/08_optimize/y2012/m09'
-alias cdvo='cd /scratch/z/zingg/rashad/optima-verify/08_optimize/y2012/m10'
+alias cdv='cd ~/optima-verify/08_optimize/y2013/m02'
+alias cdvoo='cd /scratch/z/zingg/rashad/optima-verify/08_optimize/y2013/m01'
+alias cdvo='cd /scratch/z/zingg/rashad/optima-verify/08_optimize/y2013/m02'
 alias cdva='cd /scratch/z/zingg/rashad/optima-verify/09_adjoint/y2012/m10'
 
 alias chmodf='find . -type f -print | xargs chmod' # chmod files only (recursively)
@@ -91,6 +92,7 @@ alias cll='clear'                   # Clear the screen
 alias cl='clear; ls'                # Clear and list
 alias courses='cd ~/01_utias/01_local/02_courses'
 alias cp='cp -i'                    # Copy, but ask me first
+alias cpo='cp ~/optima/optima2D/OPTIMA2D_x86_64 .'                    # Copy, but ask me first
 alias crop='mogrify -trim'          # crop the given filename using imagemagik
                                     # (allows you to crop multiple files at one)
 
@@ -129,6 +131,9 @@ alias hist='history'        # Display history
 
 alias imindmapV2='cd /home/z/zingg/rashad/ProgramFiles/iMindMap2.2.3; ./iMindMap'
 
+alias ejobs='v ~/bin/scripts/script-lm.sh'
+alias jobs='~/bin/scripts/script-lm.sh'
+
 alias l='ls -lh'          # List all files in short format
 alias ll='ls -laSh'     # List all files in long format
 alias la='ls -a'      # List all including hidden 
@@ -151,6 +156,7 @@ alias office='openoffice.org'
 alias pdf='PDFStudio'     # For a launcher you can use PDFStudio as the command
 alias pg='ping www.google.ca'  # ping the google website
 alias ps2pdf='ps2pdf -sPAPERSIZE=a4'   # Force the papersize to be the standard a4 letter
+alias psopt='ps aux | grep OPTIMA2D'
 alias pmem='pidstat -r -p'   # Outputs the memory statistics for a particular job id
                                # Enter the following: "pmem 6218 2 5 > memlog.txt" for 
                                # 5 outputs every 2 seconds written to file memlog.txt
@@ -159,14 +165,14 @@ alias re='reset'      # Reset the terminal
 alias rm='rm -i'      # Remove, but ask me first
 alias rme='rm *~ -i'  # Remove emacs backup files, but ask me first
 alias rmef='rm *~ -f'  # Remove emacs backup files, but ask me first
-alias rmout='rm output.2012* -rf'
+alias rmout='rm output.201* -rf'
 alias rmrest='rm rest* screen -f'
-alias rename0100='rename "s/01/00/g" rest01*' # rename all rest01 files to rest00 in a directory
+#alias rename0100='rename "s/01/00/g" rest01*' # rename all rest01 files to rest00 in a directory
 alias sbash='source ~/.bashrc' # refresh terminal with new .bashrc file
 alias sls='screen -ls' # lists the GNU screen sessions
 alias sc='screen -t " "'  # attaches to a given screen session (use session PID)
 alias sr='screen -r'  # attaches to a given screen session (use session PID)
-alias sn='tail -100f SNOPT.out00'
+alias sn='tail -100f SNOPT.sum00'
 alias ss='showstart'
 
 #alias tail='tail -100' # Display the last 100 lines of a file
@@ -221,7 +227,8 @@ alias gpc='ssh -X gpc02'    # ssh into gpc node
 alias scr='cd /scratch/z/zingg/rashad'
 alias qr='showq | grep "rashad"'
 alias qr='showq | grep "rashad"'
-alias qs='qstat'
+alias qs='qstat -u rashad'
+alias qc='qstat -f | grep -A 1 "Job Id\|work_dir"'
 alias qss='showq -u rashad'
 alias tr='top | grep "rashad"'
 alias debug1='qsub -l nodes=1:ppn=8,walltime=2:00:00 -q debug -I'
@@ -248,7 +255,7 @@ export PATH
 export VIMRUNTIME=~/usr/local/vim/runtime
 
 
-PATH=$PATH:~/bin:~/scripts:$HOME/usr/local/bin
+PATH=$PATH:~/bin:~/bin/scripts:$HOME/usr/local/bin
 export PATH
 
 # prevent core dumps and segmentation faults

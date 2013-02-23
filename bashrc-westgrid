@@ -81,8 +81,8 @@ alias cdwd='cd /windows/Users/Owner/Documents'
 alias cdwdb='cd /windows/Users/Owner/Documents/03_Play/2006-2008\ Banking'
 alias cdt='cd ~/01_utias/01_local/01_thesis/myPapers/conferences/2012_cfdsc/publication/paper'
 alias cds='cd /global/scratch/rashad'
-alias cdvoo='cd /global/scratch/rashad/y2012/m12'
-alias cdvo='cd /global/scratch/rashad/y2013/m01'
+alias cdvoo='cd /global/scratch/rashad/y2013/m01'
+alias cdvo='cd /global/scratch/rashad/y2013/m02'
 alias cdv='cd optima-verify/y2012/m09'
 
 alias chmodf='find . -type f -print | xargs chmod' # chmod files only (recursively)
@@ -90,6 +90,7 @@ alias cll='clear'                   # Clear the screen
 alias cl='clear; ls'                # Clear and list
 alias courses='cd ~/01_utias/01_local/02_courses'
 alias cp='cp -i'                    # Copy, but ask me first
+alias cpo='cp ~/optima/optima2D/OPTIMA2D_x86_64 .'
 alias crop='mogrify -trim'          # crop the given filename using imagemagik
                                     # (allows you to crop multiple files at one)
 
@@ -162,7 +163,7 @@ alias re='reset'      # Reset the terminal
 alias rm='rm -i'      # Remove, but ask me first
 alias rme='rm *~ -i'  # Remove emacs backup files, but ask me first
 alias rmef='rm *~ -f'  # Remove emacs backup files, but ask me first
-alias rmout='rm output.2012* -rf'
+alias rmout='rm output.201* -rf'
 alias rmrest='rm rest* screen -f'
 alias rename0100='rename "s/01/00/g" rest01*' # rename all rest01 files to rest00 in a directory
 alias sbash='source ~/.bashrc' # refresh terminal with new .bashrc file
@@ -222,8 +223,9 @@ alias uscinet='cd /home/rashad/; fusermount -u 04_scinet/'  #Unmount your file s
 alias scr='cd /global/scratch/rashad'
 # queue related aliases
 alias qr='showq | grep "rashad"'
-alias qs='qstat | grep "rashad"'
+alias qs='qstat -u rashad'
 alias qss='showq -u rashad'
+alias qc='qstat -f | grep -A 1 "Job Id\|work_dir" | grep -A 1 -B 4 rashad'
 alias qg='clear; showq -w group=syu-780-01'
 alias qw='clear; showq -i -w group=syu-780-01'
 alias tr='top | grep "rashad"'
@@ -274,6 +276,9 @@ export VIMRUNTIME=~/usr/local/vim73/runtime
 
 # Find a file with a pattern in name:
 function ff() { find . -type f -name '*'$@'*' ; }
+
+# Find a file with a pattern in name:
+function fft1() { find '*'$@'*' -type f; sed -n '$p'; }
 
 # grep
 # Make it highlight the search string

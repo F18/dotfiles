@@ -96,9 +96,9 @@ alias cdd='cd ~/01_thesis/jon_driver/optima10/optima2D'
 alias cdg='cd ~/optima-grids/ramy-icem-grids/'
 alias cdj='cd ~/01_thesis/jabref_database'
 alias cdm='cd ~/myResults'
-alias cdo='cd ~/optima/optima2D'
+alias cdoo='cd ~/optima/optima2D'
 alias cdp='cd ~/02_courses/10_PPIT/teachingPortfolio'
-alias cdt='cd ~/01_thesis/myPapers/conferences/201306_aiaa_sandiego/publication/abstract'
+alias cdt='cd ~/01_thesis/DECs/dec4/report'
 alias cds='cd /d1/scratch/ramy'
 alias cdv='cd ~/optima-verify/06_transPredict/y2012/m07'
 alias cdvo='cd ~/optima-verify/08_optimize/y2012/m06'
@@ -155,6 +155,8 @@ alias go='nice -n 19 ~/CFFC/src_3D/euler3Dpolytropic' # RUN euler3Dpolytropic
 #alias head='head -100' # Display the first 100 lines of a file
 alias hist='history'  # Display history
 
+alias icemlicManager='cd /usr2/local_net2/icemcfd/shared_files/licensing/lic_admin; ./anslic_admin'
+
 alias jabref='~/usr/local/java/jre1.7.0/bin/java -jar ~/usr/local/jabref/JabRef-2.7.jar'
 
 alias l='ls -lsh'      # List files in short format
@@ -191,13 +193,14 @@ alias sbash='source ~/.bashrc' # refresh terminal with new .bashrc file
 alias sc='screen -t " "'  # attaches to a given screen session (use session PID)
 alias sls='screen -ls' # lists the GNU screen sessions
 alias sr='screen -r'  # attaches to a given screen session (use session PID)
+alias ssh='ssh -X -i ~/.ssh/id_rsa_oddjob' # hack to get ssh keys working (use as 'ssh zaphod')
 
 alias re='reset'      # Reset the terminal
 alias rm='rm -i'      # Remove, but ask me first
 alias rme='rm *~ -i'  # Remove emacs backup files, but ask me first
 alias rmef='rm *~ -f'  # Remove emacs backup files, but ask me first
 alias rmrest='rm -f rest*' # Remove optima results files
-alias rmout='rm -rf output.2012*' # Remove optima results files
+alias rmout='rm -rf output.201*' # Remove optima results files
 #alias rename0100='rename "s/01/00/g" rest01*' # rename all rest01 files to rest00 in a directory
 
 alias run='nice -n 19 ~/optima/optima2D/OPTIMA2D_i686 < opt.inp &' # run the optima2D code
