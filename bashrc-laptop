@@ -126,7 +126,9 @@ alias getkey='sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys' # u
 alias head='head -100'      # Display the first 100 lines of a file
 alias hist='history'        # Display history
 
+alias icemcfd='cd /home/ramy/usr/local/ansys_inc/v130/icemcfd/linux64_amd/bin/; ./icemcfd'
 alias imindmapV2='cd /home/ramy/ProgramFiles/iMindMap2.2.3; ./iMindMap'
+alias iphoneReConnect='idevicepair unpair && idevicepair pair'
 
 alias l='ls -lh'          # List all files in short format
 alias ll='ls -laSh'     # List all files in long format
@@ -250,6 +252,7 @@ PATH=$TEC360HOME/bin:$PATH
 #       Script Path and bin          *
 # **********************************
 export PATH=$HOME/usr/local/bin:/usr/bin:$PATH
+PATH=/home/ramy/01_utias/01_local/bin:$PATH
 PATH=/home/ramy/01_utias/01_local/bin/scripts:$PATH
 PATH=/home/ramy/bin:$PATH
 PATH=/home/ramy/bin/scripts:$PATH
