@@ -61,12 +61,12 @@ set nostartofline
 
 " Multi-pager
 map <leader>e0 :MPage <CR>
-map <leader>e2 :2MPage <CR>
-map <leader>e3 :3MPage <CR>
-map <leader>e4 :4MPage <CR>
-map <leader>e5 :5MPage <CR>
-map <leader>ek :MPN <CR>
-map <leader>ej :MPP <CR>
+map <leader>e2 <C-w>o :2MPage <CR> 60<C-U> zz
+map <leader>e3 <C-w>o :3MPage <CR> 60<C-U> zz
+map <leader>e4 <C-w>o :4MPage <CR> 60<C-U> zz
+map <leader>e5 <C-w>o :5MPage <CR> 60<C-U> zz
+map <leader>l :MPN! 10<CR>Lztjk
+map <leader>h :MPP! 10<CR>Hzbjk
 
 " Custom Commands (ramy rashad)
 "map <leader>bb :cd ..<cr>
@@ -92,6 +92,8 @@ map <leader>d :noh <cr>
 " buffer movement
 map <leader>. :bn <cr>
 map <leader>m :bp <cr>
+map <leader>k <C-^>
+
 "CtrlP
 nmap <leader>f :CtrlPBuffer<cr>
 nmap <C-f> :CtrlP<cr>
