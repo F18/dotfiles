@@ -128,6 +128,7 @@ alias ett='emacs -nw -q'     # Open emacs in terminal mode (-nw) without loading
 alias et='emacs -nw'     # Open emacs in terminal mode (-nw)
 alias ec='emacsclient -nw'     # Open emacs in terminal mode (-nw)
 alias epstopdfdir='ls *eps | xargs -n1 epstopdf' # run epstopdf on all eps files in directory
+alias ep='epstopdf'
 
 #alias e='~/usr/local/emacs-23.2/src/emacs'         # Open the text editor emacs
 #alias e='emacs'         # Open the text editor emacs
