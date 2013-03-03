@@ -110,6 +110,8 @@ alias ett='emacs -nw -q'     # Open emacs in terminal mode (-nw) without loading
 alias et='emacs -nw'     # Open emacs in terminal mode (-nw)
 alias ec='emacsclient -nw'     # Open emacs in terminal mode (-nw)
 alias ev='evince'     # Open evince pdf viewer
+alias epstopdfdir='ls *eps | xargs -n1 epstopdf' # run epstopdf on all eps files in directory
+alias ep='epstopdf'
 
 
 alias g='gvim'              # run gnuplot 
