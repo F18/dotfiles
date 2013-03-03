@@ -98,15 +98,17 @@ alias cdj='cd ~/01_thesis/jabref_database'
 alias cdm='cd ~/myResults'
 alias cdoo='cd ~/optima/optima2D'
 alias cdp='cd ~/02_courses/10_PPIT/teachingPortfolio'
-alias cdt='cd ~/01_thesis/DECs/dec4/report'
+alias cdt='cd ~/01_thesis/DECs/dec4/presentation'
 alias cds='cd /d1/scratch/ramy'
 alias cdv='cd ~/optima-verify/06_transPredict/y2012/m07'
-alias cdvo='cd ~/optima-verify/08_optimize/y2012/m06'
+alias cdvo='cd ~/optima-verify/09_adjoint/y2013/m02'
+alias cdva='cd ~/optima-verify/09_adjoint/y2013/m02'
 alias cdvs='cd ~/04_scinet/optima-verify/08_optimize/y2012/m09'
 
 alias cll='clear'                   # Clear the screen
 alias cl='clear; ls'                # Clear and list
 alias cp='cp -i'                    # Copy, but ask me first
+alias cpo='cp ~/optima/optima2D/OPTIMA2D_x86_64 .'
 alias cpForce='cp'                    # Copy, but ask me first
 alias chmodf='find . -type f -print | xargs chmod' # chmod files only (recursively)
 
@@ -126,6 +128,7 @@ alias ett='emacs -nw -q'     # Open emacs in terminal mode (-nw) without loading
 alias et='emacs -nw'     # Open emacs in terminal mode (-nw)
 alias ec='emacsclient -nw'     # Open emacs in terminal mode (-nw)
 alias epstopdfdir='ls *eps | xargs -n1 epstopdf' # run epstopdf on all eps files in directory
+alias ep='epstopdf'
 
 #alias e='~/usr/local/emacs-23.2/src/emacs'         # Open the text editor emacs
 #alias e='emacs'         # Open the text editor emacs
@@ -188,10 +191,12 @@ alias myunzip='tar -xvpzf' # extract archive, verbose, keep file permissions, un
 
 alias pp='nice -19 postprocess_unsteady_data' # runs preplot on cffc data
 alias ppclean='rm -f *.gplt *residual.dat *.tree *.soln'
+alias psopt='ps aux | grep OPTIMA2D'
 
 alias sbash='source ~/.bashrc' # refresh terminal with new .bashrc file
 alias sc='screen -t " "'  # attaches to a given screen session (use session PID)
 alias sls='screen -ls' # lists the GNU screen sessions
+alias sn='tail -100f SNOPT.sum00'
 alias sr='screen -r'  # attaches to a given screen session (use session PID)
 alias ssh='ssh -X -i ~/.ssh/id_rsa_oddjob' # hack to get ssh keys working (use as 'ssh zaphod')
 
@@ -211,7 +216,7 @@ alias tp='tf *.tp' # run tail with 100 lines and live following
 alias tecmac='tecplot ~/scripts/zonemacro.mcr' # run tecplot with the zone.mcr macro
 alias tecmac_c='tecplot ~/scripts/zonemacro_cells.mcr' # run tecplot with the zone.mcr macro
 alias tecmac_n='tecplot ~/scripts/zonemacro_nodes.mcr' # run tecplot with the zone.mcr macro
-alias tg='tail -50f rest00-00.gnu'  # view the end of the optima gnuplot file
+alias tg0='tail -50f rest00-00.gnu'  # view the end of the optima gnuplot file
 alias tg1='tail -50f rest00-01.gnu'  # view the end of the optima gnuplot file
 alias tg2='tail -50f rest00-02.gnu'  # view the end of the optima gnuplot file
 alias tg3='tail -50f rest00-03.gnu'  # view the end of the optima gnuplot file
@@ -222,8 +227,11 @@ alias tml='tmux list-sessions'
 alias tmd='tmux detach'
 alias tma='tmux attach -t' 
 
-alias tree='tree -C -I "*.git"' # list all files and directories as a tree
-alias treed='tree -C -d -I "*.git"' # list all directories
+alias tp='tf *.tp'  # view the end of the optima gnuplot file
+alias tpout='m *.tpout'  # view the end of the optima gnuplot file
+alias tpsum='m *.tpsum'  # view the end of the optima gnuplot file
+#alias tree='tree -C -I "*.git"' # list all files and directories as a tree
+#alias treed='tree -C -d -I "*.git"' # list all directories
 
 alias v='vim -X'
 alias vi='vim -X'
@@ -376,8 +384,8 @@ PATH=~/usr/local/emacs-23.3/src/:$PATH
 # **********************************
 #             Scripts              *
 # **********************************
-PATH=~/scripts:$PATH
-PATH=~/scripts/ConvergenceOrder:$PATH
+PATH=~/bin/scripts:$PATH
+PATH=~/bin/scripts/ConvergenceOrder:$PATH
 
 # **********************************
 #             CFFC                 *

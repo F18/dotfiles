@@ -22,7 +22,7 @@ set t_Co=256
 "let g:zenburn_high_Contrast=1
 "let g:zenburn_alternate_Visual = 1
 colorscheme zenburn
-"
+
 " faster buffering in xterm
 set ttyfast
 " faster buffering in tmux
@@ -61,12 +61,12 @@ set nostartofline
 
 " Multi-pager
 map <leader>e0 :MPage <CR>
-map <leader>e2 :2MPage <CR>
-map <leader>e3 :3MPage <CR>
-map <leader>e4 :4MPage <CR>
-map <leader>e5 :5MPage <CR>
-map <leader>ek :MPN <CR>
-map <leader>ej :MPP <CR>
+map <leader>e2 <C-w>o :2MPage <CR> 60<C-U> zz
+map <leader>e3 <C-w>o :3MPage <CR> 60<C-U> zz
+map <leader>e4 <C-w>o :4MPage <CR> 60<C-U> zz
+map <leader>e5 <C-w>o :5MPage <CR> 60<C-U> zz
+map <leader>l :MPN! 10<CR>Lztjk
+map <leader>h :MPP! 10<CR>Hzbjk
 
 " Custom Commands (ramy rashad)
 "map <leader>bb :cd ..<cr>
@@ -75,23 +75,25 @@ map <leader>co :cd ~/01_utias/02_oddjob/optima/optima2D<cr>
 "map <leader>s :w <cr> :make 
 "map <leader>a :w <cr>:make <cr> <C-o>
 
-" Compile command in gnu-screen
-" - sends the command to window 1 in the same 
-"   gnu-screen session the ^M is from typing (Ctrl-v Enter)
-function! GNUscreenCmd1()
-  :!screen -X at 1 stuff make
-endfunction
-function! GNUscreenCmd2()
-  :!screen -X at 1 stuff moo.sh
-endfunction
-map <leader>a :w <cr>:call GNUscreenCmd1() <cr><cr>
-map <leader>c :w <cr>:call GNUscreenCmd2() <cr><cr>
-
+"" Compile command in gnu-screen
+"" - sends the command to window 1 in the same 
+""   gnu-screen session the ^M is from typing (Ctrl-v Enter)
+"function! GNUscreenCmd1()
+"  :!screen -X at 1 stuff make
+"endfunction
+"function! GNUscreenCmd2()
+"  :!screen -X at 1 stuff moo.sh
+"endfunction
+"map <leader>a :w <cr>:call GNUscreenCmd1() <cr><cr>
+"map <leader>c :w <cr>:call GNUscreenCmd2() <cr><cr>
+" 
 "map <leader>q <C-W><C-K>q
 map <leader>d :noh <cr>
 " buffer movement
 map <leader>. :bn <cr>
 map <leader>m :bp <cr>
+map <leader>k <C-^>
+
 "CtrlP
 nmap <leader>f :CtrlPBuffer<cr>
 nmap <C-f> :CtrlP<cr>
@@ -282,7 +284,7 @@ set statusline+=%L                        " total number of lines
 set guioptions-=T
 
 
-" redef C-j to C-g
+" redef C-j to C-g to move toward Latex <+>
 imap <C-g> <Plug>IMAP_JumpForward
 nmap <C-g> <Plug>IMAP_JumpForward
 
@@ -325,7 +327,7 @@ endfunction
 "map <S-F3>  :cpfile<CR> 
 "map <F4>    :clast<CR> 
 "map <S-F4>  :cfirst<CR> 
-
+" 
 " move around windows quickly
 nnoremap <C-n> <C-W>j
 nnoremap <C-k> <C-W>k
@@ -421,12 +423,17 @@ endif
 
 " set text width for latex files
 au BufNewFile,BufRead *.tex set textwidth=90
-" add auto formatting of paragraphs and with w option
-if has('autocmd')
-   autocmd FileType tex set list
-   autocmd FileType tex set listchars=tab:>>,trail:>
-   autocmd FileType tex set formatoptions+=aw
-endif
+
+""
+"" RR - AUTO FORMATTING OF PARAGRAPHS IN LATEX - turned off for beamer
+"" add auto formatting of paragraphs and with w option
+""
+"RR if has('autocmd')
+"RR    autocmd FileType tex set list
+"RR    autocmd FileType tex set listchars=tab:>>,trail:>
+"RR    autocmd FileType tex set formatoptions+=aw
+"RR endif
+
 
 " set initial gvim window size
 if has("gui_running")
