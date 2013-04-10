@@ -14,6 +14,7 @@ cp ~/.emacs $DIRBKP
 cp ~/.tmux.conf $DIRBKP
 cp ~/.vimrc $DIRBKP
 cp ~/.screenrc $DIRBKP
+cp ~/dotfiles/vim-local/vimrc $DIRBKP
 
 rm -f ~/.bashrc
 rm -f ~/.viper
