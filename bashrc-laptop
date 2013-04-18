@@ -78,7 +78,7 @@ alias cdp='cd /home/ramy/01_utias/01_local/01_thesis/seminars/utias/20111007_res
 
 alias cdwd='cd /windows/Users/Owner/Documents'
 alias cdwdb='cd /windows/Users/Owner/Documents/03_Play/2006-2008\ Banking'
-alias cdt='cd ~/01_utias/01_local/01_thesis/DECs/dec4'
+alias cdt='cd ~/01_utias/01_local/01_thesis/myPapers/conferences/201304_casi_toronto'
 alias cds='cd /scratch'
 alias cdv='cd ~/01_utias/02_oddjob/optima-verify/06_transPredict/y2012/m03'
 alias cdvo='cd ~/01_utias/02_oddjob/optima-verify/08_optimize/y2012/m04'
@@ -110,6 +110,8 @@ alias ett='emacs -nw -q'     # Open emacs in terminal mode (-nw) without loading
 alias et='emacs -nw'     # Open emacs in terminal mode (-nw)
 alias ec='emacsclient -nw'     # Open emacs in terminal mode (-nw)
 alias ev='evince'     # Open evince pdf viewer
+alias epstopdfdir='ls *eps | xargs -n1 epstopdf' # run epstopdf on all eps files in directory
+alias ep='epstopdf'
 
 
 alias g='gvim'              # run gnuplot 
@@ -126,7 +128,9 @@ alias getkey='sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys' # u
 alias head='head -100'      # Display the first 100 lines of a file
 alias hist='history'        # Display history
 
+alias icemcfd='cd /home/ramy/usr/local/ansys_inc/v130/icemcfd/linux64_amd/bin/; ./icemcfd'
 alias imindmapV2='cd /home/ramy/ProgramFiles/iMindMap2.2.3; ./iMindMap'
+alias iphoneReConnect='idevicepair unpair && idevicepair pair'
 
 alias l='ls -lh'          # List all files in short format
 alias ll='ls -laSh'     # List all files in long format
@@ -152,6 +156,7 @@ alias ps2pdf='ps2pdf -sPAPERSIZE=a4'   # Force the papersize to be the standard 
 alias pmem='pidstat -r -p'   # Outputs the memory statistics for a particular job id
                                # Enter the following: "pmem 6218 2 5 > memlog.txt" for 
                                # 5 outputs every 2 seconds written to file memlog.txt
+alias py='python'
 
 alias re='reset'      # Reset the terminal
 alias rm='rm -i'      # Remove, but ask me first
@@ -250,6 +255,7 @@ PATH=$TEC360HOME/bin:$PATH
 #       Script Path and bin          *
 # **********************************
 export PATH=$HOME/usr/local/bin:/usr/bin:$PATH
+PATH=/home/ramy/01_utias/01_local/bin:$PATH
 PATH=/home/ramy/01_utias/01_local/bin/scripts:$PATH
 PATH=/home/ramy/bin:$PATH
 PATH=/home/ramy/bin/scripts:$PATH
