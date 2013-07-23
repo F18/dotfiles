@@ -8,12 +8,16 @@
 # entire panel border
 rounded = 0
 border_width = 1
-background_color = #1A1A1A 40
+background_color = #1A1A1A 100
 border_color = #979797 40
 # active tasks
 rounded = 0
 border_width = 0
-background_color = #FF0000 50
+# RED: #FF0000
+# GREEN: #00FF00
+# BLUE: #0000FF
+# GREY:#C0C0C0 
+background_color = #C8C8C8 50
 border_color = #ffffff 20
 # inactive tasks
 rounded = 0
@@ -29,6 +33,7 @@ panel_monitor = all
 panel_position = top left horizontal
 #panel_size = 93% 26
 #panel_items = LTSBC
+#panel_items = LTSC
 panel_items = T
 #panel_size = 100% 30
 panel_size = 100% 20
@@ -86,14 +91,14 @@ clock_lclick_command = /home/ramy/bin/gsimplecal
 #---------------------------------------------
 # BATTERY
 #---------------------------------------------
-#battery = 0
-#battery_low_status = 7
-#battery_low_cmd = notify-send "battery low"
-#bat1_font = sans 8
-#bat2_font = sans 7
-#battery_font_color = #ffffff 76
-#battery_padding = 1 0
-#battery_background_id = 1
+battery = 1
+battery_low_status = 7
+battery_low_cmd = notify-send "battery low"
+bat1_font = sans 8
+bat2_font = sans 7
+battery_font_color = #ffffff 76
+battery_padding = 1 0
+battery_background_id = 1
 
 ## Tooltips
 tooltip = 0
@@ -121,14 +126,13 @@ mouse_scroll_down = iconify
 #launcher_icon_theme = mate 
 launcher_padding = 4 2  
 launcher_background_id = 1  
-launcher_icon_size = 20  
-#launcher_item_app = /usr/share/app-install/desktop/tint2:tint2obmenu.desktop
-launcher_item_app = /usr/share/app-install/desktop/tint2:tint2gnomemenu.desktop
-launcher_item_app = /usr/share/app-install/desktop/dolphin:kde4__dolphin.desktop
-launcher_item_app = /usr/share/app-install/desktop/gnome-terminal:gnome-terminal.desktop
-launcher_item_app = /usr/share/app-install/desktop/google-chrome.desktop
-launcher_item_app = /usr/share/app-install/desktop/vlc:vlc.desktop
-launcher_item_app = /usr/share/app-install/desktop/clementine:clementine.desktop
+launcher_icon_size = 30  
+#launcher_item_app = /usr/share/applications/tint2:tint2gnomemenu.desktop
+launcher_item_app = /usr/share/applications/nemo-home.desktop
+launcher_item_app = /usr/share/applications/gnome-terminal.desktop
+launcher_item_app = /usr/share/applications/firefox.desktop
+launcher_item_app = /usr/share/applications/vlc.desktop
+launcher_item_app = /usr/share/applications/clementine.desktop
 #launcher item_app = /opt/google/chrome/google-chrome.desktop
 #launcher_item_app = /usr/share/applications/firefox.desktop
 #launcher_item_app = /usr/share/applications/lxterminal.desktop  
