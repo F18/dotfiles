@@ -81,8 +81,8 @@ alias cdwd='cd /windows/Users/Owner/Documents'
 alias cdwdb='cd /windows/Users/Owner/Documents/03_Play/2006-2008\ Banking'
 alias cdt='cd ~/01_utias/01_local/01_thesis/myPapers/conferences/2012_cfdsc/publication/paper'
 alias cds='cd /global/scratch/rashad'
-alias cdvoo='cd /global/scratch/rashad/y2013/m01'
-alias cdvo='cd /global/scratch/rashad/y2013/m02'
+alias cdvoo='cd /global/scratch/rashad/y2013/m02-store'
+alias cdvo='cd /global/scratch/rashad/y2013/m05'
 alias cdv='cd optima-verify/y2012/m09'
 
 alias chmodf='find . -type f -print | xargs chmod' # chmod files only (recursively)
@@ -158,6 +158,7 @@ alias ps2pdf='ps2pdf -sPAPERSIZE=a4'   # Force the papersize to be the standard 
 alias pmem='pidstat -r -p'   # Outputs the memory statistics for a particular job id
                                # Enter the following: "pmem 6218 2 5 > memlog.txt" for 
                                # 5 outputs every 2 seconds written to file memlog.txt
+alias py='python'
 
 alias re='reset'      # Reset the terminal
 alias rm='rm -i'      # Remove, but ask me first

@@ -83,7 +83,7 @@ alias cdt='cd ~/01_utias/01_local/01_thesis/myPapers/conferences/2012_cfdsc/publ
 alias cds='cd /scratch/z/zingg/rashad'
 alias cdv='cd ~/optima-verify/08_optimize/y2013/m02'
 alias cdvoo='cd /scratch/z/zingg/rashad/optima-verify/08_optimize/y2013/m01'
-alias cdvo='cd /scratch/z/zingg/rashad/optima-verify/08_optimize/y2013/m02'
+alias cdvo='cd /scratch/z/zingg/rashad/optima-verify/08_optimize/y2013/m03'
 alias cdva='cd /scratch/z/zingg/rashad/optima-verify/09_adjoint/y2012/m10'
 
 alias chmodf='find . -type f -print | xargs chmod' # chmod files only (recursively)
@@ -239,6 +239,7 @@ alias debug5='qsub -l nodes=5:ppn=8,walltime=00:30:00 -q debug -I'
 alias debug6='qsub -l nodes=6:ppn=8,walltime=00:30:00 -q debug -I'
 alias debug7='qsub -l nodes=7:ppn=8,walltime=00:30:00 -q debug -I'
 alias debug8='qsub -l nodes=8:ppn=8,walltime=00:30:00 -q debug -I'
+alias mydu='/scinet/gpc/bin/diskUsage'
 
 
 # Source global definitions
