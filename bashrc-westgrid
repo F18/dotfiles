@@ -172,6 +172,7 @@ alias sls='screen -ls' # lists the GNU screen sessions
 alias sc='screen -t " "'  # attaches to a given screen session (use session PID)
 alias sr='screen -r'  # attaches to a given screen session (use session PID)
 alias sn='tail -100f SNOPT.sum00'
+alias snd='tail -n5 */SNOPT.sum00'
 
 #alias tail='tail -100' # Display the last 100 lines of a file
 alias t='tec360 -mesa' # use -mesa flag if compositing causes issues
