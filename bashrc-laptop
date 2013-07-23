@@ -71,6 +71,7 @@ alias cdc='cd /home/ramy/01_utias/01_local/02_courses/10_PPIT'
 alias cdg='cd /home/ramy/01_utias/02_oddjob/optima-grids/ramy-amber2D-grids'
 alias cdh='cd /home/ramy/01_utias/03_hpacf/'
 alias cdhc='cd /home/ramy/01_utias/03_hpacf/CFFC/itanium_CFFC'
+alias cdl='cd /home/ramy/01_utias/01_local/01_thesis/literature'
 alias cdo='cd /home/ramy/01_utias/02_oddjob'
 alias cdoc='cd /home/ramy/01_utias/02_oddjob/CFFC'
 alias cdoo='cd /home/ramy/01_utias/02_oddjob/optima/optima2D'
@@ -78,7 +79,7 @@ alias cdp='cd /home/ramy/01_utias/01_local/01_thesis/seminars/utias/20111007_res
 
 alias cdwd='cd /windows/Users/Owner/Documents'
 alias cdwdb='cd /windows/Users/Owner/Documents/03_Play/2006-2008\ Banking'
-alias cdt='cd ~/01_utias/01_local/01_thesis/DECs/dec4'
+alias cdt='cd ~/01_utias/01_local/01_thesis/myPapers/conferences/201306_aiaa_sandiego'
 alias cds='cd /scratch'
 alias cdv='cd ~/01_utias/02_oddjob/optima-verify/06_transPredict/y2012/m03'
 alias cdvo='cd ~/01_utias/02_oddjob/optima-verify/08_optimize/y2012/m04'
@@ -110,6 +111,8 @@ alias ett='emacs -nw -q'     # Open emacs in terminal mode (-nw) without loading
 alias et='emacs -nw'     # Open emacs in terminal mode (-nw)
 alias ec='emacsclient -nw'     # Open emacs in terminal mode (-nw)
 alias ev='evince'     # Open evince pdf viewer
+alias epstopdfdir='ls *eps | xargs -n1 epstopdf' # run epstopdf on all eps files in directory
+alias ep='epstopdf'
 
 
 alias g='gvim'              # run gnuplot 
@@ -126,7 +129,7 @@ alias getkey='sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys' # u
 alias head='head -100'      # Display the first 100 lines of a file
 alias hist='history'        # Display history
 
-alias icemcfd='cd /home/ramy/usr/local/ansys_inc/v130/icemcfd/linux64_amd/bin/; ./icemcfd'
+#alias icemcfd='cd /home/ramy/usr/local/ansys_inc/v130/icemcfd/linux64_amd/bin/; ./icemcfd'
 alias imindmapV2='cd /home/ramy/ProgramFiles/iMindMap2.2.3; ./iMindMap'
 alias iphoneReConnect='idevicepair unpair && idevicepair pair'
 
@@ -154,8 +157,11 @@ alias ps2pdf='ps2pdf -sPAPERSIZE=a4'   # Force the papersize to be the standard 
 alias pmem='pidstat -r -p'   # Outputs the memory statistics for a particular job id
                                # Enter the following: "pmem 6218 2 5 > memlog.txt" for 
                                # 5 outputs every 2 seconds written to file memlog.txt
+alias py='python'
+alias pyqt='ipython qtconsole --pylab=inline'
 
 alias re='reset'      # Reset the terminal
+alias red='gtk-redshift -l 43.67:-79.42 -t 6400:5800 -g 0.8'
 alias rm='rm -i'      # Remove, but ask me first
 alias rme='rm *~ -i'  # Remove emacs backup files, but ask me first
 alias rmef='rm *~ -f'  # Remove emacs backup files, but ask me first
@@ -164,10 +170,13 @@ alias sbash='source ~/.bashrc' # refresh terminal with new .bashrc file
 alias sc='screen -t " "'  # attaches to a given screen session (use session PID)
 alias sls='screen -ls' # lists the GNU screen sessions
 alias sr='screen -r'  # attaches to a given screen session (use session PID)
+alias saveX='sudo Xorg -configure' # creates a clean xorg.conf.new in your home directory
+alias startX='sudo service mdm start' # stops graphical interface (mint 13)
+alias stopX='sudo service mdm stop' # starts graphical interface (mint 13)
 
 #alias tail='tail -100' # Display the last 100 lines of a file
-alias t='tec360' # use -mesa flag if compositing causes issues
-alias tecplot='tec360' # Run tec360 based on the tecplot path set below
+alias t='tec360 -sgiopengl' # use -mesa flag if compositing causes issues
+alias tecplot='tec360 -sgiopengl' # Run tec360 based on the tecplot path set below
 alias tf='tail --lines=300 -F' # run tail with 100 lines and live following
 alias tg='tail -50f rest00-00.gnu'  # view the end of the optima gnuplot file
 
@@ -183,6 +192,7 @@ alias treed='tree -C -d -I "*.git"' # list all directories
 alias v='vim'
 alias vi='vim'
 alias vg='valgrind --tool=memcheck --leak-check=yes' # Execute program with valgrind debuger
+alias vb='v ~/.bashrc'
 
 ### Login to remote servers
 alias hpacf='cd ~/01_utias/03_hpacf; ssh -X ramy@hpacf.utias.utoronto.ca'
@@ -218,6 +228,7 @@ fi
 # use as "scp $SCPODD/filedir/filename ~/filename"
 #
 export SCPODD=ramy@oddjob.utias.utoronto.ca:/nfs/carv/d1/people/ramy
+export SCPSCI=rashad@login.scinet.utoronto.ca:
 
 # Editor
 export EDITOR="vi"
@@ -241,10 +252,12 @@ if [ '$HOST != oddjob.utias.utoronto.ca' ]; then
 fi
 
 # **********************************
-#             Tecplot360           *
+#       Software Exports           *
 # **********************************
-TEC360HOME=/usr/local/tec360_2012R1
-export TEC360HOME
+export TEC360HOME=$HOME/usr/local/tec360_2012R1
+export TECPHYFILE=$HOME/.tecplot.phy
+export ICEM_ACN=$HOME/usr/local/ansys_inc/v130/icemcfd/linux64_amd
+
 
 PATH=$TEC360HOME/bin:$PATH
 
@@ -366,6 +379,9 @@ if [ $TERM = "screen" ]; then
    echo -n -e "\033k$MYPWD\033\\" 
 fi 
 '
+# useful exports
+export FIGS=/home/ramy/01_utias/01_local/01_thesis/myPapers/conferences/201306_aiaa_sandiego/figures
+
 export PATH
 # reverse the order of a file (last line first)
 #function reverseFile() {perl -e 'print reverse <>' "$@";}
