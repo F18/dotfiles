@@ -82,8 +82,8 @@ alias cdwdb='cd /windows/Users/Owner/Documents/03_Play/2006-2008\ Banking'
 alias cdt='cd ~/01_utias/01_local/01_thesis/myPapers/conferences/2012_cfdsc/publication/paper'
 alias cds='cd /scratch/z/zingg/rashad'
 alias cdv='cd ~/optima-verify/08_optimize/y2013/m02'
-alias cdvoo='cd /scratch/z/zingg/rashad/optima-verify/08_optimize/y2013/m01'
-alias cdvo='cd /scratch/z/zingg/rashad/optima-verify/08_optimize/y2013/m03'
+alias cdvoo='cd /scratch/z/zingg/rashad/optima-verify/08_optimize/y2013/m03'
+alias cdvo='cd /scratch/z/zingg/rashad/optima-verify/08_optimize/y2013/m06'
 alias cdva='cd /scratch/z/zingg/rashad/optima-verify/09_adjoint/y2012/m10'
 
 alias chmodf='find . -type f -print | xargs chmod' # chmod files only (recursively)
@@ -173,6 +173,7 @@ alias sls='screen -ls' # lists the GNU screen sessions
 alias sc='screen -t " "'  # attaches to a given screen session (use session PID)
 alias sr='screen -r'  # attaches to a given screen session (use session PID)
 alias sn='tail -100f SNOPT.sum00'
+alias snd='tail -n5 */SNOPT.sum00'
 alias ss='showstart'
 
 #alias tail='tail -100' # Display the last 100 lines of a file
@@ -225,7 +226,7 @@ alias uscinet='cd ~/01_utias/; fusermount -u 04_scinet/'  #Unmount your file sys
 # scinet related aliases
 alias gpc='ssh -X gpc02'    # ssh into gpc node
 alias scr='cd /scratch/z/zingg/rashad'
-alias qr='showq | grep "rashad"'
+alias qa='showbf'
 alias qr='showq | grep "rashad"'
 alias qs='qstat -u rashad'
 alias qc='qstat -f | grep -A 1 "Job Id\|work_dir"'
