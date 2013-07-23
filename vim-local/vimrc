@@ -285,8 +285,8 @@ set guioptions-=T
 
 
 " redef C-j to C-g to move toward Latex <+>
-imap <C-g> <Plug>IMAP_JumpForward
-nmap <C-g> <Plug>IMAP_JumpForward
+imap <C-g> <Plug>IMAP_JumpForward 
+nmap <C-g> <Plug>IMAP_JumpForward 
 
 map <leader>sm :w <cr> :make <cr>
 
@@ -428,11 +428,11 @@ au BufNewFile,BufRead *.tex set textwidth=90
 "" RR - AUTO FORMATTING OF PARAGRAPHS IN LATEX - turned off for beamer
 "" add auto formatting of paragraphs and with w option
 ""
-"RR if has('autocmd')
-"RR    autocmd FileType tex set list
-"RR    autocmd FileType tex set listchars=tab:>>,trail:>
-"RR    autocmd FileType tex set formatoptions+=aw
-"RR endif
+if has('autocmd')
+   autocmd FileType tex set list
+   autocmd FileType tex set listchars=tab:>>,trail:>
+   autocmd FileType tex set formatoptions+=aw
+endif
 
 
 " set initial gvim window size

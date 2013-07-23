@@ -94,14 +94,14 @@ alias brc='cd; emacs .bashrc &'     # Open the .bashrc file for editing
 alias cdc='cd ~/optima/optima2D'          # Go to group code directory
 alias cdd='cd ~/01_thesis/jon_driver/optima10/optima2D'
 alias cdg='cd ~/optima-grids/ramy-icem-grids/'
-alias cdj='cd ~/01_thesis/jabref_database'
+alias cdl='cd ~/01_thesis/literature'
 alias cdm='cd ~/myResults'
 alias cdoo='cd ~/optima/optima2D'
 alias cdp='cd ~/02_courses/10_PPIT/teachingPortfolio'
-alias cdt='cd ~/01_thesis/DECs/dec4/presentation'
+alias cdt='cd ~/01_thesis/myPapers/conferences/201401_scitech_maryland'
 alias cds='cd /d1/scratch/ramy'
 alias cdv='cd ~/optima-verify/06_transPredict/y2012/m07'
-alias cdvo='cd ~/optima-verify/09_adjoint/y2013/m02'
+alias cdvo='cd ~/optima-verify/08_optimize/y2013/m05'
 alias cdva='cd ~/optima-verify/09_adjoint/y2013/m02'
 alias cdvs='cd ~/04_scinet/optima-verify/08_optimize/y2012/m09'
 
@@ -129,6 +129,7 @@ alias et='emacs -nw'     # Open emacs in terminal mode (-nw)
 alias ec='emacsclient -nw'     # Open emacs in terminal mode (-nw)
 alias epstopdfdir='ls *eps | xargs -n1 epstopdf' # run epstopdf on all eps files in directory
 alias ep='epstopdf'
+alias ev='evince'
 
 #alias e='~/usr/local/emacs-23.2/src/emacs'         # Open the text editor emacs
 #alias e='emacs'         # Open the text editor emacs
@@ -160,7 +161,7 @@ alias hist='history'  # Display history
 
 alias icemlicManager='cd /usr2/local_net2/icemcfd/shared_files/licensing/lic_admin; ./anslic_admin'
 
-alias jabref='~/usr/local/java/jre1.7.0/bin/java -jar ~/usr/local/jabref/JabRef-2.7.jar'
+alias jabref='~/usr/local/java/jre1.7.0/bin/java -jar ~/usr/local/jabref/JabRef-2.10b.jar'
 
 alias l='ls -lsh'      # List files in short format
 alias ll='ls -lash'    # List all files in long format and show size
@@ -189,9 +190,12 @@ alias mymerge='git-mergetool --tool xxdiff'
 alias myzip='tar -cvzf'   # use as "myzip filearchive.tar.gz  foldername/"
 alias myunzip='tar -xvpzf' # extract archive, verbose, keep file permissions, unzip using gunzip, and filename to follow
 
+alias nautilus='nautilus --no-desktop --browser'
+
 alias pp='nice -19 postprocess_unsteady_data' # runs preplot on cffc data
 alias ppclean='rm -f *.gplt *residual.dat *.tree *.soln'
 alias psopt='ps aux | grep OPTIMA2D'
+alias py='python'
 
 alias sbash='source ~/.bashrc' # refresh terminal with new .bashrc file
 alias sc='screen -t " "'  # attaches to a given screen session (use session PID)
@@ -237,8 +241,14 @@ alias v='vim -X'
 alias vi='vim -X'
 alias vg='valgrind --tool=memcheck --leak-check=yes' # Execute program with valgrind debuger
 alias video='xanim' # program for viewing avi files
+alias vb='v ~/.bashrc'
 
-### Mounting File Systems and SSH commands - from school computer###
+#-- ssh to some local machines
+alias zaphod='ssh zaphod'
+alias drax='ssh drax'
+alias slarti='ssh slartibarfast'
+
+#-- Mounting File Systems and SSH commands - from school computer###
 alias mhpacf='cd ~/03_hpacf/ramy/'
 #alias uhpacf='fusermount -u 03_hpacf/'  #Unmount your file system from school
 alias hpacf='cd ~/03_hpacf; ssh fe03'
