@@ -80,8 +80,9 @@ alias cdwd='cd /windows/Users/Owner/Documents'
 alias cdwdb='cd /windows/Users/Owner/Documents/03_Play/2006-2008\ Banking'
 alias cdt='cd ~/01_utias/01_local/01_thesis/myPapers/conferences/2012_cfdsc/publication/paper'
 alias cds='cd /sb/scratch/rashad'
-alias cdvo='cd /sb/scratch/rashad/y2012/m09'
-alias cdv='cd optima-verify/y2012/m09'
+alias cdvoo='cd /sb/scratch/rashad/y2012/m02-store'
+alias cdvo='cd /sb/scratch/rashad/y2013/m05'
+alias cdv='cd ~/optima-verify/y2013/m02'
 
 alias chmodf='find . -type f -print | xargs chmod' # chmod files only (recursively)
 alias cll='clear'                   # Clear the screen
@@ -190,6 +191,8 @@ alias tmd='tmux detach'
 alias tma='tmux attach -t' 
 
 alias tp='tf *.tp'  # view the end of the optima gnuplot file
+alias tpout='m *.tpout'  # view the end of the optima gnuplot file
+alias tpsum='m *.tpsum'  # view the end of the optima gnuplot file
 alias tree='tree -C -I "*.git"' # list all files and directories as a tree
 alias treed='tree -C -d -I "*.git"' # list all directories
 
@@ -210,6 +213,8 @@ alias mscinet='cd /home/rashad/; sshfs rashad@login.scinet.utoronto.ca: 04_scine
 alias uscinet='cd /home/rashad/; fusermount -u 04_scinet/'  #Unmount your file system from school
 
 # guillimin related aliases
+alias cj='checkjob'
+alias qsub='msub'
 alias gpc='ssh -X gpc02'    # ssh into gpc node
 alias scr='cd /sb/scratch/rashad'
 alias qr='showq | grep "rashad"'
@@ -236,7 +241,7 @@ fi
 export EDITOR="vi"
 
 
-#PATH=~/bin:~/scripts:$PATH
+#PATH=~/bin:~/bin/scripts:$PATH
 #export PATH
 #
 #PATH=~/usr/bin:$PATH
@@ -328,7 +333,7 @@ ARCH=$(uname)_$(uname -m)
 export PATH=~/usr/local/git-1.7.12.1:$PATH
 export PATH=~/usr/local/git-1.7.12.1/gitk-git:$PATH
 #-- Location of bin and scripts
-export PATH=$HOME/usr/local/bin/:/home/rashad/bin:/home/rashad/scripts:/home/rashad/grid_utils:${PATH} 
+export PATH=$HOME/usr/local/bin/:/home/rashad/bin:/home/rashad/bin/scripts:/home/rashad/grid_utils:${PATH} 
 #-- Location of personal scratch space
 export SCRATCH=/sb/scratch/rashad
 #-- Location of group project directory
