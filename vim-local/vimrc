@@ -292,21 +292,41 @@ map <leader>sm :w <cr> :make <cr>
 
 " Speed up vim over ssh
 
+" ACK search tool
+" https://github.com/mileszs/ack.vim.git
+" Must download ack and place in bin directory or use synaptic: sudo apt-get install ack-grep
+" wget http://beyondgrep.com/ack-2.04-single-file >> Place in ~/bin/ack and chmod 0755
+" let g:ackprg="ack -H --nocolor --nogroup --column"
+" " search for something
+" nmap <leader>a :call MyACK()<Left>
+" " search for the word under the cursor
+" nmap <leader>A :Ack <C-r><C-w> ../. <CR>
+"  
+" function! MyACK(args)
+"   let grepprg_bak=&grepprg
+"   set grepprg=ack\ -H\ --nocolor\ --nogroup
+"   execute "silent! grep " . a:args "../."
+"   botright copen
+"   let &grepprg=grepprg_bak
+" endfunction
+" command! -nargs=* -complete=file Ack call MyACK()
+ 
+ 
 " Grepping Tools
 "
 " Grep for word under cursor and change to quicklist window
 " -- current file
-map <F2> :execute "noautocmd vimgrep /\\<" . expand("<cword>") . "\\>/gj " .  expand("%") <Bar> :copen 7<CR><C-W>K
+map <F2> :execute "noautocmd vimgrep /\\<" . expand("<cword>") . "\\>/gj " .  expand("%") <Bar> :botright copen 7<CR><C-W>
 " -- project directory
-map <F3> :execute "noautocmd vimgrep /\\<" . expand("<cword>") . "\\>/gj ../**/*.{f,inc,INC,f90}" <Bar> :copen 7<CR><C-W>K
+map <leader>A :execute "noautocmd vimgrep /\\<" . expand("<cword>") . "\\>/gj ../**/*.{f,inc,INC,f90}" <Bar> :botright copen 7<CR><C-W>
 " -- current filetype in project directory:
 "map <F3> :execute "noautocmd vimgrep /\\<" . expand("<cword>") . "\\>/gj ../**/*." .  expand("%:e") <Bar> :copen 7<CR><C-W>K
 "
 " Grep user input and change to quicklist window (see MyGrep() function)
 " -- current file
-nmap \z :call MyGrep()<CR>:execute "noautocmd vimgrep /\\<" . Foo . "\\>/gj " .  expand("%") <Bar> :copen 7<CR><C-W>K
+nmap \z :call MyGrep()<CR>:execute "noautocmd vimgrep /\\<" . Foo . "\\>/gj " .  expand("%") <Bar> :botright copen 7<CR><C-W>
 " -- project directory
-nmap \x :call MyGrep()<CR>:execute "noautocmd vimgrep /\\<" . Foo . "\\>/gj ../**/*.{f,inc,INC,f90}" <Bar> :copen 7<CR><C-W>K
+nmap <leader>a :call MyGrep()<CR>:execute "noautocmd vimgrep /\\<" . Foo . "\\>/gj ../**/*.{f,inc,INC,f90}" <Bar> :botright copen 7<CR><C-W>
 " -- current filetype in project directory:
 "nmap \x :call MyGrep()<CR>:execute "noautocmd vimgrep /\\<" . Foo . "\\>/gj ../**/*." .  expand("%:e") <Bar> :copen 7<CR><C-W>K
 "
