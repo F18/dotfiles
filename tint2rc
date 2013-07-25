@@ -4,20 +4,25 @@
 
 #---------------------------------------------
 # BACKGROUND AND BORDER
+#
+# Colors:
+# RED: #FF0000
+# GREEN: #00FF00
+# BLUE: #0000FF
+# GREY:#C8C8C8 
+# ZENBURN-GREEN: #88b090
+# ZENBURN-BACKGROUND: #3f3f3f
 #---------------------------------------------
 # entire panel border
 rounded = 0
 border_width = 1
-background_color = #1A1A1A 100
+background_color = #3f3f3f 100
 border_color = #979797 40
 # active tasks
 rounded = 0
 border_width = 0
-# RED: #FF0000
-# GREEN: #00FF00
-# BLUE: #0000FF
-# GREY:#C0C0C0 
-background_color = #C8C8C8 50
+background_color = #88b090 100
+
 border_color = #ffffff 20
 # inactive tasks
 rounded = 0
