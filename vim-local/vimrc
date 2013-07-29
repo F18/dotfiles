@@ -309,11 +309,11 @@ function! MyAck()
   call inputsave()
   let g:myname = input("Search: ")
   call inputrestore()
-  execute 'Ack "'.g:myname.'" ../'
+  execute 'Ack! "'.g:myname.'" ../'
 endfunction
 
 function! MyAckWord()
-  execute 'Ack "'. expand("<cword>") .'" ../'
+  execute 'Ack! "'. expand("<cword>") .'" ../'
 endfunction
 
  
@@ -394,7 +394,7 @@ let g:tex_flavor='latex'
 ":set tags=~/01_utias/01_local/optima/optima2D/tags
 
 " add filetypes to fortran 
-syntax on
+"syntax on
 filetype on
 au BufNewFile,BufRead *.inc set filetype=fortran
 au BufNewFile,BufRead *.INC set filetype=fortran
