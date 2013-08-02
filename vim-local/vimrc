@@ -297,7 +297,7 @@ map <leader>sm :w <cr> :make <cr>
 "https://github.com/mileszs/ack.vim.git
 "Must download ack and place in bin directory or use synaptic: sudo apt-get install ack-grep
 "wget http://beyondgrep.com/ack-2.04-single-file >> Place in ~/bin/ack and chmod 0755
-let g:ackprg="ack -H --nocolor --nogroup --column"
+let g:ackprg="ack -H --nocolor --nogroup --column --smart-case"
 " search for something
 "nmap \x :Ack ""<Left>
 nmap <leader>a :call MyAck()<CR>
