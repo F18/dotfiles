@@ -1,0 +1,1 @@
+git-repos/vim-kolor/colors/kolor.vim

@@ -80,8 +80,9 @@ if [ "$TERM" != "dumb" ]; then
     alias ls='ls --color=auto'
 fi
 
-export SCPGUILL=ramy@guillimin.clumeq.ca:/home/rashad/
-export SCPSCI=ramy@scinet.utoronto.ca:/home/z/zingg/rashad/
+export SCPGUILL=rashad@guillimin.clumeq.ca:/home/rashad/
+export SCPSCI=rashad@scinet.utoronto.ca:/home/z/zingg/rashad/
+export SCPPARA=rashad@parallel.westgrid.ca:/home/rashad/
 
  #User specific aliases and functions
 
@@ -99,9 +100,10 @@ alias cdm='cd ~/myResults'
 alias cdoo='cd ~/optima/optima2D'
 alias cdp='cd ~/02_courses/10_PPIT/teachingPortfolio'
 alias cdt='cd ~/01_thesis/myPapers/conferences/201401_scitech_maryland'
+alias cdth='cd ~/01_thesis'
 alias cds='cd /d1/scratch/ramy'
 alias cdv='cd ~/optima-verify/06_transPredict/y2012/m07'
-alias cdvo='cd ~/optima-verify/08_optimize/y2013/m07'
+alias cdvo='cd ~/optima-verify/08_optimize/y2013/m10'
 alias cdva='cd ~/optima-verify/09_adjoint/y2013/m02'
 alias cdvs='cd ~/04_scinet/optima-verify/08_optimize/y2012/m09'
 
@@ -198,6 +200,7 @@ alias psopt='ps aux | grep OPTIMA2D'
 alias py='python'
 
 alias sbash='source ~/.bashrc' # refresh terminal with new .bashrc file
+alias sb='source ~/.bashrc' # refresh terminal with new .bashrc file
 alias sc='screen -t " "'  # attaches to a given screen session (use session PID)
 alias sls='screen -ls' # lists the GNU screen sessions
 alias sn='tail -100f SNOPT.sum00'
@@ -212,7 +215,7 @@ alias rmrest='rm -f rest*' # Remove optima results files
 alias rmout='rm -rf output.201*' # Remove optima results files
 #alias rename0100='rename "s/01/00/g" rest01*' # rename all rest01 files to rest00 in a directory
 
-alias run='nice -n 19 ~/optima/optima2D/OPTIMA2D_i686 < opt.inp &' # run the optima2D code
+alias run='nice -n 19 ~/optima/optima2D/OPTIMA2D_x86_64 ' # run the optima2D code
 
 alias t='tecplot'      # Run Tecplot
 alias tf='tail --lines=500 -F' # run tail with 100 lines and live following
@@ -246,7 +249,7 @@ alias vb='v ~/.bashrc'
 #-- ssh to some local machines
 alias zaphod='ssh zaphod'
 alias drax='ssh drax'
-alias slarti='ssh slartibarfast'
+alias slarti='ssh slartibartfast'
 
 #-- Mounting File Systems and SSH commands - from school computer###
 alias mhpacf='cd ~/03_hpacf/ramy/'
