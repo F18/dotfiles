@@ -20,9 +20,16 @@ set gfn=Consolas\ 13
 set shell=/bin/bash
 
 set t_Co=256
+"-- zenburn
 "let g:zenburn_high_Contrast=1
 "let g:zenburn_alternate_Visual = 1
-colorscheme zenburn
+"colorscheme zenburn
+"-- kolor
+let g:kolor_italic=1 " Enable italic. Default: 1
+let g:kolor_bold=0 " Enable bold. Default: 1
+let g:kolor_underlined=0 " Enable underline for 'Underlined'. Default: 0
+let g:kolor_alternative_matchparen=0 " Gray 'MatchParen' color. Default: 0
+colorscheme kolor
 
 " faster buffering in xterm
 set ttyfast
@@ -62,12 +69,18 @@ set nostartofline
 
 " Multi-pager
 map <leader>e0 :MPage <CR>
-map <leader>e2 <C-w>o :2MPage <CR> 60<C-U> zz
-map <leader>e3 <C-w>o :3MPage <CR> 60<C-U> zz
-map <leader>e4 <C-w>o :4MPage <CR> 60<C-U> zz
-map <leader>e5 <C-w>o :5MPage <CR> 60<C-U> zz
-map <leader>l :MPN! 10<CR>Lztjk
-map <leader>h :MPP! 10<CR>Hzbjk
+map <leader>e2 <C-w>o :2MPage <CR> 60<C-U> gg
+map <leader>e3 <C-w>o :3MPage <CR> 60<C-U> gg
+map <leader>e4 <C-w>o :4MPage <CR> 60<C-U> gg
+map <leader>e5 <C-w>o :5MPage <CR> 60<C-U> gg
+map <leader>l :MPN! 10<CR>Lzt<C-e>
+map <leader>h :MPP! 10<CR>Hzb<C-y>
+
+" Tab control
+map <leader>to :tabedit % <CR>
+map <leader>tp :tabprevious <CR>
+map <leader>tn :tabnext <CR>
+map <leader>tc :tabclose <CR>
 
 " Custom Commands (ramy rashad)
 "map <leader>bb :cd ..<cr>
@@ -297,7 +310,7 @@ map <leader>sm :w <cr> :make <cr>
 "https://github.com/mileszs/ack.vim.git
 "Must download ack and place in bin directory or use synaptic: sudo apt-get install ack-grep
 "wget http://beyondgrep.com/ack-2.04-single-file >> Place in ~/bin/ack and chmod 0755
-let g:ackprg="ack -H --nocolor --nogroup --column"
+let g:ackprg="ack -H --nocolor --nogroup --column --smart-case"
 " search for something
 "nmap \x :Ack ""<Left>
 nmap <leader>a :call MyAck()<CR>
@@ -309,11 +322,11 @@ function! MyAck()
   call inputsave()
   let g:myname = input("Search: ")
   call inputrestore()
-  execute 'Ack "'.g:myname.'" ../'
+  execute 'Ack! "'.g:myname.'" ../'
 endfunction
 
 function! MyAckWord()
-  execute 'Ack "'. expand("<cword>") .'" ../'
+  execute 'Ack! "'. expand("<cword>") .'" ../'
 endfunction
 
  
@@ -394,7 +407,7 @@ let g:tex_flavor='latex'
 ":set tags=~/01_utias/01_local/optima/optima2D/tags
 
 " add filetypes to fortran 
-syntax on
+"syntax on
 filetype on
 au BufNewFile,BufRead *.inc set filetype=fortran
 au BufNewFile,BufRead *.INC set filetype=fortran
