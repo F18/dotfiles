@@ -83,7 +83,8 @@ highlight IncSearch       guifg=#000000    guibg=#ff5fd7    gui=none
 highlight LineNr          guifg=#808080    guibg=#242322    gui=none
 highlight StatusLine      guifg=#000000    guibg=#9e9e9e    gui=none
 highlight StatusLineNC    guifg=#b2b2b2    guibg=#4a4a4a    gui=none
-highlight VertSplit       guifg=#4a4a4a    guibg=#4a4a4a    gui=none
+"highlight VertSplit       guifg=#4a4a4a    guibg=#4a4a4a    gui=none
+highlight VertSplit       guifg=#2e3330 guibg=#808080
 highlight Title           guifg=#e2e2e2    guibg=NONE       gui=none
 highlight Visual          guifg=#e2e2e2    guibg=#5c5c5c    gui=none
 highlight VisualNOS       guifg=#e2e2e2    guibg=NONE       gui=underline
@@ -179,7 +180,8 @@ if &t_Co > 255
   highlight LineNr          ctermfg=244     ctermbg=234     cterm=none
   highlight StatusLine      ctermfg=0       ctermbg=247     cterm=none
   highlight StatusLineNC    ctermfg=247     ctermbg=238     cterm=none
-  highlight VertSplit       ctermfg=238     ctermbg=238     cterm=none
+"  highlight VertSplit       ctermfg=238     ctermbg=238     cterm=none
+  highlight VertSplit       ctermfg=235   ctermbg=244 
   highlight Title           ctermfg=254     ctermbg=none    cterm=none
   highlight Visual          ctermfg=254     ctermbg=240     cterm=none
   highlight VisualNOS       ctermfg=254     ctermbg=none    cterm=underline
