@@ -103,7 +103,7 @@ alias cdt='cd ~/01_thesis/myPapers/conferences/201401_scitech_maryland'
 alias cdth='cd ~/01_thesis'
 alias cds='cd /d1/scratch/ramy'
 alias cdv='cd ~/optima-verify/06_transPredict/y2012/m07'
-alias cdvo='cd ~/optima-verify/08_optimize/y2013/m10'
+alias cdvo='cd ~/optima-verify/08_optimize/y2013/m11'
 alias cdva='cd ~/optima-verify/09_adjoint/y2013/m02'
 alias cdvs='cd ~/04_scinet/optima-verify/08_optimize/y2012/m09'
 
