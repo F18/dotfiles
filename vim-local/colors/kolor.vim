@@ -172,7 +172,6 @@ else
 endif
 
 if &t_Co > 255
-  "highlight Normal          ctermfg=251     ctermbg=235     cterm=none
   highlight Normal          ctermfg=251     ctermbg=235     cterm=none
   highlight SpecialKey      ctermfg=111     ctermbg=none    cterm=none
   highlight NonText         ctermfg=111     ctermbg=235     cterm=none
@@ -212,6 +211,7 @@ if &t_Co > 255
   highlight CursorLine      ctermfg=none    ctermbg=236     cterm=none
   highlight ColorColumn     ctermfg=none    ctermbg=236     cterm=none
   highlight Cursor          ctermfg=0       ctermbg=254     cterm=none
+  "RR: Comment = comments in code
   "highlight Comment         ctermfg=244     ctermbg=none    cterm=none
   "highlight Comment         ctermfg=108     ctermbg=none    cterm=none
   "highlight Comment         ctermfg=243     ctermbg=none    cterm=none
@@ -246,7 +246,9 @@ if &t_Co > 255
     "highlight Statement       ctermfg=187     ctermbg=none    cterm=none
     "highlight Statement       ctermfg=183     ctermbg=none    cterm=none
     highlight Statement       ctermfg=108     ctermbg=none    cterm=none
-    highlight Type            ctermfg=141     ctermbg=none    cterm=none
+    "RR Type = implicit none, integer, double precision, logical
+    "highlight Type            ctermfg=141     ctermbg=none    cterm=none
+    highlight Type            ctermfg=117     ctermbg=none    cterm=none
     highlight Error           ctermfg=168     ctermbg=none    cterm=none
     highlight Todo            ctermfg=80      ctermbg=none    cterm=none
     "RR keyword = write()
