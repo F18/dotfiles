@@ -172,14 +172,17 @@ else
 endif
 
 if &t_Co > 255
+  "highlight Normal          ctermfg=251     ctermbg=235     cterm=none
   highlight Normal          ctermfg=251     ctermbg=235     cterm=none
   highlight SpecialKey      ctermfg=111     ctermbg=none    cterm=none
   highlight NonText         ctermfg=111     ctermbg=235     cterm=none
   highlight Directory       ctermfg=180     ctermbg=none    cterm=none
   highlight IncSearch       ctermfg=0       ctermbg=206     cterm=none
   highlight LineNr          ctermfg=244     ctermbg=234     cterm=none
-  highlight StatusLine      ctermfg=0       ctermbg=247     cterm=none
-  highlight StatusLineNC    ctermfg=247     ctermbg=238     cterm=none
+  "RR highlight StatusLine      ctermfg=0       ctermbg=247     cterm=none
+  "RR highlight StatusLineNC    ctermfg=247     ctermbg=238     cterm=none
+  highlight StatusLine      ctermfg=236     ctermbg=186
+  highlight StatusLineNC    ctermfg=235     ctermbg=108
 "  highlight VertSplit       ctermfg=238     ctermbg=238     cterm=none
   highlight VertSplit       ctermfg=235   ctermbg=244 
   highlight Title           ctermfg=254     ctermbg=none    cterm=none
@@ -209,16 +212,25 @@ if &t_Co > 255
   highlight CursorLine      ctermfg=none    ctermbg=236     cterm=none
   highlight ColorColumn     ctermfg=none    ctermbg=236     cterm=none
   highlight Cursor          ctermfg=0       ctermbg=254     cterm=none
-  highlight Comment         ctermfg=244     ctermbg=none    cterm=none
+  "highlight Comment         ctermfg=244     ctermbg=none    cterm=none
+  "highlight Comment         ctermfg=108     ctermbg=none    cterm=none
+  "highlight Comment         ctermfg=243     ctermbg=none    cterm=none
+  "highlight Comment         ctermfg=268     ctermbg=none    cterm=none
+  highlight Comment         ctermfg=103     ctermbg=none    cterm=none
   highlight Constant        ctermfg=180     ctermbg=none    cterm=none
   highlight Special         ctermfg=176     ctermbg=none    cterm=none
   highlight Identifier      ctermfg=80      ctermbg=none    cterm=none
   highlight PreProc         ctermfg=186     ctermbg=none    cterm=none
-  highlight String          ctermfg=138     ctermbg=none    cterm=none
+  " write('the color of this text')
+  "highlight String          ctermfg=138     ctermbg=none    cterm=none
+  highlight String          ctermfg=168     ctermbg=none    cterm=none
   highlight Number          ctermfg=186     ctermbg=none    cterm=none
-  "RR Function = call
-  "RR highlight Function        ctermfg=114     ctermbg=none    cterm=none
-  highlight Function        ctermfg=168     ctermbg=none    cterm=none
+  "highlight Number          ctermfg=116     ctermbg=none    cterm=none
+  "RR Function = call, abs, real, max
+  "highlight Function        ctermfg=114     ctermbg=none    cterm=none
+  "highlight Function        ctermfg=168     ctermbg=none    cterm=none
+  "highlight Function        ctermfg=138     ctermbg=none    cterm=none
+  highlight Function        ctermfg=174     ctermbg=none    cterm=none
   if g:kolor_bold==0
     highlight ErrorMsg        ctermfg=168     ctermbg=none    cterm=none
     highlight Search          ctermfg=208     ctermbg=none    cterm=none
@@ -227,15 +239,19 @@ if &t_Co > 255
     highlight CursorLineNr    ctermfg=254     ctermbg=236     cterm=none
     highlight Question        ctermfg=80      ctermbg=none    cterm=none
     highlight WarningMsg      ctermfg=206     ctermbg=none    cterm=none
-    "RR highlight Statement       ctermfg=168     ctermbg=none    cterm=none
-    " Statement = if else do
+    "RR Statement = if,else,do,.eq.,=,*
+    "highlight Statement       ctermfg=168     ctermbg=none    cterm=none
     "highlight Statement       ctermfg=108     ctermbg=none    cterm=none
-    highlight Statement       ctermfg=111     ctermbg=none    cterm=none
+    "highlight Statement       ctermfg=111     ctermbg=none    cterm=none
+    "highlight Statement       ctermfg=187     ctermbg=none    cterm=none
+    "highlight Statement       ctermfg=183     ctermbg=none    cterm=none
+    highlight Statement       ctermfg=108     ctermbg=none    cterm=none
     highlight Type            ctermfg=141     ctermbg=none    cterm=none
     highlight Error           ctermfg=168     ctermbg=none    cterm=none
     highlight Todo            ctermfg=80      ctermbg=none    cterm=none
     "RR keyword = write()
-    highlight Keyword         ctermfg=168     ctermbg=none    cterm=none
+    "highlight Keyword         ctermfg=168     ctermbg=none    cterm=none
+    highlight Keyword         ctermfg=138     ctermbg=none    cterm=none
     if g:kolor_alternative_matchparen==0
       "-- magenta::  highlight MatchParen      ctermfg=235     ctermbg=206     cterm=none
       "-- grey::     highlight MatchParen      ctermfg=208     ctermbg=none     cterm=none
