@@ -216,7 +216,9 @@ if &t_Co > 255
   highlight PreProc         ctermfg=186     ctermbg=none    cterm=none
   highlight String          ctermfg=138     ctermbg=none    cterm=none
   highlight Number          ctermfg=186     ctermbg=none    cterm=none
-  highlight Function        ctermfg=114     ctermbg=none    cterm=none
+  "RR Function = call
+  "RR highlight Function        ctermfg=114     ctermbg=none    cterm=none
+  highlight Function        ctermfg=168     ctermbg=none    cterm=none
   if g:kolor_bold==0
     highlight ErrorMsg        ctermfg=168     ctermbg=none    cterm=none
     highlight Search          ctermfg=208     ctermbg=none    cterm=none
@@ -225,10 +227,14 @@ if &t_Co > 255
     highlight CursorLineNr    ctermfg=254     ctermbg=236     cterm=none
     highlight Question        ctermfg=80      ctermbg=none    cterm=none
     highlight WarningMsg      ctermfg=206     ctermbg=none    cterm=none
-    highlight Statement       ctermfg=168     ctermbg=none    cterm=none
+    "RR highlight Statement       ctermfg=168     ctermbg=none    cterm=none
+    " Statement = if else do
+    "highlight Statement       ctermfg=108     ctermbg=none    cterm=none
+    highlight Statement       ctermfg=111     ctermbg=none    cterm=none
     highlight Type            ctermfg=141     ctermbg=none    cterm=none
     highlight Error           ctermfg=168     ctermbg=none    cterm=none
     highlight Todo            ctermfg=80      ctermbg=none    cterm=none
+    "RR keyword = write()
     highlight Keyword         ctermfg=168     ctermbg=none    cterm=none
     if g:kolor_alternative_matchparen==0
       "-- magenta::  highlight MatchParen      ctermfg=235     ctermbg=206     cterm=none
