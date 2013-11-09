@@ -503,9 +503,20 @@ map <S-F12> :W <CR> ; :exec "!makebg" v:servername "'" . &makeprg . "'" &makeef<
 "map <F12> :w <CR> ; :exec "!rm " &makeef "; makebg" v:servername "'" . &makeprg . "'"  
 map <F12> :w <CR> ; :exec "!rm error.err" "; makebg" v:servername "'" . &makeprg . "'" "&makeef<CR><CR>
 
-" MACROS
-" places a continuation character (&) in column number 6 and adds two spaces (fortran 77)
-let @a='0llllli& 0ww'
-noremap \ @a
-"let @q='0lllllli! j'
-"noremap <Ctrl-\> @q
+""
+"" Place a continuation characters (& or |) in column number 6 and keep cursor position
+""
+map <leader>o :call MyCol1()<cr>
+map <leader>i :call MyCol2()<cr>
+function! MyCol1()
+  let g:colnum=col(".")
+  execute "norm 6|"
+  execute "normal r&"
+  execute "norm ".g:colnum."|"
+endfunction
+function! MyCol2()
+  let g:colnum=col(".")
+  execute "norm 6|"
+  execute "normal r|"
+  execute "norm ".g:colnum."|"
+endfunction
