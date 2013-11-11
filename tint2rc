@@ -37,11 +37,11 @@ panel_monitor = all
 #panel_position = top left vertical
 panel_position = top left horizontal
 #panel_size = 93% 26
-#panel_items = LTSBC
-#panel_items = LTSC
-panel_items = T
 #panel_size = 100% 30
 panel_size = 100% 20
+#panel_items = LTSBC
+#panel_items = LTSC
+#panel_items = T
 panel_margin = 0 0
 panel_padding = 3 0
 font_shadow = 0
@@ -83,8 +83,9 @@ systray_background_id = 1
 #---------------------------------------------
 # CLOCK
 #---------------------------------------------
-time1_format = %H:%M %a %d %b
-time1_font = Museo 14
+time1_format = %a %d %b, %H:%M 
+time1_font = Museo 12
+#time1_font = Ubuntu 13
 #time1_font = Ubuntu 14
 #time2_format = %A %d %B
 #time2_font = sans 6

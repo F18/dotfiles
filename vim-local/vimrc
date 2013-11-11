@@ -7,6 +7,7 @@ set runtimepath+=~/dotfiles/vim-local/myPlugins/ctrlp
 set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-surround
 set runtimepath+=~/dotfiles/vim-local/myPlugins/mpage
 set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-indent-guides
+set runtimepath+=~/dotfiles/vim-local/myPlugins/ack
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
@@ -19,9 +20,16 @@ set gfn=Consolas\ 13
 set shell=/bin/bash
 
 set t_Co=256
+"-- zenburn
 "let g:zenburn_high_Contrast=1
 "let g:zenburn_alternate_Visual = 1
-colorscheme zenburn
+"colorscheme zenburn
+"-- kolor
+let g:kolor_italic=1 " Enable italic. Default: 1
+let g:kolor_bold=0 " Enable bold. Default: 1
+let g:kolor_underlined=0 " Enable underline for 'Underlined'. Default: 0
+let g:kolor_alternative_matchparen=0 " Gray 'MatchParen' color. Default: 0
+colorscheme kolor
 
 " faster buffering in xterm
 set ttyfast
@@ -61,12 +69,18 @@ set nostartofline
 
 " Multi-pager
 map <leader>e0 :MPage <CR>
-map <leader>e2 <C-w>o :2MPage <CR> 60<C-U> zz
-map <leader>e3 <C-w>o :3MPage <CR> 60<C-U> zz
-map <leader>e4 <C-w>o :4MPage <CR> 60<C-U> zz
-map <leader>e5 <C-w>o :5MPage <CR> 60<C-U> zz
-map <leader>l :MPN! 10<CR>Lztjk
-map <leader>h :MPP! 10<CR>Hzbjk
+map <leader>e2 <C-w>o :2MPage <CR> 60<C-U> gg
+map <leader>e3 <C-w>o :3MPage <CR> 60<C-U> gg
+map <leader>e4 <C-w>o :4MPage <CR> 60<C-U> gg
+map <leader>e5 <C-w>o :5MPage <CR> 60<C-U> gg
+map <leader>l :MPN! 10<CR>Lzt<C-e>
+map <leader>h :MPP! 10<CR>Hzb<C-y>
+
+" Tab control
+map <leader>to :tabedit % <CR>
+map <leader>tp :tabprevious <CR>
+map <leader>tn :tabnext <CR>
+map <leader>tc :tabclose <CR>
 
 " Custom Commands (ramy rashad)
 "map <leader>bb :cd ..<cr>
@@ -292,25 +306,29 @@ map <leader>sm :w <cr> :make <cr>
 
 " Speed up vim over ssh
 
-" ACK search tool
-" https://github.com/mileszs/ack.vim.git
-" Must download ack and place in bin directory or use synaptic: sudo apt-get install ack-grep
-" wget http://beyondgrep.com/ack-2.04-single-file >> Place in ~/bin/ack and chmod 0755
-" let g:ackprg="ack -H --nocolor --nogroup --column"
-" " search for something
-" nmap <leader>a :call MyACK()<Left>
-" " search for the word under the cursor
-" nmap <leader>A :Ack <C-r><C-w> ../. <CR>
-"  
-" function! MyACK(args)
-"   let grepprg_bak=&grepprg
-"   set grepprg=ack\ -H\ --nocolor\ --nogroup
-"   execute "silent! grep " . a:args "../."
-"   botright copen
-"   let &grepprg=grepprg_bak
-" endfunction
-" command! -nargs=* -complete=file Ack call MyACK()
+"ACK search tool
+"https://github.com/mileszs/ack.vim.git
+"Must download ack and place in bin directory or use synaptic: sudo apt-get install ack-grep
+"wget http://beyondgrep.com/ack-2.04-single-file >> Place in ~/bin/ack and chmod 0755
+let g:ackprg="ack -H --nocolor --nogroup --column --smart-case"
+" search for something
+"nmap \x :Ack ""<Left>
+nmap <leader>a :call MyAck()<CR>
+" search for the word under the cursor
+nmap <leader>A :call MyAckWord()<CR>
+"nmap \X :Ack <C-r><C-w> ../. <CR>
  
+function! MyAck()
+  call inputsave()
+  let g:myname = input("Search: ")
+  call inputrestore()
+  execute 'Ack! "'.g:myname.'" ../'
+endfunction
+
+function! MyAckWord()
+  execute 'Ack! "'. expand("<cword>") .'" ../'
+endfunction
+
  
 " Grepping Tools
 "
@@ -318,17 +336,15 @@ map <leader>sm :w <cr> :make <cr>
 " -- current file
 map <F2> :execute "noautocmd vimgrep /\\<" . expand("<cword>") . "\\>/gj " .  expand("%") <Bar> :botright copen 7<CR><C-W>
 " -- project directory
-map <leader>A :execute "noautocmd vimgrep /\\<" . expand("<cword>") . "\\>/gj ../**/*.{f,inc,INC,f90}" <Bar> :botright copen 7<CR><C-W>
 " -- current filetype in project directory:
-"map <F3> :execute "noautocmd vimgrep /\\<" . expand("<cword>") . "\\>/gj ../**/*." .  expand("%:e") <Bar> :copen 7<CR><C-W>K
+map \X :execute "noautocmd vimgrep /\\<" . expand("<cword>") . "\\>/gj ../**/*." .  expand("%:e") <Bar> :copen 7<CR><C-W>K
 "
 " Grep user input and change to quicklist window (see MyGrep() function)
 " -- current file
 nmap \z :call MyGrep()<CR>:execute "noautocmd vimgrep /\\<" . Foo . "\\>/gj " .  expand("%") <Bar> :botright copen 7<CR><C-W>
 " -- project directory
-nmap <leader>a :call MyGrep()<CR>:execute "noautocmd vimgrep /\\<" . Foo . "\\>/gj ../**/*.{f,inc,INC,f90}" <Bar> :botright copen 7<CR><C-W>
 " -- current filetype in project directory:
-"nmap \x :call MyGrep()<CR>:execute "noautocmd vimgrep /\\<" . Foo . "\\>/gj ../**/*." .  expand("%:e") <Bar> :copen 7<CR><C-W>K
+nmap \x :call MyGrep()<CR>:execute "noautocmd vimgrep /\\<" . Foo . "\\>/gj ../**/*." .  expand("%:e") <Bar> :copen 7<CR><C-W>K
 "
 nmap \c :copen 5<CR>
 
@@ -391,7 +407,7 @@ let g:tex_flavor='latex'
 ":set tags=~/01_utias/01_local/optima/optima2D/tags
 
 " add filetypes to fortran 
-syntax on
+"syntax on
 filetype on
 au BufNewFile,BufRead *.inc set filetype=fortran
 au BufNewFile,BufRead *.INC set filetype=fortran
@@ -487,9 +503,20 @@ map <S-F12> :W <CR> ; :exec "!makebg" v:servername "'" . &makeprg . "'" &makeef<
 "map <F12> :w <CR> ; :exec "!rm " &makeef "; makebg" v:servername "'" . &makeprg . "'"  
 map <F12> :w <CR> ; :exec "!rm error.err" "; makebg" v:servername "'" . &makeprg . "'" "&makeef<CR><CR>
 
-" MACROS
-" places a continuation character (&) in column number 6 and adds two spaces (fortran 77)
-let @a='0llllli& 0ww'
-noremap \ @a
-"let @q='0lllllli! j'
-"noremap <Ctrl-\> @q
+""
+"" Place a continuation characters (& or |) in column number 6 and keep cursor position
+""
+map <leader>o :call MyCol1()<cr>
+map <leader>i :call MyCol2()<cr>
+function! MyCol1()
+  let g:colnum=col(".")
+  execute "norm 6|"
+  execute "normal r&"
+  execute "norm ".g:colnum."|"
+endfunction
+function! MyCol2()
+  let g:colnum=col(".")
+  execute "norm 6|"
+  execute "normal r|"
+  execute "norm ".g:colnum."|"
+endfunction

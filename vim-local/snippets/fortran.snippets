@@ -58,7 +58,13 @@ snippet ompdo
 
 # Write statement
 snippet write
-	write (${1:*}, ${2:*}) ${3:variable}
+	write (${1:*},${2:*}) ${3:variable}
+
+snippet wr
+	write (${1:*},"(2x,'${2: }',${3: })") ${4: }
+
+snippet wrr
+	write (${1:*},"(2x,'${2: }',${3: })") $2
 
 # Where / elsewhere construct
 snippet elsewhere

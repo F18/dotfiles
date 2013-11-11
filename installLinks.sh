@@ -15,6 +15,7 @@ cp ~/.tmux.conf $DIRBKP
 cp ~/.vimrc $DIRBKP
 cp ~/.screenrc $DIRBKP
 cp ~/dotfiles/vim-local/vimrc $DIRBKP
+cp ~/.ackrc $DIRBKP
 
 rm -f ~/.bashrc
 rm -f ~/.viper
@@ -22,6 +23,7 @@ rm -f ~/.emacs
 rm -f ~/.tmux.conf 
 rm -f ~/.vimrc
 rm -f ~/.screenrc 
+rm -f ~/.ackrc 
 
 ln -s ~/dotfiles/bashrc-$LOCALSYS ~/.bashrc
 ln -s ~/dotfiles/vimrc ~/.vimrc
@@ -29,3 +31,4 @@ ln -s ~/dotfiles/emacs ~/.emacs
 ln -s ~/dotfiles/viper ~/.viper
 ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
 ln -s ~/dotfiles/screenrc ~/.screenrc
+ln -s ~/dotfiles/ackrc ~/.ackrc
