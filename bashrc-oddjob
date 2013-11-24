@@ -245,6 +245,7 @@ alias vi='vim -X'
 alias vg='valgrind --tool=memcheck --leak-check=yes' # Execute program with valgrind debuger
 alias video='xanim' # program for viewing avi files
 alias vb='v ~/.bashrc'
+alias vv='v ~/dotfiles/vim-local/vimrc'
 
 #-- ssh to some local machines
 alias zaphod='ssh zaphod'
