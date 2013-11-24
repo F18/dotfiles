@@ -1,6 +1,7 @@
 " MY CUSTOM VIM SETTINGS
 
 " Add plugin directories to runtimepath
+set runtimepath+=~/dotfiles/vim-local/myPlugins/bclose
 set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-fuzzyfinder
 set runtimepath+=~/dotfiles/vim-local/myPlugins/l9
 set runtimepath+=~/dotfiles/vim-local/myPlugins/ctrlp
@@ -128,13 +129,19 @@ let g:fuf_maxMenuWidth = 150
 " Fast opening (replaced with buffer searcher)
 "nmap <leader>e :e 
 " Fast close buffer
-nmap <leader>b :bd <cr>
+" closes buffer without closing window (bclose plugin)
+nmap <leader>b :Bclose <CR>
+"nmap <silent> <leader>b :Kwbd <cr>
+"nmap <leader>b :bd<cr>
 " Fast saving
 nmap <leader>w :w!<cr>
 " Fast save and quit vim
 nmap <leader>s :w <cr> :bd <cr>
 " Fast quit vim
 nmap <leader>q :wq <cr>
+" Fast reload/reread of file
+" The reason this requires another keystroke is because there must be another <leader>rX keybinding somewhere
+nmap <leader>r :e<cr>
 "map <C-C> "+y
 "map <C-P> "+gP
 " Format paragraph (auto wrap/fill)
@@ -161,6 +168,7 @@ nmap <silent> <leader>+  <Plug>FontsizeBegin
 nmap <silent> <leader>=  <Plug>FontsizeInc 
 nmap <silent> <leader>-  <Plug>FontsizeDec 
 nmap <silent> <leader>0  <Plug>FontsizeDefault 
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -302,7 +310,7 @@ set guioptions-=T
 imap <C-g> <Plug>IMAP_JumpForward 
 nmap <C-g> <Plug>IMAP_JumpForward 
 
-map <leader>sm :w <cr> :make <cr>
+"map <leader>sm :w <cr> :make <cr>
 
 " Speed up vim over ssh
 
@@ -334,17 +342,17 @@ endfunction
 "
 " Grep for word under cursor and change to quicklist window
 " -- current file
-map <F2> :execute "noautocmd vimgrep /\\<" . expand("<cword>") . "\\>/gj " .  expand("%") <Bar> :botright copen 7<CR><C-W>
+map <F2> :execute "noautocmd vimgrep /\\<" . expand("<cword>") . "\\>/gj " .  expand("%") <Bar> :botright copen 5<CR><C-W>
 " -- project directory
 " -- current filetype in project directory:
-map \X :execute "noautocmd vimgrep /\\<" . expand("<cword>") . "\\>/gj ../**/*." .  expand("%:e") <Bar> :copen 7<CR><C-W>K
+map \X :execute "noautocmd vimgrep /\\<" . expand("<cword>") . "\\>/gj ../**/*." .  expand("%:e") <Bar> :copen 5<CR><C-W>K
 "
 " Grep user input and change to quicklist window (see MyGrep() function)
 " -- current file
-nmap \z :call MyGrep()<CR>:execute "noautocmd vimgrep /\\<" . Foo . "\\>/gj " .  expand("%") <Bar> :botright copen 7<CR><C-W>
+nmap \z :call MyGrep()<CR>:execute "noautocmd vimgrep /\\<" . Foo . "\\>/gj " .  expand("%") <Bar> :botright copen 5<CR><C-W>
 " -- project directory
 " -- current filetype in project directory:
-nmap \x :call MyGrep()<CR>:execute "noautocmd vimgrep /\\<" . Foo . "\\>/gj ../**/*." .  expand("%:e") <Bar> :copen 7<CR><C-W>K
+nmap \x :call MyGrep()<CR>:execute "noautocmd vimgrep /\\<" . Foo . "\\>/gj ../**/*." .  expand("%:e") <Bar> :copen 5<CR><C-W>K
 "
 nmap \c :copen 5<CR>
 
