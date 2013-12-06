@@ -181,8 +181,8 @@ if &t_Co > 255
   "RR: Statusline = color of vim status line along bottom
   "RR highlight StatusLine      ctermfg=0       ctermbg=247     cterm=none
   "RR highlight StatusLineNC    ctermfg=247     ctermbg=238     cterm=none
-  highlight StatusLine      ctermfg=236     ctermbg=186
-  highlight StatusLineNC    ctermfg=235     ctermbg=108
+  highlight StatusLine      ctermfg=240     ctermbg=186
+  highlight StatusLineNC    ctermfg=238     ctermbg=183
   "
   "RR: VertSplit = color or vertical split for split windows
   "highlight VertSplit       ctermfg=238     ctermbg=238     cterm=none

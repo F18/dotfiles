@@ -85,7 +85,7 @@ map <leader>tc :tabclose <CR>
 
 " Custom Commands (ramy rashad)
 "map <leader>bb :cd ..<cr>
-map <leader>co :cd ~/01_utias/02_oddjob/optima/optima2D<cr>
+"map <leader>co :cd ~/01_utias/02_oddjob/optima/optima2D<cr>
 "map <leader>s :w <cr> ,ll <cr>
 "map <leader>s :w <cr> :make 
 "map <leader>a :w <cr>:make <cr> <C-o>
@@ -133,6 +133,8 @@ let g:fuf_maxMenuWidth = 150
 nmap <leader>b :Bclose <CR>
 "nmap <silent> <leader>b :Kwbd <cr>
 "nmap <leader>b :bd<cr>
+" Fast close window split
+nmap <leader>c <C-w>c
 " Fast saving
 nmap <leader>w :w!<cr>
 " Fast save and quit vim
