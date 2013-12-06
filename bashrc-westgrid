@@ -168,6 +168,7 @@ alias rmout='rm output.201* -rf'
 alias rmrest='rm rest* screen -f'
 alias rename0100='rename "s/01/00/g" rest01*' # rename all rest01 files to rest00 in a directory
 alias sbash='source ~/.bashrc' # refresh terminal with new .bashrc file
+alias sb='source ~/.bashrc' # refresh terminal with new .bashrc file
 alias sls='screen -ls' # lists the GNU screen sessions
 alias sc='screen -t " "'  # attaches to a given screen session (use session PID)
 alias sr='screen -r'  # attaches to a given screen session (use session PID)
@@ -175,7 +176,9 @@ alias sn='tail -100f SNOPT.sum00'
 alias snd='tail -n5 */SNOPT.sum00'
 
 #alias tail='tail -100' # Display the last 100 lines of a file
-alias t='tec360 -mesa' # use -mesa flag if compositing causes issues
+alias tp='tecplot'      # Run Tecplot
+alias tf='tail --lines=500 -F' # run tail with 500 lines and live following
+alias t='tf' # run tail with 100 lines and live following
 alias tecplot='tec360' # Run tec360 based on the tecplot path set below
 alias tf='tail --lines=300 -F' # run tail with 100 lines and live following
 alias t1='tail --lines=1'
@@ -192,22 +195,31 @@ alias tg4='tail -50f rest00-04.gnu'  # view the end of the optima gnuplot file
 alias tg5='tail -50f rest00-05.gnu'  # view the end of the optima gnuplot file
 alias tg6='tail -50f rest00-06.gnu'  # view the end of the optima gnuplot file
 alias tg7='tail -50f rest00-07.gnu'  # view the end of the optima gnuplot file
+alias tg='tf *.gmgrad'
+alias th='tail -50f *.his'  # view the end of the optima history file
 
 alias tmk='tmux kill-session -t'
 alias tml='tmux list-sessions'
 alias tmd='tmux detach'
 alias tma='tmux attach -t' 
 
-alias tp='tf *.tp'  # view the end of the optima gnuplot file
-alias tpout='m *.tpout'
-alias tpsum='m *.tpsum'
+alias tp='tf *00.tp'  # view the end of the optima gnuplot file
 alias tree='tree -C -I "*.git"' # list all files and directories as a tree
 alias treed='tree -C -d -I "*.git"' # list all directories
+alias to='tf *00.opt'
+alias tr='tf *00.tp'
+alias tpout='m *00.tpout'
+alias tpsum='m *00.tpsum'
+alias tpld='m *00.tpld'
+alias ts='tf screen'
 
 alias v='~/usr/local/bin/vim -X' # The -X prevents vim from checking for an X11 connection (faster startup)
 alias vi='v'
 alias vg='valgrind --tool=memcheck --leak-check=yes' # Execute program with valgrind debuger
 alias vb='v ~/.bashrc'
+alias vo='v opt.inp'
+alias vs='v screen'
+alias vv='v ~/dotfiles/vim-local/vimrc'
 
 ### Login to remote servers
 alias hpacf='cd ~/01_utias/03_hpacf; ssh -X ramy@hpacf.utias.utoronto.ca'

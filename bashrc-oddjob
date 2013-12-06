@@ -160,6 +160,7 @@ alias go='nice -n 19 ~/CFFC/src_3D/euler3Dpolytropic' # RUN euler3Dpolytropic
 
 #alias head='head -100' # Display the first 100 lines of a file
 alias hist='history'  # Display history
+alias h='htop'
 
 alias icemlicManager='cd /usr2/local_net2/icemcfd/shared_files/licensing/lic_admin; ./anslic_admin'
 
@@ -217,12 +218,13 @@ alias rmout='rm -rf output.201*' # Remove optima results files
 
 alias run='nice -n 19 ~/optima/optima2D/OPTIMA2D_x86_64 ' # run the optima2D code
 
-alias t='tecplot'      # Run Tecplot
-alias tf='tail --lines=500 -F' # run tail with 100 lines and live following
-alias tp='tf *.tp' # run tail with 100 lines and live following
+alias tp='tecplot'      # Run Tecplot
+alias tf='tail --lines=500 -F' # run tail with 500 lines and live following
+alias t='tf' # run tail with 100 lines and live following
 alias tecmac='tecplot ~/scripts/zonemacro.mcr' # run tecplot with the zone.mcr macro
 alias tecmac_c='tecplot ~/scripts/zonemacro_cells.mcr' # run tecplot with the zone.mcr macro
 alias tecmac_n='tecplot ~/scripts/zonemacro_nodes.mcr' # run tecplot with the zone.mcr macro
+alias tg='tf *.gmgrad'
 alias tg0='tail -50f rest00-00.gnu'  # view the end of the optima gnuplot file
 alias tg1='tail -50f rest00-01.gnu'  # view the end of the optima gnuplot file
 alias tg2='tail -50f rest00-02.gnu'  # view the end of the optima gnuplot file
@@ -234,9 +236,13 @@ alias tml='tmux list-sessions'
 alias tmd='tmux detach'
 alias tma='tmux attach -t' 
 
-alias tp='tf *.tp'  # view the end of the optima gnuplot file
-alias tpout='m *.tpout'  # view the end of the optima gnuplot file
-alias tpsum='m *.tpsum'  # view the end of the optima gnuplot file
+alias to='tf *00.opt'
+alias tr='tf *00.tp'
+alias tp='tf *00.tp'  # view the end of the optima gnuplot file
+alias tpout='m *00.tpout'
+alias tpsum='m *00.tpsum'
+alias tpld='m *00.tpld'
+alias ts='tf screen'
 #alias tree='tree -C -I "*.git"' # list all files and directories as a tree
 #alias treed='tree -C -d -I "*.git"' # list all directories
 
@@ -245,6 +251,8 @@ alias vi='vim -X'
 alias vg='valgrind --tool=memcheck --leak-check=yes' # Execute program with valgrind debuger
 alias video='xanim' # program for viewing avi files
 alias vb='v ~/.bashrc'
+alias vo='v opt.inp'
+alias vs='v screen'
 alias vv='v ~/dotfiles/vim-local/vimrc'
 
 #-- ssh to some local machines
