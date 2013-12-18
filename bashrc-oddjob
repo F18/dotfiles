@@ -98,11 +98,11 @@ function subdir-run()
   for dir in */; do
     echo $dir;
     cd $dir;
-    nice -19 $HOME/optima/optima2D/OPTIMA2D_X86_64; 
+    nice -19 $HOME/optima/optima2D/OPTIMA2D_x86_64; 
     cd ../
   done
 }
-function run() { nice -19 $HOME/optima/optima2D/OPTIMA2D_X86_64; }
+function run() { nice -19 $HOME/optima/optima2D/OPTIMA2D_x86_64; }
 
 #
 # END OF BASHRC
