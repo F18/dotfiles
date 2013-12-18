@@ -79,8 +79,8 @@ alias cdoo='cd $MYHOME/optima/optima2D'
 alias cdp='cd $MYHOME/01_thesis/seminars/utias/20111007_research_update_to_group'
 alias cds='cd $MYWORK'
 alias cdt='cd $MYHOME/01_thesis/myPapers/conferences'
-alias cdvoo='cd $MYWORK/y2013/m02-store'
 alias cdvo='cd $MYWORK/y2013/m12'
+alias cdvoo='cd $MYWORK/y2013/m12'
 alias cdwd='cd /windows/Users/Owner/Documents'
 alias cdwdb='cd /windows/Users/Owner/Documents/03_Play/2006-2008\ Banking'
 
@@ -117,6 +117,8 @@ alias ep='epstopdf'
 alias fn='find . -name'
 
 alias g='gvim'                                   # open gvim
+#-- apt-key: use as 'getkey 8BAF9A6F'
+alias getkey='sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys'
 alias gn='gnuplot'                               # run gnuplot 
 alias grep="grep --color=auto"                   # grep: make it highlight the search string
 alias gv='gvim'                                  # open gvim
@@ -133,6 +135,7 @@ alias h='htop'
 
 alias icemlicManager='cd /usr2/local_net2/icemcfd/shared_files/licensing/lic_admin; ./anslic_admin'
 alias imindmapV2='cd $HOME/ProgramFiles/iMindMap2.2.3; ./iMindMap'
+alias iphoneReConnect='idevicepair unpair && idevicepair pair'
 
 alias jabref='~/usr/local/java/jre1.7.0/bin/java -jar ~/usr/local/jabref/JabRef-2.10b.jar'
 
@@ -181,7 +184,7 @@ alias nautilus='nautilus --no-desktop --browser'
 alias oo='openoffice.org'                     # Open the openoffice software
 alias office='openoffice.org'
 
-alias pdf='pdfstudio8'                        # For a launcher you can use PDFStudio as the command
+alias pdf='pdfstudio'                        # For a launcher you can use PDFStudio as the command
 alias pg='ping www.google.ca'                 # ping the google website
 alias pp='nice -19 postprocess_unsteady_data' # runs preplot on cffc data
 alias ppclean='rm -f *.gplt *residual.dat *.tree *.soln'
@@ -193,6 +196,7 @@ alias pmem='pidstat -r -p'                    # Outputs the memory statistics fo
                                               # 5 outputs every 2 seconds written to file memlog.txt
 
 alias re='reset'                              # Reset the terminal
+alias red='gtk-redshift -l 43.67:-79.42 -t 6400:5800 -g 0.8'
 alias rm='rm -i'                              # Remove, but ask me first
 alias rme='rm *~ -i'                          # Remove emacs backup files, but ask me first
 alias rmef='rm *~ -f'                         # Remove emacs backup files, but ask me first
@@ -209,6 +213,9 @@ alias snd='tail -n5 */SNOPT.sum00'
 alias sc='screen -t " "'                      # attaches to a given screen session (use session PID)
 alias sr='screen -r'                          # attaches to a given screen session (use session PID)
 alias sls='screen -ls'                        # lists the GNU screen sessions
+alias saveX='sudo Xorg -configure' # creates a clean xorg.conf.new in your home directory
+alias startX='sudo service mdm start' # stops graphical interface (mint 13)
+alias stopX='sudo service mdm stop' # starts graphical interface (mint 13)
 
 #-- tail
 alias t='tf'
@@ -239,10 +246,10 @@ alias ts='tf screen'
 #-- displays top ten biggest folders/files in current directory
 alias topten='du -sm $(/bin/ls -A) | sort -rn | head -10'
 #-- tecplot
+alias tecplot='tec360'
 alias tecmac='tecplot ~/scripts/zonemacro.mcr'
 alias tecmac_c='tecplot ~/scripts/zonemacro_cells.mcr'
 alias tecmac_n='tecplot ~/scripts/zonemacro_nodes.mcr'
-alias tecplot='tec360'
 alias tp='tecplot'
 #-- tmux
 alias tma='tmux attach -t' 
@@ -256,6 +263,7 @@ alias treed='tree -C -d -I "*.git"'           # list all directories
 alias vg='valgrind --tool=memcheck --leak-check=yes' # Execute program with valgrind debuger
 alias video='xanim' # program for viewing avi files
 #-- vim
+alias v='$MYVIM -X'
 alias vi='v'
 alias vb='v $HOME/.bashrc'
 alias vo='v opt.inp'
@@ -362,7 +370,7 @@ function reverseFileLines () { sed '1!G;h;$!d' "$@";}
 #
 # GIT related
 #
-function gd() { git diff > $MYHOME/tmp~; v $MYHOME/tmp~; }
+function gd() { git diff > $MYHOME/tmp/tmp~; v $MYHOME/tmp/tmp~; }
 #
 # OPTIMA2D related
 #

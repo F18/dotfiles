@@ -13,6 +13,7 @@ export MYWORK=/scratch/z/zingg/rashad
 export HOST=$(uname)
 export ARCH=$(uname)_$(uname -m)
 #-- vim
+export MYVIM=$HOME/usr/local/bin/vim
 export VIMRUNTIME=$MYHOME/usr/local/vim/runtime
 #-- git (adding your own installation)
 export PATH=~/usr/local/git-1.7.12.1:$PATH
@@ -89,8 +90,6 @@ fi
 #
 # Aliases
 #
-#-- vim
-alias v='$HOME/usr/local/bin/vim -X' # The -X prevents vim from checking for an X11 connection (faster startup)
 #-- Login to remote servers
 alias hpacf='cd ~/01_utias/03_hpacf; ssh -X ramy@hpacf.utias.utoronto.ca'
 alias oddjob='cd ~/01_utias/; ssh -X ramy@oddjob.utias.utoronto.ca;'
