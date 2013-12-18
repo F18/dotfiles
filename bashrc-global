@@ -63,93 +63,127 @@ fi
 #
 # User specific aliases and functions
 #
-alias ...='cd ..'                             # Go up one directory
-alias ..='cd ..; l'                           # Go up one directory clear and list files
-alias .='pwd'                                 # list the current directory path
+alias ...='cd ..'                                # Go up one directory
+alias ..='cd ..; l'                              # Go up one directory clear and list files
+alias .='pwd'                                    # list the current directory path
 
-alias bye='exit'                              # Close connection
-alias brc='cd; emacs .bashrc &'               # Open the .bashrc file for editing
+alias bye='exit'                                 # Close connection
+alias brc='cd; emacs .bashrc &'                  # Open the .bashrc file for editing
 
-alias cdarc='cd $MYHOME/02_courses/04_CFD2/02_Assignment'
-alias cdc='cd $MYHOME/CFFC'
-alias cddec='cd $MYHOME/01_thesis/DECs/dec1'
+alias cdc='cd $MYHOME/02_courses'
+alias cdd='cd $MYHOME/01_thesis/jon_driver/optima10/optima2D'
+alias cddec='cd $MYHOME/01_thesis/DECs'
+alias cdl='cd $MYHOME/01_thesis/literature'
 alias cdo='cd $MYHOME/optima'
 alias cdoo='cd $MYHOME/optima/optima2D'
 alias cdp='cd $MYHOME/01_thesis/seminars/utias/20111007_research_update_to_group'
 alias cds='cd $MYWORK'
-alias cdt='cd $HOME/01_utias/01_local/01_thesis/myPapers/conferences/2012_cfdsc/publication/paper'
+alias cdt='cd $MYHOME/01_thesis/myPapers/conferences'
 alias cdvoo='cd $MYWORK/y2013/m02-store'
 alias cdvo='cd $MYWORK/y2013/m12'
 alias cdwd='cd /windows/Users/Owner/Documents'
 alias cdwdb='cd /windows/Users/Owner/Documents/03_Play/2006-2008\ Banking'
 
-alias chmodf='find . -type f -print | xargs chmod' # chmod files only (recursively)
-alias cll='clear'                             # Clear the screen
-alias cl='clear; ls'                          # Clear and list
-alias cp='cp -i'                              # Copy, but ask me first
+alias cll='clear'                                # Clear the screen
+alias cl='clear; ls'                             # Clear and list
+alias cp='cp -i'                                 # Copy, but ask me first
+alias cpForce='cp'                               # Copy, but ask me first
 alias cpo='cp $HOME/optima/optima2D/OPTIMA2D_x86_64 .'
-alias crop='mogrify -trim'                    # crop the given filename using imagemagik
-                                              # (allows you to crop multiple files at one)
+alias chmodf='find . -type f -print | xargs chmod' # chmod files only (recursively)
+alias crop='mogrify -trim'                       # crop the given filename using imagemagik
+                                                 # (allows you to crop multiple files at one)
 
 alias df='df -h'
 alias dirr='ls -al | more'  
 alias dus='sudo du -sm * | sort -n'
-alias duf='du -sm * | sort -n'                # list folders in order of increasing size
+alias duf='du -sm * | sort -n'                   # list folders in order of increasing size
 alias digitizeit='cd $HOME/digitizeit; java -cp libs/JimiProClasses.zip:libs/jh.jar:libs/kunststoff.jar:libs/foxtrot.jar:DigitizeIt.jar de.ibo.digitizer.DigitizeIt' # Start the digitizeit software
 
-alias e='emacs'                               # Open the text editor emacs
-alias ed='ee'                                 # Open the text editor emacs with emacsclient daemon
-                                              # Note: ee is a bash script with the following command:
-                                              # estart='exec emacsclient --alternate-editor="" -c "$@" -n'
-alias eall='e *.cc *.h'                       # Open all C++ related files in current directory
-alias eb='cd; e .bashrc &'                    # Open the .bashrc file for editing
+alias e='emacs'                                  # Open the text editor emacs
+alias ed='ee'                                    # Open the text editor emacs with emacsclient daemon
+                                                 # Note: ee is a bash script with the following command:
+                                                 # estart='exec emacsclient --alternate-editor="" -c "$@" -n'
+alias eall='e *.cc *.h'                          # Open all C++ related files in current directory
+alias eb='cd; e .bashrc &'                       # Open the .bashrc file for editing
 alias emptytrash='sudo rm -rf $HOME/.local/share/Trash/files/*'
-alias ett='emacs -nw -q'                      # Open emacs in terminal mode (-nw) without loading the init-file (-q)
-alias et='emacs -nw'                          # Open emacs in terminal mode (-nw)
-alias ec='emacsclient -nw'                    # Open emacs in terminal mode (-nw)
-alias ev='evince'                             # Open evince pdf viewer
+alias ett='emacs -nw -q'                         # Open emacs in terminal mode (-nw) without loading the init-file (-q)
+alias et='emacs -nw'                             # Open emacs in terminal mode (-nw)
+alias ec='emacsclient -nw'                       # Open emacs in terminal mode (-nw)
+alias ev='evince'                                # Open evince pdf viewer
+alias epstopdfdir='ls *eps | xargs -n1 epstopdf' # run epstopdf on all eps files in directory
+alias ep='epstopdf'
 
-alias grep="grep --color=auto"                # grep: make it highlight the search string
-alias gn='gnuplot'                            # run gnuplot 
-alias gb='git branch -a'                      # display all git branches
-alias gk='gitk --all'                         # open git repository GUI
-alias gl='git log'                            # display git log
-alias gt='git status'                         # display git status
-alias gu='git remote update'                  # update remote repositories
-alias gv='gvim'                               # open gvim
-alias g='gvim'                                # open gvim
+alias fn='find . -name'
+
+alias g='gvim'                                   # open gvim
+alias gn='gnuplot'                               # run gnuplot 
+alias grep="grep --color=auto"                   # grep: make it highlight the search string
+alias gv='gvim'                                  # open gvim
+#-- git
+alias gb='git branch -a'                         # display all git branches
+alias gk='gitk --all'                            # open git repository GUI
+alias gl='git log'                               # display git log
+alias gt='git status'                            # display git status
+alias gu='git remote update'                     # update remote repositories
 
 alias head='head -100'                        # Display the first 100 lines of a file
 alias hist='history'                          # Display history
+alias h='htop'
 
+alias icemlicManager='cd /usr2/local_net2/icemcfd/shared_files/licensing/lic_admin; ./anslic_admin'
 alias imindmapV2='cd $HOME/ProgramFiles/iMindMap2.2.3; ./iMindMap'
 
+alias jabref='~/usr/local/java/jre1.7.0/bin/java -jar ~/usr/local/jabref/JabRef-2.10b.jar'
+
+#-- running jobs
 alias ejobs='v $MYHOME/bin/scripts/script-lm.sh'
 alias jobs='$MYHOME/bin/scripts/script-lm.sh'
 
 alias k1='kill -15'
 alias k9='kill -9'
 
-alias l='ls -lh'                              # List all files in short format
-alias ll='ls -laSh'                           # List all files in long format
+alias l='ls -lsh'                             # List all files in short format
 alias la='ls -a'                              # List all including hidden 
-alias lm='ls -lrth'                           # List all files in order of date modified
+alias lc='ls *.f*'                            # List fortran code only
 alias ld='ls -lrSh'                           # List all files in order of file size
 alias lf='ls -l | grep ^-'                    # List files only (not directories)
+alias ll='ls -laSh'                           # List all files in long format
+alias lm='ls -lrth'                           # List all files in order of date modified
 alias lt='ll --sort=extension'                # List files only (not directories)
+#-- Prints on laser color printer, single-sided
+alias lpcs='/usr/bin/lpr -P lpc -o InputSlot=Tray3 -o PageSize=Letter -o Duplex=None'
+#-- Prints on laser color printer, double-sided
+alias lpcd='/usr/bin/lpr -P lpc -o InputSlot=Tray3 -o PageSize=Letter -o Duplex=DuplexNoTumble'  
+#-- Prints in black&white, single-sided
+alias lpbs='/usr/bin/lpr -P lp -o InputSlot=Tray_2 -o OutputBin=PrinterDefault -o Resolution=600x1200dpi -o PageSize=Letter -o Duplex=None' 
+#-- Prints in black&white, double-sided
+alias lpbd='/usr/bin/lpr -P lp -o InputSlot=Tray_2 -o OutputBin=PrinterDefault -o Resolution=600x1200dpi -o PageSize=Letter -o Duplex=DuplexNoTumble' 
+#-- Prints on laser color printer, single-sided, landlscape
+alias lpcsl='/usr/bin/lpr -P lpc -o InputSlot=Tray3 -o PageSize=Letter -o Duplex=None -o landscape'  
+#-- Prints on laser color printer, double-sided, landlscape
+alias lpcdl='/usr/bin/lpr -P lpc -o InputSlot=Tray3 -o PageSize=Letter -o Duplex=DuplexNoTumble -o landscape'  
+#-- Prints in black&white, single-sided, landlscape
+alias lpbsl='/usr/bin/lpr -P lp -o InputSlot=Tray_2 -o OutputBin=PrinterDefault -o Resolution=600x1200dpi -o PageSize=Letter -o Duplex=None -o landscape'
+#-- Prints in black&white, double-sided, landlscape
+alias lpbdl='/usr/bin/lpr -P lp -o InputSlot=Tray_2 -o OutputBin=PrinterDefault -o Resolution=600x1200dpi -o PageSize=Letter -o Duplex=DuplexNoTumble -o landscape' 
 
 alias m='more'
 alias m0='more rest00-00'
+alias mousefix='gpointing-device-settings'
 alias mv='mv -i'                              # Move, but ask me first
+alias mymerge='git-mergetool --tool xxdiff'
 alias myzip='tar -cvzf'                       # use as "myzip filearchive.tar.gz  foldername/"
 alias myunzip='tar -xvpzf'                    # extract archive, w/ verbose, permissions, gunzip, and filename
-alias mousefix='gpointing-device-settings'
+
+alias nautilus='nautilus --no-desktop --browser'
 
 alias oo='openoffice.org'                     # Open the openoffice software
 alias office='openoffice.org'
 
 alias pdf='pdfstudio8'                        # For a launcher you can use PDFStudio as the command
 alias pg='ping www.google.ca'                 # ping the google website
+alias pp='nice -19 postprocess_unsteady_data' # runs preplot on cffc data
+alias ppclean='rm -f *.gplt *residual.dat *.tree *.soln'
 alias ps2pdf='ps2pdf -sPAPERSIZE=a4'          # Force the papersize to be the standard a4 letter
 alias psopt='ps aux | grep OPTIMA2D'          # Force the papersize to be the standard a4 letter
 alias py='python'
@@ -164,26 +198,26 @@ alias rmef='rm *~ -f'                         # Remove emacs backup files, but a
 alias rmout='rm output.201* -rf'
 alias rmrest='rm rest* screen -f'
 alias rename0100='rename "s/01/00/g" rest01*' # rename all rest01 files to rest00 in a directory
+
 alias sbash='source $HOME/.bashrc'            # refresh terminal with new .bashrc file
 alias sb='source $HOME/.bashrc'               # refresh terminal with new .bashrc file
 alias scr='cd $MYWORK" "'
-alias sls='screen -ls'                        # lists the GNU screen sessions
-alias sc='screen -t " "'                      # attaches to a given screen session (use session PID)
-alias sr='screen -r'                          # attaches to a given screen session (use session PID)
 alias sn='tail -100f SNOPT.sum00'
 alias snd='tail -n5 */SNOPT.sum00'
+#-- gnu screen
+alias sc='screen -t " "'                      # attaches to a given screen session (use session PID)
+alias sr='screen -r'                          # attaches to a given screen session (use session PID)
+alias sls='screen -ls'                        # lists the GNU screen sessions
 
-alias tp='tecplot'                            # Run Tecplot
-alias tf='tail --lines=500 -F'                # run tail with 500 lines and live following
-alias t='tf'                                  # run tail with 100 lines and live following
-alias tecplot='tec360'                        # Run tec360 based on the tecplot path set below
-alias tf='tail --lines=300 -F'                # run tail with 100 lines and live following
+#-- tail
+alias t='tf'
 alias t1='tail --lines=1'
 alias t1q='tail -q -n 1'
 alias t2q='tail -q -n 2'
 alias t5='tail --lines=5'
 alias t10='tail --lines=10 '
 alias t20='tail --lines=20 '
+alias tf='tail --lines=300 -F'
 alias tg0='tail -50f rest00-00.gnu'
 alias tg1='tail -50f rest00-01.gnu'
 alias tg2='tail -50f rest00-02.gnu'
@@ -194,24 +228,34 @@ alias tg6='tail -50f rest00-06.gnu'
 alias tg7='tail -50f rest00-07.gnu'
 alias tg='tf *.gmgrad'
 alias th='tail -50f *.his'
-
-alias tmk='tmux kill-session -t'
-alias tml='tmux list-sessions'
-alias tmd='tmux detach'
-alias tma='tmux attach -t' 
-
-alias tp='tf *00.tp'
-alias tree='tree -C -I "*.git"'               # list all files and directories as a tree
-alias treed='tree -C -d -I "*.git"'           # list all directories
 alias to='tf *00.opt'
-alias tr='tf *00.tp'
+alias tp='tf *00.tp'
 alias tpout='tf *00.tpout'
 alias tpsum='tf *00.tpsum'
 alias tpld='tf *00.tpld'
+alias tr='tf *00.tp'
 alias ts='tf screen'
+#-- displays top ten biggest folders/files in current directory
+alias topten='du -sm $(/bin/ls -A) | sort -rn | head -10'
+#-- tecplot
+alias tecmac='tecplot ~/scripts/zonemacro.mcr'
+alias tecmac_c='tecplot ~/scripts/zonemacro_cells.mcr'
+alias tecmac_n='tecplot ~/scripts/zonemacro_nodes.mcr'
+alias tecplot='tec360'
+alias tp='tecplot'
+#-- tmux
+alias tma='tmux attach -t' 
+alias tmd='tmux detach'
+alias tmk='tmux kill-session -t'
+alias tml='tmux list-sessions'
+#-- tree
+alias tree='tree -C -I "*.git"'               # list all files and directories as a tree
+alias treed='tree -C -d -I "*.git"'           # list all directories
 
-alias vi='v'
 alias vg='valgrind --tool=memcheck --leak-check=yes' # Execute program with valgrind debuger
+alias video='xanim' # program for viewing avi files
+#-- vim
+alias vi='v'
 alias vb='v $HOME/.bashrc'
 alias vo='v opt.inp'
 alias vs='v screen'
@@ -237,6 +281,8 @@ export EDITOR="vi"
 #
 #-- Find a file with a pattern in name:
 function ff() { find . -type f -name '*'$@'*' ; }
+function fe() { find . -type f -iname '*'$@'' | xargs vim; }
+function fl() { find . -type f -iname '*'$@'' | xargs ls -lash; }
 #-- Find a file with a pattern in name:
 function fft1() { find '*'$@'*' -type f; sed -n '$p'; }
 #-- Recursively searches all the files for the given string
@@ -248,12 +294,12 @@ function rgrepc() { grep -irn --include="*.cc" -- "$@" . ; }
 function greph() { grep -in --include="*.h" -- "$@" * ; }
 function rgreph() { grep -irn --include="*.h" -- "$@" . ; }
 #-- Fortran grep, only searches Fortran source 
-function grepf() { grep -in --include="*.[fFinc]*" -- "$@" * ; }
+function grepf() { grep -in --include=*.{f,F,f90,F90,inc} -- "$@" * ; }
 function rgrepf() { grep -irn --include=*.{f,F,f90,F90,inc} -- "$@" . ; }
-function gf() { grep -irn --include=*.{f,F,f90,F90,inc} -- "$@" . ; }
-function gfc() { grep -irn --include=*.{f,F,f90,F90,inc} -- "call $@" . ; }
-function gfs() { grep -irn --include=*.{f,F,f90,F90,inc} -- "subroutine $@" . ; }
-function gfe() { grep -irn --include=*.{f,F,f90,F90,inc} -- "$@[\t ]*=[^=]" . ; }
+function gf() { grep -irn --include=*.{f,F,f90,F90,inc} --exclude-dir=unused -- "$@" . ; }
+function gfc() { grep -irn --include=*.{f,F,f90,F90,inc} --exclude-dir=unused -- "call $@" . ; }
+function gfs() { grep -irn --include=*.{f,F,f90,F90,inc} --exclude-dir=unused -- "subroutine $@" . ; }
+function gfe() { grep -irn --include=*.{f,F,f90,F90,inc} --exclude-dir=unused -- "$@[\t ]*=[^=]" . ; }
 #-- Python grep, only searches Python source
 function grepy() { grep -in --include="*.py" -- "$@" * ; }
 function rgrepy() { grep -irn --include="*.py" -- "$@" . ; }
@@ -279,6 +325,39 @@ function tg() { tail -50f rest00-$@.gnu; }
 #
 function c() { cd "$@" ; l ;}
 function cs() { cd *"$@"* ; l ;}
+function csss(){
+    # only change directory if a directory is specified
+    [ -n "${1}" ] && cd $1
+    lls
+}
+#
+# Advanced ls function
+# Counts files, subdirectories and directory size and displays details
+# about files depending on the available space
+#
+function lls () {
+	#-- count files
+	echo -n "<`find . -maxdepth 1 -mindepth 1 -type f | wc -l | tr -d '[:space:]'` files>"
+	#-- count sub-directories
+	echo -n " <`find . -maxdepth 1 -mindepth 1 -type d | wc -l | tr -d '[:space:]'` dirs/>"
+	#-- count links
+	echo -n " <`find . -maxdepth 1 -mindepth 1 -type l | wc -l | tr -d '[:space:]'` links@>"
+	#-- total disk space used by this directory and all subdirectories
+	echo " <~`du -sh . 2> /dev/null | cut -f1`>"
+	ROWS=`stty size | cut -d' ' -f1`
+	FILES=`find . -maxdepth 1 -mindepth 1 |
+	wc -l | tr -d '[:space:]'`
+	#-- if the terminal has enough lines, do a long listing
+	if [ `expr "${ROWS}" - 6` -lt "${FILES}" ]; then
+		ls
+	else
+		ls -hlAF --full-time
+	fi
+}
+
+# reverse lines of a file
+function reverseFileLines () { sed '1!G;h;$!d' "$@";}
+ 
 #
 # GIT related
 #
