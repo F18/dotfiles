@@ -83,7 +83,7 @@ alias cdt='cd ~/01_utias/01_local/01_thesis/myPapers/conferences/201306_aiaa_san
 alias cdth='cd ~/01_utias/01_local/01_thesis'
 alias cds='cd /scratch'
 alias cdv='cd ~/01_utias/02_oddjob/optima-verify/06_transPredict/y2012/m03'
-alias cdvo='cd ~/01_utias/02_oddjob/optima-verify/08_optimize/y2013/m10'
+alias cdvo='cd ~/01_utias/02_oddjob/optima-verify/08_optimize/y2013/m11'
 alias cdvs='cd ~/01_utias/04_scinet/optima-verify/08_optimize/y2012/m09'
 
 alias chmodf='find . -type f -print | xargs chmod' # chmod files only (recursively)
@@ -177,7 +177,7 @@ alias startX='sudo service mdm start' # stops graphical interface (mint 13)
 alias stopX='sudo service mdm stop' # starts graphical interface (mint 13)
 
 #alias tail='tail -100' # Display the last 100 lines of a file
-alias t='tec360 -sgiopengl' # use -mesa flag if compositing causes issues
+alias tp='tec360 -sgiopengl' # use -mesa flag if compositing causes issues
 alias tecplot='tec360 -sgiopengl' # Run tec360 based on the tecplot path set below
 alias tf='tail --lines=300 -F' # run tail with 100 lines and live following
 alias tg='tail -50f rest00-00.gnu'  # view the end of the optima gnuplot file
@@ -187,7 +187,7 @@ alias tml='tmux list-sessions'
 alias tmd='tmux detach'
 alias tma='tmux attach -t' 
 
-alias tp='tf *.tp'  # view the end of the optima gnuplot file
+#alias tp='tf *.tp'  # view the end of the optima gnuplot file
 alias tree='tree -C -I "*.git"' # list all files and directories as a tree
 alias treed='tree -C -d -I "*.git"' # list all directories
 
