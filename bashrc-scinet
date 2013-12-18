@@ -204,10 +204,8 @@ alias tml='tmux list-sessions'
 alias tmd='tmux detach'
 alias tma='tmux attach -t'
 
-
 alias to='tf *00.opt'
 alias tr='tf *00.tp'
-alias tp='tf *00.tp'  # view the end of the optima gnuplot file
 alias tpout='m *00.tpout'
 alias tpsum='m *00.tpsum'
 alias tpld='m *00.tpld'
@@ -216,7 +214,9 @@ alias tree='tree -C -I "*.git"' # list all files and directories as a tree
 alias treed='tree -C -d -I "*.git"' # list all directories
 
 alias v='~/usr/local/bin/vim'
+alias vb='v ~/.bashrc'
 alias vi='v'
+alias vo='v opt.inp'
 alias vg='valgrind --tool=memcheck --leak-check=yes' # Execute program with valgrind debuger
 alias vb='v ~/.bashrc'
 alias vo='v opt.inp'
@@ -241,7 +241,8 @@ alias scr='cd /scratch/z/zingg/rashad'
 alias qa='showbf'
 alias qr='showq | grep "rashad"'
 alias qs='qstat -u rashad'
-alias qg='showqgroup.sh'
+alias qg='showq -w group=zingg'
+alias qgg='showqgroup.sh'
 alias qc='qstat -f | grep -A 1 "Job Id\|work_dir"'
 alias qss='showq -u rashad'
 alias tr='top | grep "rashad"'
@@ -341,9 +342,53 @@ function c() { cd "$@" ; l ;}
 ## cd and list 
 function cs() { cd *"$@"* ; l ;}
 
-# reverse the order of a file (last line first)
-#function reverseFile() {perl -e 'print reverse <>' "$@";}
-
+#
+# OPTIMA 2D related
+#
+function go() { $HOME/optima/optima2D/OPTIMA2D_x86_64 > screen;}
+#
+function 2-cleanup() { 2-cleanup-snopt; rmout; }
+#
+function subdir-clean-rmout() 
+{
+  for dir in */; do
+    echo $dir;
+    cd $dir;
+    2-cleanup-snopt; 
+    rmout; 
+    cd ../
+  done
+}
+#
+function subdir-cp-grid 
+{ 
+  for dir in */; do
+    echo $dir;
+    /bin/cp -f grid-new* $dir/.
+  done
+}
+#
+function subdir-cp-o 
+{ 
+  for dir in */; do
+    echo $dir;
+    /bin/cp -f ~/optima/optima2D/OPTIMA2D_x86_64 $dir/.
+  done
+}
+#
+# SciNet Run commands
+#
+function subdir-run() 
+{ 
+  for dir in */; do
+    echo $dir;
+    cd $dir;
+    qsub runsci.pbs; 
+    cd ../
+  done
+}
+#
+function run() { qsub runsci.pbs;}
 
 # ************************************
 #      SCINET Specific Customizations
