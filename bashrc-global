@@ -84,6 +84,7 @@ alias cdvo='cd $MYWORK/y2013/m12'
 alias cdwd='cd /windows/Users/Owner/Documents'
 alias cdwdb='cd /windows/Users/Owner/Documents/03_Play/2006-2008\ Banking'
 
+alias cj='checkjob'
 alias cll='clear'                                # Clear the screen
 alias cl='clear; ls'                             # Clear and list
 alias cp='cp -i'                                 # Copy, but ask me first
