@@ -9,6 +9,7 @@ DIRBKP=~/.dotfiles-bkp-$(date +%Y%m%d.%H%M)
 mkdir $DIRBKP
 
 cp ~/.bashrc $DIRBKP
+cp ~/.bashrc-global $DIRBKP
 cp ~/.viper $DIRBKP
 cp ~/.emacs $DIRBKP
 cp ~/.tmux.conf $DIRBKP
@@ -18,6 +19,7 @@ cp ~/dotfiles/vim-local/vimrc $DIRBKP
 cp ~/.ackrc $DIRBKP
 
 rm -f ~/.bashrc
+rm -f ~/.bashrc-global
 rm -f ~/.viper
 rm -f ~/.emacs
 rm -f ~/.tmux.conf 
@@ -26,6 +28,7 @@ rm -f ~/.screenrc
 rm -f ~/.ackrc 
 
 ln -s ~/dotfiles/bashrc-$LOCALSYS ~/.bashrc
+ln -s ~/dotfiles/bashrc-global ~/.bashrc-global
 ln -s ~/dotfiles/vimrc ~/.vimrc
 ln -s ~/dotfiles/emacs ~/.emacs
 ln -s ~/dotfiles/viper ~/.viper

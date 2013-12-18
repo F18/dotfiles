@@ -68,16 +68,25 @@ snippet ompdo
 # Write statement
 snippet write
 	write(${1:*},${2:*}) ${3:variable}
-
+#
 snippet wr
 	write(${1:*},"(3x,'${2: }',${3: })") ${4: }
-
+#
 snippet wrr
 	write(${1:*},"(3x,'(${2: }) =',${3: })") $2
-
+#
 snippet wrt
 	write(${1:*},"('${2: }')")
-
+#
+snippet wc
+	!
+	! ${1}
+	! 
+	${2}
+#
+snippet w
+	!-- ${1}
+#
 snippet dt
 	call date_and_time(dtb(1), dtb(2), dtb(3), dttime)
 
