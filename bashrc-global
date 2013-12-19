@@ -89,7 +89,7 @@ alias cll='clear'                                # Clear the screen
 alias cl='clear; ls'                             # Clear and list
 alias cp='cp -i'                                 # Copy, but ask me first
 alias cpForce='cp'                               # Copy, but ask me first
-alias cpo='cp $HOME/optima/optima2D/OPTIMA2D_x86_64 .'
+alias cpo='cp $MYHOME/optima/optima2D/OPTIMA2D_x86_64 .'
 alias chmodf='find . -type f -print | xargs chmod' # chmod files only (recursively)
 alias crop='mogrify -trim'                       # crop the given filename using imagemagik
                                                  # (allows you to crop multiple files at one)
@@ -371,7 +371,7 @@ function reverseFileLines () { sed '1!G;h;$!d' "$@";}
 #
 # GIT related
 #
-function gd() { git diff > $MYHOME/tmp/tmp~; v $MYHOME/tmp/tmp~; }
+function gd() { git diff > $HOME/tmp/tmp~; v $HOME/tmp/tmp~; }
 #
 # OPTIMA2D related
 #
