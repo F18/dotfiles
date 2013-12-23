@@ -268,6 +268,7 @@ alias vi='v'
 alias vb='v $HOME/.bashrc'
 alias vbg='v $HOME/.bashrc-global'
 alias vo='v opt.inp'
+alias vp='v $HOME/bin/scripts/packages.list'
 alias vs='v screen'
 alias vv='v $HOME/dotfiles/vim-local/vimrc'
 

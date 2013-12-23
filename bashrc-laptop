@@ -32,8 +32,8 @@ if [ '$HOST != oddjob.utias.utoronto.ca' ]; then
      export BIBINPUTS
 fi
 #-- tecplot
-export TEC360HOME=$HOME/usr/local/tec360_2012R1
-export TECPHYFILE=$HOME/.tecplot.phy
+export TEC360HOME=$HOME/usr/local/tec360_2013R1
+export TECPHYFILE=$HOME/tmp/.tecplot.phy
 export ICEM_ACN=$HOME/usr/local/ansys_inc/v130/icemcfd/linux64_amd
 export PATH=$TEC360HOME/bin:$PATH
 #-- To disable the translucency you may instruct Linux xlib to manage the colors natively as RGB.
