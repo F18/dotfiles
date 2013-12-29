@@ -71,7 +71,7 @@ alias bye='exit'                                 # Close connection
 alias brc='cd; emacs .bashrc &'                  # Open the .bashrc file for editing
 
 alias cdc='cd $MYHOME/02_courses'
-alias cdd='cd $MYHOME/01_thesis/DECs'
+alias cdd='cd $MYHOME/01_thesis/DECs/dec5'
 alias cdl='cd $MYHOME/01_thesis/literature'
 alias cdo='cd $MYHOME/optima'
 alias cdoo='cd $MYHOME/optima/optima2D'
