@@ -9,6 +9,7 @@ set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-surround
 set runtimepath+=~/dotfiles/vim-local/myPlugins/mpage
 set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-indent-guides
 set runtimepath+=~/dotfiles/vim-local/myPlugins/ack
+"set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-togglecursor
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
@@ -534,9 +535,20 @@ endfunction
 "
 " Change cursor shape and color in insert mode
 "
-if &term =~ "xterm\\|screen\\|rxvt"
-  :silent !echo -ne "\033]12;red\007"
-  let &t_SI = "\033]12;green\007"
-  let &t_EI = "\033]12;red\007"
-  autocmd VimLeave * :silent !echo -ne "\033]12;grey\007"
-endif
+"if &term =~ "xterm\\|rxvt"
+"  :silent !echo -ne "\033]12;red\007"
+"  let &t_SI = "\033]12;green\007"
+"  let &t_EI = "\033]12;red\007"
+"  autocmd VimLeave * :silent !echo -ne "\033]12;grey\007"
+"endif
+"if &term =~ "xterm\\|rxvt"
+"  let &t_SI .= "\033]1 q"
+"  let &t_EI .= "\033]3 q"
+"  " 1 or 0 -> blinking block
+"  " 2 -> solid block
+"  " 3 -> blinking underscore
+"  " 4 -> solid undersocore
+"  " Recent versions of xterm (282 or above) also support
+"  " 5 -> blinking vertical bar
+"  " 6 -> solid vertical bar
+"endif
