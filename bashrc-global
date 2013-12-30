@@ -128,6 +128,7 @@ alias gl='git log'                               # display git log
 alias gt='git status'                            # display git status
 alias gu='git remote update'                     # update remote repositories
 
+alias h1='head -n1 -q'                        # Display first line without filename
 alias head='head -100'                        # Display the first 100 lines of a file
 alias hist='history'                          # Display history
 alias h='htop'
@@ -265,7 +266,8 @@ alias video='xanim' # program for viewing avi files
 alias v='$MYVIM -X'
 alias vi='v'
 alias vb='v $HOME/.bashrc'
-alias vbg='v $HOME/.bashrc-global'
+alias vd='v -d'
+alias vg='v $HOME/.bashrc-global'
 alias vo='v opt.inp'
 alias vp='v $HOME/bin/scripts/packages.list'
 alias vs='v screen'
