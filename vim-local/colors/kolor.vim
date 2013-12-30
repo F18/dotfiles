@@ -190,6 +190,7 @@ if &t_Co > 255
   "
   highlight Title           ctermfg=254     ctermbg=none    cterm=none
   highlight Visual          ctermfg=254     ctermbg=240     cterm=none
+  highlight Visual          ctermfg=254     ctermbg=240     cterm=none
   highlight VisualNOS       ctermfg=254     ctermbg=none    cterm=underline
   highlight WildMenu        ctermfg=0       ctermbg=80      cterm=none
   highlight Folded          ctermfg=103     ctermbg=234     cterm=none
@@ -247,7 +248,8 @@ if &t_Co > 255
     highlight ErrorMsg        ctermfg=168     ctermbg=none    cterm=none
     highlight Search          ctermfg=208     ctermbg=none    cterm=none
     highlight MoreMsg         ctermfg=121     ctermbg=none    cterm=none
-    highlight ModeMsg         ctermfg=254     ctermbg=none    cterm=none
+    "highlight ModeMsg         ctermfg=254     ctermbg=none    cterm=none
+    highlight ModeMsg         ctermfg=016     ctermbg=046    cterm=none
     highlight CursorLineNr    ctermfg=254     ctermbg=236     cterm=none
     highlight Question        ctermfg=80      ctermbg=none    cterm=none
     highlight WarningMsg      ctermfg=206     ctermbg=none    cterm=none
