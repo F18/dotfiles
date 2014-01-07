@@ -263,7 +263,7 @@ alias treed='tree -C -d -I "*.git"'           # list all directories
 alias vg='valgrind --tool=memcheck --leak-check=yes' # Execute program with valgrind debuger
 alias video='xanim' # program for viewing avi files
 #-- vim
-alias v='$MYVIM -X'
+alias v='$MYVIM'
 alias vi='v'
 alias vb='v $HOME/.bashrc'
 alias vd='v -d'
