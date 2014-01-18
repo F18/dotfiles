@@ -10,6 +10,7 @@ export TERM=screen-256color # works for tmux
 #-- home and work directories
 export MYHOME=/nfs/carv/d1/people/ramy
 export MYWORK=/nfs/carv/d1/people/ramy/optima-verify/08_optimize
+export MYVIM=/nfs/carv/d1/people/ramy/usr/local/bin/vim
 #-- scp
 export SCPGUILL=rashad@guillimin.clumeq.ca:/home/rashad/
 export SCPSCI=rashad@scinet.utoronto.ca:/home/z/zingg/rashad/

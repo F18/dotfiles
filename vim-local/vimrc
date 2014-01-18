@@ -21,7 +21,7 @@ syntax enable "Enable syntax hl
 set gfn=Consolas\ 13
 set shell=/bin/bash
 
-set t_Co=256
+"set t_Co=256
 "-- zenburn
 "let g:zenburn_high_Contrast=1
 "let g:zenburn_alternate_Visual = 1
