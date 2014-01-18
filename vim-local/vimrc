@@ -310,8 +310,8 @@ set guioptions-=T
 
 
 " redef C-j to C-g to move toward Latex <+>
-imap <C-g> <Plug>IMAP_JumpForward 
-nmap <C-g> <Plug>IMAP_JumpForward 
+imap <C-k> <Plug>IMAP_JumpForward
+nmap <C-k> <Plug>IMAP_JumpForward
 
 "map <leader>sm :w <cr> :make <cr>
 
