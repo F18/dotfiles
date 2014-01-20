@@ -409,4 +409,9 @@ function subdir-cp-o
   done
 }
 #
+function ge
+{ 
+  google docs edit --title "$@" --editor vim;
+}
+#
 # END OF BASHRC-GLOBAL
