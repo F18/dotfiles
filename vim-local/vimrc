@@ -310,6 +310,7 @@ set guioptions-=T
 
 
 " redef C-j to C-g to move toward Latex <+>
+inoremap <C-y> <C-k>
 imap <C-k> <Plug>IMAP_JumpForward
 nmap <C-k> <Plug>IMAP_JumpForward
 
