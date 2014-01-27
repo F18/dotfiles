@@ -123,6 +123,7 @@ alias grep="grep --color=auto"                   # grep: make it highlight the s
 alias gv='gvim'                                  # open gvim
 #-- git
 alias gb='git branch -a'                         # display all git branches
+alias gdt='git difftool'                         # opens the git difftool (set as vimdiff)
 alias gk='gitk --all'                            # open git repository GUI
 alias gl='git log'                               # display git log
 alias gt='git status'                            # display git status
@@ -154,6 +155,7 @@ alias lf='ls -l | grep ^-'                    # List files only (not directories
 alias ll='ls -laSh'                           # List all files in long format
 alias lm='ls -lrth'                           # List all files in order of date modified
 alias lt='ll --sort=extension'                # List files only (not directories)
+alias ln='ln -s'                              # Create soft link
 #-- Prints on laser color printer, single-sided
 alias lpcs='/usr/bin/lpr -P lpc -o InputSlot=Tray3 -o PageSize=Letter -o Duplex=None'
 #-- Prints on laser color printer, double-sided
@@ -374,7 +376,7 @@ function reverseFileLines () { sed '1!G;h;$!d' "$@";}
 #
 # GIT related
 #
-function gd() { git diff > $HOME/tmp/tmp~; v $HOME/tmp/tmp~; }
+function gd() { git diff > $HOME/tmp/gd.txt; v $HOME/tmp/gd.txt; }
 #
 # OPTIMA2D related
 #
