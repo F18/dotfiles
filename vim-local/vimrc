@@ -79,7 +79,7 @@ map <leader>l :MPN! 10<CR>Lzt<C-e>
 map <leader>h :MPP! 10<CR>Hzb<C-y>
 
 " Tab control
-map <leader>to :tabedit % <CR>
+map <leader>to :tabnew <CR>
 map <leader>tp :tabprevious <CR>
 map <leader>tn :tabnext <CR>
 map <leader>tc :tabclose <CR>
@@ -261,7 +261,7 @@ function! ProjectFuzzyFind()
     call fuf#givenfile#launch('', 0, '>', files)
   endif
 endfunction
-map <leader>, :call ProjectFuzzyFind()<CR>
+"map <leader>, :call ProjectFuzzyFind()<CR>
 
 """"""""""""""""""""""""""""""
 " => No backups
@@ -533,6 +533,45 @@ function! MyCol2()
   execute "norm ".g:colnum."|"
 endfunction
 
+""
+"" Insert/Remove a comment character (!)in column number 1 and keep cursor position
+""
+map <leader>, :call MyCol3()<cr>
+map <leader>< :call MyCol4()<cr>
+map <leader>/ :call MyCol5()<cr>
+map <leader>? :call MyCol6()<cr>
+function! MyCol3()
+  let g:colnum=col(".")
+  execute "norm 1|"
+  execute "normal r!"
+  execute "norm ".g:colnum."|"
+endfunction
+function! MyCol4()
+  let g:colnum=col(".")
+  execute "norm 1|"
+  execute "normal r "
+  execute "norm ".g:colnum."|"
+endfunction
+function! MyCol5()
+  let g:colnum=col(".")
+  execute "norm 1|"
+  execute "normal r!"
+  execute "norm 2|"
+  execute "normal rR"
+  execute "norm 3|"
+  execute "normal rR"
+  execute "norm ".g:colnum."|"
+endfunction
+function! MyCol6()
+  let g:colnum=col(".")
+  execute "norm 1|"
+  execute "normal r "
+  execute "norm 2|"
+  execute "normal r "
+  execute "norm 3|"
+  execute "normal r "
+  execute "norm ".g:colnum."|"
+endfunction
 "
 " Change cursor shape and color in insert mode
 "
