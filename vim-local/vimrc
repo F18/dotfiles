@@ -9,6 +9,7 @@ set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-surround
 set runtimepath+=~/dotfiles/vim-local/myPlugins/mpage
 set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-indent-guides
 set runtimepath+=~/dotfiles/vim-local/myPlugins/ack
+set runtimepath+=~/dotfiles/vim-local/myPlugins/nerd-commenter
 "set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-togglecursor
 
 " With a map leader it's possible to do extra key combinations
@@ -135,7 +136,7 @@ nmap <leader>b :Bclose <CR>
 "nmap <silent> <leader>b :Kwbd <cr>
 "nmap <leader>b :bd<cr>
 " Fast close window split
-nmap <leader>c <C-w>c
+"nmap <leader>c <C-w>c
 " Fast saving
 nmap <leader>w :w!<cr>
 " Fast save and quit vim
@@ -534,12 +535,16 @@ function! MyCol2()
 endfunction
 
 ""
+"" Nerd commenter toggle comment state
+""
+map <leader>, <plug>NERDCommenterToggle
+""
 "" Insert/Remove a comment character (!)in column number 1 and keep cursor position
 ""
-map <leader>, :call MyCol3()<cr>
-map <leader>< :call MyCol4()<cr>
-map <leader>/ :call MyCol5()<cr>
-map <leader>? :call MyCol6()<cr>
+map <leader>/ :call MyCol3()<cr>
+map <leader>? :call MyCol4()<cr>
+map <leader>R :call MyCol5()<cr>
+map <leader>RR :call MyCol6()<cr>
 function! MyCol3()
   let g:colnum=col(".")
   execute "norm 1|"
