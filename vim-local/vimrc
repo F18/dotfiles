@@ -71,11 +71,11 @@ map - $
 set nostartofline
 
 " Multi-pager
-map <leader>e0 :MPage <CR>
-map <leader>e2 <C-w>o :2MPage <CR> 60<C-U> gg
-map <leader>e3 <C-w>o :3MPage <CR> 60<C-U> gg
-map <leader>e4 <C-w>o :4MPage <CR> 60<C-U> gg
-map <leader>e5 <C-w>o :5MPage <CR> 60<C-U> gg
+map <leader>e0 mu :MPage <CR> 'u zt;
+map <leader>e2 mu <C-w>o :2MPage <CR> 'u zt;
+map <leader>e3 mu <C-w>o :3MPage <CR> 'u zt;
+map <leader>e4 mu <C-w>o :4MPage <CR> 'u zt;
+map <leader>e5 mu <C-w>o :5MPage <CR> 'u zt;
 map <leader>l :MPN! 10<CR>Lzt<C-e>
 map <leader>h :MPP! 10<CR>Hzb<C-y>
 
@@ -521,6 +521,7 @@ map <F12> :w <CR> ; :exec "!rm error.err" "; makebg" v:servername "'" . &makeprg
 ""
 map <leader>o :call MyCol1()<cr>
 map <leader>i :call MyCol2()<cr>
+map <leader>I :call MyCol7()<cr>
 function! MyCol1()
   let g:colnum=col(".")
   execute "norm 6|"
@@ -531,6 +532,12 @@ function! MyCol2()
   let g:colnum=col(".")
   execute "norm 6|"
   execute "normal r|"
+  execute "norm ".g:colnum."|"
+endfunction
+function! MyCol7()
+  let g:colnum=col(".")
+  execute "norm 6|"
+  execute "normal r "
   execute "norm ".g:colnum."|"
 endfunction
 
