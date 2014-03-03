@@ -4,7 +4,7 @@ echo " "
 echo -n "Pick a system from (case sensitive) options: laptop, oddjob, guillimin, scinet, westgrid: "
 read -e LOCALSYS
 
-DIRBKP=~/.dotfiles-bkp-$(date +%Y%m%d.%H%M)
+DIRBKP=~/dotfiles/backups/.dotfiles-bkp-$(date +%Y%m%d.%H%M)
 
 mkdir $DIRBKP
 
