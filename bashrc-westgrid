@@ -32,7 +32,7 @@ export GRIDLIB=$PROJECT/grid_library
 export ODD=ramy@oddjob.utias.utoronto.ca:/nfs/carv/d1/people/ramy
 export ODDT=ramy@oddjob.utias.utoronto.ca:/nfs/carv/d1/people/ramy/transfer
 export SCI=rashad@login.scinet.utoronto.ca:/home/z/zingg/rashad
-export SCIT=rashad@login.scinet.utoronto.ca:/home/z/zingg/rashad
+export SCIT=rashad@login.scinet.utoronto.ca:/home/z/zingg/rashad/transfer
 #-- Jetstream related paths
 export PATH=$PATH:$HOME/jetstream/grid_utils
 export LD_LIBRARY_PATH={$LD_LIBRARY_PATH}:$HOME/$ARCH/lib:$HOME/jetstream/cgnslib_2.5/LINUX:$HOME/usr/local/lib
