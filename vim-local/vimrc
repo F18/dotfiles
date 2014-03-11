@@ -58,6 +58,8 @@ imap <C-j> <Esc>
 "noremap <expr> <C-u> repeat("\<C-y>", 20)
 "map <silent> <M-,> ^u
 "map <silent> <M-.> ^d
+"noremap ; a
+map a 30<C-U>
 map <space> 30<C-D>
 map ; 30<C-U>
 map <silent> <PageUp> 30<C-U>
