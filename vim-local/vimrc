@@ -60,9 +60,11 @@ imap <C-j> <Esc>
 "noremap <expr> <C-u> repeat("\<C-y>", 20)
 "map <silent> <M-,> ^u
 "map <silent> <M-.> ^d
-noremap ' f
-map f 30<C-U>
-"map ; 30<C-U>
+"noremap ' f
+"map f 30<C-U>
+noremap > ;
+noremap ' ;
+map ; 30<C-U>
 map <space> 30<C-D>
 map <silent> <PageUp> 30<C-U>
 map <silent> <PageDown> 30<C-D>
@@ -156,9 +158,6 @@ nmap <leader>r :e<cr>
 map <leader>g gwap
 " past from clipboard
 map <leader>p "+gP
-
-"map ; :
-"noremap ;; ;
 
 " Use the arrows to something usefull
 map <right> :bn<cr>
