@@ -14,6 +14,8 @@ set runtimepath+=~/dotfiles/vim-local/myPlugins/nerd-commenter
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
+" first remap the "leader" key before setting as the leader
+noremap < ,
 let mapleader = ","
 let g:mapleader = ","
 
@@ -58,10 +60,10 @@ imap <C-j> <Esc>
 "noremap <expr> <C-u> repeat("\<C-y>", 20)
 "map <silent> <M-,> ^u
 "map <silent> <M-.> ^d
-"noremap ; a
-map a 30<C-U>
+noremap ' f
+map f 30<C-U>
+"map ; 30<C-U>
 map <space> 30<C-D>
-map ; 30<C-U>
 map <silent> <PageUp> 30<C-U>
 map <silent> <PageDown> 30<C-D>
 imap <silent> <PageUp> <C-O>30<C-U>
