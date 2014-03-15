@@ -56,13 +56,17 @@ map <C-j> jk
 map! jj <Esc>
 imap <C-j> <Esc>
 
+" map the repeat keys to > for fwd and < for bwkd
+" note that < was remapped before the mapleader key was set
+noremap > ;
+
 " scrolling
 "noremap <expr> <C-u> repeat("\<C-y>", 20)
 "map <silent> <M-,> ^u
 "map <silent> <M-.> ^d
 noremap ' f
-map f 30<C-U>
-"map ; 30<C-U>
+"map f 30<C-U>
+map ; 30<C-U>
 map <space> 30<C-D>
 map <silent> <PageUp> 30<C-U>
 map <silent> <PageDown> 30<C-D>
