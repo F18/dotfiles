@@ -12,10 +12,14 @@ set runtimepath+=~/dotfiles/vim-local/myPlugins/ack
 set runtimepath+=~/dotfiles/vim-local/myPlugins/nerd-commenter
 "set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-togglecursor
 
-" With a map leader it's possible to do extra key combinations
-" like <leader>w saves the current file
-" first remap the "leader" key before setting as the leader
-noremap < ,
+" first remap the "leader" key before setting , as the leader
+" -- map the repeat keys to " for fwd and ' for bwkd
+noremap " ,
+" the following maps \ to ' before mapping ' to ;
+noremap \ '
+noremap ' ;
+" Now map the leader key. With a map leader it's possible to do 
+" extra key combinations, such as <leader>w to save the current file
 let mapleader = ","
 let g:mapleader = ","
 
@@ -56,18 +60,8 @@ map <C-j> jk
 map! jj <Esc>
 imap <C-j> <Esc>
 
-" map the repeat keys to > for fwd and < for bwkd
-" note that < was remapped before the mapleader key was set
-noremap > ;
 
 " scrolling
-"noremap <expr> <C-u> repeat("\<C-y>", 20)
-"map <silent> <M-,> ^u
-"map <silent> <M-.> ^d
-"noremap ' f
-"map f 30<C-U>
-noremap > ;
-noremap ' ;
 map ; 30<C-U>
 map <space> 30<C-D>
 map <silent> <PageUp> 30<C-U>
@@ -81,11 +75,11 @@ map - $
 set nostartofline
 
 " Multi-pager
-map <leader>e0 mu :MPage <CR> 'u zt;
-map <leader>e2 mu <C-w>o :2MPage <CR> 'u zt;
-map <leader>e3 mu <C-w>o :3MPage <CR> 'u zt;
-map <leader>e4 mu <C-w>o :4MPage <CR> 'u zt;
-map <leader>e5 mu <C-w>o :5MPage <CR> 'u zt;
+map <leader>e0 mu :MPage <CR> \u zt;
+map <leader>e2 mu <C-w>o :2MPage <CR> \u zt;
+map <leader>e3 mu <C-w>o :3MPage <CR> \u zt;
+map <leader>e4 mu <C-w>o :4MPage <CR> \u zt;
+map <leader>e5 mu <C-w>o :5MPage <CR> \u zt;
 map <leader>l :MPN! 10<CR>Lzt<C-e>
 map <leader>h :MPP! 10<CR>Hzb<C-y>
 
@@ -337,6 +331,7 @@ nmap <leader>a :call MyAck()<CR>
 " search for the word under the cursor
 nmap <leader>A :call MyAckWord()<CR>
 "nmap \X :Ack <C-r><C-w> ../. <CR>
+nmap <leader>S :call MyAckWindow()<CR>
  
 function! MyAck()
   call inputsave()
@@ -347,6 +342,10 @@ endfunction
 
 function! MyAckWord()
   execute 'Ack! "'. expand("<cword>") .'" ../'
+endfunction
+
+function! MyAckWindow()
+  execute 'AckWindow! "'. expand("<cword>") .'" ../'
 endfunction
 
  
