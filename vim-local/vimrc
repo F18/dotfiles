@@ -87,8 +87,8 @@ map <leader>h :MPP! 10<CR>Hzb<C-y>
 map <leader>to :tabnew <CR>
 map <leader>tp :tabprevious <CR>
 map <leader>tn :tabnext <CR>
-map <leader>j  :tabprevious <CR>
-map <leader>k  :tabnext <CR>
+map <leader>J  :tabprevious <CR>
+map <leader>j  :tabnext <CR>
 map <leader>tc :tabclose <CR>
 " Go to tab by number                                                                                                                           
 noremap <leader>1 1gt
@@ -101,6 +101,25 @@ noremap <leader>7 7gt
 noremap <leader>8 8gt                                                                                                                            
 noremap <leader>9 9gt                                                                                                                            
 noremap <leader>0 :tablast<cr>
+
+" return to the last tab page visited.                                                                        
+let g:lasttab = 1
+nmap <Leader>k :exe "tabn ".g:lasttab<CR>
+au TabLeave * let g:lasttab = tabpagenr()
+
+":map <leader>j :exe "tabn " . g:ltv<CR>                                                                              
+"" referred to by TabLeave autocmd.                                                                            
+":function! Setlasttabpagevisited()                                                                              
+":  let g:ltv = tabpagenr()                                                                                
+":endfunction          
+":augroup localtl                                                                                            
+"" Remove all localtl autocommands                                                                          
+":au!                                                                                                    
+"" keep tally of the last tab page visited.                                                            
+":autocmd TabLeave * call Setlasttabpagevisited()                                                        
+":augroup END                                                        
+":autocmd VimEnter * let g:ltv = 1
+
 
 "Rename tabs to show tab number.
 " (Based on http://stackoverflow.com/questions/5927952/whats-implementation-of-vims-default-tabline-function)
