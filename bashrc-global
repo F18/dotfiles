@@ -193,6 +193,10 @@ alias ppclean='rm -f *.gplt *residual.dat *.tree *.soln'
 alias ps2pdf='ps2pdf -sPAPERSIZE=a4'          # Force the papersize to be the standard a4 letter
 alias psopt='ps aux | grep OPTIMA2D'          # Force the papersize to be the standard a4 letter
 alias py='python'
+alias py00='py-compareFD.py rest00 fd5 0'
+alias py01='py-compareFD.py rest00 fd5 1'
+alias py10='py-compareFD.py rest01 fd5 0'
+alias py11='py-compareFD.py rest01 fd5 1'
 alias pmem='pidstat -r -p'                    # Outputs the memory statistics for a particular job id
                                               # Enter the following: "pmem 6218 2 5 > memlog.txt" for 
                                               # 5 outputs every 2 seconds written to file memlog.txt

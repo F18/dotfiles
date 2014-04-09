@@ -38,7 +38,16 @@ let g:kolor_italic=1 " Enable italic. Default: 1
 let g:kolor_bold=0 " Enable bold. Default: 1
 let g:kolor_underlined=0 " Enable underline for 'Underlined'. Default: 0
 let g:kolor_alternative_matchparen=0 " Gray 'MatchParen' color. Default: 0
-colorscheme kolor
+"colorscheme kolor
+set t_Co=256
+set background=dark
+if !has('gui_running')
+  let g:solarized_termcolors=&t_Co
+  let g:solarized_termtrans=1
+endif
+"let g:solarized_termcolors=256
+"set background=dark
+colorscheme solarized
 
 " faster buffering in xterm
 set ttyfast
@@ -57,8 +66,8 @@ let g:BASH_Ctrl_j = 'off'
 " dummy mapping to avoid going into insert mode with <C-j>
 map <C-j> jk
 " map the escape key 
-map! jj <Esc>
-imap <C-j> <Esc>
+noremap! jj <Esc>
+inoremap <C-j> <Esc> :w<cr>
 
 
 " scrolling
@@ -539,7 +548,7 @@ if exists('+colorcolumn')
    "if &t_Co > 255
    "   hi ColorColumn ctermbg=236
    "endif
-   hi ColorColumn ctermbg=236
+   hi ColorColumn ctermbg=235
    autocmd FileType fortran set colorcolumn=6,73 
 else
    "
