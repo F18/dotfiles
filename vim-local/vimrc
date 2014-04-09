@@ -34,20 +34,27 @@ set shell=/bin/bash
 "let g:zenburn_alternate_Visual = 1
 "colorscheme zenburn
 "-- kolor
-let g:kolor_italic=1 " Enable italic. Default: 1
-let g:kolor_bold=0 " Enable bold. Default: 1
-let g:kolor_underlined=0 " Enable underline for 'Underlined'. Default: 0
-let g:kolor_alternative_matchparen=0 " Gray 'MatchParen' color. Default: 0
+"let g:kolor_italic=1 " Enable italic. Default: 1
+"let g:kolor_bold=0 " Enable bold. Default: 1
+"let g:kolor_underlined=0 " Enable underline for 'Underlined'. Default: 0
+"let g:kolor_alternative_matchparen=0 " Gray 'MatchParen' color. Default: 0
 "colorscheme kolor
+"-- solarized
+"set t_Co=256
+"set background=dark
+"if !has('gui_running')
+  "let g:solarized_termcolors=&t_Co
+  "let g:solarized_termtrans=1
+"endif
+"colorscheme solarized
+"-- razzle
 set t_Co=256
 set background=dark
 if !has('gui_running')
   let g:solarized_termcolors=&t_Co
   let g:solarized_termtrans=1
 endif
-"let g:solarized_termcolors=256
-"set background=dark
-colorscheme solarized
+colorscheme razzle
 
 " faster buffering in xterm
 set ttyfast
@@ -548,7 +555,7 @@ if exists('+colorcolumn')
    "if &t_Co > 255
    "   hi ColorColumn ctermbg=236
    "endif
-   hi ColorColumn ctermbg=235
+   hi ColorColumn ctermbg=236
    autocmd FileType fortran set colorcolumn=6,73 
 else
    "

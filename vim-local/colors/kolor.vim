@@ -172,8 +172,7 @@ else
 endif
 
 if &t_Co > 255
-  highlight Normal          ctermfg=253     ctermbg=237     cterm=none
-  "highlight Normal          ctermfg=251     ctermbg=238     cterm=none
+  highlight Normal          ctermfg=251     ctermbg=235     cterm=none
   highlight SpecialKey      ctermfg=111     ctermbg=none    cterm=none
   highlight NonText         ctermfg=111     ctermbg=235     cterm=none
   highlight Directory       ctermfg=180     ctermbg=none    cterm=none
@@ -217,7 +216,7 @@ if &t_Co > 255
   highlight CursorColumn    ctermfg=none    ctermbg=236     cterm=none
   highlight CursorLine      ctermfg=none    ctermbg=236     cterm=none
   highlight ColorColumn     ctermfg=none    ctermbg=236     cterm=none
-  highlight Cursor          ctermfg=0       ctermbg=255     cterm=none
+  highlight Cursor          ctermfg=0       ctermbg=254     cterm=none
   "RR: Comment = comments in code
   "highlight Comment         ctermfg=244     ctermbg=none    cterm=none
   "highlight Comment         ctermfg=108     ctermbg=none    cterm=none
