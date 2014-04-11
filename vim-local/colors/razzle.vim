@@ -303,10 +303,8 @@ elseif g:solarized_termcolors == 256
     let s:vmode       = "cterm"
     let s:base03      = "234" " background color (set by terminal's colorscheme)
     let s:base02      = "235" " background highlights
-    "let s:base01      = "103" " comments / secondary content
     let s:base01      = "244" " comments / secondary content
     let s:base00      = "240"
-    "let s:base0       = "244" " body text/ default code/ primary content
     let s:base0       = "103" " body text/ default code/ primary content
     let s:base1       = "245" " optional emphasized content
     let s:base2       = "187"
@@ -322,6 +320,16 @@ elseif g:solarized_termcolors == 256
     let s:pink        = "138"
     let s:zengreen    = "108"
     let s:zenred      = "168"
+    let s:zenblue     = "033"
+    let s:zenblue2    = "031"
+    " Extras color combos
+    "
+    "let s:base01      = "103" " comments / secondary content
+    "let s:base0       = "244" " body text/ default code/ primary content
+    "
+    "let s:base01      = "244" " comments / secondary content
+    "let s:base0       = "103" " body text/ default code/ primary content
+    "let s:zengreen    = "108"
 
     "let s:vmode       = "cterm"
     "let s:base03      = "234"
@@ -483,6 +491,8 @@ exe "let s:bg_cyan      = ' ".s:vmode."bg=".s:cyan   ."'"
 " Adding my own colors
 exe "let s:bg_zengreen  = ' ".s:vmode."bg=".s:zengreen."'"
 exe "let s:bg_zenred  = ' ".s:vmode."bg=".s:zenred."'"
+exe "let s:bg_zenblue  = ' ".s:vmode."bg=".s:zenblue."'"
+exe "let s:bg_zenblue2  = ' ".s:vmode."bg=".s:zenblue2."'"
 exe "let s:bg_pink      = ' ".s:vmode."bg=".s:pink."'"
 
 exe "let s:fg_none      = ' ".s:vmode."fg=".s:none   ."'"
@@ -506,6 +516,8 @@ exe "let s:fg_cyan      = ' ".s:vmode."fg=".s:cyan   ."'"
 " Adding my own colors
 exe "let s:fg_zengreen  = ' ".s:vmode."fg=".s:zengreen."'"
 exe "let s:fg_zenred  = ' ".s:vmode."fg=".s:zenred."'"
+exe "let s:fg_zenblue  = ' ".s:vmode."fg=".s:zenblue."'"
+exe "let s:fg_zenblue2  = ' ".s:vmode."fg=".s:zenblue2."'"
 exe "let s:fg_pink      = ' ".s:vmode."fg=".s:pink."'"
 
 exe "let s:fmt_none     = ' ".s:vmode."=NONE".          " term=NONE".    "'"
@@ -574,16 +586,20 @@ endif
 
 exe "hi! Normal"         .s:fmt_none   .s:fg_base0  .s:bg_back
 
-"RR comments 
-exe "hi! Comment"        .s:fmt_stnd   .s:fg_base01 .s:bg_none
+"RR: comments 
+exe "hi! Comment"        .s:fmt_stnd   .s:fg_zengreen .s:bg_none
+"exe "hi! Comment"        .s:fmt_stnd   .s:fg_base01 .s:bg_none
 "exe "hi! Comment"        .s:fmt_ital   .s:fg_base01 .s:bg_none
 "       *Comment         any comment
 
-exe "hi! Constant"       .s:fmt_none   .s:fg_cyan   .s:bg_none
+exe "hi! Constant"       .s:fmt_none   .s:fg_zenblue   .s:bg_none
 "       *Constant        any constant
 "        Character       a character constant: 'c', '\n'
-"        Boolean         a boolean constant: TRUE, false
 "        Float           a floating point constant: 2.3e10
+
+"RR:
+exe "hi! Boolean"       .s:fmt_none   .s:fg_cyan   .s:bg_none
+"        Boolean         a boolean constant: TRUE, false
 
 exe "hi! String"       .s:fmt_none   .s:fg_pink   .s:bg_none
 "        String          a string constant: "this is a string"
@@ -593,19 +609,24 @@ exe "hi! Number"       .s:fmt_none   .s:fg_yellow   .s:bg_none
 "
 exe "hi! Identifier"     .s:fmt_none   .s:fg_blue   .s:bg_none
 "       *Identifier      any variable name
+
+
+"RR: Function = call, abs, real, max
+exe "hi! Function"       .s:fmt_none   .s:fg_blue   .s:bg_none
 "        Function        function name (also: methods for classes)
 
-exe "hi! Function"       .s:fmt_none   .s:fg_zenred   .s:bg_none
 
-exe "hi! Statement"      .s:fmt_none   .s:fg_zengreen  .s:bg_none
+exe "hi! Statement"      .s:fmt_none   .s:fg_zenred  .s:bg_none
+"exe "hi! Statement"      .s:fmt_none   .s:fg_zengreen  .s:bg_none
 "       *Statement       any statement
 "        Conditional     if, then, else, endif, switch, etc.
 "        Repeat          for, do, while, etc.
 "        Label           case, default, etc.
 "        Operator        "sizeof", "+", "*", etc.
 "        Exception       try, catch, throw
-
-exe "hi! Keyword"      .s:fmt_none   .s:fg_zenred  .s:bg_none
+"
+"RR: Keywords such as write, format, de/allocate, return
+exe "hi! Keyword"      .s:fmt_none   .s:fg_zenblue2  .s:bg_none
 "        Keyword         any other keyword
 "
 exe "hi! PreProc"        .s:fmt_none   .s:fg_red .s:bg_none
@@ -675,7 +696,7 @@ if ( has("gui_running") || &t_Co > 8 )
 else
     exe "hi! VertSplit"  .s:fmt_revbb  .s:fg_base02 .s:bg_base03
 endif
-"RR TITLE: subroutine, use, etc
+"RR: TITLE: subroutine, use, etc
 "exe "hi! Title"          .s:fmt_bold   .s:fg_orange .s:bg_none
 exe "hi! Title"          .s:fmt_bold   .s:fg_red .s:bg_none
 exe "hi! VisualNOS"      .s:fmt_stnd   .s:fg_none   .s:bg_base02 .s:fmt_revbb
