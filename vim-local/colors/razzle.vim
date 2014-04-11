@@ -302,7 +302,7 @@ elseif g:solarized_termcolors == 256
     "RR: These are the terminal colors for your kolor/zenburn mix
     let s:vmode       = "cterm"
     let s:base03      = "234" " background color (set by terminal's colorscheme)
-    let s:base02      = "235" " background highlights
+    let s:base02      = "232" " background highlights
     let s:base01      = "244" " comments / secondary content
     let s:base00      = "240"
     let s:base0       = "103" " body text/ default code/ primary content

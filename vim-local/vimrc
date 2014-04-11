@@ -547,6 +547,8 @@ let g:indent_guides_start_level = 4
 " _____________
 " Color Columns
 "
+set cursorcolumn
+set cursorline
 if exists('+colorcolumn')
    "
    "vim 7.3 and newer with colorcolumn
