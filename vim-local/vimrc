@@ -12,8 +12,14 @@ set runtimepath+=~/dotfiles/vim-local/myPlugins/ack
 set runtimepath+=~/dotfiles/vim-local/myPlugins/nerd-commenter
 "set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-togglecursor
 
-" With a map leader it's possible to do extra key combinations
-" like <leader>w saves the current file
+" first remap the "leader" key before setting , as the leader
+" -- map the repeat keys to " for fwd and ' for bwkd
+noremap " ,
+" the following maps \ to ' before mapping ' to ;
+noremap \ '
+noremap ' ;
+" Now map the leader key. With a map leader it's possible to do 
+" extra key combinations, such as <leader>w to save the current file
 let mapleader = ","
 let g:mapleader = ","
 
@@ -28,11 +34,27 @@ set shell=/bin/bash
 "let g:zenburn_alternate_Visual = 1
 "colorscheme zenburn
 "-- kolor
-let g:kolor_italic=1 " Enable italic. Default: 1
-let g:kolor_bold=0 " Enable bold. Default: 1
-let g:kolor_underlined=0 " Enable underline for 'Underlined'. Default: 0
-let g:kolor_alternative_matchparen=0 " Gray 'MatchParen' color. Default: 0
-colorscheme kolor
+"let g:kolor_italic=1 " Enable italic. Default: 1
+"let g:kolor_bold=0 " Enable bold. Default: 1
+"let g:kolor_underlined=0 " Enable underline for 'Underlined'. Default: 0
+"let g:kolor_alternative_matchparen=0 " Gray 'MatchParen' color. Default: 0
+"colorscheme kolor
+"-- solarized
+"set t_Co=256
+"set background=dark
+"if !has('gui_running')
+  "let g:solarized_termcolors=&t_Co
+  "let g:solarized_termtrans=1
+"endif
+"colorscheme solarized
+"-- razzle
+set t_Co=256
+set background=dark
+if !has('gui_running')
+  let g:solarized_termcolors=&t_Co
+  let g:solarized_termtrans=1
+endif
+colorscheme razzle
 
 " faster buffering in xterm
 set ttyfast
@@ -51,17 +73,13 @@ let g:BASH_Ctrl_j = 'off'
 " dummy mapping to avoid going into insert mode with <C-j>
 map <C-j> jk
 " map the escape key 
-map! jj <Esc>
-imap <C-j> <Esc>
+noremap! jj <Esc>
+inoremap <C-j> <Esc> :w<cr>
+
 
 " scrolling
-"noremap <expr> <C-u> repeat("\<C-y>", 20)
-"map <silent> <M-,> ^u
-"map <silent> <M-.> ^d
-"noremap ; a
-map a 30<C-U>
-map <space> 30<C-D>
 map ; 30<C-U>
+map <space> 30<C-D>
 map <silent> <PageUp> 30<C-U>
 map <silent> <PageDown> 30<C-D>
 imap <silent> <PageUp> <C-O>30<C-U>
@@ -73,11 +91,11 @@ map - $
 set nostartofline
 
 " Multi-pager
-map <leader>e0 mu :MPage <CR> 'u zt;
-map <leader>e2 mu <C-w>o :2MPage <CR> 'u zt;
-map <leader>e3 mu <C-w>o :3MPage <CR> 'u zt;
-map <leader>e4 mu <C-w>o :4MPage <CR> 'u zt;
-map <leader>e5 mu <C-w>o :5MPage <CR> 'u zt;
+map <leader>e0 mu :MPage <CR> \u zt;
+map <leader>e2 mu <C-w>o :2MPage <CR> \u zt;
+map <leader>e3 mu <C-w>o :3MPage <CR> \u zt;
+map <leader>e4 mu <C-w>o :4MPage <CR> \u zt;
+map <leader>e5 mu <C-w>o :5MPage <CR> \u zt;
 map <leader>l :MPN! 10<CR>Lzt<C-e>
 map <leader>h :MPP! 10<CR>Hzb<C-y>
 
@@ -85,7 +103,86 @@ map <leader>h :MPP! 10<CR>Hzb<C-y>
 map <leader>to :tabnew <CR>
 map <leader>tp :tabprevious <CR>
 map <leader>tn :tabnext <CR>
+map <leader>J  :tabprevious <CR>
+map <leader>j  :tabnext <CR>
 map <leader>tc :tabclose <CR>
+" Go to tab by number                                                                                                                           
+noremap <leader>1 1gt
+noremap <leader>2 2gt
+noremap <leader>3 3gt                                                                                                                            
+noremap <leader>4 4gt                                                                                                                           
+noremap <leader>5 5gt                                                                                                                            
+noremap <leader>6 6gt                                                                                                                            
+noremap <leader>7 7gt                                                                                                                            
+noremap <leader>8 8gt                                                                                                                            
+noremap <leader>9 9gt                                                                                                                            
+noremap <leader>0 :tablast<cr>
+
+" return to the last tab page visited.                                                                        
+let g:lasttab = 1
+nmap <Leader>k :exe "tabn ".g:lasttab<CR>
+au TabLeave * let g:lasttab = tabpagenr()
+
+":map <leader>j :exe "tabn " . g:ltv<CR>                                                                              
+"" referred to by TabLeave autocmd.                                                                            
+":function! Setlasttabpagevisited()                                                                              
+":  let g:ltv = tabpagenr()                                                                                
+":endfunction          
+":augroup localtl                                                                                            
+"" Remove all localtl autocommands                                                                          
+":au!                                                                                                    
+"" keep tally of the last tab page visited.                                                            
+":autocmd TabLeave * call Setlasttabpagevisited()                                                        
+":augroup END                                                        
+":autocmd VimEnter * let g:ltv = 1
+
+
+"Rename tabs to show tab number.
+" (Based on http://stackoverflow.com/questions/5927952/whats-implementation-of-vims-default-tabline-function)
+if exists("+showtabline")
+  function! MyTabLine()
+    let s = ''
+    let wn = ''
+    let t = tabpagenr()
+    let i = 1
+    while i <= tabpagenr('$')
+      let buflist = tabpagebuflist(i)
+      let winnr = tabpagewinnr(i)
+      let s .= '%' . i . 'T'
+      let s .= (i == t ? '%1*' : '%2*')
+      let s .= ' '
+      let wn = tabpagewinnr(i,'$')
+
+      let s .= '%#TabNum#'
+      let s .= i
+      let s .= '%*'
+      let s .= (i == t ? '%#TabLineSel#' : '%#TabLine#')
+      let bufnr = buflist[winnr - 1]
+      let file = bufname(bufnr)
+      let buftype = getbufvar(bufnr, 'buftype')
+      if buftype == 'nofile'
+        if file =~ '\/.'
+          let file = substitute(file, '.*\/\ze.', '', '')
+        endif
+      else
+        let file = fnamemodify(file, ':p:t')
+      endif
+      if file == ''
+        let file = '[No Name]'
+      endif
+      let s .= ' ' . file . ' '
+      let i = i + 1
+    endwhile
+    let s .= '%T%#TabLineFill#%='
+    let s .= (tabpagenr('$') > 1 ? '%999XX' : 'X')
+    return s
+  endfunction
+  set stal=2
+  set tabline=%!MyTabLine()
+  set showtabline=1
+  highlight link TabNum Special
+endif
+
 
 " Custom Commands (ramy rashad)
 "map <leader>bb :cd ..<cr>
@@ -109,9 +206,9 @@ map <leader>tc :tabclose <CR>
 "map <leader>q <C-W><C-K>q
 map <leader>d :noh <cr>
 " buffer movement
-map <leader>. :bn <cr>
-map <leader>m :bp <cr>
-map <leader>k <C-^>
+"map <leader>. :bn <cr>
+"map <leader>m :bp <cr>
+map <leader>/ <C-^>
 
 "CtrlP
 nmap <leader>f :CtrlPBuffer<cr>
@@ -154,9 +251,6 @@ nmap <leader>r :e<cr>
 map <leader>g gwap
 " past from clipboard
 map <leader>p "+gP
-
-"map ; :
-"noremap ;; ;
 
 " Use the arrows to something usefull
 map <right> :bn<cr>
@@ -332,6 +426,7 @@ nmap <leader>a :call MyAck()<CR>
 " search for the word under the cursor
 nmap <leader>A :call MyAckWord()<CR>
 "nmap \X :Ack <C-r><C-w> ../. <CR>
+nmap <leader>S :call MyAckWindow()<CR>
  
 function! MyAck()
   call inputsave()
@@ -342,6 +437,10 @@ endfunction
 
 function! MyAckWord()
   execute 'Ack! "'. expand("<cword>") .'" ../'
+endfunction
+
+function! MyAckWindow()
+  execute 'AckWindow! "'. expand("<cword>") .'" ../'
 endfunction
 
  
@@ -448,6 +547,8 @@ let g:indent_guides_start_level = 4
 " _____________
 " Color Columns
 "
+set cursorcolumn
+set cursorline
 if exists('+colorcolumn')
    "
    "vim 7.3 and newer with colorcolumn
@@ -550,8 +651,10 @@ map <leader>, <plug>NERDCommenterToggle
 ""
 "" Insert/Remove a comment character (!)in column number 1 and keep cursor position
 ""
-map <leader>/ :call MyCol3()<cr>
-map <leader>? :call MyCol4()<cr>
+"map <leader>/ :call MyCol3()<cr>
+"map <leader>? :call MyCol4()<cr>
+map <leader>m :call MyCol3()<cr>
+map <leader>. :call MyCol4()<cr>
 map <leader>R :call MyCol5()<cr>
 map <leader>RR :call MyCol6()<cr>
 function! MyCol3()

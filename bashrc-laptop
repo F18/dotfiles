@@ -6,7 +6,7 @@
 # Export Path and other useful variables
 #
 #-- terminal
-export TERM=xterm-256color
+export TERM=screen-256color
 #-- home and work directories
 export MYHOME=/home/ramy/01_utias/01_local
 export MYWORK=/home/ramy/01_utias/02_oddjob/optima-verify/08_optimize
