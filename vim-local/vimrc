@@ -390,16 +390,18 @@ set laststatus=2
 "  set statusline=\ %{HasPaste()}%f\ %y\ %.40F%m%r%h\ %w\ \ %h\ \ \ %=C:%c\ L:%l\ /\%L\ (%p%%) 
 
 " Replace with new statusline:
-"set statusline=%2*%t%*\ "tail of the filename
-set statusline=%t       "tail of the filename
-set statusline+=%m      "modified flag
-set statusline+=%r      "read only flag
-set statusline+=\ \ (%<%F)    " file full path, truncate 
-set statusline+=%=      "left/right separator
-set statusline+=%y       "filetype
-set statusline+=%10((%l,%c)%)\            " line and column
-set statusline+=%P\ /                     " percentage of file 
-set statusline+=%L                        " total number of lines
+"set statusline=%2*%t%*\            "tail of the filename
+set statusline=\|\ %t                  "tail of the filename
+set statusline+=%m                 "modified flag
+set statusline+=%r                 "read only flag
+set statusline+=\ \ (%<%F)         " file full path, truncate 
+set statusline+=%=                 "left/right separator
+"set statusline+=%y                 "filetype
+"set statusline+=%10((%l,%c)%)\     " line and column
+set statusline+=\ \ C%c                 " percentage of file 
+set statusline+=\ \ L%l\/              " percentage of file 
+set statusline+=%L                 " total number of lines
+set statusline+=\ \ %P                 " percentage of file 
 
 
 """ Remove Gui Toolbar
@@ -554,10 +556,8 @@ if exists('+colorcolumn')
    "vim 7.3 and newer with colorcolumn
    "
    hi ColorColumn guibg=#3d3d3d
-   "if &t_Co > 255
-   "   hi ColorColumn ctermbg=236
-   "endif
-   hi ColorColumn ctermbg=236
+   hi ColorColumn ctermbg=234
+   "hi ColorColumn ctermbg=236
    autocmd FileType fortran set colorcolumn=6,73 
 else
    "
