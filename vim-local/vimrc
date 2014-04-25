@@ -78,8 +78,8 @@ inoremap <C-j> <Esc> :w<cr>
 
 
 " scrolling
-map ; 30<C-U>
-map <space> 30<C-D>
+map ; 30<C-U>zz
+map <space> 30<C-D>zz
 map <silent> <PageUp> 30<C-U>
 map <silent> <PageDown> 30<C-D>
 imap <silent> <PageUp> <C-O>30<C-U>
@@ -98,6 +98,8 @@ map <leader>e4 mu <C-w>o :4MPage <CR> \u zt;
 map <leader>e5 mu <C-w>o :5MPage <CR> \u zt;
 map <leader>l :MPN! 10<CR>Lzt<C-e>
 map <leader>h :MPP! 10<CR>Hzb<C-y>
+map <leader>l :MPN! 10<CR>Lzt<C-e>M<C-W>hM
+map <leader>h :MPP! 10<CR>Hzb<C-y>M<C-W>lM
 
 " Tab control
 map <leader>to :tabnew <CR>
@@ -260,8 +262,10 @@ map <left> :bp<cr>
 "set pastetoggle=<F2>
 
 " always move down a line, even if long line is not wrapped
-nnoremap j gj
-nnoremap k gk
+"noremap j gj
+"noremap k gk
+noremap j gj
+noremap k gk
 
 " fontsize plugin
 nmap <silent> <leader>+  <Plug>FontsizeBegin 
@@ -481,10 +485,10 @@ endfunction
 "map <S-F4>  :cfirst<CR> 
 " 
 " move around windows quickly
-nnoremap <C-n> <C-W>j
-nnoremap <C-k> <C-W>k
-nnoremap <C-h> <C-W>h
-nnoremap <C-l> <C-W>l
+nnoremap <C-n> <C-W>jM
+nnoremap <C-k> <C-W>kM
+nnoremap <C-h> <C-W>hM
+nnoremap <C-l> <C-W>lM
 
 " Latex Recommended settings
 "

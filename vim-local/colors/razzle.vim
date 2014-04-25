@@ -767,7 +767,10 @@ exe "hi! TabLineSel"     .s:fmt_undr   .s:fg_base01 .s:bg_base2   .s:sp_base0  .
 "exe "hi! CursorLine"     .s:fmt_uopt   .s:fg_none   .s:bg_black  .s:sp_base1
 "
 exe "hi! CursorColumn"   .s:fmt_none   .s:fg_none   .s:bg_zengrey
-exe "hi! CursorLine"     .s:fmt_uopt   .s:fg_none   .s:bg_base03  .s:sp_base1
+" light line:
+exe "hi! CursorLine"     .s:fmt_uopt   .s:fg_none   .s:bg_zengrey  .s:sp_base1
+" dark line:
+"exe "hi! CursorLine"     .s:fmt_uopt   .s:fg_none   .s:bg_base03  .s:sp_base1
 
 exe "hi! ColorColumn"    .s:fmt_none   .s:fg_none   .s:bg_base03
 
