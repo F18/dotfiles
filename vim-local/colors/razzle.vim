@@ -299,7 +299,7 @@ elseif g:solarized_termcolors != 256 && &t_Co >= 16
     let s:cyan        = "6"
     let s:green       = "2"
 elseif g:solarized_termcolors == 256
-    "RR: These are the terminal colors for your kolor/zenburn mix
+    "RR: These are the terminal colors for your kolor/zenburn mix called "razzle"
     let s:vmode       = "cterm"
     let s:base03      = "234" " background color (set by terminal's colorscheme)
     let s:base02      = "236" " background highlights
@@ -318,10 +318,14 @@ elseif g:solarized_termcolors == 256
     let s:cyan        = "37"
     let s:green       = "64"
     let s:pink        = "138"
+    let s:black       = "000"
+    let s:white       = "015"
     let s:zengreen    = "108"
     let s:zenred      = "168"
     let s:zenblue     = "033"
     let s:zenblue2    = "031"
+    let s:zengrey     = "236"
+    let s:zenbackground  = "235"
     " Extras color combos
     "
     "let s:base01      = "103" " comments / secondary content
@@ -489,14 +493,18 @@ exe "let s:bg_violet    = ' ".s:vmode."bg=".s:violet ."'"
 exe "let s:bg_blue      = ' ".s:vmode."bg=".s:blue   ."'"
 exe "let s:bg_cyan      = ' ".s:vmode."bg=".s:cyan   ."'"
 " Adding my own colors
+exe "let s:bg_black  = ' ".s:vmode."bg=".s:black."'"
+exe "let s:bg_white  = ' ".s:vmode."bg=".s:white."'"
 exe "let s:bg_zengreen  = ' ".s:vmode."bg=".s:zengreen."'"
 exe "let s:bg_zenred  = ' ".s:vmode."bg=".s:zenred."'"
 exe "let s:bg_zenblue  = ' ".s:vmode."bg=".s:zenblue."'"
 exe "let s:bg_zenblue2  = ' ".s:vmode."bg=".s:zenblue2."'"
+exe "let s:bg_zengrey      = ' ".s:vmode."bg=".s:zengrey."'"
+exe "let s:bg_zenbackground      = ' ".s:vmode."bg=".s:zenbackground."'"
 exe "let s:bg_pink      = ' ".s:vmode."bg=".s:pink."'"
 
 exe "let s:fg_none      = ' ".s:vmode."fg=".s:none   ."'"
-exe "let s:fg_back      = ' ".s:vmode."fg=".s:back   ."'"
+exe "let s:fg_black      = ' ".s:vmode."fg=".s:black   ."'"
 exe "let s:fg_base03    = ' ".s:vmode."fg=".s:base03 ."'"
 exe "let s:fg_base02    = ' ".s:vmode."fg=".s:base02 ."'"
 exe "let s:fg_base01    = ' ".s:vmode."fg=".s:base01 ."'"
@@ -514,10 +522,13 @@ exe "let s:fg_violet    = ' ".s:vmode."fg=".s:violet ."'"
 exe "let s:fg_blue      = ' ".s:vmode."fg=".s:blue   ."'"
 exe "let s:fg_cyan      = ' ".s:vmode."fg=".s:cyan   ."'"
 " Adding my own colors
+exe "let s:fg_white  = ' ".s:vmode."fg=".s:white."'"
 exe "let s:fg_zengreen  = ' ".s:vmode."fg=".s:zengreen."'"
 exe "let s:fg_zenred  = ' ".s:vmode."fg=".s:zenred."'"
 exe "let s:fg_zenblue  = ' ".s:vmode."fg=".s:zenblue."'"
 exe "let s:fg_zenblue2  = ' ".s:vmode."fg=".s:zenblue2."'"
+exe "let s:fg_zengrey  = ' ".s:vmode."fg=".s:zengrey."'"
+exe "let s:fg_zenbackground  = ' ".s:vmode."fg=".s:zenbackground."'"
 exe "let s:fg_pink      = ' ".s:vmode."fg=".s:pink."'"
 
 exe "let s:fmt_none     = ' ".s:vmode."=NONE".          " term=NONE".    "'"
@@ -676,25 +687,33 @@ else
     exe "hi! SpecialKey" .s:fmt_bold   .s:fg_base00 .s:bg_base02
     exe "hi! NonText"    .s:fmt_bold   .s:fg_base00 .s:bg_none
 endif
-exe "hi! StatusLine"     .s:fmt_none   .s:fg_base1  .s:bg_base02 .s:fmt_revbb
-exe "hi! StatusLineNC"   .s:fmt_none   .s:fg_base00 .s:bg_base02 .s:fmt_revbb
-exe "hi! Visual"         .s:fmt_none   .s:fg_base01 .s:bg_base03 .s:fmt_revbb
+"RR: statusline
+exe "hi! StatusLine"     .s:fmt_none   .s:fg_zengreen  .s:bg_black .s:fmt_revbb
+exe "hi! StatusLineNC"   .s:fmt_none   .s:fg_base00 .s:bg_black .s:fmt_revbb
+"exe "hi! StatusLine"     .s:fmt_none   .s:fg_base1  .s:bg_base02 .s:fmt_revbb
+"exe "hi! StatusLineNC"   .s:fmt_none   .s:fg_base00 .s:bg_base02 .s:fmt_revbb
+"RR: visual selection mode
+"exe "hi! Visual"         .s:fmt_none   .s:fg_base01 .s:bg_base03 .s:fmt_revbb
+exe "hi! Visual"         .s:fmt_none   .s:fg_zenblue2 .s:bg_base03 .s:fmt_revbb
 exe "hi! Directory"      .s:fmt_none   .s:fg_blue   .s:bg_none
 exe "hi! ErrorMsg"       .s:fmt_revr   .s:fg_red    .s:bg_none
 "RR: highlighting
 " IncSearch = highlight as you type it
 " Search = results of search
 exe "hi! IncSearch"      .s:fmt_stnd   .s:fg_orange .s:bg_none
-exe "hi! Search"         .s:fmt_revr   .s:fg_base03 .s:bg_orange
+exe "hi! Search"         .s:fmt_stnd   .s:fg_orange .s:bg_black
 "exe "hi! Search"         .s:fmt_revr   .s:fg_yellow .s:bg_none
 exe "hi! MoreMsg"        .s:fmt_none   .s:fg_blue   .s:bg_none
 exe "hi! ModeMsg"        .s:fmt_none   .s:fg_blue   .s:bg_none
 exe "hi! LineNr"         .s:fmt_none   .s:fg_base01 .s:bg_base02
 exe "hi! Question"       .s:fmt_bold   .s:fg_cyan   .s:bg_none
 if ( has("gui_running") || &t_Co > 8 )
-    exe "hi! VertSplit"  .s:fmt_none   .s:fg_base00 .s:bg_base00
+    "RR: Vertical Split
+    exe "hi! VertSplit"  .s:fmt_none   .s:fg_zenbackground .s:bg_none
+    "exe "hi! VertSplit"  .s:fmt_none   .s:fg_black .s:bg_none
+    "exe "hi! VertSplit"  .s:fmt_none   .s:fg_base00 .s:bg_base00
 else
-    exe "hi! VertSplit"  .s:fmt_revbb  .s:fg_base02 .s:bg_base03
+    "exe "hi! VertSplit"  .s:fmt_revbb  .s:fg_base02 .s:bg_base03
 endif
 "RR: TITLE: subroutine, use, etc
 "exe "hi! Title"          .s:fmt_bold   .s:fg_orange .s:bg_none
@@ -740,9 +759,21 @@ exe "hi! PmenuThumb"     .s:fmt_none   .s:fg_base0  .s:bg_base03  .s:fmt_revbb
 exe "hi! TabLine"        .s:fmt_undr   .s:fg_base0  .s:bg_base02  .s:sp_base0
 exe "hi! TabLineFill"    .s:fmt_undr   .s:fg_base0  .s:bg_base02  .s:sp_base0
 exe "hi! TabLineSel"     .s:fmt_undr   .s:fg_base01 .s:bg_base2   .s:sp_base0  .s:fmt_revbbu
-exe "hi! CursorColumn"   .s:fmt_none   .s:fg_none   .s:bg_base02
-exe "hi! CursorLine"     .s:fmt_uopt   .s:fg_none   .s:bg_base02  .s:sp_base1
-exe "hi! ColorColumn"    .s:fmt_none   .s:fg_none   .s:bg_base02
+"RR: Cursor's current Column and Line highlighting
+"exe "hi! CursorColumn"   .s:fmt_none   .s:fg_none   .s:bg_base02
+"exe "hi! CursorLine"     .s:fmt_uopt   .s:fg_none   .s:bg_base02  .s:sp_base1
+"exe "hi! CursorColumn"   .s:fmt_none   .s:fg_none   .s:bg_zengrey
+"exe "hi! CursorColumn"   .s:fmt_none   .s:fg_none   .s:bg_base03
+"exe "hi! CursorLine"     .s:fmt_uopt   .s:fg_none   .s:bg_black  .s:sp_base1
+"
+exe "hi! CursorColumn"   .s:fmt_none   .s:fg_none   .s:bg_zengrey
+" light line:
+exe "hi! CursorLine"     .s:fmt_uopt   .s:fg_none   .s:bg_zengrey  .s:sp_base1
+" dark line:
+"exe "hi! CursorLine"     .s:fmt_uopt   .s:fg_none   .s:bg_base03  .s:sp_base1
+
+exe "hi! ColorColumn"    .s:fmt_none   .s:fg_none   .s:bg_base03
+
 exe "hi! Cursor"         .s:fmt_none   .s:fg_base03 .s:bg_base0
 hi! link lCursor Cursor
 exe "hi! MatchParen"     .s:fmt_bold   .s:fg_red    .s:bg_base01
