@@ -11,6 +11,7 @@ set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-indent-guides
 set runtimepath+=~/dotfiles/vim-local/myPlugins/ack
 set runtimepath+=~/dotfiles/vim-local/myPlugins/nerd-commenter
 set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-airline
+set runtimepath+=~/dotfiles/vim-local/myPlugins/indentLine
 "set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-togglecursor
 
 " first remap the "leader" key before setting , as the leader
@@ -573,7 +574,14 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=black   ctermbg=black
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=darkgrey ctermbg=darkgrey
 let g:indent_guides_start_level = 4
 
+" ___________________
+" Indent Lines Plugin
+"
+let g:indentLine_enabled=1
+let g:indentLine_color_term = 108
+"let g:indentLine_char = '|'
 
+"
 " _____________
 " Color Columns
 "
