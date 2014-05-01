@@ -10,6 +10,7 @@ set runtimepath+=~/dotfiles/vim-local/myPlugins/mpage
 set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-indent-guides
 set runtimepath+=~/dotfiles/vim-local/myPlugins/ack
 set runtimepath+=~/dotfiles/vim-local/myPlugins/nerd-commenter
+set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-airline
 "set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-togglecursor
 
 " first remap the "leader" key before setting , as the leader
@@ -18,7 +19,7 @@ noremap " ,
 " the following maps \ to ' before mapping ' to ;
 noremap \ '
 noremap ' ;
-" Now map the leader key. With a map leader it's possible to do 
+" Now map the leader key. With a map leader it's possible to do
 " extra key combinations, such as <leader>w to save the current file
 let mapleader = ","
 let g:mapleader = ","
@@ -70,13 +71,11 @@ set splitright
 " disable jump targets  (allows you to bind <C-J>)
 let g:BASH_Ctrl_j = 'off'
 
-" dummy mapping to avoid going into insert mode with <C-j>
-map <C-j> jk
-" map the escape key 
+" map the escape key
 noremap! jj <Esc>
-inoremap <C-j> <Esc> :w<cr>
-
-
+noremap <C-j> :w<cr> :noh<cr>
+inoremap <C-j> <Esc> :w<cr> :noh<cr>
+"
 " scrolling
 " always move down a line, even if long line is not wrapped
 "noremap j gj
@@ -103,8 +102,8 @@ map <leader>e4 mu <C-w>o :4MPage <CR> \u zt;
 map <leader>e5 mu <C-w>o :5MPage <CR> \u zt;
 "map <leader>l :MPN! 10<CR>Lzt<C-e>
 "map <leader>h :MPP! 10<CR>Hzb<C-y>
-map <leader>. :MPN! 10<CR>Lzt<C-e>M<C-W>hM
-map <leader>m :MPP! 10<CR>Hzb<C-y>M<C-W>lM
+map <leader><space> :MPN! 10<CR>Lzt<C-e>M<C-W>hM
+map <leader>; :MPP! 10<CR>Hzb<C-y>M<C-W>lM
 
 " Tab control
 map <leader>to :tabnew <CR>
@@ -113,34 +112,34 @@ map <leader>tn :tabnext <CR>
   map <leader>J  :tabprevious <CR>
   map <leader>j  :tabnext <CR>
   map <leader>tc :tabclose <CR>
-  " Go to tab by number                                                                                                                           
+  " Go to tab by number
   noremap <leader>1 1gt
   noremap <leader>2 2gt
-  noremap <leader>3 3gt                                                                                                                            
-  noremap <leader>4 4gt                                                                                                                           
-  noremap <leader>5 5gt                                                                                                                            
-  noremap <leader>6 6gt                                                                                                                            
-  noremap <leader>7 7gt                                                                                                                            
-  noremap <leader>8 8gt                                                                                                                            
-  noremap <leader>9 9gt                                                                                                                            
+  noremap <leader>3 3gt
+  noremap <leader>4 4gt
+  noremap <leader>5 5gt
+  noremap <leader>6 6gt
+  noremap <leader>7 7gt
+  noremap <leader>8 8gt
+  noremap <leader>9 9gt
   noremap <leader>0 :tablast<cr>
 
-  " return to the last tab page visited.                                                                        
+  " return to the last tab page visited.
   let g:lasttab = 1
   nmap <Leader>k :exe "tabn ".g:lasttab<CR>
   au TabLeave * let g:lasttab = tabpagenr()
 
-  ":map <leader>j :exe "tabn " . g:ltv<CR>                                                                              
-  "" referred to by TabLeave autocmd.                                                                            
-  ":function! Setlasttabpagevisited()                                                                              
-  ":  let g:ltv = tabpagenr()                                                                                
-  ":endfunction          
-  ":augroup localtl                                                                                            
-  "" Remove all localtl autocommands                                                                          
-  ":au!                                                                                                    
-  "" keep tally of the last tab page visited.                                                            
-  ":autocmd TabLeave * call Setlasttabpagevisited()                                                        
-  ":augroup END                                                        
+  ":map <leader>j :exe "tabn " . g:ltv<CR>
+  "" referred to by TabLeave autocmd.
+  ":function! Setlasttabpagevisited()
+  ":  let g:ltv = tabpagenr()
+  ":endfunction
+  ":augroup localtl
+  "" Remove all localtl autocommands
+  ":au!
+  "" keep tally of the last tab page visited.
+  ":autocmd TabLeave * call Setlasttabpagevisited()
+  ":augroup END
   ":autocmd VimEnter * let g:ltv = 1
 
 
@@ -195,11 +194,11 @@ map <leader>tn :tabnext <CR>
   "map <leader>bb :cd ..<cr>
   "map <leader>co :cd ~/01_utias/02_oddjob/optima/optima2D<cr>
   "map <leader>s :w <cr> ,ll <cr>
-  "map <leader>s :w <cr> :make 
+  "map <leader>s :w <cr> :make
   "map <leader>a :w <cr>:make <cr> <C-o>
 
   "" Compile command in gnu-screen
-  "" - sends the command to window 1 in the same 
+  "" - sends the command to window 1 in the same
   ""   gnu-screen session the ^M is from typing (Ctrl-v Enter)
   "function! GNUscreenCmd1()
   "  :!screen -X at 1 stuff make
@@ -209,7 +208,7 @@ map <leader>tn :tabnext <CR>
   "endfunction
   "map <leader>a :w <cr>:call GNUscreenCmd1() <cr><cr>
   "map <leader>c :w <cr>:call GNUscreenCmd2() <cr><cr>
-  " 
+  "
   "map <leader>q <C-W><C-K>q
   map <leader>d :noh <cr>
   " buffer movement
@@ -235,7 +234,7 @@ map <leader>tn :tabnext <CR>
   " indent code in visual mode
   "noremap <leader>f ==<Esc>
   " Fast opening (replaced with buffer searcher)
-  "nmap <leader>e :e 
+  "nmap <leader>e :e
   " Fast close buffer
   " closes buffer without closing window (bclose plugin)
   nmap <leader>b :Bclose <CR>
@@ -268,10 +267,10 @@ map <leader>tn :tabnext <CR>
 
 
   " fontsize plugin
-  nmap <silent> <leader>+  <Plug>FontsizeBegin 
-  nmap <silent> <leader>=  <Plug>FontsizeInc 
-  nmap <silent> <leader>-  <Plug>FontsizeDec 
-  nmap <silent> <leader>0  <Plug>FontsizeDefault 
+  nmap <silent> <leader>+  <Plug>FontsizeBegin
+  nmap <silent> <leader>=  <Plug>FontsizeInc
+  nmap <silent> <leader>-  <Plug>FontsizeDec
+  nmap <silent> <leader>0  <Plug>FontsizeDefault
 
 
   """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -298,7 +297,7 @@ map <leader>tn :tabnext <CR>
   set hlsearch "Highlight search things
 
   set incsearch "Make search act like search in modern browsers
-  set nolazyredraw "Don't redraw while executing macros 
+  set nolazyredraw "Don't redraw while executing macros
 
   " Center the search results
   nnoremap n nzz
@@ -342,7 +341,7 @@ map <leader>tn :tabnext <CR>
     let origcurdir = getcwd()
     let curdir = origcurdir
     let prevdir = ""
-   
+
     while curdir != prevdir
       if filereadable(".fuzzyfinder")
         break
@@ -351,14 +350,14 @@ map <leader>tn :tabnext <CR>
       let prevdir = curdir
       let curdir = getcwd()
     endwhile
-   
+
     if filereadable(".fuzzyfinder")
       let items = readfile(".fuzzyfinder")
       let files = []
       for n in items
         let files += split(glob(curdir . "/" . n), "\n")
       endfor
-   
+
       call fuf#givenfile#launch('', 0, '>', files)
     endif
   endfunction
@@ -375,37 +374,59 @@ map <leader>tn :tabnext <CR>
   """"""""""""""""""""""""""""""
   " => Statusline
   """"""""""""""""""""""""""""""
+
+
   " Always hide the statusline
   set laststatus=2
 
   "  function! CurDir()
   "      return substitute(getcwd(), '/Users/amir/', "~/", "g")
   "  endfunction
-  "  
+  "
   "  function! HasPaste()
   "      if &paste
   "          return 'PASTE MODE  '
   "      en
   "      return ''
   "  endfunction
-  "  
+  "
   "  " Format the statusline
   "  " set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{CurDir()}%h\ \ \ Line:\ %l/%L
-  "  set statusline=\ %{HasPaste()}%f\ %y\ %.40F%m%r%h\ %w\ \ %h\ \ \ %=C:%c\ L:%l\ /\%L\ (%p%%) 
+  "  set statusline=\ %{HasPaste()}%f\ %y\ %.40F%m%r%h\ %w\ \ %h\ \ \ %=C:%c\ L:%l\ /\%L\ (%p%%)
 
   " Replace with new statusline:
   "set statusline=%2*%t%*\            "tail of the filename
-  set statusline=\|\ %t                  "tail of the filename
+  set statusline=\|\[\%t\]\|                  "tail of the filename
   set statusline+=%m                 "modified flag
   set statusline+=%r                 "read only flag
-  set statusline+=\ \ (%<%F)         " file full path, truncate 
+  set statusline+=\ \ (%<%F)         " file full path, truncate
   set statusline+=%=                 "left/right separator
   "set statusline+=%y                 "filetype
   "set statusline+=%10((%l,%c)%)\     " line and column
-  set statusline+=\ \ C%c                 " percentage of file 
-  set statusline+=\ \ L%l\/              " percentage of file 
+  set statusline+=\ \ C%c                 " percentage of file
+  set statusline+=\ \ L%l\/              " percentage of file
   set statusline+=%L                 " total number of lines
-  set statusline+=\ \ %P                 " percentage of file 
+  set statusline+=\ \ %P                 " percentage of file
+
+  "
+  " All statusline code above is overtaken by the vim-airline plugin
+  "let g:airline_theme             = 'luna'
+  let g:airline_theme             = 'bubblegum'
+  let g:airline_enable_branch     = 1
+  let g:airline_enable_syntastic  = 1
+  " vim-powerline symbols
+  "let g:airline_left_sep          = '⮀'
+  "let g:airline_left_alt_sep      = '⮁'
+  "let g:airline_right_sep         = '⮂'
+  "let g:airline_right_alt_sep     = '⮃'
+  "let g:airline_branch_prefix     = '⭠'
+  "let g:airline_readonly_symbol   = '⭤'
+  "let g:airline_linecolumn_prefix = '⭡'
+
+  "let g:airline_powerline_fonts = 1
+  "let g:airline#extensions#tabline#enabled = 1
+  "let g:airline#extensions#tabline#left_sep = ' '
+  "let g:airline#extensions#tabline#left_alt_sep = '|'
 
 
   """ Remove Gui Toolbar
@@ -433,7 +454,7 @@ map <leader>tn :tabnext <CR>
   nmap <leader>A :call MyAckWord()<CR>
   "nmap \X :Ack <C-r><C-w> ../. <CR>
   nmap <leader>S :call MyAckWindow()<CR>
-   
+
   function! MyAck()
     call inputsave()
     let g:myname = input("Search: ")
@@ -449,7 +470,7 @@ map <leader>tn :tabnext <CR>
     execute 'AckWindow! "'. expand("<cword>") .'" ../'
   endfunction
 
-   
+
   " Grepping Tools
   "
   " Grep for word under cursor and change to quicklist window
@@ -474,16 +495,16 @@ map <leader>tn :tabnext <CR>
     call inputrestore()
   endfunction
 
-  " mappings to navigate the quickfix list 
-  "nmap <S-F1>  :cc 
+  " mappings to navigate the quickfix list
+  "nmap <S-F1>  :cc
   " These don't work well for some reason
-  "nmap P :cn<CR> 
-  "nmap N :cp<CR> 
-  "map <F3>    :cnfile<CR> 
-  "map <S-F3>  :cpfile<CR> 
-  "map <F4>    :clast<CR> 
-  "map <S-F4>  :cfirst<CR> 
-  " 
+  "nmap P :cn<CR>
+  "nmap N :cp<CR>
+  "map <F3>    :cnfile<CR>
+  "map <S-F3>  :cpfile<CR>
+  "map <F4>    :clast<CR>
+  "map <S-F4>  :cfirst<CR>
+  "
   " move around windows quickly
   nnoremap <C-n> <C-W>jM
   nnoremap <C-k> <C-W>kM
@@ -526,7 +547,7 @@ map <leader>tn :tabnext <CR>
   " let Tlist_Ctags_Cmd='/usr/bin/etags'
   ":set tags=~/01_utias/01_local/optima/optima2D/tags
 
-  " add filetypes to fortran 
+  " add filetypes to fortran
   "syntax on
   filetype on
   au BufNewFile,BufRead *.inc set filetype=fortran
@@ -541,6 +562,9 @@ map <leader>tn :tabnext <CR>
   let fortran_do_enddo=1
 " only for f90 files:
 "au! BufRead,BufNewFile *.f90 let b:fortran_do_enddo=1
+  autocmd BufWritePre *.f :%s/\s\+$//e
+  autocmd BufWritePre *.f90 :%s/\s\+$//e
+  autocmd BufWritePre *.f70 :%s/\s\+$//e
 "
 " ________________
 " Vim Indent Guides
@@ -562,7 +586,7 @@ if exists('+colorcolumn')
    hi ColorColumn guibg=#3d3d3d
    hi ColorColumn ctermbg=234
    "hi ColorColumn ctermbg=236
-   autocmd FileType fortran set colorcolumn=6,73 
+   autocmd FileType fortran set colorcolumn=6,73
 else
    "
    "vim 7.2 and older without colorcolumn
@@ -620,7 +644,7 @@ endif
 " set nobackup
 " set nowritebackup
 map <S-F12> :W <CR> ; :exec "!makebg" v:servername "'" . &makeprg . "'" &makeef<CR><CR>
-"map <F12> :w <CR> ; :exec "!rm " &makeef "; makebg" v:servername "'" . &makeprg . "'"  
+"map <F12> :w <CR> ; :exec "!rm " &makeef "; makebg" v:servername "'" . &makeprg . "'"
 map <F12> :w <CR> ; :exec "!rm error.err" "; makebg" v:servername "'" . &makeprg . "'" "&makeef<CR><CR>
 
 ""
@@ -657,10 +681,8 @@ map <leader>n <plug>NERDCommenterToggle
 ""
 "map <leader>/ :call MyCol3()<cr>
 "map <leader>? :call MyCol4()<cr>
-map <leader>, :call MyCol3()<cr>
-map <leader>< :call MyCol4()<cr>
-"map <leader>m :call MyCol3()<cr>
-"map <leader>. :call MyCol4()<cr>
+map <leader>m :call MyCol3()<cr>
+map <leader>. :call MyCol4()<cr>
 map <leader>R :call MyCol5()<cr>
 map <leader>RR :call MyCol6()<cr>
 function! MyCol3()
