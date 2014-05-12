@@ -37,7 +37,10 @@ WD="\W"
 # Good ones:
 #
 #PS1="$LBRACE$RED\w$RBRACE\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW\W$RBRACE$NONE$ "
+#1) zenburn
 PS1="$RED\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW\W$RBRACE$NONE$ "
+#2) solarized
+PS1="$LIGHT_BLUE\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW\W$RBRACE$NONE$ "
 export PS1
 #
 # Old ones:

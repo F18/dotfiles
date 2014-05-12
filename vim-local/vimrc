@@ -11,7 +11,7 @@ set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-indent-guides
 set runtimepath+=~/dotfiles/vim-local/myPlugins/ack
 set runtimepath+=~/dotfiles/vim-local/myPlugins/nerd-commenter
 set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-airline
-set runtimepath+=~/dotfiles/vim-local/myPlugins/indentLine
+"set runtimepath+=~/dotfiles/vim-local/myPlugins/indentLine
 "set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-togglecursor
 
 " first remap the "leader" key before setting , as the leader
@@ -27,7 +27,7 @@ let g:mapleader = ","
 
 syntax enable "Enable syntax hl
 
-set gfn=Consolas\ 13
+set gfn=PragmataPro\ 9
 set shell=/bin/bash
 
 "set t_Co=256
@@ -48,7 +48,8 @@ set shell=/bin/bash
   "let g:solarized_termcolors=&t_Co
   "let g:solarized_termtrans=1
 "endif
-"colorscheme solarized
+"colorscheme razzle
+colorscheme solarized
 "-- razzle
 set t_Co=256
 set background=dark
@@ -56,7 +57,6 @@ if !has('gui_running')
   let g:solarized_termcolors=&t_Co
   let g:solarized_termtrans=1
 endif
-colorscheme razzle
 
 " faster buffering in xterm
 set ttyfast
@@ -411,8 +411,9 @@ map <leader>tn :tabnext <CR>
 
   "
   " All statusline code above is overtaken by the vim-airline plugin
-  "let g:airline_theme             = 'luna'
-  let g:airline_theme             = 'bubblegum'
+  let g:airline_theme             = 'luna'
+  "let g:airline_theme             = 'bubblegum'
+  "let g:airline_theme             = 'solarized'
   let g:airline_enable_branch     = 1
   let g:airline_enable_syntastic  = 1
   " vim-powerline symbols
@@ -424,14 +425,15 @@ map <leader>tn :tabnext <CR>
   "let g:airline_readonly_symbol   = '⭤'
   "let g:airline_linecolumn_prefix = '⭡'
 
-  "let g:airline_powerline_fonts = 1
-  "let g:airline#extensions#tabline#enabled = 1
-  "let g:airline#extensions#tabline#left_sep = ' '
-  "let g:airline#extensions#tabline#left_alt_sep = '|'
+  let g:airline_powerline_fonts = 0
+  let g:airline#extensions#tabline#enabled = 1
+  let g:airline#extensions#tabline#left_sep = ' '
+  let g:airline#extensions#tabline#left_alt_sep = '|'
 
 
-  """ Remove Gui Toolbar
-  set guioptions-=T
+  """ Remove Gui Toolbar and scroll bars
+  set guioptions=
+  set guioptions-=mTrL
 
 
   " redef C-j to C-g to move toward Latex <+>
@@ -585,14 +587,15 @@ let g:indentLine_color_term = 108
 " _____________
 " Color Columns
 "
-set cursorcolumn
-set cursorline
+"set cursorcolumn
+"set cursorline
 if exists('+colorcolumn')
    "
    "vim 7.3 and newer with colorcolumn
    "
-   hi ColorColumn guibg=#3d3d3d
-   hi ColorColumn ctermbg=234
+   "hi ColorColumn guibg=#3d3d3d
+   " RR: colorsheme relatted
+   "hi ColorColumn ctermbg=234
    "hi ColorColumn ctermbg=236
    autocmd FileType fortran set colorcolumn=6,73
 else
