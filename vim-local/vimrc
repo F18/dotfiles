@@ -48,7 +48,7 @@ set shell=/bin/bash
   "let g:solarized_termcolors=&t_Co
   "let g:solarized_termtrans=1
 "endif
-"colorscheme solarized
+colorscheme solarized
 "-- razzle
 set t_Co=256
 set background=dark
@@ -56,7 +56,7 @@ if !has('gui_running')
   let g:solarized_termcolors=&t_Co
   let g:solarized_termtrans=1
 endif
-colorscheme razzle
+"colorscheme razzle
 
 " faster buffering in xterm
 set ttyfast
@@ -99,12 +99,13 @@ set nostartofline
 map <leader>e0 mu :MPage <CR> \u zt;
 map <leader>e2 mu <C-w>o :2MPage <CR> \u zt;
 map <leader>e3 mu <C-w>o :3MPage <CR> \u zt;
+map <leader>, mu <C-w>o :4MPage <CR> \u zt;
 map <leader>e4 mu <C-w>o :4MPage <CR> \u zt;
 map <leader>e5 mu <C-w>o :5MPage <CR> \u zt;
 "map <leader>l :MPN! 10<CR>Lzt<C-e>
 "map <leader>h :MPP! 10<CR>Hzb<C-y>
-map <leader><space> :MPN! 10<CR>Lzt<C-e>M<C-W>hM
-map <leader>; :MPP! 10<CR>Hzb<C-y>M<C-W>lM
+map <leader><space> :MPN! 10<CR>Lzt<C-e>M<C-W>h<C-W>hM
+map <leader>; :MPP! 10<CR>Hzb<C-y>M<C-W>l<C-W>lM
 
 " Tab control
 map <leader>to :tabnew <CR>
@@ -397,17 +398,17 @@ map <leader>tn :tabnext <CR>
 
   " Replace with new statusline:
   "set statusline=%2*%t%*\            "tail of the filename
-  set statusline=\|\[\%t\]\|                  "tail of the filename
-  set statusline+=%m                 "modified flag
-  set statusline+=%r                 "read only flag
-  set statusline+=\ \ (%<%F)         " file full path, truncate
-  set statusline+=%=                 "left/right separator
-  "set statusline+=%y                 "filetype
-  "set statusline+=%10((%l,%c)%)\     " line and column
-  set statusline+=\ \ C%c                 " percentage of file
-  set statusline+=\ \ L%l\/              " percentage of file
-  set statusline+=%L                 " total number of lines
-  set statusline+=\ \ %P                 " percentage of file
+" set statusline=\|\[\%t\]\|                  "tail of the filename
+" set statusline+=%m                 "modified flag
+" set statusline+=%r                 "read only flag
+" set statusline+=\ \ (%<%F)         " file full path, truncate
+" set statusline+=%=                 "left/right separator
+" "set statusline+=%y                 "filetype
+" "set statusline+=%10((%l,%c)%)\     " line and column
+" set statusline+=\ \ C%c                 " percentage of file
+" set statusline+=\ \ L%l\/              " percentage of file
+" set statusline+=%L                 " total number of lines
+" set statusline+=\ \ %P                 " percentage of file
 
   "
   " All statusline code above is overtaken by the vim-airline plugin
@@ -415,19 +416,10 @@ map <leader>tn :tabnext <CR>
   let g:airline_theme             = 'bubblegum'
   let g:airline_enable_branch     = 1
   let g:airline_enable_syntastic  = 1
-  " vim-powerline symbols
-  "let g:airline_left_sep          = '⮀'
-  "let g:airline_left_alt_sep      = '⮁'
-  "let g:airline_right_sep         = '⮂'
-  "let g:airline_right_alt_sep     = '⮃'
-  "let g:airline_branch_prefix     = '⭠'
-  "let g:airline_readonly_symbol   = '⭤'
-  "let g:airline_linecolumn_prefix = '⭡'
-
-  "let g:airline_powerline_fonts = 1
-  "let g:airline#extensions#tabline#enabled = 1
-  "let g:airline#extensions#tabline#left_sep = ' '
-  "let g:airline#extensions#tabline#left_alt_sep = '|'
+  let g:airline#extensions#tabline#enabled = 1
+  let g:airline#extensions#tabline#tab_nr_type = 1
+  let g:airline#extensions#tabline#left_sep = ' '
+  let g:airline#extensions#tabline#left_alt_sep = '|'
 
 
   """ Remove Gui Toolbar
@@ -563,9 +555,9 @@ map <leader>tn :tabnext <CR>
   let fortran_do_enddo=1
 " only for f90 files:
 "au! BufRead,BufNewFile *.f90 let b:fortran_do_enddo=1
-  autocmd BufWritePre *.f :%s/\s\+$//e
-  autocmd BufWritePre *.f90 :%s/\s\+$//e
-  autocmd BufWritePre *.f70 :%s/\s\+$//e
+  "autocmd BufWritePre *.f :%s/\s\+$//e
+  "autocmd BufWritePre *.f90 :%s/\s\+$//e
+  "autocmd BufWritePre *.f70 :%s/\s\+$//e
 "
 " ________________
 " Vim Indent Guides
