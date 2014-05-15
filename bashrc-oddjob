@@ -7,6 +7,7 @@
 #
 #-- terminal
 export TERM=screen-256color # works for tmux
+#export TERM=screen # works for tmux
 #-- home and work directories
 export MYHOME=/nfs/carv/d1/people/ramy
 export MYWORK=/nfs/carv/d1/people/ramy/optima-verify/08_optimize
