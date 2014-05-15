@@ -700,9 +700,9 @@ exe "hi! CursorColumn"   .s:fmt_none   .s:fg_none   .s:bg_rrbase04
 exe "hi! CursorLine"     .s:fmt_uopt   .s:fg_none   .s:bg_base02  .s:sp_base1
 "RR: ColorColumn custimization
 "1) default
-"exe "hi! ColorColumn"    .s:fmt_none   .s:fg_none   .s:bg_base02
-"2) very faint base color
-exe "hi! ColorColumn"    .s:fmt_none   .s:fg_none   .s:bg_rrbase04
+exe "hi! ColorColumn"    .s:fmt_none   .s:fg_none   .s:bg_base02
+"2) solarized dark (very faint base color)
+"exe "hi! ColorColumn"    .s:fmt_none   .s:fg_none   .s:bg_rrbase04
 "
 exe "hi! Cursor"         .s:fmt_none   .s:fg_base03 .s:bg_base0
 hi! link lCursor Cursor
