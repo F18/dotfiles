@@ -302,7 +302,7 @@ elseif g:solarized_termcolors != 256 && &t_Co >= 16
     let s:blue        = "4"
     let s:cyan        = "6"
     let s:green       = "2"
-    let s:rrbase04    = "23"
+    let s:rrbase04    = "0"
 elseif g:solarized_termcolors == 256
     let s:vmode       = "cterm"
     let s:base03      = "234"
@@ -321,7 +321,7 @@ elseif g:solarized_termcolors == 256
     let s:blue        = "33"
     let s:cyan        = "37"
     let s:green       = "64"
-    let s:rrbase04    = "23"
+    let s:rrbase04    = "0"
 else
     let s:vmode       = "cterm"
     let s:bright      = "* term=bold cterm=bold"
@@ -357,8 +357,7 @@ else
     let s:blue        = "DarkBlue"      " 4
     let s:cyan        = "DarkCyan"      " 6
     let s:green       = "DarkGreen"     " 2
-    let s:rrbase04    = "23"
-
+    let s:rrbase04    = "Black"         " 0
 endif
 "}}}
 " Formatting options and null values for passthrough effect "{{{
@@ -518,6 +517,7 @@ if has("gui_running")
     exe "let s:sp_violet    = ' guisp=".s:violet ."'"
     exe "let s:sp_blue      = ' guisp=".s:blue   ."'"
     exe "let s:sp_cyan      = ' guisp=".s:cyan   ."'"
+    exe "let s:sp_rrbase04  = ' guisp=".s:rrbase04  ."'"
 else
     let s:sp_none      = ""
     let s:sp_back      = ""
@@ -537,6 +537,7 @@ else
     let s:sp_violet    = ""
     let s:sp_blue      = ""
     let s:sp_cyan      = ""
+    let s:sp_rrbase04  = ""
 endif
 
 "}}}
@@ -584,13 +585,14 @@ exe "hi! Type"           .s:fmt_none   .s:fg_yellow .s:bg_none
 "        Structure       struct, union, enum, etc.
 "        Typedef         A typedef
 
-exe "hi! Special"        .s:fmt_none   .s:fg_red    .s:bg_none
+exe "hi! Special"        .s:fmt_none   .s:fg_green    .s:bg_none
 "       *Special         any special symbol
 "        SpecialChar     special character in a constant
 "        Tag             you can use CTRL-] on this
 "        Delimiter       character that needs attention
 "        SpecialComment  special things inside a comment
 "        Debug           debugging statements
+"        RR: fortran's format specifier number and continuation character
 
 exe "hi! Underlined"     .s:fmt_none   .s:fg_violet .s:bg_none
 "       *Underlined      text that stands out, HTML links
@@ -698,9 +700,10 @@ exe "hi! CursorColumn"   .s:fmt_none   .s:fg_none   .s:bg_rrbase04
 exe "hi! CursorLine"     .s:fmt_uopt   .s:fg_none   .s:bg_base02  .s:sp_base1
 "RR: ColorColumn custimization
 "1) default
-exe "hi! ColorColumn"    .s:fmt_none   .s:fg_none   .s:bg_base02
+"exe "hi! ColorColumn"    .s:fmt_none   .s:fg_none   .s:bg_base02
 "2) very faint base color
-"exe "hi! ColorColumn"    .s:fmt_none   .s:fg_none   .s:bg_rrbase04
+exe "hi! ColorColumn"    .s:fmt_none   .s:fg_none   .s:bg_rrbase04
+"
 exe "hi! Cursor"         .s:fmt_none   .s:fg_base03 .s:bg_base0
 hi! link lCursor Cursor
 exe "hi! MatchParen"     .s:fmt_bold   .s:fg_red    .s:bg_base01

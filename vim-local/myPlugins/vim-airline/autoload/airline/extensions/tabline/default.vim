@@ -1,7 +1,8 @@
 " MIT License. Copyright (c) 2013-2014 Bailey Ling.
 " vim: et ts=2 sts=2 sw=2
 
-let s:fmod = get(g:, 'airline#extensions#tabline#fnamemod', ':~:.')
+"let s:fmod = get(g:, 'airline#extensions#tabline#fnamemod', ':~:.')
+let s:fmod = get(g:, 'airline#extensions#tabline#fnamemod', ':t')
 let s:fnamecollapse = get(g:, 'airline#extensions#tabline#fnamecollapse', 1)
 let s:buf_nr_format = get(g:, 'airline#extensions#tabline#buffer_nr_format', '%s: ')
 let s:buf_nr_show = get(g:, 'airline#extensions#tabline#buffer_nr_show', 0)
