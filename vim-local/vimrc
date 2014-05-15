@@ -11,6 +11,8 @@ set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-indent-guides
 set runtimepath+=~/dotfiles/vim-local/myPlugins/ack
 set runtimepath+=~/dotfiles/vim-local/myPlugins/nerd-commenter
 set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-airline
+set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-pathogen
+set runtimepath+=~/dotfiles/vim-local/myPlugins/tmuxline
 "set runtimepath+=~/dotfiles/vim-local/myPlugins/indentLine
 "set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-togglecursor
 
@@ -42,21 +44,18 @@ set shell=/bin/bash
 "let g:kolor_alternative_matchparen=0 " Gray 'MatchParen' color. Default: 0
 "colorscheme kolor
 "-- solarized
-"set t_Co=256
-"set background=dark
-"if !has('gui_running')
-  "let g:solarized_termcolors=&t_Co
-  "let g:solarized_termtrans=1
-"endif
-"colorscheme razzle
 colorscheme solarized
-"-- razzle
 set t_Co=256
+set nocompatible                                           
+"set t_Co=16                                                
+"call pathogen#infect()
 set background=dark
 if !has('gui_running')
   let g:solarized_termcolors=&t_Co
   let g:solarized_termtrans=1
 endif
+"-- razzle
+"colorscheme razzle
 
 " faster buffering in xterm
 set ttyfast
@@ -99,7 +98,7 @@ set nostartofline
 map <leader>e0 mu :MPage <CR> \u zt;
 map <leader>e2 mu <C-w>o :2MPage <CR> \u zt;
 map <leader>e3 mu <C-w>o :3MPage <CR> \u zt;
-map <leader>, mu <C-w>o :4MPage <CR> \u zt;
+map <leader>,  mu <C-w>o :3MPage <CR> \u zt;
 map <leader>e4 mu <C-w>o :4MPage <CR> \u zt;
 map <leader>e5 mu <C-w>o :5MPage <CR> \u zt;
 "map <leader>l :MPN! 10<CR>Lzt<C-e>
@@ -421,6 +420,8 @@ map <leader>tn :tabnext <CR>
   let g:airline#extensions#tabline#tab_nr_type = 1
   let g:airline#extensions#tabline#left_sep = ' '
   let g:airline#extensions#tabline#left_alt_sep = '|'
+  "trailing whitespace warning
+  let g:airline_detect_whitespace=0 
 
 
   """ Remove Gui Toolbar and scroll bars
