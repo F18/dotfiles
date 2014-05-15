@@ -49,7 +49,7 @@ set t_Co=256
 set nocompatible                                           
 "set t_Co=16                                                
 "call pathogen#infect()
-set background=dark
+set background=light
 if !has('gui_running')
   let g:solarized_termcolors=&t_Co
   let g:solarized_termtrans=1
