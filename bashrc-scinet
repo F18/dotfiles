@@ -106,7 +106,11 @@ alias uscinet='cd /home/rashad/; fusermount -u 04_scinet/'
 #-- scratch
 alias scr='cd /global/scratch/rashad'
 #-- gpc
-alias gpc='ssh -X gpc03'    # ssh into gpc node
+alias gpc='ssh -X gpc02'
+alias gpc1='ssh -X gpc01'
+alias gpc2='ssh -X gpc02'
+alias gpc3='ssh -X gpc03'
+alias gpc4='ssh -X gpc04'
 #-- queue
 alias qa='showbf'
 alias qr='showq | grep "rashad"'

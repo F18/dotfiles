@@ -8,7 +8,7 @@
 #
 # Define some colors
 #-- my own colors
-ROYALBLUE='\[\033[38;5;24;1m\]'
+ROYALBLUE='\[\033[38;5;24m\]'
 ZENGREEN='\[\033[38;5;108m\]'
 #
 #-- 1) dark themes
