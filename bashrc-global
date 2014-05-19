@@ -10,11 +10,12 @@
 #-- my own colors
 ROYALBLUE='\[\033[38;5;24m\]'
 ZENGREEN='\[\033[38;5;108m\]'
+MYGREY='\[\033[38;5;240m\]'
 #
 #-- 1) dark themes
 #NONE='\[\e[01;32m\]'
 #-- 1) light themes (set to royalblue)
-NONE=$ROYALBLUE
+NONE=$MYGREY
 WHITE_1='\[\033[0;1m\]'
 BLACK='\[\033[0;30m\]'
 GRAY='\[\033[1;30m\]'
@@ -208,7 +209,7 @@ alias pg='ping www.google.ca'                 # ping the google website
 alias pp='nice -19 postprocess_unsteady_data' # runs preplot on cffc data
 alias ppclean='rm -f *.gplt *residual.dat *.tree *.soln'
 alias ps2pdf='ps2pdf -sPAPERSIZE=a4'          # Force the papersize to be the standard a4 letter
-alias psopt='ps aux | grep OPTIMA2D'          # Force the papersize to be the standard a4 letter
+alias po='ps aux | grep OPTIMA2D'          # Force the papersize to be the standard a4 letter
 alias py='python'
 alias py00='py-compareFD.py rest00 fd5 0'
 alias py01='py-compareFD.py rest00 fd5 1'

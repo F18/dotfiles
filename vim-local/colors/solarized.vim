@@ -304,13 +304,24 @@ elseif g:solarized_termcolors != 256 && &t_Co >= 16
     let s:green       = "2"
     let s:rrbase04    = "0"
 elseif g:solarized_termcolors == 256
+    " RR: This is what is used in vim terminal mode with 256 colors enalbed
     let s:vmode       = "cterm"
     let s:base03      = "234"
     let s:base02      = "235"
     let s:base01      = "239"
+    "--RR: Normal Text (light theme)
+    "1) default
     let s:base00      = "240"
+    "2) custom
+    "let s:base00      = "238"
+    "--'
     let s:base0       = "244"
-    let s:base1       = "245"
+    "--RR: Comment Text (light theme)
+    "1) default
+    "let s:base1       = "245" "RR: Comment Text
+    "2) custom
+    let s:base1       = "72" "RR: Comment Text 104,173,175,143
+    "--'
     let s:base2       = "187"
     let s:base3       = "230"
     let s:yellow      = "136"
