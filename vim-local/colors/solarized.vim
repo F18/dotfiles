@@ -320,12 +320,19 @@ elseif g:solarized_termcolors == 256
     "1) default
     "let s:base1       = "245" "RR: Comment Text
     "2) custom
-    let s:base1       = "72" "RR: Comment Text 104,173,175,143
+    let s:base1       = "131" "RR: Comment Text 72=greenish, 131,172,173,175=redish, 143=greyish, 104=purpleish
     "--'
     let s:base2       = "187"
     let s:base3       = "230"
-    let s:yellow      = "136"
+    "1) default
+    "let s:yellow      = "136"
+    "2) custom
+    "let s:yellow      = "45" "bright cyan
+    let s:yellow      = "203"
+    "1) default
     let s:orange      = "166"
+    "2) custom
+    "let s:orange      = "45"
     let s:red         = "124"
     let s:magenta     = "125"
     let s:violet      = "61"
@@ -590,7 +597,10 @@ exe "hi! PreProc"        .s:fmt_none   .s:fg_orange .s:bg_none
 "        Macro           same as Define
 "        PreCondit       preprocessor #if, #else, #endif, etc.
 
+"1) default
 exe "hi! Type"           .s:fmt_none   .s:fg_yellow .s:bg_none
+"1) custom
+"exe "hi! Type"           .s:fmt_none   .s:fg_blue .s:bg_none
 "       *Type            int, long, char, etc.
 "        StorageClass    static, register, volatile, etc.
 "        Structure       struct, union, enum, etc.
@@ -643,24 +653,24 @@ exe "hi! ModeMsg"        .s:fmt_none   .s:fg_blue   .s:bg_none
 exe "hi! LineNr"         .s:fmt_none   .s:fg_base01 .s:bg_base02
 exe "hi! Question"       .s:fmt_bold   .s:fg_cyan   .s:bg_none
 "RR: Vertical split line
-" 1) default coloring
+"--1) default coloring
 "if ( has("gui_running") || &t_Co > 8 )
-    "exe "hi! VertSplit"  .s:fmt_none   .s:fg_base00 .s:bg_base00
+"    exe "hi! VertSplit"  .s:fmt_none   .s:fg_base00 .s:bg_base00
 "else
-    "exe "hi! VertSplit"  .s:fmt_revbb  .s:fg_base00 .s:bg_base02
+"    exe "hi! VertSplit"  .s:fmt_revbb  .s:fg_base00 .s:bg_base02
 "endif
-" 2) creates a dashed line (one dash per line)
+"--2) creates a dashed line (one dash per line)
+"if ( has("gui_running") || &t_Co > 8 )
+"    exe "hi! VertSplit"  .s:fmt_none   .s:fg_none .s:bg_none
+"else
+"    exe "hi! VertSplit"  .s:fmt_revbb  .s:fg_none .s:bg_none
+"endif
+"--3) hides the vertical split entirely
 if ( has("gui_running") || &t_Co > 8 )
-    exe "hi! VertSplit"  .s:fmt_none   .s:fg_none .s:bg_none
+    exe "hi! VertSplit"  .s:fmt_revbb   .s:fg_base03 .s:bg_base03
 else
-    exe "hi! VertSplit"  .s:fmt_revbb  .s:fg_none .s:bg_none
+    exe "hi! VertSplit"  .s:fmt_revbb  .s:fg_base03 .s:bg_base03
 endif
-" 3) hides the vertical split entirely
-"if ( has("gui_running") || &t_Co > 8 )
-    "exe "hi! VertSplit"  .s:fmt_none   .s:fg_base03 .s:bg_base03
-"else
-    "exe "hi! VertSplit"  .s:fmt_revbb  .s:fg_base03 .s:bg_base03
-"endif
 exe "hi! Title"          .s:fmt_bold   .s:fg_orange .s:bg_none
 exe "hi! VisualNOS"      .s:fmt_stnd   .s:fg_none   .s:bg_base02 .s:fmt_revbb
 exe "hi! WarningMsg"     .s:fmt_bold   .s:fg_red    .s:bg_none

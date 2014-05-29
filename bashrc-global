@@ -49,13 +49,16 @@ RBRACE=$BRACE_COLOR]$BRACE_COLOR
 BRACE_COLOR=$LIGHT_GRAY
 LBRACE=$BRACE_COLOR[$BRACE_COLOR
 RBRACE=$BRACE_COLOR]$BRACE_COLOR
-PS1="$LIGHT_CYAN\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW\W$RBRACE$NONE$ "
+#PS1="$LIGHT_CYAN\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW\W$RBRACE$NONE$ "
 #--3) solarized-light
 BRACE_COLOR=$LIGHT_CYAN
 LBRACE=$BRACE_COLOR[$BRACE_COLOR
 RBRACE=$BRACE_COLOR]$BRACE_COLOR
 PS1="$LIGHT_CYAN\w\n$LBRACE$BLACK\D{%H:%M}$RBRACE$LBRACE$BLACK\h $GREEN\W$RBRACE$NONE$ "
 export PS1
+# Use PS2 to set PS1=$PS2 in your compile window, and PS0 to switch back to original PS1 (alias ps12 and ps21 below)
+export PS0=$PS1
+export PS2="$GREEN$LBRACE$BLACK\D{%H:%M}$RBRACE$LBRACE$BLACK\h $GREEN\w$RBRACE$NONE$ "
 #
 # Old ones:
 #
@@ -209,6 +212,8 @@ alias pg='ping www.google.ca'                 # ping the google website
 alias pp='nice -19 postprocess_unsteady_data' # runs preplot on cffc data
 alias ppclean='rm -f *.gplt *residual.dat *.tree *.soln'
 alias ps2pdf='ps2pdf -sPAPERSIZE=a4'          # Force the papersize to be the standard a4 letter
+alias ps12='export PS1=$PS2' # changes termianl prompt from PS1 to PS2 for your compact compiling view
+alias ps21='export PS1=$PS0' # changes termianl prompt from PS1 to PS2 for your compact compiling view
 alias po='ps aux | grep OPTIMA2D'          # Force the papersize to be the standard a4 letter
 alias py='python'
 alias py00='py-compareFD.py rest00 fd5 0'
