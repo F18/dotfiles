@@ -13,9 +13,11 @@ ZENGREEN='\[\033[38;5;108m\]'
 MYGREY='\[\033[38;5;240m\]'
 #
 #-- 1) dark themes
-#NONE='\[\e[01;32m\]'
-#-- 1) light themes (set to royalblue)
-NONE=$MYGREY
+NONE='\[\e[01;32m\]'
+#-- 2) wombat theme
+NONE='\[\e[01;252m\]'
+#-- 3) light themes (set to royalblue)
+#NONE=$MYGREY
 WHITE_1='\[\033[0;1m\]'
 BLACK='\[\033[0;30m\]'
 GRAY='\[\033[1;30m\]'
@@ -41,20 +43,25 @@ WD="\W"
 # Good ones: 
 #
 #--1) zenburn
-BRACE_COLOR=$LIGHT_GRAY
-LBRACE=$BRACE_COLOR[$BRACE_COLOR
-RBRACE=$BRACE_COLOR]$BRACE_COLOR
+#BRACE_COLOR=$LIGHT_GRAY
+#LBRACE=$BRACE_COLOR[$BRACE_COLOR
+#RBRACE=$BRACE_COLOR]$BRACE_COLOR
 #PS1="$RED\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW\W$RBRACE$NONE$ "
 #--2) solarized-dark
+#BRACE_COLOR=$LIGHT_GRAY
+#LBRACE=$BRACE_COLOR[$BRACE_COLOR
+#RBRACE=$BRACE_COLOR]$BRACE_COLOR
+#PS1="$LIGHT_CYAN\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW\W$RBRACE$NONE$ "
+#--3) solarized-light
+#BRACE_COLOR=$LIGHT_CYAN
+#LBRACE=$BRACE_COLOR[$BRACE_COLOR
+#RBRACE=$BRACE_COLOR]$BRACE_COLOR
+#PS1="$LIGHT_CYAN\w\n$LBRACE$BLACK\D{%H:%M}$RBRACE$LBRACE$BLACK\h $GREEN\W$RBRACE$NONE$ "
+#--4) wombat
 BRACE_COLOR=$LIGHT_GRAY
 LBRACE=$BRACE_COLOR[$BRACE_COLOR
 RBRACE=$BRACE_COLOR]$BRACE_COLOR
-#PS1="$LIGHT_CYAN\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW\W$RBRACE$NONE$ "
-#--3) solarized-light
-BRACE_COLOR=$LIGHT_CYAN
-LBRACE=$BRACE_COLOR[$BRACE_COLOR
-RBRACE=$BRACE_COLOR]$BRACE_COLOR
-PS1="$LIGHT_CYAN\w\n$LBRACE$BLACK\D{%H:%M}$RBRACE$LBRACE$BLACK\h $GREEN\W$RBRACE$NONE$ "
+PS1="$RED\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW\W$RBRACE$NONE$ "
 export PS1
 # Use PS2 to set PS1=$PS2 in your compile window, and PS0 to switch back to original PS1 (alias ps12 and ps21 below)
 export PS0=$PS1
@@ -73,7 +80,8 @@ export PS2="$GREEN$LBRACE$BLACK\D{%H:%M}$RBRACE$LBRACE$BLACK\h $GREEN\w$RBRACE$N
 # Enable color support of ls and also add handy aliases
 #
 if [ "$TERM" != "dumb" ]; then
-    [ -e "$HOME/dotfiles/LS_COLORS-solarized-light" ] && DIR_COLORS="$HOME/dotfiles/LS_COLORS-solarized-light"
+    #[ -e "$HOME/dotfiles/LS_COLORS-solarized-light" ] && DIR_COLORS="$HOME/dotfiles/LS_COLORS-solarized-light"
+    [ -e "$HOME/dotfiles/LS_COLORS" ] && DIR_COLORS="$HOME/dotfiles/LS_COLORS"
     [ -e "$DIR_COLORS" ] || DIR_COLORS=""
     eval "`dircolors -b $DIR_COLORS`"
     alias ls='ls --color=auto'
