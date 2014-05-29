@@ -12,6 +12,7 @@
   set runtimepath+=~/dotfiles/vim-local/myPlugins/nerd-commenter
   set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-airline
   set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-pathogen
+  "set runtimepath+=~/dotfiles/vim-local/myPlugins/tagbar
   "set runtimepath+=~/dotfiles/vim-local/myPlugins/tmuxline
   "set runtimepath+=~/dotfiles/vim-local/myPlugins/indentLine
   "set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-togglecursor
@@ -44,19 +45,27 @@
   "let g:kolor_alternative_matchparen=0 " Gray 'MatchParen' color. Default: 0
   "colorscheme kolor
   "-- solarized
-  colorscheme solarized
-  set t_Co=256
-  set nocompatible                                           
-  "set t_Co=16                                                
-  "call pathogen#infect()
-  set background=light
-  let solarized_constrast='high'
-  if !has('gui_running')
-    let g:solarized_termcolors=&t_Co
-    let g:solarized_termtrans=1
-  endif
+  "colorscheme solarized
+  "set t_Co=256
+  "set nocompatible                                           
+  ""set t_Co=16                                                
+  ""call pathogen#infect()
+  "set background=light
+  "let solarized_constrast='high'
+  "if !has('gui_running')
+  "  let g:solarized_termcolors=&t_Co
+  "  let g:solarized_termtrans=1
+  "endif
   "-- razzle
   "colorscheme razzle
+  "-- wombat
+  "colorscheme wombat256mod
+  "-- vividchalk
+  "set background=dark
+  "colorscheme vividchalk
+  "-- jellybeans
+  let g:jellybeans_use_lowcolor_black = 0
+  colorscheme jellybeans
 
   " faster buffering in xterm
   set ttyfast
@@ -417,7 +426,8 @@
     "let g:airline_theme             = 'luna'
     "let g:airline_theme             = 'bubblegum'
     "let g:airline_theme             = 'solarized'
-    let g:airline_theme             = 'sol'
+    "let g:airline_theme             = 'sol'
+    let g:airline_theme             = 'jellybeans'
     let g:airline_enable_branch     = 1
     let g:airline_enable_syntastic  = 1
     let g:airline#extensions#tabline#enabled = 1

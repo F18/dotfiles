@@ -44,10 +44,7 @@ export PATH=$CFFC_Path/bin:$PATH
 #-- MSES and XFOIL
 PATH=~/01_utias/01_local/01_thesis/Xfoil/bin:$PATH
 #-- OPTIMA2D
-export CVSROOT=/home/ramy/01_utias/01_local/optima
-export CVS_RSH=/usr/bin/ssh
-export CVSEDITOR=vim
-export PATH=~/01_utias/01_local/grid_utils:$PATH
+export PATH=~/01_utias/01_local/optima-grids/grid_utils:$PATH
 #-- Set environment variable that controls how Fortran unformatted in/out operations are handled
 export F_UFMTENDIAN=big
 #-- Set memory limits
@@ -59,6 +56,19 @@ export PATH=/home/ramy/01_utias/01_local/bin:$PATH
 export PATH=/home/ramy/01_utias/01_local/bin/scripts:$PATH
 export PATH=/home/ramy/bin:$PATH
 export PATH=/home/ramy/bin/scripts:$PATH
+export PATH=/home/ramy/usr/intel/bin:$PATH
+export PATH=/home/ramy/usr/mpich/bin:$PATH
+#-- OPTIMA2D related
+export LD_LIBRARY_PATH=/home/ramy/usr/mpich/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/home/ramy/usr/intel/lib/intel64:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/home/ramy/usr/intel/mkl/lib/intel64:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/home/ramy/usr/intel/mkl/lib/mic:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/home/ramy/usr/intel/mkl/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/home/ramy/usr/intel/composer_xe_2013_sp1.3.174/bin:$LD_LIBRARY_PATH
+export MKLPATH=/home/ramy/usr/intel/mkl/lib/intel64
+export XLIB_PATH=-L/usr/X11R6/lib
+#source /home/ramy/usr/intel/composer_xe_2013_sp1.3.174/bin/ifortvars.sh intel64
+
 
 #
 # Source global aliases, funcitons, and definitions
