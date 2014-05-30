@@ -329,7 +329,10 @@ call s:X("Cursor",g:jellybeans_background_color,"b0d0f0","","","")
 
 call s:X("LineNr","605958",g:jellybeans_background_color,"none",s:termBlack,"")
 call s:X("CursorLineNr","ccc5c4","","none","White","")
-call s:X("Comment","888888","","italic","Grey","")
+"1) default
+"call s:X("Comment","888888","","italic","Grey","")
+"2) RR: custom 6d9c6d
+call s:X("Comment","577a57","","italic","Grey","")
 call s:X("Todo","c7c7c7","","bold","White",s:termBlack)
 
 call s:X("StatusLine","000000","dddddd","italic","","White")
@@ -348,7 +351,11 @@ call s:X("Constant","cf6a4c","","","Red","")
 call s:X("Special","799d6a","","","Green","")
 call s:X("Delimiter","668799","","","Grey","")
 
-call s:X("String","99ad6a","","","Green","")
+"1) default
+"call s:X("String","99ad6a","","","Green","")
+"2) RR: custom 
+call s:X("String","c6d06a","","","Green","")
+
 call s:X("StringDelimiter","556633","","","DarkGreen","")
 
 call s:X("Identifier","c6b6ee","","","LightCyan","")

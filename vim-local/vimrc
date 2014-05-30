@@ -83,7 +83,7 @@
 
   " map the escape key
   noremap! jj <Esc>
-  noremap <C-j> :w<cr> :noh<cr>
+  noremap <C-j> :w<cr> :noh<cr>h
   inoremap <C-j> <Esc> :w<cr> :noh<cr>
   "
   " scrolling
@@ -122,38 +122,38 @@
   map <leader>to :tabnew <CR>
   map <leader>tp :tabprevious <CR>
   map <leader>tn :tabnext <CR>
-    map <leader>J  :tabprevious <CR>
-    map <leader>j  :tabnext <CR>
-    map <leader>tc :tabclose <CR>
-    " Go to tab by number
-    noremap <leader>1 1gt
-    noremap <leader>2 2gt
-    noremap <leader>3 3gt
-    noremap <leader>4 4gt
-    noremap <leader>5 5gt
-    noremap <leader>6 6gt
-    noremap <leader>7 7gt
-    noremap <leader>8 8gt
-    noremap <leader>9 9gt
-    noremap <leader>0 :tablast<cr>
+  map <leader>J  :tabprevious <CR>
+  map <leader>j  :tabnext <CR>
+  map <leader>tc :tabclose <CR>
+  " Go to tab by number
+  noremap <leader>1 1gt
+  noremap <leader>2 2gt
+  noremap <leader>3 3gt
+  noremap <leader>4 4gt
+  noremap <leader>5 5gt
+  noremap <leader>6 6gt
+  noremap <leader>7 7gt
+  noremap <leader>8 8gt
+  noremap <leader>9 9gt
+  noremap <leader>0 :tablast<cr>
 
-    " return to the last tab page visited.
-    let g:lasttab = 1
-    nmap <Leader>k :exe "tabn ".g:lasttab<CR>
-    au TabLeave * let g:lasttab = tabpagenr()
+  " return to the last tab page visited.
+  let g:lasttab = 1
+  nmap <Leader>k :exe "tabn ".g:lasttab<CR>
+  au TabLeave * let g:lasttab = tabpagenr()
 
-    ":map <leader>j :exe "tabn " . g:ltv<CR>
-    "" referred to by TabLeave autocmd.
-    ":function! Setlasttabpagevisited()
-    ":  let g:ltv = tabpagenr()
-    ":endfunction
-    ":augroup localtl
-    "" Remove all localtl autocommands
-    ":au!
-    "" keep tally of the last tab page visited.
-    ":autocmd TabLeave * call Setlasttabpagevisited()
-    ":augroup END
-    ":autocmd VimEnter * let g:ltv = 1
+  ":map <leader>j :exe "tabn " . g:ltv<CR>
+  "" referred to by TabLeave autocmd.
+  ":function! Setlasttabpagevisited()
+  ":  let g:ltv = tabpagenr()
+  ":endfunction
+  ":augroup localtl
+  "" Remove all localtl autocommands
+  ":au!
+  "" keep tally of the last tab page visited.
+  ":autocmd TabLeave * call Setlasttabpagevisited()
+  ":augroup END
+  ":autocmd VimEnter * let g:ltv = 1
 
 
 "    "Rename tabs to show tab number.
@@ -409,17 +409,17 @@
 
     " Replace with new statusline:
     "set statusline=%2*%t%*\            "tail of the filename
-  " set statusline=\|\[\%t\]\|                  "tail of the filename
-  " set statusline+=%m                 "modified flag
-  " set statusline+=%r                 "read only flag
-  " set statusline+=\ \ (%<%F)         " file full path, truncate
-  " set statusline+=%=                 "left/right separator
-  " "set statusline+=%y                 "filetype
-  " "set statusline+=%10((%l,%c)%)\     " line and column
-  " set statusline+=\ \ C%c                 " percentage of file
-  " set statusline+=\ \ L%l\/              " percentage of file
-  " set statusline+=%L                 " total number of lines
-  " set statusline+=\ \ %P                 " percentage of file
+    " set statusline=\|\[\%t\]\|                  "tail of the filename
+    " set statusline+=%m                 "modified flag
+    " set statusline+=%r                 "read only flag
+    " set statusline+=\ \ (%<%F)         " file full path, truncate
+    " set statusline+=%=                 "left/right separator
+    " "set statusline+=%y                 "filetype
+    " "set statusline+=%10((%l,%c)%)\     " line and column
+    " set statusline+=\ \ C%c                 " percentage of file
+    " set statusline+=\ \ L%l\/              " percentage of file
+    " set statusline+=%L                 " total number of lines
+    " set statusline+=\ \ %P                 " percentage of file
 
     "
     " All statusline code above is overtaken by the vim-airline plugin
@@ -430,7 +430,7 @@
     let g:airline_theme             = 'jellybeans'
     let g:airline_enable_branch     = 1
     let g:airline_enable_syntastic  = 1
-    let g:airline#extensions#tabline#enabled = 1
+    let g:airline#extensions#tabline#enabled = 0
     let g:airline#extensions#tabline#tab_nr_type = 1
     let g:airline#extensions#tabline#left_sep = ' '
     let g:airline#extensions#tabline#left_alt_sep = ' '
@@ -694,64 +694,64 @@
   "" Nerd commenter toggle comment state
   ""
   map <leader>c <plug>NERDCommenterToggle
-""
-"" Insert/Remove a comment character (!)in column number 1 and keep cursor position
-""
-"map <leader>/ :call MyCol3()<cr>
-"map <leader>? :call MyCol4()<cr>
-map <leader>m :call MyCol3()<cr>
-map <leader>. :call MyCol4()<cr>
-map <leader>R :call MyCol5()<cr>
-map <leader>RR :call MyCol6()<cr>
-function! MyCol3()
-  let g:colnum=col(".")
-  execute "norm 1|"
-  execute "normal r!"
-  execute "norm ".g:colnum."|"
-endfunction
-function! MyCol4()
-  let g:colnum=col(".")
-  execute "norm 1|"
-  execute "normal r "
-  execute "norm ".g:colnum."|"
-endfunction
-function! MyCol5()
-  let g:colnum=col(".")
-  execute "norm 1|"
-  execute "normal r!"
-  execute "norm 2|"
-  execute "normal rR"
-  execute "norm 3|"
-  execute "normal rR"
-  execute "norm ".g:colnum."|"
-endfunction
-function! MyCol6()
-  let g:colnum=col(".")
-  execute "norm 1|"
-  execute "normal r "
-  execute "norm 2|"
-  execute "normal r "
-  execute "norm 3|"
-  execute "normal r "
-  execute "norm ".g:colnum."|"
-endfunction
-"
-" Change cursor shape and color in insert mode
-"
-"if &term =~ "xterm\\|rxvt"
-"  :silent !echo -ne "\033]12;red\007"
-"  let &t_SI = "\033]12;green\007"
-"  let &t_EI = "\033]12;red\007"
-"  autocmd VimLeave * :silent !echo -ne "\033]12;grey\007"
-"endif
-"if &term =~ "xterm\\|rxvt"
-"  let &t_SI .= "\033]1 q"
-"  let &t_EI .= "\033]3 q"
-"  " 1 or 0 -> blinking block
-"  " 2 -> solid block
-"  " 3 -> blinking underscore
-"  " 4 -> solid undersocore
-"  " Recent versions of xterm (282 or above) also support
-"  " 5 -> blinking vertical bar
-"  " 6 -> solid vertical bar
-"endif
+  ""
+  "" Insert/Remove a comment character (!)in column number 1 and keep cursor position
+  ""
+  "map <leader>/ :call MyCol3()<cr>
+  "map <leader>? :call MyCol4()<cr>
+  map <leader>m :call MyCol3()<cr>
+  map <leader>. :call MyCol4()<cr>
+  map <leader>R :call MyCol5()<cr>
+  map <leader>RR :call MyCol6()<cr>
+  function! MyCol3()
+    let g:colnum=col(".")
+    execute "norm 1|"
+    execute "normal r!"
+    execute "norm ".g:colnum."|"
+  endfunction
+  function! MyCol4()
+    let g:colnum=col(".")
+    execute "norm 1|"
+    execute "normal r "
+    execute "norm ".g:colnum."|"
+  endfunction
+  function! MyCol5()
+    let g:colnum=col(".")
+    execute "norm 1|"
+    execute "normal r!"
+    execute "norm 2|"
+    execute "normal rR"
+    execute "norm 3|"
+    execute "normal rR"
+    execute "norm ".g:colnum."|"
+  endfunction
+  function! MyCol6()
+    let g:colnum=col(".")
+    execute "norm 1|"
+    execute "normal r "
+    execute "norm 2|"
+    execute "normal r "
+    execute "norm 3|"
+    execute "normal r "
+    execute "norm ".g:colnum."|"
+  endfunction
+  "
+  " Change cursor shape and color in insert mode
+  "
+  "if &term =~ "xterm\\|rxvt"
+  "  :silent !echo -ne "\033]12;red\007"
+  "  let &t_SI = "\033]12;green\007"
+  "  let &t_EI = "\033]12;red\007"
+  "  autocmd VimLeave * :silent !echo -ne "\033]12;grey\007"
+  "endif
+  "if &term =~ "xterm\\|rxvt"
+  "  let &t_SI .= "\033]1 q"
+  "  let &t_EI .= "\033]3 q"
+  "  " 1 or 0 -> blinking block
+  "  " 2 -> solid block
+  "  " 3 -> blinking underscore
+  "  " 4 -> solid undersocore
+  "  " Recent versions of xterm (282 or above) also support
+  "  " 5 -> blinking vertical bar
+  "  " 6 -> solid vertical bar
+  "endif
