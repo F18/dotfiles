@@ -109,8 +109,8 @@ alias cds='cd $MYWORK'
 alias cdt='cd $MYHOME/01_thesis/myPapers/conferences'
 alias cdvo='cd $MYWORK/y2014/m03'
 alias cdvoo='cd $MYWORK/y2013/m12'
-alias cdwd='cd /windows/Users/Owner/Documents'
-alias cdwdb='cd /windows/Users/Owner/Documents/03_Play/2006-2008\ Banking'
+alias cdwd='cd /windows/Users/ramy/Documents'
+alias cdwdm='cd /windows/Users/ramy/Music'
 
 alias cj='checkjob'
 alias cll='clear'                                # Clear the screen
