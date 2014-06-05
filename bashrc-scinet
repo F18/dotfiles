@@ -130,7 +130,8 @@ alias debug6='qsub -l nodes=6:ppn=8,walltime=00:30:00 -q debug -I'
 alias debug7='qsub -l nodes=7:ppn=8,walltime=00:30:00 -q debug -I'
 alias debug8='qsub -l nodes=8:ppn=8,walltime=00:30:00 -q debug -I'
 alias mydu='/scinet/gpc/bin/diskUsage'
-alias cdvc='cd /scratch/z/zingg/rashad/optima-verify/08_optimize/y2013/m12/d26-debugFDgrad/02-rae2822-R15M60A01-575x224/03-freeTransition/SN/02-warm'
+alias cdvc='cd /scratch/z/zingg/rashad/optima-verify/08_optimize/y2013/m12/d26-debugFDgrad/02-rae2822-R15M60A01-575x224/03-freeTransition/SN/min-turmu/02-warm'
+alias cdvc2='cd /scratch/z/zingg/rashad/optima-verify/08_optimize/y2013/m12/d26-debugFDgrad/02-rae2822-R15M60A01-575x224/03-freeTransition/AD/min-turmu/02-warm'
 
 #
 # Source global aliases, funcitons, and definitions

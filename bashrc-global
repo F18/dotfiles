@@ -11,13 +11,6 @@
 ROYALBLUE='\[\033[38;5;24m\]'
 ZENGREEN='\[\033[38;5;108m\]'
 MYGREY='\[\033[38;5;240m\]'
-#
-#-- 1) dark themes
-NONE='\[\e[01;32m\]'
-#-- 2) wombat theme
-NONE='\[\e[01;252m\]'
-#-- 3) light themes (set to royalblue)
-#NONE=$MYGREY
 WHITE_1='\[\033[0;1m\]'
 BLACK='\[\033[0;30m\]'
 GRAY='\[\033[1;30m\]'
@@ -43,11 +36,13 @@ WD="\W"
 # Good ones: 
 #
 #--1) zenburn
+#NONE='\[\e[01;32m\]'
 #BRACE_COLOR=$LIGHT_GRAY
 #LBRACE=$BRACE_COLOR[$BRACE_COLOR
 #RBRACE=$BRACE_COLOR]$BRACE_COLOR
 #PS1="$RED\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW\W$RBRACE$NONE$ "
 #--2) solarized-dark
+#NONE=$MYGREY
 #BRACE_COLOR=$LIGHT_GRAY
 #LBRACE=$BRACE_COLOR[$BRACE_COLOR
 #RBRACE=$BRACE_COLOR]$BRACE_COLOR
@@ -58,15 +53,18 @@ WD="\W"
 #RBRACE=$BRACE_COLOR]$BRACE_COLOR
 #PS1="$LIGHT_CYAN\w\n$LBRACE$BLACK\D{%H:%M}$RBRACE$LBRACE$BLACK\h $GREEN\W$RBRACE$NONE$ "
 #PS2="$GREEN$LBRACE$BLACK\D{%H:%M}$RBRACE$LBRACE$BLACK\h $GREEN\w$RBRACE$NONE$ "
-#--4) wombat
-BRACE_COLOR=$LIGHT_GRAY
+#--4) wombat/jellybeans
+#NONE='\[\e[01;252m\]'
+NONE=$WHITE
+BRACE_COLOR=$ZENGREEN
 LBRACE=$BRACE_COLOR[$BRACE_COLOR
 RBRACE=$BRACE_COLOR]$BRACE_COLOR
 PS1="$LIGHT_PURPLE\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW\W$RBRACE$NONE$ "
 PS2="$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW\w$RBRACE$NONE$ "
-
+#
+# export 
+# Note: use PS2 to set PS1=$PS2 and PS0 to switch back to original PS1 (see alias ps12 and ps21 below)
 export PS1
-# Use PS2 to set PS1=$PS2 in your compile window, and PS0 to switch back to original PS1 (alias ps12 and ps21 below)
 export PS0=$PS1
 export PS2
 #
