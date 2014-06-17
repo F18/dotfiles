@@ -430,9 +430,9 @@
     let g:airline_theme             = 'jellybeans'
     let g:airline_enable_branch     = 1
     let g:airline_enable_syntastic  = 1
-    let g:airline#extensions#tabline#enabled = 0
+    let g:airline#extensions#tabline#enabled = 1
     let g:airline#extensions#tabline#tab_nr_type = 1
-    let g:airline#extensions#tabline#left_sep = ' '
+    let g:airline#extensions#tabline#left_sep = '|'
     let g:airline#extensions#tabline#left_alt_sep = ' '
     "trailing whitespace warning
     let g:airline_detect_whitespace=0 

@@ -302,6 +302,7 @@ alias video='xanim' # program for viewing avi files
 alias v='$MYVIM'
 alias vi='v'
 alias vb='v $HOME/.bashrc'
+alias vbg='v *.dbg'
 alias vd='v -d'
 alias vg='v $HOME/.bashrc-global'
 alias vj='cd $MYHOME/01_thesis/logbook/; v researchJournal.txt'

@@ -358,7 +358,12 @@ call s:X("String","c6d06a","","","Green","")
 
 call s:X("StringDelimiter","556633","","","DarkGreen","")
 
-call s:X("Identifier","c6b6ee","","","LightCyan","")
+"RR Indentifier :: 6x, es23.15, etc
+"1) default
+"call s:X("Identifier","c6b6ee","","","LightCyan","")
+"2) RR: custom 
+call s:X("Identifier","FF99CC","","","","LightMagenta")
+"RR Structure :: .eq., .and., .not., etc.
 call s:X("Structure","8fbfdc","","","LightCyan","")
 call s:X("Function","fad07a","","","Yellow","")
 call s:X("Statement","8197bf","","","DarkBlue","")
