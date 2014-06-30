@@ -12,6 +12,8 @@
   set runtimepath+=~/dotfiles/vim-local/myPlugins/nerd-commenter
   set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-airline
   set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-pathogen
+  "set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-markdown-folding
+  "set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-markdown-folding/t
   "set runtimepath+=~/dotfiles/vim-local/myPlugins/tagbar
   "set runtimepath+=~/dotfiles/vim-local/myPlugins/tmuxline
   "set runtimepath+=~/dotfiles/vim-local/myPlugins/indentLine
@@ -570,12 +572,40 @@
     " Indentation If you use only structured loops of the do/enddo form, you should
     " declare this by setting the fortran_do_enddo:
     let fortran_do_enddo=1
-  " only for f90 files:
-  "au! BufRead,BufNewFile *.f90 let b:fortran_do_enddo=1
+    " only for f90 files:
+    "au! BufRead,BufNewFile *.f90 let b:fortran_do_enddo=1
     "autocmd BufWritePre *.f :%s/\s\+$//e
     "autocmd BufWritePre *.f90 :%s/\s\+$//e
     "autocmd BufWritePre *.f70 :%s/\s\+$//e
-  "
+    "
+    " Code folding
+    function! MarkdownLevel()
+      "if getline(v:lnum) =~ '!###### .*$'
+      "  return ">6"
+      "elseif getline(v:lnum) =~ '!##### .*$'
+      "  return ">5"
+      "elseif getline(v:lnum) =~ '!#### .*$'
+      "  return ">4"
+      "elseif getline(v:lnum) =~ '!### .*$'
+      "  return ">3"
+      "elseif getline(v:lnum) =~ '!## .*$'
+      "  return ">2"
+      "elseif getline(v:lnum) =~ '!# .*$'
+      "  return ">1"
+      "endif
+      if getline(v:lnum) =~ '!#.*$'
+        return ">1"
+      endif
+      return "=" 
+    endfunction
+    function! MarkdownFoldText()
+      let foldsize=(v:foldend-v:foldstart)
+      return getline(v:foldstart).' ('.foldsize.' lines)'
+    endfunction
+    autocmd FileType fortran setlocal foldtext=MarkdownFoldText()
+    autocmd FileType fortran setlocal foldexpr=MarkdownLevel()  
+    autocmd FileType fortran setlocal foldmethod=expr
+    "
   " ________________
   " Vim Indent Guides
   let g:indent_guides_auto_colors = 0
