@@ -1,4 +1,4 @@
-   " MY CUSTOM VIM SETTINGS
+  " MY CUSTOM VIM SETTINGS
 
   " Add plugin directories to runtimepath
   set runtimepath+=~/dotfiles/vim-local/myPlugins/bclose
@@ -25,6 +25,8 @@
   " the following maps \ to ' before mapping ' to ;
   noremap \ '
   noremap ' ;
+  " the following maps s to z:
+  noremap s z
   " Now map the leader key. With a map leader it's possible to do
   " extra key combinations, such as <leader>w to save the current file
   let mapleader = ","
@@ -100,7 +102,7 @@
   " map the escape key
   noremap! jj <Esc>
   noremap <C-j> :w<cr> :noh<cr>h
-  inoremap <C-j> <Esc> :w<cr> :noh<cr>
+  inoremap <C-j> <Esc> hhh :w<cr> :noh<cr>
   "
   " scrolling
   " always move down a line, even if long line is not wrapped
@@ -119,6 +121,7 @@
   " move to end of line
   map - $
   set nostartofline
+  "set number " show line number
 
   " Multi-pager
   map <leader>e0 mu :MPage <CR> \u zt;
@@ -274,7 +277,7 @@
     " Fast saving
     nmap <leader>w :w!<cr>
     " Fast save and quit vim
-    nmap <leader>s :w <cr> :bd <cr>
+    "nmap <leader>s :w <cr> :bd <cr>
     " Fast quit vim
     nmap <leader>q :wq <cr>
     " Fast reload/reread of file
@@ -593,6 +596,12 @@
     "autocmd BufWritePre *.f70 :%s/\s\+$//e
     "
     " Code folding
+    map <leader>z zMzv
+    map <leader>s zMzv
+    " move to beginning of current fold:
+    map [s [z zz
+    " move to end of current fold:
+    map ]s ]z zz
     function! MarkdownLevel()
       "if getline(v:lnum) =~ '!###### .*$'
       "  return ">6"
@@ -619,6 +628,7 @@
     autocmd FileType fortran setlocal foldtext=MarkdownFoldText()
     autocmd FileType fortran setlocal foldexpr=MarkdownLevel()  
     autocmd FileType fortran setlocal foldmethod=expr
+
     "
   " ________________
   " Vim Indent Guides
