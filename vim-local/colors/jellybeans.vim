@@ -327,7 +327,10 @@ endif
 call s:X("Visual","","404040","","",s:termBlack)
 call s:X("Cursor",g:jellybeans_background_color,"b0d0f0","","","")
 
-call s:X("LineNr","605958",g:jellybeans_background_color,"none",s:termBlack,"")
+"1) default
+"call s:X("LineNr","605958",g:jellybeans_background_color,"none",s:termBlack,"")
+"2) RR: custom
+call s:X("LineNr","303030",g:jellybeans_background_color,"none",s:termBlack,"")
 call s:X("CursorLineNr","ccc5c4","","none","White","")
 "1) default
 "call s:X("Comment","888888","","italic","Grey","")
@@ -340,8 +343,12 @@ call s:X("StatusLineNC","ffffff","403c41","italic","White","Black")
 call s:X("VertSplit","777777","403c41","",s:termBlack,s:termBlack)
 call s:X("WildMenu","f0a0c0","302028","","Magenta","")
 
-call s:X("Folded","a0a8b0","384048","italic",s:termBlack,"")
-call s:X("FoldColumn","535D66","1f1f1f","","",s:termBlack)
+"1) default
+"call s:X("Folded","a0a8b0","384048","italic",s:termBlack,"")
+"2) RR: custom fold colors (N.B. for background color search "hi Folded ctermbg")
+call s:X("Folded","d7d7af","","italic","Grey","")
+
+call s:X("FoldColumn","000000","dddddd","italic","","White")
 call s:X("SignColumn","777777","333333","","",s:termBlack)
 call s:X("ColorColumn","e8e8d3","000000","","",s:termBlack)
 
@@ -379,7 +386,8 @@ call s:X("SpecialKey","444444","1c1c1c","",s:termBlack,"")
 "1) default
 "call s:X("Search","f0a0c0","302028","underline","Magenta","")
 "2) RR: custom search highlight
-call s:X("Search","302028","f0a0c0","","Magenta","")
+"call s:X("Search","302028","f0a0c0","","Magenta","")
+call s:X("Search","b7102f","f0a0c0","","Magenta","")
 
 call s:X("Directory","dad085","","","Yellow","")
 call s:X("ErrorMsg","","902020","","","DarkRed")
@@ -516,7 +524,10 @@ end
 " Manual overrides for 256-color terminals. Dark colors auto-map badly.
 if !s:low_color
   hi StatusLineNC ctermbg=235
-  hi Folded ctermbg=236
+  "1) default background for folded code
+  "hi Folded ctermbg=236
+  "2) RR: custom background for folded code
+  hi Folded ctermbg=232
   hi FoldColumn ctermbg=234
   hi SignColumn ctermbg=236
   hi CursorColumn ctermbg=234

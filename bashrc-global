@@ -104,7 +104,7 @@ alias cdoo='cd $MYHOME/optima/optima2D'
 alias cdp='cd $MYHOME/01_thesis/seminars/utias/20111007_research_update_to_group'
 alias cds='cd $MYWORK'
 alias cdt='cd $MYHOME/01_thesis/myPapers/conferences'
-alias cdvo='cd $MYWORK/y2014/m03'
+alias cdvo='cd $MYWORK/y2014/m10'
 alias cdvoo='cd $MYWORK/y2013/m12'
 alias cdwd='cd /windows/Users/ramy/Documents'
 alias cdwdm='cd /windows/Users/ramy/Music'
@@ -213,6 +213,7 @@ alias nautilus='nautilus --no-desktop --browser'
 alias oo='openoffice.org'                     # Open the openoffice software
 alias office='openoffice.org'
 
+alias p='py-compareFD.py'
 alias pdf='pdfstudio'                        # For a launcher you can use PDFStudio as the command
 alias pg='ping www.google.ca'                 # ping the google website
 alias pp='nice -19 postprocess_unsteady_data' # runs preplot on cffc data
@@ -262,6 +263,7 @@ alias t10='tail --lines=10 '
 alias t20='tail --lines=20 '
 alias tf='tail --lines=300 -F'
 alias tg0='tail -50f rest00-00.gnu'
+alias tg01='tail -50f rest01-00.gnu'
 alias tg1='tail -50f rest00-01.gnu'
 alias tg2='tail -50f rest00-02.gnu'
 alias tg3='tail -50f rest00-03.gnu'
