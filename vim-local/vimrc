@@ -32,7 +32,7 @@
 
   syntax enable "Enable syntax hl
 
-  set gfn=PragmataPro\ 9
+  set gfn=Monaco\ 10
   set shell=/bin/bash
 
   "set t_Co=256
@@ -66,8 +66,22 @@
   "set background=dark
   "colorscheme vividchalk
   "-- jellybeans
-  let g:jellybeans_use_lowcolor_black = 0
-  colorscheme jellybeans
+  "let g:jellybeans_use_lowcolor_black = 0
+  "colorscheme jellybeans
+  "
+  " Set colorscheme based on vim or gvim
+  if has('gui_running')
+    colorscheme solarized
+    set t_Co=256
+    set nocompatible                                           
+    "set t_Co=16                                                
+    "call pathogen#infect()
+    set background=light
+    let solarized_constrast='high'
+  else
+    let g:jellybeans_use_lowcolor_black = 0
+    colorscheme jellybeans
+  endif
 
   " faster buffering in xterm
   set ttyfast
