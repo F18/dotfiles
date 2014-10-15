@@ -281,13 +281,14 @@ elseif (has("gui_running") && g:solarized_degrade == 1)
     let s:cyan        = "#00afaf"
     let s:green       = "#5f8700"
 elseif g:solarized_termcolors != 256 && &t_Co >= 16
+    " RR: Try modifying colors here first:
     let s:vmode       = "cterm"
     let s:base03      = "8"
     let s:base02      = "0"
     let s:base01      = "10"
-    let s:base00      = "11"
+    let s:base00      = "242" "normal
     let s:base0       = "12"
-    let s:base1       = "14"
+    let s:base1       = "14" "comment
     let s:base2       = "7"
     let s:base3       = "15"
     let s:yellow      = "3"
