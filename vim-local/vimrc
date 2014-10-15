@@ -448,9 +448,9 @@
     " All statusline code above is overtaken by the vim-airline plugin
     "let g:airline_theme             = 'luna'
     "let g:airline_theme             = 'bubblegum'
-    "let g:airline_theme             = 'solarized'
+    let g:airline_theme             = 'solarized'
     "let g:airline_theme             = 'sol'
-    let g:airline_theme             = 'jellybeans'
+    "let g:airline_theme             = 'jellybeans'
     let g:airline_enable_branch     = 1
     let g:airline_enable_syntastic  = 1
     let g:airline#extensions#tabline#enabled = 1
