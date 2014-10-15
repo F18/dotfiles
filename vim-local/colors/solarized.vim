@@ -259,9 +259,6 @@ if (has("gui_running") && g:solarized_degrade == 0)
     let s:cyan        = "#2aa198"
     "let s:green       = "#859900" "original
     let s:green       = "#719e07" "experimental
-    "RR: my colors
-    "let s:rrbase04    = "#003366"
-    let s:rrbase04    = "#003333"
 elseif (has("gui_running") && g:solarized_degrade == 1)
     " These colors are identical to the 256 color mode. They may be viewed
     " while in gui mode via "let g:solarized_degrade=1", though this is not
@@ -283,7 +280,6 @@ elseif (has("gui_running") && g:solarized_degrade == 1)
     let s:blue        = "#0087ff"
     let s:cyan        = "#00afaf"
     let s:green       = "#5f8700"
-    let s:rrbase04    = "#003333"
 elseif g:solarized_termcolors != 256 && &t_Co >= 16
     let s:vmode       = "cterm"
     let s:base03      = "8"
@@ -299,47 +295,27 @@ elseif g:solarized_termcolors != 256 && &t_Co >= 16
     let s:red         = "1"
     let s:magenta     = "5"
     let s:violet      = "13"
+    let s:cyan        = "37"
     let s:blue        = "4"
-    let s:cyan        = "6"
     let s:green       = "2"
-    let s:rrbase04    = "0"
 elseif g:solarized_termcolors == 256
-    " RR: This is what is used in vim terminal mode with 256 colors enalbed
     let s:vmode       = "cterm"
     let s:base03      = "234"
     let s:base02      = "235"
     let s:base01      = "239"
-    "--RR: Normal Text (light theme)
-    "1) default
     let s:base00      = "240"
-    "2) custom
-    "let s:base00      = "238"
-    "--'
     let s:base0       = "244"
-    "--RR: Comment Text (light theme)
-    "1) default
-    "let s:base1       = "245" "RR: Comment Text
-    "2) custom
-    let s:base1       = "131" "RR: Comment Text 72=greenish, 131,172,173,175=redish, 143=greyish, 104=purpleish
-    "--'
+    let s:base1       = "245"
     let s:base2       = "187"
     let s:base3       = "230"
-    "1) default
-    "let s:yellow      = "136"
-    "2) custom
-    "let s:yellow      = "45" "bright cyan
-    let s:yellow      = "203"
-    "1) default
+    let s:yellow      = "136"
     let s:orange      = "166"
-    "2) custom
-    "let s:orange      = "45"
     let s:red         = "124"
     let s:magenta     = "125"
     let s:violet      = "61"
     let s:blue        = "33"
     let s:cyan        = "37"
     let s:green       = "64"
-    let s:rrbase04    = "0"
 else
     let s:vmode       = "cterm"
     let s:bright      = "* term=bold cterm=bold"
@@ -375,7 +351,7 @@ else
     let s:blue        = "DarkBlue"      " 4
     let s:cyan        = "DarkCyan"      " 6
     let s:green       = "DarkGreen"     " 2
-    let s:rrbase04    = "Black"         " 0
+
 endif
 "}}}
 " Formatting options and null values for passthrough effect "{{{
@@ -476,7 +452,6 @@ exe "let s:bg_magenta   = ' ".s:vmode."bg=".s:magenta."'"
 exe "let s:bg_violet    = ' ".s:vmode."bg=".s:violet ."'"
 exe "let s:bg_blue      = ' ".s:vmode."bg=".s:blue   ."'"
 exe "let s:bg_cyan      = ' ".s:vmode."bg=".s:cyan   ."'"
-exe "let s:bg_rrbase04  = ' ".s:vmode."bg=".s:rrbase04  ."'"
 
 exe "let s:fg_none      = ' ".s:vmode."fg=".s:none   ."'"
 exe "let s:fg_back      = ' ".s:vmode."fg=".s:back   ."'"
@@ -496,7 +471,6 @@ exe "let s:fg_magenta   = ' ".s:vmode."fg=".s:magenta."'"
 exe "let s:fg_violet    = ' ".s:vmode."fg=".s:violet ."'"
 exe "let s:fg_blue      = ' ".s:vmode."fg=".s:blue   ."'"
 exe "let s:fg_cyan      = ' ".s:vmode."fg=".s:cyan   ."'"
-exe "let s:fg_rrbase04  = ' ".s:vmode."fg=".s:rrbase04  ."'"
 
 exe "let s:fmt_none     = ' ".s:vmode."=NONE".          " term=NONE".    "'"
 exe "let s:fmt_bold     = ' ".s:vmode."=NONE".s:b.      " term=NONE".s:b."'"
@@ -535,7 +509,6 @@ if has("gui_running")
     exe "let s:sp_violet    = ' guisp=".s:violet ."'"
     exe "let s:sp_blue      = ' guisp=".s:blue   ."'"
     exe "let s:sp_cyan      = ' guisp=".s:cyan   ."'"
-    exe "let s:sp_rrbase04  = ' guisp=".s:rrbase04  ."'"
 else
     let s:sp_none      = ""
     let s:sp_back      = ""
@@ -555,7 +528,6 @@ else
     let s:sp_violet    = ""
     let s:sp_blue      = ""
     let s:sp_cyan      = ""
-    let s:sp_rrbase04  = ""
 endif
 
 "}}}
@@ -597,23 +569,19 @@ exe "hi! PreProc"        .s:fmt_none   .s:fg_orange .s:bg_none
 "        Macro           same as Define
 "        PreCondit       preprocessor #if, #else, #endif, etc.
 
-"1) default
 exe "hi! Type"           .s:fmt_none   .s:fg_yellow .s:bg_none
-"1) custom
-"exe "hi! Type"           .s:fmt_none   .s:fg_blue .s:bg_none
 "       *Type            int, long, char, etc.
 "        StorageClass    static, register, volatile, etc.
 "        Structure       struct, union, enum, etc.
 "        Typedef         A typedef
 
-exe "hi! Special"        .s:fmt_none   .s:fg_green    .s:bg_none
+exe "hi! Special"        .s:fmt_none   .s:fg_red    .s:bg_none
 "       *Special         any special symbol
 "        SpecialChar     special character in a constant
 "        Tag             you can use CTRL-] on this
 "        Delimiter       character that needs attention
 "        SpecialComment  special things inside a comment
 "        Debug           debugging statements
-"        RR: fortran's format specifier number and continuation character
 
 exe "hi! Underlined"     .s:fmt_none   .s:fg_violet .s:bg_none
 "       *Underlined      text that stands out, HTML links
@@ -652,24 +620,10 @@ exe "hi! MoreMsg"        .s:fmt_none   .s:fg_blue   .s:bg_none
 exe "hi! ModeMsg"        .s:fmt_none   .s:fg_blue   .s:bg_none
 exe "hi! LineNr"         .s:fmt_none   .s:fg_base01 .s:bg_base02
 exe "hi! Question"       .s:fmt_bold   .s:fg_cyan   .s:bg_none
-"RR: Vertical split line
-"--1) default coloring
-"if ( has("gui_running") || &t_Co > 8 )
-"    exe "hi! VertSplit"  .s:fmt_none   .s:fg_base00 .s:bg_base00
-"else
-"    exe "hi! VertSplit"  .s:fmt_revbb  .s:fg_base00 .s:bg_base02
-"endif
-"--2) creates a dashed line (one dash per line)
-"if ( has("gui_running") || &t_Co > 8 )
-"    exe "hi! VertSplit"  .s:fmt_none   .s:fg_none .s:bg_none
-"else
-"    exe "hi! VertSplit"  .s:fmt_revbb  .s:fg_none .s:bg_none
-"endif
-"--3) hides the vertical split entirely
 if ( has("gui_running") || &t_Co > 8 )
-    exe "hi! VertSplit"  .s:fmt_revbb   .s:fg_base03 .s:bg_base03
+    exe "hi! VertSplit"  .s:fmt_none   .s:fg_base00 .s:bg_base00
 else
-    exe "hi! VertSplit"  .s:fmt_revbb  .s:fg_base03 .s:bg_base03
+    exe "hi! VertSplit"  .s:fmt_revbb  .s:fg_base00 .s:bg_base02
 endif
 exe "hi! Title"          .s:fmt_bold   .s:fg_orange .s:bg_none
 exe "hi! VisualNOS"      .s:fmt_stnd   .s:fg_none   .s:bg_base02 .s:fmt_revbb
@@ -713,18 +667,9 @@ exe "hi! PmenuThumb"     .s:fmt_none   .s:fg_base0  .s:bg_base03  .s:fmt_revbb
 exe "hi! TabLine"        .s:fmt_undr   .s:fg_base0  .s:bg_base02  .s:sp_base0
 exe "hi! TabLineFill"    .s:fmt_undr   .s:fg_base0  .s:bg_base02  .s:sp_base0
 exe "hi! TabLineSel"     .s:fmt_undr   .s:fg_base01 .s:bg_base2   .s:sp_base0  .s:fmt_revbbu
-"RR: CursolColumn color
-"1) default
-"exe "hi! CursorColumn"   .s:fmt_none   .s:fg_none   .s:bg_base02
-"2) new color
-exe "hi! CursorColumn"   .s:fmt_none   .s:fg_none   .s:bg_rrbase04
+exe "hi! CursorColumn"   .s:fmt_none   .s:fg_none   .s:bg_base02
 exe "hi! CursorLine"     .s:fmt_uopt   .s:fg_none   .s:bg_base02  .s:sp_base1
-"RR: ColorColumn custimization
-"1) default
-exe "hi! ColorColumn"    .s:fmt_none   .s:fg_none   .s:bg_base02
-"2) solarized dark (very faint base color)
-"exe "hi! ColorColumn"    .s:fmt_none   .s:fg_none   .s:bg_rrbase04
-"
+exe "hi! ColorColumn"    .s:fmt_none   .s:fg_green   .s:bg_base02
 exe "hi! Cursor"         .s:fmt_none   .s:fg_base03 .s:bg_base0
 hi! link lCursor Cursor
 exe "hi! MatchParen"     .s:fmt_bold   .s:fg_red    .s:bg_base01
