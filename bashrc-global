@@ -291,7 +291,7 @@ alias tecmac_c='tecplot ~/scripts/zonemacro_cells.mcr'
 alias tecmac_n='tecplot ~/scripts/zonemacro_nodes.mcr'
 alias tp='tecplot'
 #-- tmux
-alias tmux="TERM=screen-256color-bce tmux"
+#alias tmux="TERM=screen-256color-bce tmux"
 alias tma='tmux attach -t' 
 alias tmd='tmux detach'
 alias tmk='tmux kill-session -t'
