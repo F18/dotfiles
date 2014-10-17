@@ -137,7 +137,9 @@
 " Terminals that support italics
 let s:terms_italic=[
             \"rxvt",
-            \"gnome-terminal"
+            \"gnome-terminal",
+            \"screen",
+            \"screen-256color"
             \]
 " For reference only, terminals are known to be incomptible.
 " Terminals that are in neither list need to be tested.
@@ -148,6 +150,7 @@ let s:terms_noitalic=[
 if has("gui_running")
     let s:terminal_italic=1 " TODO: could refactor to not require this at all
 else
+    "let s:terminal_italic=1 " terminals will be assumed to support italics
     let s:terminal_italic=0 " terminals will be guilty until proven compatible
     for term in s:terms_italic
         if $TERM_PROGRAM =~ term
@@ -286,9 +289,9 @@ elseif g:solarized_termcolors != 256 && &t_Co >= 16
     let s:base03      = "8"
     let s:base02      = "0"
     let s:base01      = "10"
-    let s:base00      = "242" "normal
+    let s:base00      = "242" "RR: normal 
     let s:base0       = "12"
-    let s:base1       = "14" "comment
+    let s:base1       = "14" "RR: comment
     let s:base2       = "7"
     let s:base3       = "15"
     let s:yellow      = "3"
@@ -539,7 +542,12 @@ endif
 
 exe "hi! Normal"         .s:fmt_none   .s:fg_base0  .s:bg_back
 
-exe "hi! Comment"        .s:fmt_ital   .s:fg_base01 .s:bg_none
+" RR: Change the behaviour for comments based on gui or terminal mode
+if has("gui_running")
+  exe "hi! Comment"        .s:fmt_ital   .s:fg_base01 .s:bg_none
+else
+  exe "hi! Comment"        .s:fmt_stnd   .s:fg_base01 .s:bg_none
+endif
 "       *Comment         any comment
 
 exe "hi! Constant"       .s:fmt_none   .s:fg_cyan   .s:bg_none

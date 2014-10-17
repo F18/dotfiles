@@ -76,16 +76,13 @@
     colorscheme solarized
     set t_Co=256
     set nocompatible                                           
-    "set t_Co=16                                                
-    "call pathogen#infect()
-    set background=light
-    let solarized_constrast='high'
+    set background=dark
+    let solarized_constrast='normal'
   else
     "let g:jellybeans_use_lowcolor_black = 0
     "colorscheme jellybeans
-    "set t_Co=16                                                
-    set background=light
-    let solarized_constrast='high'
+    set background=dark
+    let solarized_constrast='normal'
     colorscheme solarized
   endif
 
