@@ -6,6 +6,17 @@
 #
 
 #
+# Select Color Scheme and store as env variable for
+# bash, vim, dircolors, and tmux config
+#
+#MYCOLORS='zenburn'
+#MYCOLORS='jellybeans'
+#MYCOLORS='wombat'
+#MYCOLORS='solarized-light'
+MYCOLORS='solarized-dark'
+export MYCOLORS
+
+#
 # Define some colors
 #-- my own colors
 ROYALBLUE='\[\033[38;5;24m\]'
@@ -31,63 +42,76 @@ LIGHT_GRAY='\[\033[0;37m\]'
 WHITE='\[\033[1;37m\]'
 SYMBOL="\\$"
 WD="\W"
+
 #
-# PROMPT DISPLAYS
+# PROMPT DISPLAY TEXT AND COLORS
 #
-# Good ones: 
-#
-#--1) zenburn
-#NONE='\[\e[01;32m\]'
-#BRACE_COLOR=$LIGHT_GRAY
-#LBRACE=$BRACE_COLOR[$BRACE_COLOR
-#RBRACE=$BRACE_COLOR]$BRACE_COLOR
-#PS1="$RED\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW\W$RBRACE$NONE$ "
-#--2) solarized-dark
-NONE=$LIGHT_GRAY
-BRACE_COLOR=$MYGRAY2
-LBRACE=$BRACE_COLOR[$BRACE_COLOR
-RBRACE=$BRACE_COLOR]$BRACE_COLOR
-PS1="$LIGHT_CYAN\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW\W$RBRACE$NONE$ "
-#--3) solarized-light
-#NONE='\[\e[01;248m\]'
-#NONE=$MYGRAY
-#BRACE_COLOR=$LIGHT_CYAN
-#LBRACE=$BRACE_COLOR[$BRACE_COLOR
-#RBRACE=$BRACE_COLOR]$BRACE_COLOR
-#PS1="$LIGHT_CYAN\w\n$LBRACE$MYGRAY\D{%H:%M}$RBRACE$LBRACE$MYGRAY\h $GREEN\W$RBRACE$NONE$ "
-#PS2="$GREEN$LBRACE$MYGRAY\D{%H:%M}$RBRACE$LBRACE$MYGRAY\h $GREEN\w$RBRACE$NONE$ "
-#--4) wombat/jellybeans
-#NONE=$WHITE
-#BRACE_COLOR=$ZENGREEN
-#LBRACE=$BRACE_COLOR[$BRACE_COLOR
-#RBRACE=$BRACE_COLOR]$BRACE_COLOR
-#PS1="$MYGRAY\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $LIGHT_PURPLE\W$RBRACE$NONE$ "
-#PS2="$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $LIGHT_PURPLE\w$RBRACE$NONE$ "
+#-- zenburn
+if [ "$MYCOLORS" == "zenburn" ]; then
+  NONE='\[\e[01;32m\]'
+  BRACE_COLOR=$LIGHT_GRAY
+  LBRACE=$BRACE_COLOR[$BRACE_COLOR
+  RBRACE=$BRACE_COLOR]$BRACE_COLOR
+  PS1="$RED\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW\W$RBRACE$NONE$ "
+#-- wombat/jellybeans
+elif [ "$MYCOLORS" == "jellybeans" ]; then
+  NONE=$WHITE
+  BRACE_COLOR=$ZENGREEN
+  LBRACE=$BRACE_COLOR[$BRACE_COLOR
+  RBRACE=$BRACE_COLOR]$BRACE_COLOR
+  PS1="$MYGRAY\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $LIGHT_PURPLE\W$RBRACE$NONE$ "
+  PS2="$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $LIGHT_PURPLE\w$RBRACE$NONE$ "
+#-- solarized-light
+elif [ "$MYCOLORS" == "solarized-light" ]; then
+  NONE='\[\e[01;248m\]'
+  NONE=$MYGRAY
+  BRACE_COLOR=$LIGHT_CYAN
+  LBRACE=$BRACE_COLOR[$BRACE_COLOR
+  RBRACE=$BRACE_COLOR]$BRACE_COLOR
+  PS1="$LIGHT_CYAN\w\n$LBRACE$MYGRAY\D{%H:%M}$RBRACE$LBRACE$MYGRAY\h $GREEN\W$RBRACE$NONE$ "
+  PS2="$GREEN$LBRACE$MYGRAY\D{%H:%M}$RBRACE$LBRACE$MYGRAY\h $GREEN\w$RBRACE$NONE$ "
+#-- solarized-dark
+elif [ "$MYCOLORS" == "solarized-dark" ]; then
+  NONE=$LIGHT_GRAY
+  BRACE_COLOR=$MYGRAY2
+  LBRACE=$BRACE_COLOR[$BRACE_COLOR
+  RBRACE=$BRACE_COLOR]$BRACE_COLOR
+  PS1="$LIGHT_CYAN\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW\W$RBRACE$NONE$ "
+#-- DEFAULT: wombat/jellybeans
+else
+  NONE=$WHITE
+  BRACE_COLOR=$ZENGREEN
+  LBRACE=$BRACE_COLOR[$BRACE_COLOR
+  RBRACE=$BRACE_COLOR]$BRACE_COLOR
+  PS1="$MYGRAY\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $LIGHT_PURPLE\W$RBRACE$NONE$ "
+  PS2="$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $LIGHT_PURPLE\w$RBRACE$NONE$ "
+fi 
 export PS1
 export PS0=$PS1
 export PS2
+
 #
-# Old ones:
-#
-#PS1=[\\w]\\$
-#PS1='\[\e[01;32m\][\u\[\e[01;32m\]@\[\e[01;31m\]\h\[\e[01;32m\] \[\e[01;33m\]\W\[\e[01;32m\]] '
-#PS1="$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW['textdir']/\W$RBRACE$NONE "
-#PROMPT_COMMAND='DIR=`pwd|sed -e "s!$HOME!~!"`; if [ ${#DIR} -gt 15 ]; then CurDir=${DIR:0:12}...${DIR:${#DIR}-15}; else CurDir=$DIR; fi'
-#PROMPT_COMMAND='DIR=`pwd|sed -e "s!$HOME!~!"`; if [ ${#DIR} -gt 30 ]; then CurDir=.${DIR:${#DIR}-30}; else CurDir=$DIR; fi'
-#PS1="$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW\$CurDir$RBRACE$NONE$ "
-#CurDir=${PWD%/*} <-- RR: this gets you one the parent directory
-#
-# Enable color support of ls and also add handy aliases
+# DIRECTORY and LS COLORS 
 #
 if [ "$TERM" != "dumb" ]; then
+  if [ "$MYCOLORS" == "solarized-light" ]; then
+    #-- solarized-light
     [ -e "$HOME/dotfiles/LS_COLORS-solarized-light" ] && DIR_COLORS="$HOME/dotfiles/LS_COLORS-solarized-light"
-    #[ -e "$HOME/dotfiles/LS_COLORS" ] && DIR_COLORS="$HOME/dotfiles/LS_COLORS"
-    [ -e "$DIR_COLORS" ] || DIR_COLORS=""
-    eval "`dircolors -b $DIR_COLORS`"
-    alias ls='ls --color=auto'
-    alias dir='ls --color=auto --format=vertical'
-    alias vdir='ls --color=auto --format=long'
+  elif [ "$MYCOLORS" == "solarized-dark" ]; then
+    #-- solarized-dark
+    [ -e "$HOME/dotfiles/LS_COLORS-solarized-dark" ] && DIR_COLORS="$HOME/dotfiles/LS_COLORS-solarized-dark"
+  else
+    #-- default
+    [ -e "$HOME/dotfiles/LS_COLORS" ] && DIR_COLORS="$HOME/dotfiles/LS_COLORS"
+  fi
+  #-- set and evaluate
+  [ -e "$DIR_COLORS" ] || DIR_COLORS=""
+  eval "`dircolors -b $DIR_COLORS`"
+  alias ls='ls --color=auto'
+  alias dir='ls --color=auto --format=vertical'
+  alias vdir='ls --color=auto --format=long'
 fi
+
 #
 # User specific aliases and functions
 #

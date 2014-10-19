@@ -37,54 +37,51 @@
   set gfn=Monaco\ 10
   set shell=/bin/bash
 
-  "set t_Co=256
-  "-- zenburn
-  "let g:zenburn_high_Contrast=1
-  "let g:zenburn_alternate_Visual = 1
-  "colorscheme zenburn
-  "-- kolor
-  "let g:kolor_italic=1 " Enable italic. Default: 1
-  "let g:kolor_bold=0 " Enable bold. Default: 1
-  "let g:kolor_underlined=0 " Enable underline for 'Underlined'. Default: 0
-  "let g:kolor_alternative_matchparen=0 " Gray 'MatchParen' color. Default: 0
-  "colorscheme kolor
-  "-- solarized
-  "colorscheme solarized
-  "set t_Co=256
-  "set nocompatible                                           
-  ""set t_Co=16                                                
-  ""call pathogen#infect()
-  "set background=light
-  "let solarized_constrast='high'
-  "if !has('gui_running')
-  "  let g:solarized_termcolors=&t_Co
-  "  let g:solarized_termtrans=1
-  "endif
-  "-- razzle
-  "colorscheme razzle
-  "-- wombat
-  "colorscheme wombat256mod
-  "-- vividchalk
-  "set background=dark
-  "colorscheme vividchalk
-  "-- jellybeans
-  "let g:jellybeans_use_lowcolor_black = 0
-  "colorscheme jellybeans
   "
-  " Set colorscheme based on vim or gvim
-  if has('gui_running')
-    colorscheme solarized
-    set t_Co=256
-    set nocompatible                                           
+  " Set color scheme based on env. variable $MYCOLORS
+  " set in bashrc-global
+  "
+  if $MYCOLORS == "zenburn"
+    let g:zenburn_high_Contrast=1
+    let g:zenburn_alternate_Visual = 1
+    colorscheme zenburn
+  elseif $MYCOLORS == "kolor"
+    let g:kolor_italic=1 " Enable italic. Default: 1
+    let g:kolor_bold=0 " Enable bold. Default: 1
+    let g:kolor_underlined=0 " Enable underline for 'Underlined'. Default: 0
+    let g:kolor_alternative_matchparen=0 " Gray 'MatchParen' color. Default: 0
+    colorscheme kolor
+  elseif $MYCOLORS == "razzle"
+    colorscheme razzle
+  elseif $MYCOLORS == "wombat"
+    colorscheme wombat256mod
+  elseif $MYCOLORS == "vividchalk"
     set background=dark
+    colorscheme vividchalk
+  elseif $MYCOLORS == "jellybeans"
+    let g:jellybeans_use_lowcolor_black = 0
+    colorscheme jellybeans
+  elseif $MYCOLORS == "solarized-light"
     let solarized_constrast='normal'
-  else
-    "let g:jellybeans_use_lowcolor_black = 0
-    "colorscheme jellybeans
-    set background=dark
-    let solarized_constrast='normal'
+    set background=light
     colorscheme solarized
+  elseif $MYCOLORS == "solarized-dark"
+    let solarized_constrast='normal'
+    set background=dark
+    colorscheme solarized
+  else 
+    colorscheme default
   endif
+  "
+  " Set colorscheme for gvim
+  "
+  "if has('gui_running')
+  "  colorscheme solarized
+  "  set t_Co=256
+  "  set nocompatible                                           
+  "  set background=light
+  "  let solarized_constrast='normal'
+  "endif
 
   " faster buffering in xterm
   set ttyfast
