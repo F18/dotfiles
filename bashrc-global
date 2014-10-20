@@ -14,6 +14,7 @@
 #MYCOLORS='wombat'
 #MYCOLORS='solarized-light'
 MYCOLORS='solarized-dark'
+#-- export:
 export MYCOLORS
 
 #
