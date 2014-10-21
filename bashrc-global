@@ -74,7 +74,7 @@ elif [ "$MYCOLORS" == "solarized-light" ]; then
 #-- solarized-dark
 elif [ "$MYCOLORS" == "solarized-dark" ]; then
   NONE=$LIGHT_CYAN
-  BRACE_COLOR=$MYGRAY1
+  BRACE_COLOR=$MYGRAY
   LBRACE="$BRACE_COLOR[$BRACE_COLOR"
   RBRACE="$BRACE_COLOR]$BRACE_COLOR"
   PS1="$MYGRAY2\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $CYAN\W$RBRACE$NONE$ "
