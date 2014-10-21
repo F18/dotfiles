@@ -1,4 +1,4 @@
-   " MY CUSTOM VIM SETTINGS
+  " MY CUSTOM VIM SETTINGS
 
   " Add plugin directories to runtimepath
   set runtimepath+=~/dotfiles/vim-local/myPlugins/bclose
@@ -25,6 +25,8 @@
   " the following maps \ to ' before mapping ' to ;
   noremap \ '
   noremap ' ;
+  " the following maps s to z:
+  noremap s z
   " Now map the leader key. With a map leader it's possible to do
   " extra key combinations, such as <leader>w to save the current file
   let mapleader = ","
@@ -32,42 +34,54 @@
 
   syntax enable "Enable syntax hl
 
-  set gfn=PragmataPro\ 9
+  set gfn=Monaco\ 10
   set shell=/bin/bash
 
-  "set t_Co=256
-  "-- zenburn
-  "let g:zenburn_high_Contrast=1
-  "let g:zenburn_alternate_Visual = 1
-  "colorscheme zenburn
-  "-- kolor
-  "let g:kolor_italic=1 " Enable italic. Default: 1
-  "let g:kolor_bold=0 " Enable bold. Default: 1
-  "let g:kolor_underlined=0 " Enable underline for 'Underlined'. Default: 0
-  "let g:kolor_alternative_matchparen=0 " Gray 'MatchParen' color. Default: 0
-  "colorscheme kolor
-  "-- solarized
-  "colorscheme solarized
-  "set t_Co=256
-  "set nocompatible                                           
-  ""set t_Co=16                                                
-  ""call pathogen#infect()
-  "set background=light
-  "let solarized_constrast='high'
-  "if !has('gui_running')
-  "  let g:solarized_termcolors=&t_Co
-  "  let g:solarized_termtrans=1
+  "
+  " Set color scheme based on env. variable $MYCOLORS
+  " set in bashrc-global
+  "
+  if $MYCOLORS == "zenburn"
+    let g:zenburn_high_Contrast=1
+    let g:zenburn_alternate_Visual = 1
+    colorscheme zenburn
+  elseif $MYCOLORS == "kolor"
+    let g:kolor_italic=1 " Enable italic. Default: 1
+    let g:kolor_bold=0 " Enable bold. Default: 1
+    let g:kolor_underlined=0 " Enable underline for 'Underlined'. Default: 0
+    let g:kolor_alternative_matchparen=0 " Gray 'MatchParen' color. Default: 0
+    colorscheme kolor
+  elseif $MYCOLORS == "razzle"
+    colorscheme razzle
+  elseif $MYCOLORS == "wombat"
+    colorscheme wombat256mod
+  elseif $MYCOLORS == "vividchalk"
+    set background=dark
+    colorscheme vividchalk
+  elseif $MYCOLORS == "jellybeans"
+    let g:jellybeans_use_lowcolor_black = 0
+    colorscheme jellybeans
+  elseif $MYCOLORS == "solarized-light"
+    let solarized_constrast='normal'
+    set background=light
+    colorscheme solarized
+  elseif $MYCOLORS == "solarized-dark"
+    let solarized_constrast='normal'
+    set background=dark
+    colorscheme solarized
+  else 
+    colorscheme default
+  endif
+  "
+  " Set colorscheme for gvim
+  "
+  "if has('gui_running')
+  "  colorscheme solarized
+  "  set t_Co=256
+  "  set nocompatible                                           
+  "  set background=light
+  "  let solarized_constrast='normal'
   "endif
-  "-- razzle
-  "colorscheme razzle
-  "-- wombat
-  "colorscheme wombat256mod
-  "-- vividchalk
-  "set background=dark
-  "colorscheme vividchalk
-  "-- jellybeans
-  let g:jellybeans_use_lowcolor_black = 0
-  colorscheme jellybeans
 
   " faster buffering in xterm
   set ttyfast
@@ -86,7 +100,7 @@
   " map the escape key
   noremap! jj <Esc>
   noremap <C-j> :w<cr> :noh<cr>h
-  inoremap <C-j> <Esc> :w<cr> :noh<cr>
+  inoremap <C-j> <Esc> hhh :w<cr> :noh<cr>
   "
   " scrolling
   " always move down a line, even if long line is not wrapped
@@ -105,6 +119,7 @@
   " move to end of line
   map - $
   set nostartofline
+  "set number " show line number
 
   " Multi-pager
   map <leader>e0 mu :MPage <CR> \u zt;
@@ -260,7 +275,7 @@
     " Fast saving
     nmap <leader>w :w!<cr>
     " Fast save and quit vim
-    nmap <leader>s :w <cr> :bd <cr>
+    "nmap <leader>s :w <cr> :bd <cr>
     " Fast quit vim
     nmap <leader>q :wq <cr>
     " Fast reload/reread of file
@@ -427,9 +442,9 @@
     " All statusline code above is overtaken by the vim-airline plugin
     "let g:airline_theme             = 'luna'
     "let g:airline_theme             = 'bubblegum'
-    "let g:airline_theme             = 'solarized'
+    let g:airline_theme             = 'solarized'
     "let g:airline_theme             = 'sol'
-    let g:airline_theme             = 'jellybeans'
+    "let g:airline_theme             = 'jellybeans'
     let g:airline_enable_branch     = 1
     let g:airline_enable_syntastic  = 1
     let g:airline#extensions#tabline#enabled = 1
@@ -579,6 +594,12 @@
     "autocmd BufWritePre *.f70 :%s/\s\+$//e
     "
     " Code folding
+    map <leader>z zMzv
+    map <leader>s zMzv
+    " move to beginning of current fold:
+    map [s [z zz
+    " move to end of current fold:
+    map ]s ]z zz
     function! MarkdownLevel()
       "if getline(v:lnum) =~ '!###### .*$'
       "  return ">6"
@@ -605,6 +626,7 @@
     autocmd FileType fortran setlocal foldtext=MarkdownFoldText()
     autocmd FileType fortran setlocal foldexpr=MarkdownLevel()  
     autocmd FileType fortran setlocal foldmethod=expr
+
     "
   " ________________
   " Vim Indent Guides

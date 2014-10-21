@@ -6,11 +6,24 @@
 #
 
 #
+# Select Color Scheme and store as env variable for
+# bash, vim, dircolors, and tmux config
+#
+#MYCOLORS='zenburn'
+#MYCOLORS='jellybeans'
+#MYCOLORS='wombat'
+#MYCOLORS='solarized-light'
+MYCOLORS='solarized-dark'
+#-- export:
+export MYCOLORS
+
+#
 # Define some colors
 #-- my own colors
 ROYALBLUE='\[\033[38;5;24m\]'
 ZENGREEN='\[\033[38;5;108m\]'
 MYGRAY='\[\033[38;5;240m\]'
+MYGRAY2='\[\033[38;5;242m\]'
 WHITE_1='\[\033[0;1m\]'
 BLACK='\[\033[0;30m\]'
 GRAY='\[\033[1;30m\]'
@@ -30,62 +43,77 @@ LIGHT_GRAY='\[\033[0;37m\]'
 WHITE='\[\033[1;37m\]'
 SYMBOL="\\$"
 WD="\W"
+
 #
-# PROMPT DISPLAYS
+# PROMPT DISPLAY TEXT AND COLORS
 #
-# Good ones: 
-#
-#--1) zenburn
-#NONE='\[\e[01;32m\]'
-#BRACE_COLOR=$LIGHT_GRAY
-#LBRACE=$BRACE_COLOR[$BRACE_COLOR
-#RBRACE=$BRACE_COLOR]$BRACE_COLOR
-#PS1="$RED\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW\W$RBRACE$NONE$ "
-#--2) solarized-dark
-#NONE=$MYGRAY
-#BRACE_COLOR=$LIGHT_GRAY
-#LBRACE=$BRACE_COLOR[$BRACE_COLOR
-#RBRACE=$BRACE_COLOR]$BRACE_COLOR
-#PS1="$LIGHT_CYAN\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW\W$RBRACE$NONE$ "
-#--3) solarized-light
-#BRACE_COLOR=$LIGHT_CYAN
-#LBRACE=$BRACE_COLOR[$BRACE_COLOR
-#RBRACE=$BRACE_COLOR]$BRACE_COLOR
-#PS1="$LIGHT_CYAN\w\n$LBRACE$BLACK\D{%H:%M}$RBRACE$LBRACE$BLACK\h $GREEN\W$RBRACE$NONE$ "
-#PS2="$GREEN$LBRACE$BLACK\D{%H:%M}$RBRACE$LBRACE$BLACK\h $GREEN\w$RBRACE$NONE$ "
-#--4) wombat/jellybeans
-#NONE='\[\e[01;252m\]'
-NONE=$WHITE
-BRACE_COLOR=$ZENGREEN
-LBRACE=$BRACE_COLOR[$BRACE_COLOR
-RBRACE=$BRACE_COLOR]$BRACE_COLOR
-PS1="$MYGRAY\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $LIGHT_PURPLE\W$RBRACE$NONE$ "
-PS2="$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $LIGHT_PURPLE\w$RBRACE$NONE$ "
+#-- zenburn
+if [ "$MYCOLORS" == "zenburn" ]; then
+  NONE='\[\e[01;32m\]'
+  BRACE_COLOR=$LIGHT_GRAY
+  LBRACE=$BRACE_COLOR[$BRACE_COLOR
+  RBRACE=$BRACE_COLOR]$BRACE_COLOR
+  PS1="$RED\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW\W$RBRACE$NONE$ "
+#-- wombat/jellybeans
+elif [ "$MYCOLORS" == "jellybeans" ]; then
+  NONE=$WHITE
+  BRACE_COLOR=$ZENGREEN
+  LBRACE=$BRACE_COLOR[$BRACE_COLOR
+  RBRACE=$BRACE_COLOR]$BRACE_COLOR
+  PS1="$MYGRAY\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $LIGHT_PURPLE\W$RBRACE$NONE$ "
+  PS2="$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $LIGHT_PURPLE\w$RBRACE$NONE$ "
+#-- solarized-light
+elif [ "$MYCOLORS" == "solarized-light" ]; then
+  NONE='\[\e[01;248m\]'
+  NONE=$MYGRAY
+  BRACE_COLOR=$LIGHT_CYAN
+  LBRACE=$BRACE_COLOR[$BRACE_COLOR
+  RBRACE=$BRACE_COLOR]$BRACE_COLOR
+  PS1="$LIGHT_CYAN\w\n$LBRACE$MYGRAY\D{%H:%M}$RBRACE$LBRACE$MYGRAY\h $GREEN\W$RBRACE$NONE$ "
+  PS2="$GREEN$LBRACE$MYGRAY\D{%H:%M}$RBRACE$LBRACE$MYGRAY\h $GREEN\w$RBRACE$NONE$ "
+#-- solarized-dark
+elif [ "$MYCOLORS" == "solarized-dark" ]; then
+  NONE=$LIGHT_CYAN
+  BRACE_COLOR=$MYGRAY1
+  LBRACE="$BRACE_COLOR[$BRACE_COLOR"
+  RBRACE="$BRACE_COLOR]$BRACE_COLOR"
+  PS1="$MYGRAY2\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $CYAN\W$RBRACE$NONE$ "
+  PS2="$GREEN$LBRACE$MYGRAY\D{%H:%M}$RBRACE$LBRACE$MYGRAY\h $GREEN\w$RBRACE$NONE$ "
+#-- DEFAULT: wombat/jellybeans
+else
+  NONE=$WHITE
+  BRACE_COLOR=$ZENGREEN
+  LBRACE=$BRACE_COLOR[$BRACE_COLOR
+  RBRACE=$BRACE_COLOR]$BRACE_COLOR
+  PS1="$MYGRAY\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $LIGHT_PURPLE\W$RBRACE$NONE$ "
+  PS2="$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $LIGHT_PURPLE\w$RBRACE$NONE$ "
+fi 
 export PS1
 export PS0=$PS1
 export PS2
+
 #
-# Old ones:
-#
-#PS1=[\\w]\\$
-#PS1='\[\e[01;32m\][\u\[\e[01;32m\]@\[\e[01;31m\]\h\[\e[01;32m\] \[\e[01;33m\]\W\[\e[01;32m\]] '
-#PS1="$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW['textdir']/\W$RBRACE$NONE "
-#PROMPT_COMMAND='DIR=`pwd|sed -e "s!$HOME!~!"`; if [ ${#DIR} -gt 15 ]; then CurDir=${DIR:0:12}...${DIR:${#DIR}-15}; else CurDir=$DIR; fi'
-#PROMPT_COMMAND='DIR=`pwd|sed -e "s!$HOME!~!"`; if [ ${#DIR} -gt 30 ]; then CurDir=.${DIR:${#DIR}-30}; else CurDir=$DIR; fi'
-#PS1="$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW\$CurDir$RBRACE$NONE$ "
-#CurDir=${PWD%/*} <-- RR: this gets you one the parent directory
-#
-# Enable color support of ls and also add handy aliases
+# DIRECTORY and LS COLORS 
 #
 if [ "$TERM" != "dumb" ]; then
-    #[ -e "$HOME/dotfiles/LS_COLORS-solarized-light" ] && DIR_COLORS="$HOME/dotfiles/LS_COLORS-solarized-light"
+  if [ "$MYCOLORS" == "solarized-light" ]; then
+    #-- solarized-light
+    [ -e "$HOME/dotfiles/LS_COLORS-solarized-light" ] && DIR_COLORS="$HOME/dotfiles/LS_COLORS-solarized-light"
+  elif [ "$MYCOLORS" == "solarized-dark" ]; then
+    #-- solarized-dark
+    [ -e "$HOME/dotfiles/LS_COLORS-solarized-dark" ] && DIR_COLORS="$HOME/dotfiles/LS_COLORS-solarized-dark"
+  else
+    #-- default
     [ -e "$HOME/dotfiles/LS_COLORS" ] && DIR_COLORS="$HOME/dotfiles/LS_COLORS"
-    [ -e "$DIR_COLORS" ] || DIR_COLORS=""
-    eval "`dircolors -b $DIR_COLORS`"
-    alias ls='ls --color=auto'
-    alias dir='ls --color=auto --format=vertical'
-    alias vdir='ls --color=auto --format=long'
+  fi
+  #-- set and evaluate
+  [ -e "$DIR_COLORS" ] || DIR_COLORS=""
+  eval "`dircolors -b $DIR_COLORS`"
+  alias ls='ls --color=auto'
+  alias dir='ls --color=auto --format=vertical'
+  alias vdir='ls --color=auto --format=long'
 fi
+
 #
 # User specific aliases and functions
 #
@@ -105,7 +133,7 @@ alias cdoo='cd $MYHOME/optima/optima2D'
 alias cdp='cd $MYHOME/01_thesis/seminars/utias/20111007_research_update_to_group'
 alias cds='cd $MYWORK'
 alias cdt='cd $MYHOME/01_thesis/phd/tex'
-alias cdvo='cd $MYWORK/y2014/m03'
+alias cdvo='cd $MYWORK/y2014/m10'
 alias cdvoo='cd $MYWORK/y2013/m12'
 alias cdwd='cd /windows/Users/ramy/Documents'
 alias cdwdm='cd /windows/Users/ramy/Music'
@@ -214,6 +242,7 @@ alias nautilus='nautilus --no-desktop --browser'
 alias oo='openoffice.org'                     # Open the openoffice software
 alias office='openoffice.org'
 
+alias p='py-compareFD.py'
 alias pdf='pdfstudio'                        # For a launcher you can use PDFStudio as the command
 alias pg='ping www.google.ca'                 # ping the google website
 alias pp='nice -19 postprocess_unsteady_data' # runs preplot on cffc data
@@ -263,6 +292,7 @@ alias t10='tail --lines=10 '
 alias t20='tail --lines=20 '
 alias tf='tail --lines=300 -F'
 alias tg0='tail -50f rest00-00.gnu'
+alias tg01='tail -50f rest01-00.gnu'
 alias tg1='tail -50f rest00-01.gnu'
 alias tg2='tail -50f rest00-02.gnu'
 alias tg3='tail -50f rest00-03.gnu'
@@ -289,6 +319,7 @@ alias tecmac_c='tecplot ~/scripts/zonemacro_cells.mcr'
 alias tecmac_n='tecplot ~/scripts/zonemacro_nodes.mcr'
 alias tp='tecplot'
 #-- tmux
+#alias tmux="TERM=screen-256color-bce tmux"
 alias tma='tmux attach -t' 
 alias tmd='tmux detach'
 alias tmk='tmux kill-session -t'
@@ -359,6 +390,12 @@ function gg() {
 args=("$@") ;
 echo "Arguments are ${args[$((0))]} and ${args[$((1))]}";
 grep -irn --include="*.${args[$((0))]}" -- "${args[$((1))]}" . ; 
+}
+#-- specify file type and expression
+function gg2() { 
+args=("$@") ;
+echo "Grep file ${args[$((0))]} for ${args[$((1))]} or ${args[$((2))]}";
+cat screen | grep -in --include="*${args[$((0))]}" -- "${args[$((1))]}|${args[$((2))]}". ; 
 }
 #
 # Media related
@@ -451,5 +488,33 @@ function ge
 { 
   google docs edit --title "$@" --editor vim;
 }
+#
+function rp
+{
+  rubber --pdf "$@"tex;
+  /bin/cp -f "$@"log screen;
+  grep -in "warning\|error" screen;
+  rubber --clean "$@"tex;
+}
+function rpf
+{
+  rubber --pdf -f "$@"tex;
+  /bin/cp -f "$@"log screen;
+  grep -in "warning\|error" screen;
+  rubber --clean "$@"tex;
+}
+
+function rpc
+{
+  rubber --clean "$@"tex;
+  rm -f screen;
+}
+
+function rpca
+{
+  rubber --clean --pdf "$@"tex;
+  rm -f screen;
+}
+
 #
 # END OF BASHRC-GLOBAL

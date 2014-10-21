@@ -1,12 +1,11 @@
-# Exact Solarized Light color theme for the color GNU ls utility.
+# Exact Solarized color theme for the color GNU ls utility.
 # Designed for dircolors (GNU coreutils) 5.97
 #
 # This simple theme was simultaneously designed for these terminal color schemes:
-# - Solarized dark
+# - Solarized dark  (best)
 # - Solarized light (best)
 # - default dark
 # - default light
-# with a slight optimization for Solarized Light.
 #
 # How the colors were selected:
 # - Terminal emulators often have an option typically enabled by default that makes
@@ -61,6 +60,8 @@ TERM cons25
 TERM console
 TERM cygwin
 TERM dtterm
+TERM dvtm
+TERM dvtm-256color
 TERM Eterm
 TERM eterm-color
 TERM fbterm
@@ -271,6 +272,7 @@ EXEC 01;31  # Unix
 .pdf 33
 .pgm 33
 .png 33
+.PNG 33
 .ppm 33
 .pps 33
 .ppsx 33
@@ -315,6 +317,7 @@ EXEC 01;31  # Unix
 .m4v 33
 .mkv 33
 .mov 33
+.MOV 33
 .mp4 33
 .mp4v 33
 .mpeg 33
@@ -328,6 +331,7 @@ EXEC 01;31  # Unix
 .rmvb 33
 .swf 33
 .vob 33
+.webm 33
 .wmv 33
 
 ### Misc
@@ -398,12 +402,12 @@ EXEC 01;31  # Unix
 # Unimportant text files
 # For universal scheme, use brightgreen 01;32
 # For optimal on light bg (but too prominent on dark bg), use white 01;34
-#.log 01;32
-#*~ 01;32
-#*# 01;32
-.log 01;34
-*~ 01;34
-*# 01;34
+.log 01;32
+*~ 01;32
+*# 01;32
+#.log 01;34
+#*~ 01;34
+#*# 01;34
 
 # Unimportant non-text files
 # For universal scheme, use brightcyan 01;36
