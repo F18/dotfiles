@@ -473,7 +473,7 @@ exe "let s:fg_orange    = ' ".s:vmode."fg=".s:orange ."'"
 exe "let s:fg_red       = ' ".s:vmode."fg=".s:red    ."'"
 exe "let s:fg_magenta   = ' ".s:vmode."fg=".s:magenta."'"
 exe "let s:fg_violet    = ' ".s:vmode."fg=".s:violet ."'"
-exe "let s:fg_green      = ' ".s:vmode."fg=".s:blue   ."'"
+exe "let s:fg_blue      = ' ".s:vmode."fg=".s:blue   ."'"
 exe "let s:fg_cyan      = ' ".s:vmode."fg=".s:cyan   ."'"
 
 exe "let s:fmt_none     = ' ".s:vmode."=NONE".          " term=NONE".    "'"
@@ -625,7 +625,7 @@ exe "hi! Directory"      .s:fmt_none   .s:fg_green   .s:bg_none
 exe "hi! ErrorMsg"       .s:fmt_revr   .s:fg_red    .s:bg_none
 " default: exe "hi! IncSearch"      .s:fmt_stnd   .s:fg_orange .s:bg_none
 exe "hi! IncSearch"      .s:fmt_stnd   .s:fg_base03   .s:bg_red
-exe "hi! Search"         .s:fmt_revr   .s:fg_magenta .s:bg_base03
+exe "hi! Search"         .s:fmt_revr   .s:fg_base01 .s:bg_base03
 exe "hi! MoreMsg"        .s:fmt_none   .s:fg_blue   .s:bg_none
 exe "hi! ModeMsg"        .s:fmt_none   .s:fg_blue   .s:bg_none
 exe "hi! LineNr"         .s:fmt_none   .s:fg_base01 .s:bg_base02
