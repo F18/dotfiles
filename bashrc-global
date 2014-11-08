@@ -12,8 +12,8 @@
 #MYCOLORS='zenburn'
 #MYCOLORS='jellybeans'
 #MYCOLORS='wombat'
-#MYCOLORS='solarized-light'
-MYCOLORS='solarized-dark'
+MYCOLORS='solarized-light'
+#MYCOLORS='solarized-dark'
 #-- export:
 export MYCOLORS
 
@@ -132,8 +132,8 @@ alias cdoo='cd $MYHOME/optima/optima2D'
 alias cdp='cd $MYHOME/01_thesis/seminars/utias/20111007_research_update_to_group'
 alias cds='cd $MYWORK'
 alias cdt='cd $MYHOME/01_thesis/phd'
-alias cdvo='cd $MYWORK/y2014/m10'
-alias cdvoo='cd $MYWORK/y2013/m12'
+alias cdvo='cd $MYWORK/y2014/m11'
+alias cdvoo='cd $MYWORK/y2013/m10'
 alias cdwd='cd /windows/Users/ramy/Documents'
 alias cdwdm='cd /windows/Users/ramy/Music'
 
@@ -142,7 +142,7 @@ alias cll='clear'                                # Clear the screen
 alias cl='clear; ls'                             # Clear and list
 alias cp='cp -i'                                 # Copy, but ask me first
 alias cpForce='cp'                               # Copy, but ask me first
-alias cpo='cp $MYHOME/optima/optima2D/OPTIMA2D_x86_64 .'
+alias cpo='/bin/cp -f $MYHOME/optima/optima2D/OPTIMA2D_x86_64 . | echo "Copied OPTIMA2D_x86_64 to current directory"'
 alias chmodf='find . -type f -print | xargs chmod' # chmod files only (recursively)
 alias crop='mogrify -trim'                       # crop the given filename using imagemagik
                                                  # (allows you to crop multiple files at one)
@@ -184,6 +184,7 @@ alias gt='git status'                            # display git status
 alias gu='git remote update'                     # update remote repositories
 
 alias h1='head -n1 -q'                        # Display first line without filename
+alias hn='head -n'                        # Display first line without filename
 alias head='head -100'                        # Display the first 100 lines of a file
 alias hist='history'                          # Display history
 alias h='htop'
@@ -301,6 +302,7 @@ alias tg6='tail -50f rest00-06.gnu'
 alias tg7='tail -50f rest00-07.gnu'
 alias tg='tf *.gmgrad'
 alias th='tail -50f *.his'
+alias tn='tail -n'
 alias to='tf *00.opt'
 alias to1='tf *01-00.opt'
 alias tp='tf *00.tp'
@@ -341,6 +343,7 @@ alias vo='v opt.inp'
 alias vp='v $HOME/bin/scripts/packages.list'
 alias vs='v screen'
 alias vv='v $HOME/dotfiles/vim-local/vimrc'
+alias vu='v -u NONE'
 
 #
 # Source other definitions

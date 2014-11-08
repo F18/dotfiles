@@ -494,7 +494,7 @@
     endfunction
 
     function! MyAckWindow()
-      execute 'AckWindow! "'. expand("<cword>") .'" ../'
+      execute 'AckWindow! "'. expand("<cword>") .'"'
     endfunction
 
 

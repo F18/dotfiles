@@ -117,7 +117,7 @@ alias qr='showq | grep "rashad"'
 alias qs='qstat -u rashad'
 alias qg='showq -w group=zingg'
 alias qgg='showqgroup.sh'
-alias qc='qstat -f | grep -A 2 "Job Id\|work_dir"'
+alias qc='qstat -f | grep -A 2 "Job Id\|Output_Path"'
 alias qss='showq -u rashad'
 alias tr='top | grep "rashad"'
 #-- iteractive jobs
