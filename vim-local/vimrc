@@ -24,6 +24,7 @@
   noremap " ,
   " the following maps \ to ' before mapping ' to ;
   noremap \ '
+  noremap F '
   noremap ' ;
   " the following maps s to z:
   noremap s z

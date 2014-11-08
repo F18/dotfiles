@@ -129,7 +129,7 @@ alias cdd='cd $MYHOME/01_thesis/DECs/dec5'
 alias cdl='cd $MYHOME/01_thesis/literature'
 alias cdo='cd $MYHOME/optima'
 alias cdoo='cd $MYHOME/optima/optima2D'
-alias cdp='cd $MYHOME/01_thesis/seminars/utias/20111007_research_update_to_group'
+alias cdp='cd $MYHOME/01_thesis/mypapers/conferences/201506_aiaa_dallas'
 alias cds='cd $MYWORK'
 alias cdt='cd $MYHOME/01_thesis/phd'
 alias cdvo='cd $MYWORK/y2014/m11'
@@ -193,7 +193,7 @@ alias icemlicManager='cd /usr2/local_net2/icemcfd/shared_files/licensing/lic_adm
 alias imindmapV2='cd $HOME/ProgramFiles/iMindMap2.2.3; ./iMindMap'
 alias iphoneReConnect='idevicepair unpair && idevicepair pair'
 
-alias jabref='~/usr/local/java/jre1.7.0/bin/java -jar ~/usr/local/jabref/JabRef-2.10b.jar'
+#alias jabref='~/usr/local/java/jre1.7.0/bin/java -jar ~/usr/local/jabref/JabRef-2.10b.jar'
 
 #-- running jobs
 alias ejobs='v $MYHOME/bin/scripts/script-lm.sh'
@@ -260,8 +260,8 @@ alias pmem='pidstat -r -p'                    # Outputs the memory statistics fo
                                               # Enter the following: "pmem 6218 2 5 > memlog.txt" for 
                                               # 5 outputs every 2 seconds written to file memlog.txt
 
-alias re='reset'                              # Reset the terminal
 alias red='gtk-redshift -l 43.67:-79.42 -t 6400:5800 -g 0.8'
+alias re='rubber-info'
 alias rm='rm -i'                              # Remove, but ask me first
 alias rme='rm *~ -i'                          # Remove emacs backup files, but ask me first
 alias rmef='rm *~ -f'                         # Remove emacs backup files, but ask me first
