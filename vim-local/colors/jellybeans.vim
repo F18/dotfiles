@@ -301,7 +301,11 @@ if !exists("g:jellybeans_background_color")
   let g:jellybeans_background_color = "151515"
 end
 
-call s:X("Normal","e8e8d3",g:jellybeans_background_color,"","White","")
+"RR: default normal text
+"call s:X("Normal","e8e8d3",g:jellybeans_background_color,"","White","")
+"RR: default normal text
+"call s:X("Normal","afd7af",g:jellybeans_background_color,"","White","")
+call s:X("Normal","949494",g:jellybeans_background_color,"","White","")
 set background=dark
 
 if !exists("g:jellybeans_use_lowcolor_black") || g:jellybeans_use_lowcolor_black

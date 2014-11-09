@@ -11,8 +11,8 @@
 #
 #MYCOLORS='zenburn'
 #MYCOLORS='jellybeans'
-#MYCOLORS='wombat'
-MYCOLORS='solarized-light'
+MYCOLORS='wombat'
+#MYCOLORS='solarized-light'
 #MYCOLORS='solarized-dark'
 #-- export:
 export MYCOLORS
@@ -56,7 +56,8 @@ if [ "$MYCOLORS" == "zenburn" ]; then
   PS1="$RED\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW\W$RBRACE$NONE$ "
 #-- wombat/jellybeans
 elif [ "$MYCOLORS" == "jellybeans" ]; then
-  NONE=$WHITE
+  #NONE=$WHITE
+  NONE=$LIGHT_CYAN
   BRACE_COLOR=$ZENGREEN
   LBRACE=$BRACE_COLOR[$BRACE_COLOR
   RBRACE=$BRACE_COLOR]$BRACE_COLOR
