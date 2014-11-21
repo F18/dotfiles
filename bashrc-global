@@ -241,6 +241,7 @@ alias lpbdl='/usr/bin/lpr -P lp -o InputSlot=Tray_2 -o OutputBin=PrinterDefault 
 
 alias m='more'
 alias m0='more rest00-00'
+#alias mplayer='mplayer -idle -fixed-vo' # keep mplayer open after video is complete
 alias mousefix='gpointing-device-settings'
 alias mv='mv -i'                              # Move, but ask me first
 alias mymerge='git-mergetool --tool xxdiff'
@@ -315,7 +316,7 @@ alias th='tail -50f *.his'
 alias tn='tail -n'
 alias to='tf *00.opt'
 alias to1='tf *01-00.opt'
-alias tp='tf *00.tp'
+#alias tp='tf *00.tp'
 alias tpout='tf *00.tpout'
 alias tpsum='tf *00.tpsum'
 alias tpld='tf *00.tpld'

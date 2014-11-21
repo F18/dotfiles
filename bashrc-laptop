@@ -32,7 +32,8 @@ if [ '$HOST != oddjob.utias.utoronto.ca' ]; then
      export BIBINPUTS
 fi
 #-- tecplot
-export TEC360HOME=$HOME/usr/local/tec360_2013R1
+#export TEC360HOME=$HOME/usr/local/tec360_2013R1
+export TEC360HOME=$HOME/usr/local/tec360ex2014R2
 export TECPHYFILE=$HOME/tmp/.tecplot.phy
 export ICEM_ACN=$HOME/usr/local/ansys_inc/v130/icemcfd/linux64_amd
 export PATH=$TEC360HOME/bin:$PATH
@@ -82,7 +83,7 @@ fi
 # Aliases specific to system
 # -- should come after bashrc-global
 #
-alias tecplot='tec360 -sgiopengl'
+#alias tecplot='tec360 -sgiopengl'
 alias cdvs='cd ~/01_utias/04_scinet/optima-verify/08_optimize/y2012/m09'
 #-- Login to remote servers
 alias hpacf='cd ~/01_utias/03_hpacf; ssh -X ramy@hpacf.utias.utoronto.ca'
