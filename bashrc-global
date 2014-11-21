@@ -11,8 +11,8 @@
 #
 #MYCOLORS='zenburn'
 #MYCOLORS='jellybeans'
-MYCOLORS='wombat'
-#MYCOLORS='solarized-light'
+#MYCOLORS='wombat'
+MYCOLORS='solarized-light'
 #MYCOLORS='solarized-dark'
 #-- export:
 export MYCOLORS
@@ -136,6 +136,7 @@ alias brc='cd; emacs .bashrc &'                  # Open the .bashrc file for edi
 
 alias cdc='cd $MYHOME/02_courses'
 alias cdd='cd $MYHOME/01_thesis/DECs/dec5'
+alias cdj='cd $MYHOME/01_thesis/logbook/journal'
 alias cdl='cd $MYHOME/01_thesis/literature'
 alias cdo='cd $MYHOME/optima'
 alias cdoo='cd $MYHOME/optima/optima2D'
