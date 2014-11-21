@@ -24,6 +24,7 @@
   noremap " ,
   " the following maps \ to ' before mapping ' to ;
   noremap \ '
+  noremap F '
   noremap ' ;
   " the following maps s to z:
   noremap s z
@@ -45,30 +46,38 @@
     let g:zenburn_high_Contrast=1
     let g:zenburn_alternate_Visual = 1
     colorscheme zenburn
+    let g:airline_theme = 'jellybeans'
   elseif $MYCOLORS == "kolor"
     let g:kolor_italic=1 " Enable italic. Default: 1
     let g:kolor_bold=0 " Enable bold. Default: 1
     let g:kolor_underlined=0 " Enable underline for 'Underlined'. Default: 0
     let g:kolor_alternative_matchparen=0 " Gray 'MatchParen' color. Default: 0
+    let g:airline_theme = 'jellybeans'
     colorscheme kolor
   elseif $MYCOLORS == "razzle"
     colorscheme razzle
+    let g:airline_theme = 'jellybeans'
   elseif $MYCOLORS == "wombat"
     colorscheme wombat256mod
+    let g:airline_theme = 'jellybeans'
   elseif $MYCOLORS == "vividchalk"
     set background=dark
     colorscheme vividchalk
+    let g:airline_theme = 'jellybeans'
   elseif $MYCOLORS == "jellybeans"
     let g:jellybeans_use_lowcolor_black = 0
+    let g:airline_theme = 'jellybeans'
     colorscheme jellybeans
   elseif $MYCOLORS == "solarized-light"
     let solarized_constrast='normal'
     set background=light
+    let g:airline_theme = 'solarized'
     colorscheme solarized
   elseif $MYCOLORS == "solarized-dark"
     let solarized_constrast='normal'
     set background=dark
     colorscheme solarized
+    let g:airline_theme = 'solarized'
   else 
     colorscheme default
   endif
@@ -438,21 +447,21 @@
     " set statusline+=%L                 " total number of lines
     " set statusline+=\ \ %P                 " percentage of file
 
-    "
-    " All statusline code above is overtaken by the vim-airline plugin
-    "let g:airline_theme             = 'luna'
-    "let g:airline_theme             = 'bubblegum'
-    let g:airline_theme             = 'solarized'
-    "let g:airline_theme             = 'sol'
-    "let g:airline_theme             = 'jellybeans'
-    let g:airline_enable_branch     = 1
-    let g:airline_enable_syntastic  = 1
-    let g:airline#extensions#tabline#enabled = 1
-    let g:airline#extensions#tabline#tab_nr_type = 1
-    let g:airline#extensions#tabline#left_sep = '|'
-    let g:airline#extensions#tabline#left_alt_sep = ' '
-    "trailing whitespace warning
-    let g:airline_detect_whitespace=0 
+    ""
+    "" All statusline code above is overtaken by the vim-airline plugin
+    ""let g:airline_theme             = 'luna'
+    ""let g:airline_theme             = 'bubblegum'
+    "let g:airline_theme             = 'solarized'
+    ""let g:airline_theme             = 'sol'
+    ""let g:airline_theme             = 'jellybeans'
+    "let g:airline_enable_branch     = 1
+    "let g:airline_enable_syntastic  = 1
+    "let g:airline#extensions#tabline#enabled = 1
+    "let g:airline#extensions#tabline#tab_nr_type = 1
+    "let g:airline#extensions#tabline#left_sep = '|'
+    "let g:airline#extensions#tabline#left_alt_sep = ' '
+    ""trailing whitespace warning
+    "let g:airline_detect_whitespace=0 
 
 
     """ Remove Gui Toolbar and scroll bars
@@ -494,7 +503,7 @@
     endfunction
 
     function! MyAckWindow()
-      execute 'AckWindow! "'. expand("<cword>") .'" ../'
+      execute 'AckWindow! "'. expand("<cword>") .'"'
     endfunction
 
 
