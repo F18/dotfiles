@@ -11,9 +11,9 @@
 #
 #MYCOLORS='zenburn'
 #MYCOLORS='jellybeans'
-MYCOLORS='wombat'
+#MYCOLORS='wombat'
 #MYCOLORS='solarized-light'
-#MYCOLORS='solarized-dark'
+MYCOLORS='solarized-dark'
 #-- export:
 export MYCOLORS
 
@@ -22,12 +22,13 @@ export MYCOLORS
 #-- my own colors
 ROYALBLUE='\[\033[38;5;24m\]'
 ZENGREEN='\[\033[38;5;108m\]'
-MYGRAY='\[\033[38;5;240m\]'
-MYGRAY2='\[\033[38;5;242m\]'
-MYGRAY3='\[\033[38;5;252m\]'
+MYGREY='\[\033[38;5;240m\]'
+MYGREY2='\[\033[38;5;242m\]'
+MYGREY3='\[\033[38;5;252m\]'
+MYGREY4='\[\033[38;5;246m\]'
 WHITE_1='\[\033[0;1m\]'
 BLACK='\[\033[0;30m\]'
-GRAY='\[\033[1;30m\]'
+GREY='\[\033[1;30m\]'
 RED='\[\033[0;31m\]'
 LIGHT_RED='\[\033[1;31m\]'
 GREEN='\[\033[0;32m\]'
@@ -40,7 +41,7 @@ PURPLE='\[\033[0;35m\]'
 LIGHT_PURPLE='\[\033[1;35m\]'
 CYAN='\[\033[0;36m\]'
 LIGHT_CYAN='\[\033[0;1;36m\]'
-LIGHT_GRAY='\[\033[0;37m\]'
+LIGHT_GREY='\[\033[0;37m\]'
 WHITE='\[\033[1;37m\]'
 SYMBOL="\\$"
 WD="\W"
@@ -51,7 +52,7 @@ WD="\W"
 #-- zenburn
 if [ "$MYCOLORS" == "zenburn" ]; then
   NONE='\[\e[01;32m\]'
-  BRACE_COLOR=$LIGHT_GRAY
+  BRACE_COLOR=$LIGHT_GREY
   LBRACE=$BRACE_COLOR[$BRACE_COLOR
   RBRACE=$BRACE_COLOR]$BRACE_COLOR
   PS1="$RED\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW\W$RBRACE$NONE$ "
@@ -62,40 +63,40 @@ elif [ "$MYCOLORS" == "jellybeans" ]; then
   BRACE_COLOR=$ZENGREEN
   LBRACE=$BRACE_COLOR[$BRACE_COLOR
   RBRACE=$BRACE_COLOR]$BRACE_COLOR
-  PS1="$MYGRAY\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $LIGHT_PURPLE\W$RBRACE$NONE$ "
+  PS1="$MYGREY\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $LIGHT_PURPLE\W$RBRACE$NONE$ "
   PS2="$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $LIGHT_PURPLE\w$RBRACE$NONE$ "
 #-- wombat/jellybeans
 elif [ "$MYCOLORS" == "wombat" ]; then
-  NONE=$MYGRAY3
+  NONE=$MYGREY3
   BRACE_COLOR=$ZENGREEN
   LBRACE=$BRACE_COLOR[$BRACE_COLOR
   RBRACE=$BRACE_COLOR]$BRACE_COLOR
-  PS1="$MYGRAY\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $LIGHT_PURPLE\W$RBRACE$NONE$ "
+  PS1="$MYGREY\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $LIGHT_PURPLE\W$RBRACE$NONE$ "
   PS2="$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $LIGHT_PURPLE\w$RBRACE$NONE$ "
 #-- solarized-light
 elif [ "$MYCOLORS" == "solarized-light" ]; then
   NONE='\[\e[01;248m\]'
-  NONE=$MYGRAY
+  NONE=$MYGREY
   BRACE_COLOR=$LIGHT_CYAN
   LBRACE=$BRACE_COLOR[$BRACE_COLOR
   RBRACE=$BRACE_COLOR]$BRACE_COLOR
-  PS1="$LIGHT_CYAN\w\n$LBRACE$MYGRAY\D{%H:%M}$RBRACE$LBRACE$MYGRAY\h $GREEN\W$RBRACE$NONE$ "
-  PS2="$GREEN$LBRACE$MYGRAY\D{%H:%M}$RBRACE$LBRACE$MYGRAY\h $GREEN\w$RBRACE$NONE$ "
+  PS1="$LIGHT_CYAN\w\n$LBRACE$MYGREY\D{%H:%M}$RBRACE$LBRACE$MYGREY\h $GREEN\W$RBRACE$NONE$ "
+  PS2="$GREEN$LBRACE$MYGREY\D{%H:%M}$RBRACE$LBRACE$MYGREY\h $CYAN\w$RBRACE$NONE$ "
 #-- solarized-dark
 elif [ "$MYCOLORS" == "solarized-dark" ]; then
   NONE=$LIGHT_CYAN
-  BRACE_COLOR=$MYGRAY
+  BRACE_COLOR=$MYGREY4
   LBRACE="$BRACE_COLOR[$BRACE_COLOR"
   RBRACE="$BRACE_COLOR]$BRACE_COLOR"
-  PS1="$MYGRAY2\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $CYAN\W$RBRACE$NONE$ "
-  PS2="$GREEN$LBRACE$MYGRAY\D{%H:%M}$RBRACE$LBRACE$MYGRAY\h $GREEN\w$RBRACE$NONE$ "
+  PS1="$MYGREY2\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $CYAN\W$RBRACE$NONE$ "
+  PS2="$GREEN$LBRACE$MYGREY4\D{%H:%M}$RBRACE$LBRACE$MYGREY4\h $CYAN\w$RBRACE$NONE$ "
 #-- DEFAULT: wombat/jellybeans
 else
   NONE=$WHITE
   BRACE_COLOR=$ZENGREEN
   LBRACE=$BRACE_COLOR[$BRACE_COLOR
   RBRACE=$BRACE_COLOR]$BRACE_COLOR
-  PS1="$MYGRAY\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $LIGHT_PURPLE\W$RBRACE$NONE$ "
+  PS1="$MYGREY\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $LIGHT_PURPLE\W$RBRACE$NONE$ "
   PS2="$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $LIGHT_PURPLE\w$RBRACE$NONE$ "
 fi 
 export PS1
@@ -183,6 +184,7 @@ alias g='gvim'                                   # open gvim
 #-- apt-key: use as 'getkey 8BAF9A6F'
 alias getkey='sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys'
 alias gn='gnuplot'                               # run gnuplot 
+alias gnpa='gnp 1 1000 0'                        # run gnuplot 
 alias grep="grep --color=auto"                   # grep: make it highlight the search string
 alias gv='gvim'                                  # open gvim
 #-- git

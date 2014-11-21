@@ -25,6 +25,7 @@ export PATH=$PATH:$HOME/bin:$HOME/bin/scripts:$HOME/usr/local/bin
 export PATH=/home/z/zingg/rashad/bin:/home/z/zingg/rashad/grid_utils:${PATH} 
 #-- python
 export PYTHONPATH=/home/z/zingg/rashad/mdo_import_helper:${PYTHONPATH} 
+#export PYTHONPATH=/home/z/zingg/rashad/usr/local/lib/python2.7/site-packages/:$PYTHONPATH
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/$ARCH/lib:$HOME/jetstream/cgnslib_2.5/LINUX:$HOME/usr/local/lib
 #-- Location of jetstream Test Suite 
 export JSTS=/project/z/zingg/jetstream_testSuite 
