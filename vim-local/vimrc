@@ -37,6 +37,11 @@
 
   set gfn=Monaco\ 10
   set shell=/bin/bash
+  "
+  " To get italics in vim terminal
+  "
+  set t_ZH=[3m
+  set t_ZR=[23m
 
   "
   " Set color scheme based on env. variable $MYCOLORS
