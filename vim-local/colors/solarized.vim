@@ -289,8 +289,9 @@ elseif g:solarized_termcolors != 256 && &t_Co >= 16
     let s:base03      = "8"
     let s:base02      = "0"
     let s:base01      = "10"
-    let s:base00      = "242" "RR: normal 
-    let s:base0       = "12"
+    "let s:base00      = "242" "RR: normal  for light mode
+    let s:base00      = "240" "RR: normal for light mode
+    let s:base0       = "12" "RR: normal for dark mode
     let s:base1       = "14" "RR: comment
     let s:base2       = "7"
     let s:base3       = "15"
@@ -301,6 +302,7 @@ elseif g:solarized_termcolors != 256 && &t_Co >= 16
     let s:violet      = "13"
     let s:cyan        = "37"
     let s:blue        = "4"
+    "let s:blue        = "242" "RR: fliped the color blue
     let s:green       = "2"
 elseif g:solarized_termcolors == 256
     let s:vmode       = "cterm"
@@ -318,6 +320,7 @@ elseif g:solarized_termcolors == 256
     let s:magenta     = "125"
     let s:violet      = "61"
     let s:blue        = "33"
+    let s:blue       = "244"
     let s:cyan        = "37"
     let s:green       = "64"
 else
