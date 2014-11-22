@@ -29,7 +29,7 @@ export PATH=$CFFC_Path/src_2D/:$PATH
 export PATH=$CFFC_Path/src_3D/:$PATH
 export PATH=$CFFC_Path/bin:${HOME}/bin:$PATH
 #-- XFOIL & MSES
-export PATH=~/MSES/myMses/bin:$PATH
+export PATH=~/usr/local/MSES/bin:$PATH
 export PATH=~/01_thesis/Xfoil/bin:$PATH
 export XPLOT11_BACKGROUND=black # for MSES
 #-- Latex
@@ -50,7 +50,7 @@ export PATH=/usr2/local_net2/mpich2-1.3.2p1/intel-11.1/bin/:$PATH
 source /usr2/local_net2/intel/Compiler/11.1/073/bin/intel64/iccvars_intel64.sh intel64
 source /usr2/local_net2/intel/Compiler/11.1/073/bin/intel64/ifortvars_intel64.sh intel64
 #-- location of libraries
-XLIB_PATH=-L/usr/X11R6/lib
+export XLIB_PATH=-L/usr/X11R6/lib
 export LD_LIBRARY_PATH=$HOME/usr/local/lib:$LD_LIBRARY_PATH
 
 #
