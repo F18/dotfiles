@@ -131,6 +131,8 @@ alias ...='cd ..'                                # Go up one directory
 alias ..='cd ..; l'                              # Go up one directory clear and list files
 alias .='pwd'                                    # list the current directory path
 
+alias avq='avidemux2_qt4'                        # launches video editor
+
 alias bye='exit'                                 # Close connection
 alias brc='cd; emacs .bashrc &'                  # Open the .bashrc file for editing
 

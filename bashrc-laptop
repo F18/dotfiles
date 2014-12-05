@@ -15,8 +15,8 @@ export ARCH=$(uname)_$(uname -m)
 #-- vim
 export MYVIM=vim
 #-- bin
-export SCPODD=ramy@oddjob.utias.utoronto.ca:/nfs/carv/d1/people/ramy
-export SCPSCI=rashad@login.scinet.utoronto.ca:
+export ODD=ramy@oddjob.utias.utoronto.ca:/nfs/carv/d1/people/ramy
+export SCI=rashad@login.scinet.utoronto.ca:
 #-- screen window naming
 PROMPT_COMMAND= 
 if [ $TERM = "screen" ]; then 
