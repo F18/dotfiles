@@ -72,7 +72,7 @@ else
    module load extras 
    module load git  
    module load gcc  
-   module load python 
+   module load python
    module load emacs 
    module load Xlibraries/X11-64 
    module load gnuplot
