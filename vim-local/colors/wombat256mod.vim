@@ -95,7 +95,7 @@ hi String		ctermfg=113		cterm=none		guifg=#95e454	gui=italic
 "
 hi Comment		ctermfg=246		cterm=italic     guifg=#9c998e	gui=italic
 "hi Comment		ctermfg=101		cterm=italic     guifg=#9c998e	gui=italic
-hi Todo			ctermfg=101		cterm=none		guifg=#857b6f	gui=italic
+hi Todo			ctermfg=233		ctermbg=101 cterm=italic		guifg=#857b6f	gui=italic
 hi ColorColumn  ctermfg=none ctermbg=233  cterm=none   guibg=#000000 gui=none
 "call s:X("ColorColumn","e8e8d3","000000","","",s:termBlack)
 
@@ -103,6 +103,7 @@ hi ColorColumn  ctermfg=none ctermbg=233  cterm=none   guibg=#000000 gui=none
 " Links
 hi! link FoldColumn		Folded
 hi! link CursorColumn	CursorLine
-hi! link NonText		LineNr
+" NonText will change the background color after the last line of the file
+hi! link NonText		Normal
 
 " vim:set ts=4 sw=4 noet:
