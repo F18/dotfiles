@@ -166,6 +166,7 @@ alias dirr='ls -al | more'
 alias dus='sudo du -sm * | sort -n'
 alias duf='du -sm * | sort -n'                   # list folders in order of increasing size
 alias digitizeit='cd $HOME/digitizeit; java -cp libs/JimiProClasses.zip:libs/jh.jar:libs/kunststoff.jar:libs/foxtrot.jar:DigitizeIt.jar de.ibo.digitizer.DigitizeIt' # Start the digitizeit software
+alias dvhis='m *dvhis'
 
 alias e='emacs'                                  # Open the text editor emacs
 alias ed='ee'                                    # Open the text editor emacs with emacsclient daemon
@@ -188,8 +189,11 @@ alias g='gvim'                                   # open gvim
 alias getkey='sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys'
 alias gn='gnuplot'                               # run gnuplot 
 alias gnpa='gnp 1 1000 0'                        # run gnuplot 
+alias gnp2a='gnp2 1 1000 0'                        # run gnuplot 
 alias grep="grep --color=auto"                   # grep: make it highlight the search string
 alias gv='gvim'                                  # open gvim
+alias gvhis='m *gvhis'
+alias glhis='m *glhis'
 #-- git
 alias gb='git branch -a'                         # display all git branches
 alias gdt='git difftool'                         # opens the git difftool (set as vimdiff)
