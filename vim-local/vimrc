@@ -660,8 +660,8 @@
   " _____________
   " Color Columns
   "
-  "set cursorcolumn
-  "set cursorline
+  autocmd FileType fortran set cursorcolumn
+  autocmd FileType fortran set cursorline
   if exists('+colorcolumn')
      "
      "vim 7.3 and newer with colorcolumn
