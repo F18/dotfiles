@@ -696,6 +696,7 @@
      autocmd FileType tex set list
      autocmd FileType tex set listchars=tab:>>,trail:>
      autocmd FileType tex set formatoptions+=aw
+     autocmd FileType tex set spell " use set nospell to TURN OFF
   endif
 
 
