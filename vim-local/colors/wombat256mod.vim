@@ -34,7 +34,7 @@ hi LineNr		  ctermfg=241		ctermbg=232		cterm=none		guifg=#857b6f	guibg=#080808	g
 hi SpecialKey	  ctermfg=241		ctermbg=235		cterm=none		guifg=#626262	guibg=#2b2b2b	gui=none
 hi WarningMsg	  ctermfg=203										      guifg=#ff5f55
 hi ErrorMsg		  ctermfg=196		ctermbg=236		cterm=bold		guifg=#ff2026	guibg=#3a3a3a	gui=bold
-hi ColorColumn   ctermfg=none    ctermbg=233    cterm=none                    guibg=#121212
+hi ColorColumn   ctermfg=none    ctermbg=236    cterm=none                    guibg=#121212
 
 " Vim >= 7.0 specific colors
 if version >= 700
@@ -97,7 +97,6 @@ hi SpecialKey	  ctermfg=241		ctermbg=235		cterm=none		guifg=#626262	guibg=#2b2b2
 hi Comment		  ctermfg=246                    cterm=italic   guifg=#9c998e	               gui=italic
 "hi Comment		  ctermfg=101		                cterm=italic   guifg=#9c998e                 gui=italic
 hi Todo          ctermfg=233		ctermbg=101    cterm=italic   guifg=#857b6f	               gui=italic
-hi ColorColumn   ctermfg=none    ctermbg=233    cterm=none     guibg=#000000                 gui=none
 " Spell Checking
 hi SpellBad      ctermfg=0       ctermbg=210    cterm=none     guibg=#000000  guibg=#ff8787  gui=none
 hi SpellCap      ctermfg=0       ctermbg=68     cterm=none     guibg=#000000  guibg=#f587d7  gui=none
