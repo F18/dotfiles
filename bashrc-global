@@ -490,6 +490,16 @@ function subdir-clean-rmout()
   done
 }
 #
+function subdir-clean() 
+{
+  for dir in */; do
+    echo $dir;
+    cd $dir;
+    2-cleanup-snopt; 
+    cd ../
+  done
+}
+#
 function subdir-cp-grid 
 { 
   for dir in */; do
@@ -503,6 +513,14 @@ function subdir-cp-o
   for dir in */; do
     echo $dir;
     /bin/cp -f $MYHOME/optima/optima2D/OPTIMA2D_x86_64 $dir/.
+  done
+}
+#
+function subdir-cp-opt 
+{ 
+  for dir in */; do
+    echo $dir;
+    /bin/cp -f opt.inp $dir/.
   done
 }
 #
