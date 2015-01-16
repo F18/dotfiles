@@ -38,7 +38,8 @@ hi ColorColumn   ctermfg=none    ctermbg=236    cterm=none                    gu
 
 " Vim >= 7.0 specific colors
 if version >= 700
-hi CursorLine    ctermbg=236     cterm=none                                   guibg=#32322f
+hi CursorLine                    ctermbg=0      cterm=none                    guibg=#32322f
+hi CursorColumn                  ctermbg=236    cterm=none                    guibg=#32322f
 hi MatchParen	  ctermfg=228		ctermbg=101		cterm=bold		guifg=#eae788	guibg=#857b6f	gui=bold
 hi Pmenu         ctermfg=230     ctermbg=238                   guifg=#ffffd7	guibg=#444444
 hi PmenuSel      ctermfg=232     ctermbg=192                   guifg=#080808  guibg=#cae982
@@ -98,13 +99,13 @@ hi Comment		  ctermfg=246                    cterm=italic   guifg=#9c998e	      
 "hi Comment		  ctermfg=101		                cterm=italic   guifg=#9c998e                 gui=italic
 hi Todo          ctermfg=233		ctermbg=101    cterm=italic   guifg=#857b6f	               gui=italic
 " Spell Checking
-hi SpellBad      ctermfg=0       ctermbg=210    cterm=none     guibg=#000000  guibg=#ff8787  gui=none
+"hi SpellBad      ctermfg=0     ctermbg=210    cterm=none     guibg=#000000  guibg=#ff8787  gui=none
+hi SpellBad      ctermfg=34     ctermbg=18    cterm=none     guibg=#000000  guibg=#ff8787  gui=none
 hi SpellCap      ctermfg=0       ctermbg=68     cterm=none     guibg=#000000  guibg=#f587d7  gui=none
 hi SpellRare     ctermfg=0       ctermbg=68     cterm=none     guibg=#000000  guibg=#f587d7  gui=none
 hi SpellLocal    ctermfg=0       ctermbg=68     cterm=none     guibg=#000000  guibg=#f587d7  gui=none
 
 " Links
 hi! link FoldColumn		Folded
-hi! link CursorColumn	CursorLine
 " NonText will change the background color after the last line of the file
 hi! link NonText		Normal
