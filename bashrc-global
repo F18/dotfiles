@@ -147,8 +147,8 @@ alias cdoo='cd $MYHOME/optima/optima2D'
 alias cdp='cd $MYHOME/01_thesis/mypapers/conferences/201506_aiaa_dallas'
 alias cds='cd $MYWORK'
 alias cdt='cd $MYHOME/01_thesis/phd'
-alias cdvo='cd $MYWORK/y2014/m11/d06-optCasesMidCruise'
-alias cdvoo='cd $MYWORK/y2013/m10'
+alias cdvoo='cd $MYWORK/y2014/m11/d06-optCasesMidCruise'
+alias cdvo='cd $MYWORK/y2015/m01'
 alias cdwd='cd /windows/Users/ramy/Documents'
 alias cdwdm='cd /windows/Users/ramy/Music'
 
@@ -281,6 +281,7 @@ alias pmem='pidstat -r -p'                    # Outputs the memory statistics fo
                                               # Enter the following: "pmem 6218 2 5 > memlog.txt" for 
                                               # 5 outputs every 2 seconds written to file memlog.txt
 
+
 alias red='gtk-redshift -l 43.67:-79.42 -t 6400:5800 -g 0.8'
 alias re='rubber-info'
 alias rm='rm -i'                              # Remove, but ask me first
@@ -411,14 +412,14 @@ function rgrepy() { grep -irn --include="*.py" -- "$@" . ; }
 #-- specify file type and expression
 function gg() { 
 args=("$@") ;
-echo "Arguments are ${args[$((0))]} and ${args[$((1))]}";
+echo "Grep file type ${args[$((0))]} for ${args[$((1))]}";
 grep -irn --include="*.${args[$((0))]}" -- "${args[$((1))]}" . ; 
 }
 #-- specify file type and expression
 function gg2() { 
 args=("$@") ;
-echo "Grep file ${args[$((0))]} for ${args[$((1))]} or ${args[$((2))]}";
-cat screen | grep -in --include="*${args[$((0))]}" -- "${args[$((1))]}|${args[$((2))]}". ; 
+echo "Grep file type ${args[$((0))]} for ${args[$((1))]} or ${args[$((2))]}";
+grep -irn --include="*.${args[$((0))]}" -- "${args[$((1))]}\|${args[$((2))]}" . ; 
 }
 #
 # Media related
@@ -465,6 +466,9 @@ function lls () {
 		ls -hlAF --full-time
 	fi
 }
+# remove pre-amble before (--) in purge file list
+# use as purgeListFiles oldFile.txt > newFile.txt
+#function purgeFilesList () { sed 's/.*--//g' "$@" | sort;}
 
 # reverse lines of a file
 function reverseFileLines () { sed '1!G;h;$!d' "$@";}
@@ -477,6 +481,12 @@ function gd() { git diff > $HOME/tmp/gd.txt; v $HOME/tmp/gd.txt; }
 # OPTIMA2D related
 #
 function go() { $MYHOME/optima/optima2D/OPTIMA2D_x86_64 > screen;}
+function 0-go() 
+{ 
+  rm rest01* -f
+  fp_TtoF
+  $MYHOME/optima/optima2D/OPTIMA2D_x86_64 > screen;
+}
 #
 function 02-cleanup() { 2-cleanup-snopt; }
 #
@@ -509,7 +519,7 @@ function subdir-cp-grid
   done
 }
 #
-function subdir-cp-o 
+function subdir-cp-exe
 { 
   for dir in */; do
     echo $dir;
