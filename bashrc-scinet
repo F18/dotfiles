@@ -73,7 +73,7 @@ else
    module load git  
    module load gcc  
    module load python
-   module load emacs 
+   #module load emacs 
    module load Xlibraries/X11-64 
    module load gnuplot
    module load ImageMagick
@@ -107,7 +107,7 @@ alias uscinet='cd /home/rashad/; fusermount -u 04_scinet/'
 #-- scratch
 alias scr='cd /global/scratch/rashad'
 #-- gpc
-alias gpc='ssh -X gpc02'
+alias gpc='ssh -X gpc04'
 alias gpc1='ssh -X gpc01'
 alias gpc2='ssh -X gpc02'
 alias gpc3='ssh -X gpc03'
