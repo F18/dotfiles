@@ -26,6 +26,7 @@ MYGREY='\[\033[38;5;240m\]'
 MYGREY2='\[\033[38;5;242m\]'
 MYGREY3='\[\033[38;5;252m\]'
 MYGREY4='\[\033[38;5;246m\]'
+MYORANGE='\[\033[38;5;173m\]'
 WHITE_1='\[\033[0;1m\]'
 BLACK='\[\033[0;30m\]'
 GREY='\[\033[1;30m\]'
@@ -71,7 +72,7 @@ elif [ "$MYCOLORS" == "wombat" ]; then
   BRACE_COLOR=$ZENGREEN
   LBRACE=$BRACE_COLOR[$BRACE_COLOR
   RBRACE=$BRACE_COLOR]$BRACE_COLOR
-  PS1="$MYGREY\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $LIGHT_PURPLE\W$RBRACE$NONE$ "
+  PS1="$MYORANGE\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $LIGHT_PURPLE\W$RBRACE$NONE$ "
   PS2="$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $LIGHT_PURPLE\w$RBRACE$NONE$ "
 #-- solarized-light
 elif [ "$MYCOLORS" == "solarized-light" ]; then
@@ -135,7 +136,6 @@ alias .='pwd'                                    # list the current directory pa
 alias avq='avidemux2_qt4'                        # launches video editor
 
 alias bye='exit'                                 # Close connection
-alias brc='cd; emacs .bashrc &'                  # Open the .bashrc file for editing
 
 alias cdc='cd $MYHOME/02_courses'
 alias cdd='cd $MYHOME/01_thesis/DECs/dec5'
@@ -192,6 +192,8 @@ alias getkey='sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys'
 alias gn='gnuplot'                               # run gnuplot 
 alias gnpa='gnp 1 1000 0'                        # run gnuplot 
 alias gnp2a='gnp2 1 1000 0'                        # run gnuplot 
+alias gnp30='gnp3 00-00'                        # run gnuplot 
+alias gnp40='gnp4 00-00'                        # run gnuplot 
 alias grep="grep --color=auto"                   # grep: make it highlight the search string
 alias gv='gvim'                                  # open gvim
 alias gvhis='m *gvhis'
