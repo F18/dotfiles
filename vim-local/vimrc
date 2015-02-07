@@ -260,6 +260,7 @@
     map <leader>p :bp <cr>
     map <leader>/ <C-^>
 
+
     "CtrlP
     nmap <leader>f :CtrlPBuffer<cr>
     nmap <C-f> :CtrlP<cr>
@@ -301,6 +302,9 @@
     map <leader>g gwap
     " past from clipboard
     map <leader>P "+gP
+    "
+    " spell check
+    map <leader>z z=
 
     " Use the arrows to something usefull
     map <right> :bn<cr>
@@ -608,7 +612,6 @@
     "autocmd BufWritePre *.f70 :%s/\s\+$//e
     "
     " Code folding
-    map <leader>z zMzv
     map <leader>s zMzv
     " move to beginning of current fold:
     map [s [z zz
