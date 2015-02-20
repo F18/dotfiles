@@ -12,8 +12,8 @@
 #MYCOLORS='zenburn'
 #MYCOLORS='jellybeans'
 #MYCOLORS='wombat'
-MYCOLORS='solarized-light'
-#MYCOLORS='solarized-dark'
+#MYCOLORS='solarized-light'
+MYCOLORS='solarized-dark'
 #-- export:
 export MYCOLORS
 
@@ -189,6 +189,8 @@ alias fn='find . -name'
 alias g='gvim'                                   # open gvim
 #-- apt-key: use as 'getkey 8BAF9A6F'
 alias getkey='sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys'
+alias getclass='xprop | grep WM_CLASS'
+alias getresolution='xrandr --display :0 | grep " connected"'
 alias gn='gnuplot'                               # run gnuplot 
 alias gnpa='gnp 1 1000 0'                        # run gnuplot 
 alias gnp2a='gnp2 1 1000 0'                        # run gnuplot 
