@@ -154,6 +154,8 @@ alias cdvo='cd $MYWORK/y2015/m02'
 alias cdwd='cd /windows/Users/ramy/Documents'
 alias cdwdm='cd /windows/Users/ramy/Music'
 
+alias checkSpellTex='aspell --lang=en --mode=tex check '
+alias checkSpellTexAll='find . -name "*.tex" -exec aspell --lang=en --mode=tex check "{}" \;'
 alias cj='checkjob'
 alias cll='clear'                                # Clear the screen
 alias cl='clear; ls'                             # Clear and list
@@ -190,6 +192,8 @@ alias fn='find . -name'
 alias g='gvim'                                   # open gvim
 #-- apt-key: use as 'getkey 8BAF9A6F'
 alias getkey='sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys'
+alias getclass='xprop | grep WM_CLASS'
+alias getresolution='xrandr --display :0 | grep " connected"'
 alias gn='gnuplot'                               # run gnuplot 
 alias gnpa='gnp 1 1000 0'                        # run gnuplot 
 alias gnp2a='gnp2 1 1000 0'                        # run gnuplot 
@@ -391,7 +395,7 @@ export EDITOR="vi"
 # Grep/Search related
 #
 #-- Find a file with a pattern in name:
-function ff() { find . -type f -name '*'$@'*' ; }
+function ff() { find . -type f -iname '*'$@'*' ; }
 function fe() { find . -type f -iname '*'$@'' | xargs vim; }
 function fl() { find . -type f -iname '*'$@'' | xargs ls -lash; }
 #-- Find a file with a pattern in name:

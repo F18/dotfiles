@@ -81,7 +81,7 @@
   elseif $MYCOLORS == "solarized-dark"
     let solarized_constrast='normal'
     set background=dark
-    colorscheme solarized
+    colorscheme gruvbox
     let g:airline_theme = 'solarized'
   else 
     colorscheme default
@@ -260,6 +260,7 @@
     map <leader>p :bp <cr>
     map <leader>/ <C-^>
 
+
     "CtrlP
     nmap <leader>f :CtrlPBuffer<cr>
     nmap <C-f> :CtrlP<cr>
@@ -301,6 +302,9 @@
     map <leader>g gwap
     " past from clipboard
     map <leader>P "+gP
+    "
+    " spell check
+    map <leader>z z=
 
     " Use the arrows to something usefull
     map <right> :bn<cr>
@@ -608,7 +612,6 @@
     "autocmd BufWritePre *.f70 :%s/\s\+$//e
     "
     " Code folding
-    map <leader>z zMzv
     map <leader>s zMzv
     " move to beginning of current fold:
     map [s [z zz
@@ -807,23 +810,43 @@
   " Use a blinking upright bar cursor in Insert mode, a blinking block in normal
   "
   if &term == 'xterm-256color' || &term == 'screen-256color'
-    autocmd InsertEnter * set cul
-    autocmd InsertLeave * set nocul
     "
-    " KDE Terminal
+    " ALL Terminals
+    " highlight the line for insert mode (works with all terminals)
     "
-    "if exists('$TMUX')
-    "  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-    "  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-    "else
-    "  "let &t_SI = "\<Esc>[5 q"
-    "  "let &t_EI = "\<Esc>[1 q"
-    "  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-    "  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-    "endif
+    "autocmd InsertEnter * set cul
+    "autocmd InsertLeave * set nocul
+    "
+    " KDE Konsole Terminal
+    "
+    if exists('$TMUX')
+      let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\" 
+      let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+    else
+      let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+      let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+    endif
     "
     " GNOME Terminal
     "
+    if has("autocmd")
+      "
+      " N.B. The following must be customized to the selected gnome-terminal profile name, 
+      "      which is different from the visible name in the menus. To find out the actual 
+      "      profile name, you need to install gconf-editor and gconftool-2.
+      "      In a terminal, type gconf-editor to open the gui then go to
+      "      apps/gnome-terminal/profiles and search the profiles for the one with 
+      "      the "visible name" the you're looking for.
+      "
+      "au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
+      "au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
+      "au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
+      "au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Profile35/cursor_shape ibeam"
+      " User-specified profile:
+      "au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Profile35/cursor_shape block"
+      "au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Profile35/cursor_shape block"
+    endif
+
     "if exists('$TMUX')
     "  ":silent !echo -ne "\<Esc>Ptmux;\<Esc>\033]12;lightgrey\007\<Esc>\\"
     "  let &t_SI = "\<Esc>Ptmux;\<Esc>\033]12;green\007\<Esc>\\"
