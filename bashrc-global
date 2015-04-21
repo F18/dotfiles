@@ -153,6 +153,8 @@ alias cdvo='cd $MYWORK/y2015/m01'
 alias cdwd='cd /windows/Users/ramy/Documents'
 alias cdwdm='cd /windows/Users/ramy/Music'
 
+alias checkSpellTex='aspell --lang=en --mode=tex check '
+alias checkSpellTexAll='find . -name "*.tex" -exec aspell --lang=en --mode=tex check "{}" \;'
 alias cj='checkjob'
 alias cll='clear'                                # Clear the screen
 alias cl='clear; ls'                             # Clear and list
@@ -391,7 +393,7 @@ export EDITOR="vi"
 # Grep/Search related
 #
 #-- Find a file with a pattern in name:
-function ff() { find . -type f -name '*'$@'*' ; }
+function ff() { find . -type f -iname '*'$@'*' ; }
 function fe() { find . -type f -iname '*'$@'' | xargs vim; }
 function fl() { find . -type f -iname '*'$@'' | xargs ls -lash; }
 #-- Find a file with a pattern in name:

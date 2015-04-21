@@ -81,7 +81,7 @@
   elseif $MYCOLORS == "solarized-dark"
     let solarized_constrast='normal'
     set background=dark
-    colorscheme solarized
+    colorscheme gruvbox
     let g:airline_theme = 'solarized'
   else 
     colorscheme default

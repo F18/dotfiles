@@ -133,6 +133,12 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
+# move workspace to monitor right/left
+bindsym $mod+Ctrl+h move workspace to output left
+bindsym $mod+Ctrl+j move workspace to output up
+bindsym $mod+Ctrl+k move workspace to output down
+bindsym $mod+Ctrl+l move workspace to output right
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -192,18 +198,24 @@ for_window [class="Wine"] floating enable; border none
 for_window [class="plasma"] floating enable; border none
 
 # custom floating windows:
+# to find class, use alias: getclass='xprop | grep WM_CLASS'
+for_window [class="(?i).*Gorilla*."] floating enable;
 for_window [class="(?i).*icem*."] floating enable;
 for_window [class="(?i).*tec360*."] floating enable;
 for_window [class="(?i).*matlab*."] floating enable;
 for_window [class="(?i).*globusconnect*."] floating enable;
 for_window [class="(?i).*python*."] floating enable;
 for_window [class="(?i).*gnuplot*."] floating enable;
+for_window [class="(?i).*gimp-2*."] floating enable;
 #for_window [class="(?i).*tk*."] floating enable; # for some reason this floats jabref
 
 # bind the keyboard volume control to the keyboard multimediea (uses alsamixer)
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 4dB+ unmute
 bindsym XF86AudioLowerVolume exec amixer -q set Master 4dB- unmute
 bindsym XF86AudioMute exec amixer -q set Master toggle
+bindsym $mod+F4 exec amixer -q set Master 4dB+ unmute
+bindsym $mod+F3 exec amixer -q set Master 4dB- unmute
+bindsym $mod+F2 exec amixer -q set Master toggle
 
 # wallpaper
 exec_always --no-startup-id feh --bg-scale /home/ramy/Pictures/AVIATION/aircraft-headon.jpg
@@ -214,12 +226,13 @@ exec_always --no-startup-id feh --bg-scale /home/ramy/Pictures/AVIATION/aircraft
 exec_always --no-startup-id xmodmap ~/.xmodmap
 # hide the mouse cursor after 1 second of inactivity
 #exec --no-startup-id unclutter -display :0 -root -idle 1 &
- 
 # correct font config
 exec_always --no-startup-id fontfix.sh
  
 # launch synapse on startup only
 exec --no-startup-id synapse -s
-#
+# launch dropbox on startup only
+exec --no-startup-id dropbox start
 # launch network manager on startup only
-#exec_always --no-startup-id wicd-client
+exec --no-startup-id networkmanager.sh
+
