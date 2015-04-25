@@ -68,7 +68,7 @@ else
    # do things for the GPC machine 
  
    module load intel  
-   module load intelmpi 
+   #module load intelmpi 
    module load extras 
    module load git  
    module load gcc  
