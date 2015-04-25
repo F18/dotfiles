@@ -12,8 +12,9 @@
 #MYCOLORS='zenburn'
 #MYCOLORS='jellybeans'
 #MYCOLORS='wombat'
-MYCOLORS='solarized-light'
+#MYCOLORS='solarized-light'
 #MYCOLORS='solarized-dark'
+MYCOLORS='solarized-gruvbox'
 #-- export:
 export MYCOLORS
 
@@ -91,6 +92,15 @@ elif [ "$MYCOLORS" == "solarized-dark" ]; then
   RBRACE="$BRACE_COLOR]$BRACE_COLOR"
   PS1="$MYGREY2\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $CYAN\W$RBRACE$NONE$ "
   PS2="$GREEN$LBRACE$MYGREY4\D{%H:%M}$RBRACE$LBRACE$MYGREY4\h $CYAN\w$RBRACE$NONE$ "
+#-- solarized-gruvbox
+elif [ "$MYCOLORS" == "solarized-gruvbox" ]; then
+  NONE='\[\e[01;248m\]'
+  NONE=$MYGREY
+  BRACE_COLOR=$LIGHT_CYAN
+  LBRACE=$BRACE_COLOR[$BRACE_COLOR
+  RBRACE=$BRACE_COLOR]$BRACE_COLOR
+  PS1="$LIGHT_CYAN\w\n$LBRACE$MYGREY\D{%H:%M}$RBRACE$LBRACE$MYGREY\h $GREEN\W$RBRACE$NONE$ "
+  PS2="$GREEN$LBRACE$MYGREY\D{%H:%M}$RBRACE$LBRACE$MYGREY\h $CYAN\w$RBRACE$NONE$ "
 #-- DEFAULT: wombat/jellybeans
 else
   NONE=$WHITE

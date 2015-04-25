@@ -75,16 +75,19 @@
     colorscheme jellybeans
   elseif $MYCOLORS == "solarized-light"
     let solarized_constrast='normal'
+    colorscheme solarized
     set background=light
     let g:airline_theme = 'solarized'
-    "colorscheme solarized
-    colorscheme gruvbox
   elseif $MYCOLORS == "solarized-dark"
     let solarized_constrast='normal'
     set background=dark
-    "colorscheme solarized-dark
-    colorscheme gruvbox
+    colorscheme solarized-dark
     let g:airline_theme = 'solarized'
+  elseif $MYCOLORS == "solarized-gruvbox"
+    let solarized_constrast='normal'
+    set background=dark
+    colorscheme gruvbox
+    let g:airline_theme = 'kolor'
   else 
     colorscheme default
   endif
