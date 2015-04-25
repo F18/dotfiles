@@ -213,9 +213,15 @@ for_window [class="(?i).*gimp-2*."] floating enable;
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 4dB+ unmute
 bindsym XF86AudioLowerVolume exec amixer -q set Master 4dB- unmute
 bindsym XF86AudioMute exec amixer -q set Master toggle
-bindsym $mod+F4 exec amixer -q set Master 4dB+ unmute
+bindsym $mod+F4 exec amixer -q set Master 4dB+ unmute 
 bindsym $mod+F3 exec amixer -q set Master 4dB- unmute
 bindsym $mod+F2 exec amixer -q set Master toggle
+# Media player controls (not working)
+bindsym XF86AudioPlay exec playerctl play
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+bindsym $mod+F1 exec playerctl pause
 
 # wallpaper
 exec_always --no-startup-id feh --bg-scale /home/ramy/Pictures/AVIATION/aircraft-headon.jpg

@@ -12,8 +12,8 @@
 #MYCOLORS='zenburn'
 #MYCOLORS='jellybeans'
 #MYCOLORS='wombat'
-#MYCOLORS='solarized-light'
-MYCOLORS='solarized-dark'
+MYCOLORS='solarized-light'
+#MYCOLORS='solarized-dark'
 #-- export:
 export MYCOLORS
 
