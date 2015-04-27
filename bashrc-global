@@ -124,6 +124,9 @@ if [ "$TERM" != "dumb" ]; then
   elif [ "$MYCOLORS" == "solarized-dark" ]; then
     #-- solarized-dark
     [ -e "$HOME/dotfiles/LS_COLORS-solarized-dark" ] && DIR_COLORS="$HOME/dotfiles/LS_COLORS-solarized-dark"
+  elif [ "$MYCOLORS" == "solarized-gruvbox" ]; then
+    #-- solarized-gruvbox
+    [ -e "$HOME/dotfiles/LS_COLORS-solarized-light" ] && DIR_COLORS="$HOME/dotfiles/LS_COLORS-solarized-light"
   else
     #-- default
     [ -e "$HOME/dotfiles/LS_COLORS" ] && DIR_COLORS="$HOME/dotfiles/LS_COLORS"
