@@ -69,6 +69,8 @@ export LD_LIBRARY_PATH=/home/ramy/usr/intel/composer_xe_2013_sp1.3.174/bin:$LD_L
 export MKLPATH=/home/ramy/usr/intel/mkl/lib/intel64
 export XLIB_PATH=-L/usr/X11R6/lib
 #source /home/ramy/usr/intel/composer_xe_2013_sp1.3.174/bin/ifortvars.sh intel64
+#-- Anaconda 2.2.0
+export PATH="/home/ramy/usr/local/anaconda/bin:$PATH"
 
 
 #
@@ -125,3 +127,4 @@ function run() { nice -19 $HOME/optima/optima2D/OPTIMA2D_x86_64; }
 
 #
 # END OF BASHRC
+
