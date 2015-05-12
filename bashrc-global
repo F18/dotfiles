@@ -254,9 +254,9 @@ alias lm='ls -lrth'                           # List all files in order of date 
 alias lt='ll --sort=extension'                # List files only (not directories)
 alias ln='ln -s'                              # Create soft link
 #-- Prints on laser color printer, single-sided
-alias lpcs='/usr/bin/lpr -P lpc -o InputSlot=Tray3 -o PageSize=Letter -o Duplex=None'
+alias lpcs='/usr/bin/lpr -P lps2 -o InputSlot=Tray3 -o PageSize=Letter -o Duplex=None'
 #-- Prints on laser color printer, double-sided
-alias lpcd='/usr/bin/lpr -P lpc -o InputSlot=Tray3 -o PageSize=Letter -o Duplex=DuplexNoTumble'  
+alias lpcd='/usr/bin/lpr -P lp2 -o InputSlot=Tray3 -o PageSize=Letter -o Duplex=DuplexNoTumble'  
 #-- Prints in black&white, single-sided
 alias lpbs='/usr/bin/lpr -P lp -o InputSlot=Tray_2 -o OutputBin=PrinterDefault -o Resolution=600x1200dpi -o PageSize=Letter -o Duplex=None' 
 #-- Prints in black&white, double-sided

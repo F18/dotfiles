@@ -38,6 +38,9 @@ if [ '$HOST != oddjob.utias.utoronto.ca' ]; then
   BIBINPUTS=.:${HOME}/thesis/BibTeX_Database:${BIBINPUTS}
   export BIBINPUTS
 fi
+#-- Tecplot (tec360ex)
+export TECPLOT_PATH=/nfs/kris/usr2/local_net2/tecplot360ex
+export PATH=$TECPLOT_PATH/bin:${HOME}/bin:$PATH
 #-- OPTIMA2D 
 export PATH=~/optima-grids/grid_utils:$PATH
 #-- Set environment variable that controls how Fortran unformatted in/out operations are handled
@@ -83,6 +86,7 @@ alias latt='ssh -X rashad@lattice.westgrid.ca'
 alias para='ssh -X rashad@parallel.westgrid.ca'
 alias mwest='cd ~; sshfs rashad@parallel.westgrid.ca: 06_westgrid/; cd 06_westgrid/'
 alias uwest='fusermount -u ~/06_westgrid/'  #Unmount your file system from scinet
+
 
 #
 # Source global aliases, funcitons, and definitions
