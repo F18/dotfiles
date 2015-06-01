@@ -14,7 +14,8 @@
 #MYCOLORS='wombat'
 #MYCOLORS='solarized-light'
 #MYCOLORS='solarized-dark'
-MYCOLORS='solarized-gruvbox'
+#MYCOLORS='solarized-gruvbox-light'
+MYCOLORS='solarized-gruvbox-dark'
 #-- export:
 export MYCOLORS
 
@@ -58,25 +59,8 @@ if [ "$MYCOLORS" == "zenburn" ]; then
   LBRACE=$BRACE_COLOR[$BRACE_COLOR
   RBRACE=$BRACE_COLOR]$BRACE_COLOR
   PS1="$RED\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW\W$RBRACE$NONE$ "
-#-- wombat/jellybeans
-elif [ "$MYCOLORS" == "jellybeans" ]; then
-  #NONE=$WHITE
-  NONE=$LIGHT_CYAN
-  BRACE_COLOR=$ZENGREEN
-  LBRACE=$BRACE_COLOR[$BRACE_COLOR
-  RBRACE=$BRACE_COLOR]$BRACE_COLOR
-  PS1="$MYGREY\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $LIGHT_PURPLE\W$RBRACE$NONE$ "
-  PS2="$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $LIGHT_PURPLE\w$RBRACE$NONE$ "
-#-- wombat/jellybeans
-elif [ "$MYCOLORS" == "wombat" ]; then
-  NONE=$MYGREY3
-  BRACE_COLOR=$ZENGREEN
-  LBRACE=$BRACE_COLOR[$BRACE_COLOR
-  RBRACE=$BRACE_COLOR]$BRACE_COLOR
-  PS1="$MYORANGE\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $LIGHT_PURPLE\W$RBRACE$NONE$ "
-  PS2="$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $LIGHT_PURPLE\w$RBRACE$NONE$ "
-#-- solarized-light
-elif [ "$MYCOLORS" == "solarized-light" ]; then
+#-- solarized-light OR solarized-gruvbox-light
+elif [ "$MYCOLORS" == "solarized-light" -o "$MYCOLORS" == "solarized-gruvbox-light" ]; then
   NONE='\[\e[01;248m\]'
   NONE=$MYGREY
   BRACE_COLOR=$LIGHT_CYAN
@@ -84,23 +68,22 @@ elif [ "$MYCOLORS" == "solarized-light" ]; then
   RBRACE=$BRACE_COLOR]$BRACE_COLOR
   PS1="$LIGHT_CYAN\w\n$LBRACE$MYGREY\D{%H:%M}$RBRACE$LBRACE$MYGREY\h $GREEN\W$RBRACE$NONE$ "
   PS2="$GREEN$LBRACE$MYGREY\D{%H:%M}$RBRACE$LBRACE$MYGREY\h $CYAN\w$RBRACE$NONE$ "
-#-- solarized-dark
-elif [ "$MYCOLORS" == "solarized-dark" ]; then
+#-- solarized-dark OR solarized-gruvbox-dark
+elif [ "$MYCOLORS" == "solarized-dark" -o "$MYCOLORS" == "solarized-gruvbox-dark" ]; then
   NONE=$LIGHT_CYAN
   BRACE_COLOR=$MYGREY4
   LBRACE="$BRACE_COLOR[$BRACE_COLOR"
   RBRACE="$BRACE_COLOR]$BRACE_COLOR"
   PS1="$MYGREY2\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $CYAN\W$RBRACE$NONE$ "
   PS2="$GREEN$LBRACE$MYGREY4\D{%H:%M}$RBRACE$LBRACE$MYGREY4\h $CYAN\w$RBRACE$NONE$ "
-#-- solarized-gruvbox
-elif [ "$MYCOLORS" == "solarized-gruvbox" ]; then
-  NONE='\[\e[01;248m\]'
-  NONE=$MYGREY
-  BRACE_COLOR=$LIGHT_CYAN
+#-- wombat OR jellybeans
+elif [ "$MYCOLORS" == "jellybeans" -o "$MYCOLORS" == "wombat" ]; then
+  NONE=$MYGREY3
+  BRACE_COLOR=$ZENGREEN
   LBRACE=$BRACE_COLOR[$BRACE_COLOR
   RBRACE=$BRACE_COLOR]$BRACE_COLOR
-  PS1="$LIGHT_CYAN\w\n$LBRACE$MYGREY\D{%H:%M}$RBRACE$LBRACE$MYGREY\h $GREEN\W$RBRACE$NONE$ "
-  PS2="$GREEN$LBRACE$MYGREY\D{%H:%M}$RBRACE$LBRACE$MYGREY\h $CYAN\w$RBRACE$NONE$ "
+  PS1="$MYORANGE\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $LIGHT_PURPLE\W$RBRACE$NONE$ "
+  PS2="$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $LIGHT_PURPLE\w$RBRACE$NONE$ "
 #-- DEFAULT: wombat/jellybeans
 else
   NONE=$WHITE
@@ -118,15 +101,12 @@ export PS2
 # DIRECTORY and LS COLORS 
 #
 if [ "$TERM" != "dumb" ]; then
-  if [ "$MYCOLORS" == "solarized-light" ]; then
+  if [ "$MYCOLORS" == "solarized-light" -o "$MYCOLORS" == "solarized-gruvbox-light" ]; then
     #-- solarized-light
     [ -e "$HOME/dotfiles/LS_COLORS-solarized-light" ] && DIR_COLORS="$HOME/dotfiles/LS_COLORS-solarized-light"
-  elif [ "$MYCOLORS" == "solarized-dark" ]; then
+  elif [ "$MYCOLORS" == "solarized-dark" -o "$MYCOLORS" == "solarized-gruvbox-dark" ] ; then
     #-- solarized-dark
     [ -e "$HOME/dotfiles/LS_COLORS-solarized-dark" ] && DIR_COLORS="$HOME/dotfiles/LS_COLORS-solarized-dark"
-  elif [ "$MYCOLORS" == "solarized-gruvbox" ]; then
-    #-- solarized-gruvbox
-    [ -e "$HOME/dotfiles/LS_COLORS-solarized-light" ] && DIR_COLORS="$HOME/dotfiles/LS_COLORS-solarized-light"
   else
     #-- default
     [ -e "$HOME/dotfiles/LS_COLORS" ] && DIR_COLORS="$HOME/dotfiles/LS_COLORS"
@@ -254,9 +234,9 @@ alias lm='ls -lrth'                           # List all files in order of date 
 alias lt='ll --sort=extension'                # List files only (not directories)
 alias ln='ln -s'                              # Create soft link
 #-- Prints on laser color printer, single-sided
-alias lpcs='/usr/bin/lpr -P lpc -o InputSlot=Tray3 -o PageSize=Letter -o Duplex=None'
+alias lpcs='/usr/bin/lpr -P lps2 -o InputSlot=Tray3 -o PageSize=Letter -o Duplex=None'
 #-- Prints on laser color printer, double-sided
-alias lpcd='/usr/bin/lpr -P lpc -o InputSlot=Tray3 -o PageSize=Letter -o Duplex=DuplexNoTumble'  
+alias lpcd='/usr/bin/lpr -P lp2 -o InputSlot=Tray3 -o PageSize=Letter -o Duplex=DuplexNoTumble'  
 #-- Prints in black&white, single-sided
 alias lpbs='/usr/bin/lpr -P lp -o InputSlot=Tray_2 -o OutputBin=PrinterDefault -o Resolution=600x1200dpi -o PageSize=Letter -o Duplex=None' 
 #-- Prints in black&white, double-sided

@@ -83,7 +83,12 @@
     set background=dark
     colorscheme solarized-dark
     let g:airline_theme = 'solarized'
-  elseif $MYCOLORS == "solarized-gruvbox"
+  elseif $MYCOLORS == "solarized-gruvbox-light"
+    let solarized_constrast='normal'
+    set background=dark
+    colorscheme gruvbox
+    let g:airline_theme = 'kolor'
+  elseif $MYCOLORS == "solarized-gruvbox-dark"
     let solarized_constrast='normal'
     set background=dark
     colorscheme gruvbox
