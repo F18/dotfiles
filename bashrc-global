@@ -162,8 +162,8 @@ alias cdr='cd $MYHOME/01_thesis/mypapers/reviews/ctar2015'
 alias cds='cd $MYWORK'
 alias cdt='cd $MYHOME/01_thesis/phd'
 alias cdvooo='cd $MYWORK/y2014/m11/d06-optCasesMidCruise'
-alias cdvoo='cd $MYWORK/y2015/m01'
-alias cdvo='cd $MYWORK/y2015/m02'
+alias cdvoo='cd $MYWORK/y2015/m02'
+alias cdvo='cd $MYWORK/y2015/m04'
 alias cdwd='cd /windows/Users/ramy/Documents'
 alias cdwdm='cd /windows/Users/ramy/Music'
 
@@ -173,7 +173,7 @@ alias cj='checkjob'
 alias cll='clear'                                # Clear the screen
 alias cl='clear; ls'                             # Clear and list
 alias cp='cp -i'                                 # Copy, but ask me first
-alias cpForce='cp'                               # Copy, but ask me first
+alias cpForce='/bin/cp -f'                       # Copy, but force overwrite
 alias cpo='/bin/cp -f $MYHOME/optima/optima2D/OPTIMA2D_x86_64 . | echo "Copied OPTIMA2D_x86_64 to current directory"'
 alias chmodf='find . -type f -print | xargs chmod' # chmod files only (recursively)
 alias crop='mogrify -trim'                       # crop the given filename using imagemagik
@@ -506,7 +506,7 @@ function go() { $MYHOME/optima/optima2D/OPTIMA2D_x86_64 > screen;}
 function 0-go() 
 { 
   rm rest01* -f
-  fp_TtoF
+  fp_reset
   $MYHOME/optima/optima2D/OPTIMA2D_x86_64 > screen;
 }
 #

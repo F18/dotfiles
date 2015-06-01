@@ -2,8 +2,6 @@
 
   " Add plugin directories to runtimepath
   set runtimepath+=~/dotfiles/vim-local/myPlugins/bclose
-  set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-fuzzyfinder
-  set runtimepath+=~/dotfiles/vim-local/myPlugins/l9
   set runtimepath+=~/dotfiles/vim-local/myPlugins/ctrlp
   set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-surround
   set runtimepath+=~/dotfiles/vim-local/myPlugins/mpage
@@ -11,7 +9,9 @@
   set runtimepath+=~/dotfiles/vim-local/myPlugins/ack
   set runtimepath+=~/dotfiles/vim-local/myPlugins/nerd-commenter
   set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-airline
-  set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-pathogen
+  "set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-pathogen
+  "set runtimepath+=~/dotfiles/vim-local/myPlugins/l9
+  "set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-fuzzyfinder
   "set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-markdown-folding
   "set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-markdown-folding/t
   "set runtimepath+=~/dotfiles/vim-local/myPlugins/tagbar
@@ -277,8 +277,8 @@
     "let g:ctrlp_custom_ignore = '\v[\/]\(hybropt)$'
     " fuzzy finder
     "map <C-f> :FufBuffer<cr>
-    nmap <C-p> :FufFile<cr>
-    let g:fuf_maxMenuWidth = 150
+    " "nmap <C-p> :FufFile<cr>
+    " "let g:fuf_maxMenuWidth = 150
     " runs the buffer select plugin
     "map <C-f> <F4>
     " indent code in visual mode
@@ -316,7 +316,7 @@
     map <left> :bp<cr>
 
     " Enter Paste mode when you want to paste w/out formatting
-    "set pastetoggle=<F2>
+    map <C-p> set pastetoggle
 
 
     " fontsize plugin
@@ -561,10 +561,8 @@
     nnoremap <C-h> <C-W>hM
     nnoremap <C-l> <C-W>lM
 
-    " Latex Recommended settings
-    "
     " REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
-    filetype plugin on
+    filetype plugin indent on
 
     " IMPORTANT: win32 users will need to have 'shellslash' set so that latex
     " can be called correctly.
@@ -575,31 +573,14 @@
     " program to always generate a file-name.
     set grepprg=grep\ -nH\ $*
 
-    " OPTIONAL: This enables automatic indentation as you type.
-    filetype indent on
-
     " OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
     " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
     " The following changes the default filetype back to 'tex':
     let g:tex_flavor='latex'
-    " Compiler options (see ~/vim-local/ftplugin/tex.vim)
-    "let g:Tex_DefaultTargetFormat='pdf'
-    "let g:Tex_UseMakefile=0
-    "let g:Tex_CompileRule_pdf='make'
-    "let g:Tex_IgnoredWarnings=4
-
-
-
-    "
-    " change directory to home
-    " :cd ~
-    " Set up the ctags command
-    " let Tlist_Ctags_Cmd='/usr/bin/etags'
-    ":set tags=~/01_utias/01_local/optima/optima2D/tags
 
     " add filetypes to fortran
     "syntax on
-    filetype on
+    "filetype on
     au BufNewFile,BufRead *.inc set filetype=fortran
     au BufNewFile,BufRead *.INC set filetype=fortran
     au BufNewFile,BufRead *.inp set filetype=cterm
@@ -668,8 +649,9 @@
   " _____________
   " Color Columns
   "
-  autocmd FileType fortran set cursorcolumn
-  "autocmd FileType fortran set cursorline
+  " highlight the row or column under the cursor
+  "autocmd FileType fortran set cursorcolumn " column under cursor
+  "autocmd FileType fortran set cursorline " row under cursor
   if exists('+colorcolumn')
      "
      "vim 7.3 and newer with colorcolumn
