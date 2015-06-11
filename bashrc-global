@@ -408,6 +408,7 @@ function gf() { grep -irn --include=*.{f,F,f90,F90,inc} --exclude-dir=unused -- 
 function gfc() { grep -irn --include=*.{f,F,f90,F90,inc} --exclude-dir=unused -- "call $@" . ; }
 function gfs() { grep -irn --include=*.{f,F,f90,F90,inc} --exclude-dir=unused -- "subroutine $@" . ; }
 function gfe() { grep -irn --include=*.{f,F,f90,F90,inc} --exclude-dir=unused -- "$@[\t ]*=[^=]" . ; }
+function gtex() { grep -irn --include=*.{tex,bib} --exclude-dir=unused -- "$@" . ; }
 #-- Python grep, only searches Python source
 function grepy() { grep -in --include="*.py" -- "$@" * ; }
 function rgrepy() { grep -irn --include="*.py" -- "$@" . ; }

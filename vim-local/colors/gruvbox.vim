@@ -268,8 +268,8 @@ call s:HL('SpecialKey', 'dark2')
 call s:HL('Visual',    'none',  'dark3', 'inverse')
 call s:HL('VisualNOS', 'none',  'dark3', 'inverse')
 
-call s:HL('Search',    'dark0', 'yellow')
-call s:HL('IncSearch', 'dark0', 'yellow')
+call s:HL('Search',    'light0', 'dark3')
+call s:HL('IncSearch', 'light0', 'dark3')
 
 call s:HL('Underlined', 'blue', 'none', 'underline')
 
