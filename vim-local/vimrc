@@ -9,14 +9,10 @@
   set runtimepath+=~/dotfiles/vim-local/myPlugins/ack
   set runtimepath+=~/dotfiles/vim-local/myPlugins/nerd-commenter
   set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-airline
-<<<<<<< HEAD
   "set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-pathogen
   "set runtimepath+=~/dotfiles/vim-local/myPlugins/l9
   "set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-fuzzyfinder
-=======
-  set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-pathogen
   set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-easymotion
->>>>>>> origin/allsys
   "set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-markdown-folding
   "set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-markdown-folding/t
   "set runtimepath+=~/dotfiles/vim-local/myPlugins/tagbar
