@@ -13,9 +13,9 @@
 #MYCOLORS='jellybeans'
 #MYCOLORS='wombat'
 #MYCOLORS='solarized-light'
-#MYCOLORS='solarized-dark'
+MYCOLORS='solarized-dark'
 #MYCOLORS='solarized-gruvbox-light'
-MYCOLORS='solarized-gruvbox-dark'
+#MYCOLORS='solarized-gruvbox-dark'
 #-- export:
 export MYCOLORS
 
@@ -142,8 +142,8 @@ alias cdr='cd $MYHOME/01_thesis/mypapers/reviews/ctar2015'
 alias cds='cd $MYWORK'
 alias cdt='cd $MYHOME/01_thesis/phd'
 alias cdvooo='cd $MYWORK/y2014/m11/d06-optCasesMidCruise'
-alias cdvoo='cd $MYWORK/y2015/m02'
-alias cdvo='cd $MYWORK/y2015/m04'
+alias cdvoo='cd $MYWORK/y2015/m04'
+alias cdvo='cd $MYWORK/y2015/m06'
 alias cdwd='cd /windows/Users/ramy/Documents'
 alias cdwdm='cd /windows/Users/ramy/Music'
 
