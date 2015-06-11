@@ -13,6 +13,7 @@
   "set runtimepath+=~/dotfiles/vim-local/myPlugins/l9
   "set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-fuzzyfinder
   set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-easymotion
+  set runtimepath+=~/dotfiles/vim-local/myPlugins/nerdtree
   "set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-markdown-folding
   "set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-markdown-folding/t
   "set runtimepath+=~/dotfiles/vim-local/myPlugins/tagbar
@@ -150,7 +151,7 @@
   map <leader>e0 mu :MPage <CR> \u zt;
   map <leader>e2 mu <C-w>o :2MPage <CR> \u zt;
   map <leader>e3 mu <C-w>o :3MPage <CR> \u zt;
-  map <leader>,  mu <C-w>o :3MPage <CR> \u zt;
+  "map <leader>,  mu <C-w>o :3MPage <CR> \u zt;
   map <leader>e4 mu <C-w>o :4MPage <CR> \u zt;
   map <leader>e5 mu <C-w>o :5MPage <CR> \u zt;
   "map <leader>l :MPN! 10<CR>Lzt<C-e>
@@ -299,7 +300,7 @@
     " Fast close window split
     nmap <leader>B <C-w>c
     " Fast saving
-    nmap <leader>w :w!<cr>
+    "nmap <leader>w :w!<cr>
     " Fast save and quit vim
     "nmap <leader>s :w <cr> :bd <cr>
     " Fast quit vim
@@ -813,18 +814,18 @@ nmap f <Plug>(easymotion-s)
 " nmap s <Plug>(easymotion-s2)
 "
 " Use uppercase target labels and type as a lower case
-let g:EasyMotion_use_upper = 0
+let g:EasyMotion_use_upper = 1
 " Turn on case insensitive feature
 let g:EasyMotion_smartcase = 1
-" allow lower case to be used to got to upper case label (not vice versa)
+" allow lower case to be used to go to upper case label (not vice versa)
 let g:EasyMotion_use_smartsign_us = 1 " US layout
 " JK motions: Line motions
 map <leader>l <Plug>(easymotion-lineforward)
 map <leader>j <Plug>(easymotion-j)
 map <leader>k <Plug>(easymotion-k)
-map <Leader>h <Plug>(easymotion-linebackward)
+map <leader>h <Plug>(easymotion-linebackward)
 let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
-
+"
 " Search commands
 map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
@@ -833,6 +834,13 @@ omap / <Plug>(easymotion-tn)
 " " different highlight method and have some other features )
 map  n <Plug>(easymotion-next)
 map  N <Plug>(easymotion-prev)
+"
+"Color Linking
+"hi link EasyMotionTarget ErrorMsg
+hi link EasyMotionTarget Special " PreProc,Directory,Title,WarningMsg,ErrorMsg
+hi link EasyMotionShade  Comment
+hi link EasyMotionTarget2First MatchParen
+hi link EasyMotionTarget2Second MatchParen
 
 
 
