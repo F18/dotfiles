@@ -304,7 +304,7 @@
     " Fast save and quit vim
     "nmap <leader>s :w <cr> :bd <cr>
     " Fast quit vim
-    nmap <leader>q :wq <cr>
+    nmap <leader>q :qa <cr>
     " Fast reload/reread of file
     " The reason this requires another keystroke is because there must be another <leader>rX keybinding somewhere
     nmap <leader>r :e<cr>
@@ -318,7 +318,7 @@
     " spell check
     map <leader>z z=
 
-    " Use the arrows to something usefull
+    " Use the arrows to something useful
     map <right> :bn<cr>
     map <left> :bp<cr>
 
@@ -755,9 +755,19 @@
   endfunction
 
   ""
-  "" Nerd commenter toggle comment state
-  ""
-  map <leader>c <plug>NERDCommenterToggle
+  "" Nerd commenter keybindings (default from Documentation)
+  " [count]<leader>cc |NERDComComment|
+  " [count]<leader>cn |NERDComNestedComment|
+  " [count]<leader>c<space> |NERDComToggleComment|
+  "
+  "" Nerd Tree Settings
+  let g:NERDTreeWinSize=20
+  autocmd VimEnter * NERDTree | wincmd p " load NERDTree with vim startup
+  autocmd BufEnter * NERDTreeMirror | wincmd p
+  
+ 
+
+    
   ""
   "" Insert/Remove a comment character (!)in column number 1 and keep cursor position
   ""
@@ -832,8 +842,8 @@ omap / <Plug>(easymotion-tn)
 " These `n` & `N` mappings are options. You do not have to map `n` & `N` to EasyMotion.
 " " Without these mappings, `n` & `N` works fine. (These mappings just provide
 " " different highlight method and have some other features )
-map  n <Plug>(easymotion-next)
-map  N <Plug>(easymotion-prev)
+map  n <Plug>(easymotion-next)zz
+map  N <Plug>(easymotion-prev)zz
 "
 "Color Linking
 "hi link EasyMotionTarget ErrorMsg

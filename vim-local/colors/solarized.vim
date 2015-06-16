@@ -641,9 +641,9 @@ exe "hi! Question"       .s:fmt_bold   .s:fg_cyan   .s:bg_none
 if ( has("gui_running") || &t_Co > 8 )
     "exe "hi! VertSplit"  .s:fmt_none   .s:fg_base00 .s:bg_base00
     "RR: vertical grey dashes
-    "exe "hi! VertSplit"  .s:fmt_none   .s:fg_base00 .s:bg_base03
+    exe "hi! VertSplit"  .s:fmt_none   .s:fg_base00 .s:bg_base03
     "RR: hidden (transparent) split
-    exe "hi! VertSplit"  .s:fmt_none   .s:fg_base03 .s:bg_base03
+    "exe "hi! VertSplit"  .s:fmt_none   .s:fg_base03 .s:bg_base03
 else
     exe "hi! VertSplit"  .s:fmt_revbb  .s:fg_base00 .s:bg_base02
 endif
@@ -678,7 +678,7 @@ exe "hi! DiffText"       .s:fmt_none   .s:fg_blue   .s:bg_base02 .s:sp_blue
 endif
 exe "hi! SignColumn"     .s:fmt_none   .s:fg_base0
 exe "hi! Conceal"        .s:fmt_none   .s:fg_blue   .s:bg_none
-exe "hi! SpellBad"       .s:fmt_curl   .s:fg_base03 .s:bg_blue    .s:sp_red
+exe "hi! SpellBad"       .s:fmt_curl   .s:fg_blue   .s:bg_base02    .s:sp_red
 exe "hi! SpellCap"       .s:fmt_curl   .s:fg_none   .s:bg_none    .s:sp_violet
 exe "hi! SpellRare"      .s:fmt_curl   .s:fg_none   .s:bg_none    .s:sp_cyan
 exe "hi! SpellLocal"     .s:fmt_curl   .s:fg_none   .s:bg_none    .s:sp_yellow

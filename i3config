@@ -280,7 +280,7 @@ exec --no-startup-id synapse -s
 # launch dropbox on startup only
 exec --no-startup-id dropbox start
 # launch network manager on startup only
-exec --no-startup-id networkmanager.sh
-# launch network manager on startup only
 exec --no-startup-id kupfer
+# launch network manager on startup only
+exec --no-startup-id networkmanager.sh
 

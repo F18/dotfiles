@@ -162,7 +162,7 @@ alias crop='mogrify -trim'                       # crop the given filename using
 alias df='df -h'
 alias dirr='ls -al | more'  
 alias dus='sudo du -sm * | sort -n'
-alias duf='du -sm * | sort -n'                   # list folders in order of increasing size
+alias duf='du -sm $(ls -A) | sort -n'                   # list folders in order of increasing size
 alias digitizeit='cd $HOME/digitizeit; java -cp libs/JimiProClasses.zip:libs/jh.jar:libs/kunststoff.jar:libs/foxtrot.jar:DigitizeIt.jar de.ibo.digitizer.DigitizeIt' # Start the digitizeit software
 alias dvhis='m *dvhis'
 
