@@ -9,11 +9,12 @@
   set runtimepath+=~/dotfiles/vim-local/myPlugins/ack
   set runtimepath+=~/dotfiles/vim-local/myPlugins/nerd-commenter
   set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-airline
+  set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-easymotion
+  set runtimepath+=~/dotfiles/vim-local/myPlugins/nerdtree
   "set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-pathogen
   "set runtimepath+=~/dotfiles/vim-local/myPlugins/l9
   "set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-fuzzyfinder
-  set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-easymotion
-  set runtimepath+=~/dotfiles/vim-local/myPlugins/nerdtree
+  "set runtimepath+=~/dotfiles/vim-local/myPlugins/incsearch
   "set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-markdown-folding
   "set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-markdown-folding/t
   "set runtimepath+=~/dotfiles/vim-local/myPlugins/tagbar
@@ -508,7 +509,7 @@
     "nmap \x :Ack ""<Left>
     nmap <leader>a :call MyAck()<CR>
     " search for the word under the cursor
-    nmap <leader>A :call MyAckWord()<CR>
+    nmap <leader>A :call MyAck()<CR>
     "nmap \X :Ack <C-r><C-w> ../. <CR>
     nmap <leader>S :call MyAckWindow()<CR>
 
@@ -810,9 +811,23 @@
     execute "norm ".g:colnum."|"
   endfunction
 "
-" EasyMotion Settings and Keybindings
+" EasyMotion and IncSearch Settings and Keybindings
 "
+" Search commands
+"map /  <Plug>(incsearch-forward)
+"map ?  <Plug>(incsearch-backward)
+"map g/ <Plug>(incsearch-stay)
+map  / <Plug>(easymotion-sn)
+map  ? <Plug>(easymotion-sp)
+omap / <Plug>(easymotion-tn)
+" These `n` & `N` mappings are options. You do not have to map `n` & `N` to EasyMotion.
+" " Without these mappings, `n` & `N` works fine. (These mappings just provide
+" " different highlight method and have some other features )
+map  n <Plug>(easymotion-next)zz
+map  N <Plug>(easymotion-prev)zz
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+nmap * <Plug>(easymotion-sn)\(<c-r>=expand("<cword>")<cr>\)<cr>
 
 " Bi-directional find motion
 " " Jump to anywhere you want with minimal keystrokes, with just one key binding.
@@ -836,23 +851,12 @@ map <leader>k <Plug>(easymotion-k)
 map <leader>h <Plug>(easymotion-linebackward)
 let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
 "
-" Search commands
-map  / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
-" These `n` & `N` mappings are options. You do not have to map `n` & `N` to EasyMotion.
-" " Without these mappings, `n` & `N` works fine. (These mappings just provide
-" " different highlight method and have some other features )
-map  n <Plug>(easymotion-next)zz
-map  N <Plug>(easymotion-prev)zz
-"
 "Color Linking
 "hi link EasyMotionTarget ErrorMsg
 hi link EasyMotionTarget Special " PreProc,Directory,Title,WarningMsg,ErrorMsg
 hi link EasyMotionShade  Comment
 hi link EasyMotionTarget2First MatchParen
 hi link EasyMotionTarget2Second MatchParen
-
-
 
   "
   " Change Cursor shape from bar to i-beam for Konsole terminal
