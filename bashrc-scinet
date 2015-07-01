@@ -17,6 +17,7 @@ export ARCH=$(uname)_$(uname -m)
 #-- vim
 export MYVIM=$HOME/usr/local/bin/vim
 export VIMRUNTIME=$MYHOME/usr/local/vim74/runtime
+export LANG=en_US.UTF-8
 #-- git (adding your own installation)
 export PATH=~/usr/local/git-1.7.12.1:$PATH
 export PATH=~/usr/local/git-1.7.12.1/gitk-git:$PATH
