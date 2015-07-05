@@ -210,10 +210,12 @@ bar {
 #client.focused_inactive #002b36 #073642 #839496 #073642
 #client.unfocused        #002b36 #073642 #839496 #073642
 #client.urgent           #002b36 #dc322f #fdf6e3 #002b36
-client.focused          #b58900 #586e75 #fdf6e3 #268bd2
-client.focused_inactive #003399 #073642 #839496 #073642
-client.unfocused        #003399 #073642 #839496 #073642
-client.urgent           #003399 #dc322f #fdf6e3 #002b36
+client.focused           #b58900 #586e75 #fdf6e3 #268bd2
+client.focused_inactive  #b58900 #073642 #839496 #073642
+client.unfocused         #b58900 #073642 #839496 #073642
+#blue border: client.unfocused        #003399 #073642 #839496 #073642
+#blue border: client.focused_inactive #003399 #073642 #839496 #073642
+client.urgent            #003399 #dc322f #fdf6e3 #002b36
 
 # Changing border styles
 bindsym $mod+t border toggle
@@ -283,4 +285,5 @@ exec --no-startup-id dropbox start
 exec --no-startup-id kupfer
 # launch network manager on startup only
 exec --no-startup-id networkmanager.sh
-
+#  launch xfce-panel
+#exec --no-startup-id xfce4-panel --disable-wm-check
