@@ -28,8 +28,8 @@
   noremap " ,
   " the following maps \ to ' before mapping ' to ;
   noremap \ '
-  "noremap F '
   noremap ' ;
+  noremap F f
   " the following maps s to z:
   noremap s z
   " Now map the leader key. With a map leader it's possible to do
@@ -819,6 +819,10 @@
 "map /  <Plug>(incsearch-forward)
 "map ?  <Plug>(incsearch-backward)
 "map g/ <Plug>(incsearch-stay)
+omap <leader>w /
+omap <leader>W ?
+nmap <leader>w /
+nmap <leader>W ?
 map  / <Plug>(easymotion-sn)
 map  ? <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
@@ -864,12 +868,13 @@ hi link EasyMotionTarget2First MatchParen
 hi link EasyMotionTarget2Second MatchParen
 
 " Easymotion shortcut (search in current line only)
+" F = original f style motion
 " f = search for target character
 " w/W = search for spaces
 nmap f <leader><leader>f
 nmap f<space> <leader><leader>w
-map <leader>w <leader><leader>w
-map <leader>W <leader><leader>W
+"map <leader>w <leader><leader>w
+"map <leader>W <leader><leader>W
 
   "
   " Change Cursor shape from bar to i-beam for Konsole terminal
