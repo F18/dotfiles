@@ -1,4 +1,5 @@
-  " MY CUSTOM VIM SETTINGS
+" MY CUSTOM VIM SETTINGS
+"
 
   " Add plugin directories to runtimepath
   set runtimepath+=~/dotfiles/vim-local/myPlugins/bclose
@@ -126,7 +127,8 @@
   let g:BASH_Ctrl_j = 'off'
 
   " map the escape key
-  noremap! jj <Esc>
+  noremap! jk <Esc>l
+  noremap! jj <Esc>l
   noremap <C-j> :w<cr> :noh<cr>h
   inoremap <C-j> <Esc> hhh :w<cr> :noh<cr>
   "
