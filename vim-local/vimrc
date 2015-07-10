@@ -823,8 +823,8 @@
 "map g/ <Plug>(incsearch-stay)
 omap <leader>w /
 omap <leader>W ?
-nmap <leader>w /
-nmap <leader>W ?
+noremap <leader>w /
+noremap <leader>W ?
 map  / <Plug>(easymotion-sn)
 map  ? <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)

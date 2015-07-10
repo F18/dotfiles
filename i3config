@@ -24,11 +24,26 @@ set $mod2 Mod4
 #font pango:Akkurat Mono 12
 font pango:Source Code Pro 10
 
+# -- MOUSE BINDINGS
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # Focus follows mouse (yes/no)
 focus_follows_mouse no
+
+# The middle button over a titlebar kills the window
+bindsym --release button2 kill
+#
+# The middle button and a modifer over any part of the window kills the window
+bindsym --whole-window $mod+button2 kill
+
+# The right button toggles floating
+bindsym button3 floating toggle
+bindsym $mod+button3 floating toggle
+
+# The side buttons move the window around
+bindsym button9 move left
+bindsym button8 move right
 
 # start a terminal
 bindsym $mod+space exec konsole
@@ -189,7 +204,7 @@ bindsym $mod+r mode "resize"
 bar {
          #separator_symbol "|"
          status_command i3status -c ~/.i3/i3status.conf
-         #position top
+         position top
  
  #-- solarized colorscheme
          colors {
