@@ -688,6 +688,9 @@
 
   " set text width for latex files
   au BufNewFile,BufRead *.tex set textwidth=90
+  if $MYCOLORS=="zenburn"
+    au BufNewFile,BufRead *.tex hi Error None
+  endif
 
   ""
   "" RR - AUTO FORMATTING OF PARAGRAPHS IN LATEX - turned off for beamer
