@@ -271,10 +271,10 @@
     "
     "map <leader>q <C-W><C-K>q
     map <leader>d :noh <cr>
-    " buffer movement
-    map <leader>n :bn <cr>
-    map <leader>p :bp <cr>
     map <leader>/ <C-^>
+    " buffer movement
+    noremap <leader>n n
+    noremap <leader>p N
 
 
     "CtrlP
@@ -317,7 +317,7 @@
     " Format paragraph (auto wrap/fill)
     map <leader>g gwap
     " past from clipboard
-    map <leader>P "+gP
+    "map <leader>P "+gP
     "
     " spell check
     map <leader>z z=
@@ -864,10 +864,26 @@ let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
 "Color Linking
 "hi EasyMotionTarget ctermfg=0       ctermbg=206     cterm=d
 "hi EasyMotionShade  ctermfg=0       ctermbg=206     cterm=none
-hi link EasyMotionTarget Special " PreProc,Directory,Title,WarningMsg,ErrorMsg,Special
-hi link EasyMotionShade  Comment
-hi link EasyMotionTarget2First MatchParen
-hi link EasyMotionTarget2Second MatchParen
+"hi link EasyMotionTarget Special " PreProc,Directory,Title,WarningMsg,ErrorMsg,Special
+"hi link EasyMotionShade  Comment
+
+if $MYCOLORS == "zenburn"
+  "hi EasyMotionTarget ctermfg=196
+  hi link EasyMotionTarget Search
+  hi link StupidEasyMotionTarget Search
+  hi EasyMotionTarget  ctermbg=181   ctermfg=237
+  hi link StupidEasyMotionTarget EasyMotionTarget
+  hi EasyMotionTarget2First  ctermbg=228   ctermfg=237
+  hi EasyMotionTarget2Second  ctermbg=228   ctermfg=237
+  hi link EasyMotionIncSearch IncSearch
+else
+  " Other linking options: PreProc,Directory,Title,WarningMsg,ErrorMsg,Special
+  hi link EasyMotionTarget Special
+  hi link EasyMotionShade  Comment
+  hi link EasyMotionTarget2First MatchParen
+  hi link EasyMotionTarget2Second MatchParen
+  hi link EasyMotionIncSearch IncSearch
+endif
 
 " Easymotion shortcut (search in current line only)
 " F = original f style motion

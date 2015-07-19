@@ -9,11 +9,11 @@
 # Select Color Scheme and store as env variable for
 # bash, vim, dircolors, and tmux config
 #
-#MYCOLORS='zenburn'
+MYCOLORS='zenburn'
 #MYCOLORS='jellybeans'
 #MYCOLORS='wombat'
 #MYCOLORS='solarized-light'
-MYCOLORS='solarized-dark'
+#MYCOLORS='solarized-dark'
 #MYCOLORS='solarized-gruvbox-light'
 #MYCOLORS='solarized-gruvbox-dark'
 #-- export:
@@ -39,6 +39,7 @@ LIGHT_GREEN='\[\033[1;32m\]'
 BROWN='\[\033[0;33m\]'
 YELLOW='\[\033[1;33m\]'
 BLUE='\[\033[0;34m\]'
+ZENBURN_BLUE='\[\033[38;5;116m\]'
 LIGHT_BLUE='\[\033[1;34m\]'
 PURPLE='\[\033[0;35m\]'
 LIGHT_PURPLE='\[\033[1;35m\]'
@@ -58,7 +59,7 @@ if [ "$MYCOLORS" == "zenburn" ]; then
   BRACE_COLOR=$LIGHT_GREY
   LBRACE=$BRACE_COLOR[$BRACE_COLOR
   RBRACE=$BRACE_COLOR]$BRACE_COLOR
-  PS1="$RED\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $YELLOW\W$RBRACE$NONE$ "
+  PS1="$RED\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $ZENBURN_BLUE\W$RBRACE$NONE$ "
 #-- solarized-light OR solarized-gruvbox-light
 elif [ "$MYCOLORS" == "solarized-light" -o "$MYCOLORS" == "solarized-gruvbox-light" ]; then
   NONE='\[\e[01;248m\]'
@@ -536,6 +537,11 @@ function subdir-cp-opt
     echo $dir;
     /bin/cp -f opt.inp $dir/.
   done
+}
+#
+function subdir-tpld() 
+{
+  t1q */*tpld
 }
 #
 function ge
