@@ -270,7 +270,7 @@
     "map <leader>c :w <cr>:call GNUscreenCmd2() <cr><cr>
     "
     "map <leader>q <C-W><C-K>q
-    map <leader>d :noh <cr>
+    map <leader>d :noh<CR>kj
     map <leader>/ <C-^>
     " buffer movement
     noremap <leader>n n
@@ -879,7 +879,11 @@ if $MYCOLORS == "zenburn"
   hi EasyMotionTarget  ctermbg=181   ctermfg=237
   hi EasyMotionTarget2First  ctermbg=228   ctermfg=237
   hi EasyMotionTarget2Second  ctermbg=228   ctermfg=237
+  hi EasyMotionSearch ctermfg=230   ctermbg=243 cterm=bold
+  "hi EasyMotionIncSearch ctermfg=230   ctermbg=243 cterm=bold
   hi link EasyMotionIncSearch IncSearch
+  hi link EasyMotionIncCursor IncSearch
+  hi link EasyMotionMoveHL IncSearch
   hi link StupidEasyMotionTarget Search
   hi link StupidEasyMotionTarget EasyMotionTarget
 else

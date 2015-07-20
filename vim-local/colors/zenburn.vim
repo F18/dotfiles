@@ -238,7 +238,7 @@ if &t_Co > 255
     hi FoldColumn      ctermfg=109   ctermbg=238
     hi Folded          ctermfg=109   ctermbg=238
     hi Identifier      ctermfg=223
-    hi IncSearch       ctermbg=228   ctermfg=237
+    "hi IncSearch       ctermbg=228   ctermfg=237
     hi Label           ctermfg=187   cterm=underline
     hi LineNr          ctermfg=248   ctermbg=235
     hi Macro           ctermfg=223   cterm=bold
@@ -250,7 +250,7 @@ if &t_Co > 255
     hi PreProc         ctermfg=223   cterm=bold
     hi Question        ctermfg=15    cterm=bold
     hi Repeat          ctermfg=223   cterm=bold
-    hi Search          ctermfg=230   ctermbg=236 cterm=bold
+    "hi Search          ctermfg=230   ctermbg=236 cterm=bold
     "hi Search          ctermbg=181   ctermfg=237
     hi SpecialChar     ctermfg=181   cterm=bold
     hi SpecialComment  ctermfg=108   cterm=bold
