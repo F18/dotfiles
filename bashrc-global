@@ -128,6 +128,7 @@ alias ..='cd ..; l'                              # Go up one directory clear and
 alias .='pwd'                                    # list the current directory path
 
 alias avq='avidemux2_qt4'                        # launches video editor
+alias alltpld='cat *tpld > history/all.tpld'     # write tpld_unit data to history directory
 
 alias bye='exit'                                 # Close connection
 

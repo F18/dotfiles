@@ -136,8 +136,8 @@
   " always move down a line, even if long line is not wrapped
   "noremap j gj
   "noremap k gk
-  noremap j 1<C-D>zz
-  noremap k 1<C-U>zz
+  "noremap j 1<C-D>zz:noh<CR>
+  "noremap k 1<C-U>zz:noh<CR>
   map ; 30<C-U>zz
   map <space> 30<C-D>zz
   map <silent> <PageUp> 30<C-U>
@@ -668,9 +668,11 @@
      "vim 7.3 and newer with colorcolumn
      "
      "hi ColorColumn guibg=#3d3d3d
-     " RR: colorsheme relatted
+     " RR: colorsheme related
      "hi ColorColumn ctermbg=234
-     "hi ColorColumn ctermbg=236
+     if $MYCOLORS=="zenburn"
+     hi ColorColumn ctermbg=236
+     endif
      autocmd FileType fortran set colorcolumn=6,73
   else
      "
@@ -873,12 +875,13 @@ let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
 if $MYCOLORS == "zenburn"
   "hi EasyMotionTarget ctermfg=196
   hi link EasyMotionTarget Search
-  hi link StupidEasyMotionTarget Search
+  hi link EasyMotionShade  Normal
   hi EasyMotionTarget  ctermbg=181   ctermfg=237
-  hi link StupidEasyMotionTarget EasyMotionTarget
   hi EasyMotionTarget2First  ctermbg=228   ctermfg=237
   hi EasyMotionTarget2Second  ctermbg=228   ctermfg=237
   hi link EasyMotionIncSearch IncSearch
+  hi link StupidEasyMotionTarget Search
+  hi link StupidEasyMotionTarget EasyMotionTarget
 else
   " Other linking options: PreProc,Directory,Title,WarningMsg,ErrorMsg,Special
   hi link EasyMotionTarget Special

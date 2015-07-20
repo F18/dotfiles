@@ -282,6 +282,7 @@ if &t_Co > 255
     " IncSearch = highlight as you type it
     " Search = results of search
     hi IncSearch       ctermfg=230   ctermbg=243 cterm=bold
+    "hi Search          ctermbg=181   ctermfg=237
     hi Search          ctermfg=230   ctermbg=24 cterm=bold
     "hi Search          ctermfg=230   ctermbg=239 cterm=bold
     "hi Search          ctermbg=108
@@ -303,7 +304,8 @@ if &t_Co > 255
         hi NonText         ctermfg=238
 
         " Added by RR
-        hi Normal		   ctermfg=252		ctermbg=234		cterm=none
+        hi Normal		   ctermfg=251		ctermbg=234		cterm=none
+        "hi Normal		   ctermfg=188		ctermbg=234		cterm=none
         "hi Comment		ctermfg=246		cterm=none
 
         if exists("g:zenburn_color_also_Ignore") && g:zenburn_color_also_Ignore
