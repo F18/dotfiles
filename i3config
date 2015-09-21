@@ -181,16 +181,16 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 5 px or 5 ppt
+        bindsym j resize grow height 5 px or 5 ppt
+        bindsym k resize shrink height 5 px or 5 ppt
+        bindsym l resize grow width 5 px or 5 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width 5 px or 5 ppt
+        bindsym Down resize grow height 5 px or 5 ppt
+        bindsym Up resize shrink height 5 px or 5 ppt
+        bindsym Right resize grow width 5 px or 5 ppt
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -211,8 +211,8 @@ bar {
            background #002b36
            statusline #839496
            separator  #586e75
-           #s                 border  backgr. text
-           focused_workspace  #b58900 #b58900 #002b36
+           #class             border  backgr. text
+           focused_workspace  #b58900 #9CA998 #fdf6e3
            active_workspace   #586e75 #586e75 #002b36
            inactive_workspace #073642 #002b36 #839496
            urgent_workspace   #dc322f #dc322f #fdf6e3
@@ -221,16 +221,23 @@ bar {
 
 #-- solarized colorscheme
 #-- class                 border  backgr. text    indicator
+client.focused           #E6E6FA #9CA998 #fdf6e3 #268bd2
+client.focused_inactive  #B4D7BF #073642 #CFCFCF #073642
+client.unfocused         #B4D7BF #073642 #CFCFCF #073642
+client.urgent            #003399 #dc322f #fdf6e3 #002b36
+#-- class                 border  backgr. text    indicator
+#client.focused           #b58900 #586e75 #fdf6e3 #268bd2
+#client.focused_inactive  #b58900 #073642 #839496 #073642
+#client.unfocused         #b58900 #073642 #839496 #073642
+#client.urgent            #003399 #dc322f #fdf6e3 #002b36
+#-- class                 border  backgr. text    indicator
 #client.focused          #002b36 #586e75 #fdf6e3 #268bd2
 #client.focused_inactive #002b36 #073642 #839496 #073642
 #client.unfocused        #002b36 #073642 #839496 #073642
 #client.urgent           #002b36 #dc322f #fdf6e3 #002b36
-client.focused           #b58900 #586e75 #fdf6e3 #268bd2
-client.focused_inactive  #b58900 #073642 #839496 #073642
-client.unfocused         #b58900 #073642 #839496 #073642
-#blue border: client.unfocused        #003399 #073642 #839496 #073642
-#blue border: client.focused_inactive #003399 #073642 #839496 #073642
-client.urgent            #003399 #dc322f #fdf6e3 #002b36
+#blue border:
+#client.unfocused        #003399 #073642 #839496 #073642
+#client.focused_inactive #003399 #073642 #839496 #073642
 
 # Changing border styles
 bindsym $mod+t border toggle
@@ -298,7 +305,7 @@ exec --no-startup-id synapse -s
 # launch dropbox on startup only
 exec --no-startup-id dropbox start
 # launch network manager on startup only
-exec --no-startup-id kupfer
+exec --no-startup-id kupfer --no-splash
 # launch network manager on startup only
 exec --no-startup-id networkmanager.sh
 #  launch xfce-panel
