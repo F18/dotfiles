@@ -206,25 +206,43 @@ bar {
          status_command i3status -c ~/.i3/i3status.conf
          position top
  
- #-- solarized colorscheme
+ #-- my colorscheme
          colors {
-           background #002b36
-           statusline #839496
-           separator  #586e75
+           background #42647f
+           statusline #110000
+           separator  #110000
            #class             border  backgr. text
-           focused_workspace  #b58900 #9CA998 #fdf6e3
-           active_workspace   #586e75 #586e75 #002b36
-           inactive_workspace #073642 #002b36 #839496
+           focused_workspace  #944344 #944344 #110000
+           active_workspace   #586e75 #586e75 #110000
+           inactive_workspace #42647f #42647f #110000
            urgent_workspace   #dc322f #dc322f #fdf6e3
          }
+ #-- solarized colorscheme
+         #colors {
+           #background #002b36
+           #statusline #839496
+           #separator  #586e75
+           ##class             border  backgr. text
+           #focused_workspace  #b58900 #9CA998 #fdf6e3
+           #active_workspace   #586e75 #586e75 #002b36
+           #inactive_workspace #073642 #002b36 #839496
+           #urgent_workspace   #dc322f #dc322f #fdf6e3
+         #}
 }
+#-- my colorscheme
+#-- class                 border  backgr. text   indicator
+client.focused           #110000 #944344 #110000 #268bd2
+client.focused_inactive  #110000 #42647f #110000 #073642
+client.unfocused         #110000 #42647f #110000 #073642
+client.urgent            #003399 #dc322f #fdf6e3 #002b36
 
 #-- solarized colorscheme
 #-- class                 border  backgr. text    indicator
-client.focused           #E6E6FA #9CA998 #fdf6e3 #268bd2
-client.focused_inactive  #B4D7BF #073642 #CFCFCF #073642
-client.unfocused         #B4D7BF #073642 #CFCFCF #073642
-client.urgent            #003399 #dc322f #fdf6e3 #002b36
+#client.focused           #E6E6FA #9CA998 #ffffcc #268bd2
+#client.focused_inactive  #B4D7BF #073642 #CFCFCF #073642
+#client.unfocused         #B4D7BF #073642 #CFCFCF #073642
+#client.urgent            #003399 #dc322f #fdf6e3 #002b36
+
 #-- class                 border  backgr. text    indicator
 #client.focused           #b58900 #586e75 #fdf6e3 #268bd2
 #client.focused_inactive  #b58900 #073642 #839496 #073642
@@ -246,6 +264,9 @@ bindsym $mod+y border 1pixel
 bindsym $mod+u border none
 # bar toggle, hide or show 
 bindsym $mod+m bar mode toggle
+
+# hide borders, options: <none|vertical|horizontal|both>
+hide_edge_borders both
 
 # Make Caps_Lock an additional control key
 exec_always xmodmap ~/.xmodmap
