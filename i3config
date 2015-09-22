@@ -208,13 +208,13 @@ bar {
  
  #-- my colorscheme
          colors {
-           background #42647f
+           background #5b7a8f
            statusline #110000
            separator  #110000
            #class             border  backgr. text
-           focused_workspace  #944344 #944344 #110000
+           focused_workspace  #944344 #be6f73 #110000
            active_workspace   #586e75 #586e75 #110000
-           inactive_workspace #42647f #42647f #110000
+           inactive_workspace #5b7a8f #5b7a8f #110000
            urgent_workspace   #dc322f #dc322f #fdf6e3
          }
  #-- solarized colorscheme
@@ -231,9 +231,9 @@ bar {
 }
 #-- my colorscheme
 #-- class                 border  backgr. text   indicator
-client.focused           #110000 #944344 #110000 #268bd2
+client.focused           #110000 #be6f73 #110000 #268bd2
 client.focused_inactive  #110000 #42647f #110000 #073642
-client.unfocused         #110000 #42647f #110000 #073642
+client.unfocused         #110000 #5b7a8f #110000 #073642
 client.urgent            #003399 #dc322f #fdf6e3 #002b36
 
 #-- solarized colorscheme
