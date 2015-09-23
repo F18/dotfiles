@@ -308,6 +308,7 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym $mod+F1 exec playerctl pause
 bindsym F7 exec monitor1
 bindsym Shift+F7 exec monitor0
+bindsym F8 exec myi3lock
 
 # wallpaper
 exec_always --no-startup-id feh --bg-scale /home/ramy/Pictures/AVIATION/aircraft-headon.jpg
