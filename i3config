@@ -181,16 +181,16 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 5 px or 5 ppt
+        bindsym j resize grow height 5 px or 5 ppt
+        bindsym k resize shrink height 5 px or 5 ppt
+        bindsym l resize grow width 5 px or 5 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width 5 px or 5 ppt
+        bindsym Down resize grow height 5 px or 5 ppt
+        bindsym Up resize shrink height 5 px or 5 ppt
+        bindsym Right resize grow width 5 px or 5 ppt
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -206,31 +206,56 @@ bar {
          status_command i3status -c ~/.i3/i3status.conf
          position top
  
- #-- solarized colorscheme
+ #-- my colorscheme
          colors {
-           background #002b36
-           statusline #839496
-           separator  #586e75
-           #s                 border  backgr. text
-           focused_workspace  #b58900 #b58900 #002b36
-           active_workspace   #586e75 #586e75 #002b36
-           inactive_workspace #073642 #002b36 #839496
+           background #5b7a8f
+           statusline #110000
+           separator  #110000
+           #class             border  backgr. text
+           focused_workspace  #944344 #be6f73 #110000
+           active_workspace   #586e75 #586e75 #110000
+           inactive_workspace #5b7a8f #5b7a8f #110000
            urgent_workspace   #dc322f #dc322f #fdf6e3
          }
+ #-- solarized colorscheme
+         #colors {
+           #background #002b36
+           #statusline #839496
+           #separator  #586e75
+           ##class             border  backgr. text
+           #focused_workspace  #b58900 #9CA998 #fdf6e3
+           #active_workspace   #586e75 #586e75 #002b36
+           #inactive_workspace #073642 #002b36 #839496
+           #urgent_workspace   #dc322f #dc322f #fdf6e3
+         #}
 }
+#-- my colorscheme
+#-- class                 border  backgr. text   indicator
+client.focused           #110000 #be6f73 #110000 #268bd2
+client.focused_inactive  #110000 #42647f #110000 #073642
+client.unfocused         #110000 #5b7a8f #110000 #073642
+client.urgent            #003399 #dc322f #fdf6e3 #002b36
 
 #-- solarized colorscheme
+#-- class                 border  backgr. text    indicator
+#client.focused           #E6E6FA #9CA998 #ffffcc #268bd2
+#client.focused_inactive  #B4D7BF #073642 #CFCFCF #073642
+#client.unfocused         #B4D7BF #073642 #CFCFCF #073642
+#client.urgent            #003399 #dc322f #fdf6e3 #002b36
+
+#-- class                 border  backgr. text    indicator
+#client.focused           #b58900 #586e75 #fdf6e3 #268bd2
+#client.focused_inactive  #b58900 #073642 #839496 #073642
+#client.unfocused         #b58900 #073642 #839496 #073642
+#client.urgent            #003399 #dc322f #fdf6e3 #002b36
 #-- class                 border  backgr. text    indicator
 #client.focused          #002b36 #586e75 #fdf6e3 #268bd2
 #client.focused_inactive #002b36 #073642 #839496 #073642
 #client.unfocused        #002b36 #073642 #839496 #073642
 #client.urgent           #002b36 #dc322f #fdf6e3 #002b36
-client.focused           #b58900 #586e75 #fdf6e3 #268bd2
-client.focused_inactive  #b58900 #073642 #839496 #073642
-client.unfocused         #b58900 #073642 #839496 #073642
-#blue border: client.unfocused        #003399 #073642 #839496 #073642
-#blue border: client.focused_inactive #003399 #073642 #839496 #073642
-client.urgent            #003399 #dc322f #fdf6e3 #002b36
+#blue border:
+#client.unfocused        #003399 #073642 #839496 #073642
+#client.focused_inactive #003399 #073642 #839496 #073642
 
 # Changing border styles
 bindsym $mod+t border toggle
@@ -240,8 +265,11 @@ bindsym $mod+u border none
 # bar toggle, hide or show 
 bindsym $mod+m bar mode toggle
 
+# hide borders, options: <none|vertical|horizontal|both>
+hide_edge_borders both
+
 # Make Caps_Lock an additional control key
-exeC_Always xmodmap ~/.xmodmap
+exec_always xmodmap ~/.xmodmap
 
 # KDE specific applications
 for_window [class="Plasma-desktop"] border none
@@ -257,7 +285,7 @@ for_window [class="plasma"] floating enable; border none
 # to find class, use alias: getclass='xprop | grep WM_CLASS'
 #for_window [class="(?i).*Gorilla*."] floating enable;
 for_window [class="(?i).*icem*."] floating enable;
-for_window [class="(?i).*tec360*."] floating enable;
+#for_window [class="(?i).*tec360*."] floating enable;
 for_window [class="(?i).*matlab*."] floating enable;
 for_window [class="(?i).*globusconnect*."] floating enable;
 for_window [class="(?i).*python*."] floating enable;
@@ -271,7 +299,7 @@ bindsym XF86AudioLowerVolume exec amixer -q set Master 4dB- unmute
 bindsym XF86AudioMute exec amixer -q set Master toggle
 bindsym $mod+F4 exec amixer -q set Master 4dB+ unmute 
 bindsym $mod+F3 exec amixer -q set Master 4dB- unmute
-BINdsym $mod+F2 exec amixer -q set Master toggle
+bindsym $mod+F2 exec amixer -q set Master toggle
 # Media player controls (not working)
 bindsym XF86AudioPlay exec playerctl play
 bindsym XF86AudioPause exec playerctl pause
@@ -280,6 +308,7 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym $mod+F1 exec playerctl pause
 bindsym F7 exec monitor1
 bindsym Shift+F7 exec monitor0
+bindsym F8 exec myi3lock
 
 # wallpaper
 exec_always --no-startup-id feh --bg-scale /home/ramy/Pictures/AVIATION/aircraft-headon.jpg
@@ -298,7 +327,7 @@ exec --no-startup-id synapse -s
 # launch dropbox on startup only
 exec --no-startup-id dropbox start
 # launch network manager on startup only
-exec --no-startup-id kupfer
+exec --no-startup-id kupfer --no-splash
 # launch network manager on startup only
 exec --no-startup-id networkmanager.sh
 #  launch xfce-panel
