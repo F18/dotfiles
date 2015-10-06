@@ -14,7 +14,8 @@ export MYWORK=/nfs/carv/d1/people/ramy/optima-verify/08_optimize
 export MYVIM=/nfs/carv/d1/people/ramy/usr/local/bin/vim
 #-- scp
 export SCPGUILL=rashad@guillimin.clumeq.ca:/home/rashad/
-export SCPSCI=rashad@scinet.utoronto.ca:/home/z/zingg/rashad/
+export SCI=rashad@login.scinet.utoronto.ca:/home/z/zingg/rashad/
+export SCIT=rashad@login.scinet.utoronto.ca:/home/z/zingg/rashad/transfer/
 export SCPPARA=rashad@parallel.westgrid.ca:/home/rashad/
 #-- vim
 export VIMRUNTIME=~/usr/local/vim74b/runtime
