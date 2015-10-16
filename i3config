@@ -22,7 +22,11 @@ set $mod2 Mod4
 # chose a FreeType font, such as:
 #font pango:DejaVu Sans Mono 10
 #font pango:Akkurat Mono 12
-font pango:Source Code Pro 10
+#-- good:
+#font pango:Source Code Pro 10
+font pango:Apercu 0
+#-- no title:
+#font pango:Source Code Pro 3
 
 # -- MOUSE BINDINGS
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -30,6 +34,7 @@ floating_modifier $mod
 
 # Focus follows mouse (yes/no)
 focus_follows_mouse no
+
 
 # The middle button over a titlebar kills the window
 bindsym --release button2 kill
@@ -125,8 +130,12 @@ bindsym $mod+Shift+space floating toggle
 #bindsym $mod+space focus mode_toggle
 bindsym $mod+Enter focus mode_toggle
 
+# change focus between tiling / floating windows
+bindsym $mod+Shift+f focus mode_toggle
+
 # focus the parent container
-bindsym $mod+a focus parent
+bindsym $mod+p focus parent
+#bindsym $mod+a focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
@@ -204,8 +213,11 @@ bindsym $mod+r mode "resize"
 bar {
          #separator_symbol "|"
          status_command i3status -c ~/.i3/i3status.conf
+         #status_command i3blocks
          position top
- 
+
+         font pango:Apercu 10
+
  #-- my colorscheme
          colors {
            background #5b7a8f
@@ -259,10 +271,10 @@ client.urgent            #003399 #dc322f #fdf6e3 #002b36
 
 # Changing border styles
 bindsym $mod+t border toggle
-#bindsym $mod+t border normal
-bindsym $mod+y border 1pixel
+#bindsym $mod+y border 1pixel
+# use no window title and a thick border
+bindsym $mod+y border pixel 4
 bindsym $mod+u border none
-# bar toggle, hide or show 
 bindsym $mod+m bar mode toggle
 
 # hide borders, options: <none|vertical|horizontal|both>
@@ -289,8 +301,8 @@ for_window [class="(?i).*icem*."] floating enable;
 for_window [class="(?i).*matlab*."] floating enable;
 for_window [class="(?i).*globusconnect*."] floating enable;
 for_window [class="(?i).*python*."] floating enable;
-for_window [class="(?i).*gnuplot*."] floating enable;
 for_window [class="(?i).*gimp-2*."] floating enable;
+#for_window [class="(?i).*gnuplot*."] floating enable;
 #for_window [class="(?i).*tk*."] floating enable; # for some reason this floats jabref
 
 # bind the keyboard volume control to the keyboard multimediea (uses alsamixer)
@@ -330,5 +342,7 @@ exec --no-startup-id dropbox start
 exec --no-startup-id kupfer --no-splash
 # launch network manager on startup only
 exec --no-startup-id networkmanager.sh
+# launch redshift (settings from ~/.config/redshift.conf)
+exec --no-startup-id redshift
 #  launch xfce-panel
 #exec --no-startup-id xfce4-panel --disable-wm-check
