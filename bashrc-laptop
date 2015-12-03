@@ -74,14 +74,6 @@ export PATH="/home/ramy/usr/local/anaconda/bin:$PATH"
 
 
 #
-# Source global aliases, funcitons, and definitions
-# -- must come after export of $MYHOME and $MYWORK variable
-#
-if [ -f $HOME/.bashrc-global ]; then
-	. $HOME/.bashrc-global
-fi
-
-#
 # Aliases specific to system
 # -- should come after bashrc-global
 #
@@ -124,6 +116,14 @@ function subdir-run()
   done
 }
 function run() { nice -19 $HOME/optima/optima2D/OPTIMA2D_x86_64; }
+
+#
+# Source global aliases, funcitons, and definitions
+# -- must come after export of $MYHOME and $MYWORK variable
+#
+if [ -f $HOME/.bashrc-global ]; then
+	. $HOME/.bashrc-global
+fi
 
 #
 # END OF BASHRC

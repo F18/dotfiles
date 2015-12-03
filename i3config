@@ -9,8 +9,10 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-# modifier (Mod1= Alt, Mo4 = Windows key)
+# modifier (Mod1= Alt, Mod4 = Windows key, 62 = right shift button*)
+# *right shift button number obtained using the "xbindkeys -k" command
 set $mod Mod1
+#set $mod bindcode 62
 set $mod2 Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -24,7 +26,7 @@ set $mod2 Mod4
 #font pango:Akkurat Mono 12
 #-- good:
 #font pango:Source Code Pro 10
-font pango:Apercu 0
+font pango:Apercu 8
 #-- no title:
 #font pango:Source Code Pro 3
 
@@ -218,17 +220,29 @@ bar {
 
          font pango:Apercu 10
 
- #-- my colorscheme
+ #-- my colorscheme (brown/rose)
          colors {
-           background #5b7a8f
+           background #8b8378
            statusline #110000
            separator  #110000
            #class             border  backgr. text
-           focused_workspace  #944344 #be6f73 #110000
+           focused_workspace  #8b6969 #8b6969 #110000
            active_workspace   #586e75 #586e75 #110000
-           inactive_workspace #5b7a8f #5b7a8f #110000
+           inactive_workspace #8b8378 #8b8378 #110000
            urgent_workspace   #dc322f #dc322f #fdf6e3
          }
+
+ #-- my colorscheme (blue/pink)
+         #colors {
+           #background #5b7a8f
+           #statusline #110000
+           #separator  #110000
+           ##class             border  backgr. text
+           #focused_workspace  #944344 #be6f73 #110000
+           #active_workspace   #586e75 #586e75 #110000
+           #inactive_workspace #5b7a8f #5b7a8f #110000
+           #urgent_workspace   #dc322f #dc322f #fdf6e3
+         #}
  #-- solarized colorscheme
          #colors {
            #background #002b36
@@ -241,12 +255,19 @@ bar {
            #urgent_workspace   #dc322f #dc322f #fdf6e3
          #}
 }
-#-- my colorscheme
+#-- my colorscheme (brown/rose)
 #-- class                 border  backgr. text   indicator
-client.focused           #110000 #be6f73 #110000 #268bd2
-client.focused_inactive  #110000 #42647f #110000 #073642
-client.unfocused         #110000 #5b7a8f #110000 #073642
+client.focused           #110000 #8b6969 #110000 #268bd2
+client.focused_inactive  #110000 #586e75 #110000 #073642
+client.unfocused         #110000 #8b8378 #110000 #073642
 client.urgent            #003399 #dc322f #fdf6e3 #002b36
+
+#-- my colorscheme (blue/pink)
+#-- class                 border  backgr. text   indicator
+#client.focused           #110000 #be6f73 #110000 #268bd2
+#client.focused_inactive  #110000 #42647f #110000 #073642
+#client.unfocused         #110000 #5b7a8f #110000 #073642
+#client.urgent            #003399 #dc322f #fdf6e3 #002b36
 
 #-- solarized colorscheme
 #-- class                 border  backgr. text    indicator
@@ -343,6 +364,8 @@ exec --no-startup-id kupfer --no-splash
 # launch network manager on startup only
 exec --no-startup-id networkmanager.sh
 # launch redshift (settings from ~/.config/redshift.conf)
-exec --no-startup-id redshift
+#exec --no-startup-id redshift
 #  launch xfce-panel
 #exec --no-startup-id xfce4-panel --disable-wm-check
+# use xmodmap to set left shift key to an extra Alt key (didn't work)
+#exec --no-startup-id xmodmap ~/.xmodmap

@@ -170,8 +170,8 @@
   map <leader>to :tabnew <CR>
   map <leader>tp :tabprevious <CR>
   map <leader>tn :tabnext <CR>
-  map <leader>J  :tabprevious <CR>
-  map <leader>j  :tabnext <CR>
+  "map <leader>J  :tabprevious <CR>
+  "map <leader>j  :tabnext <CR>
   map <leader>tc :tabclose <CR>
   " Go to tab by number
   noremap <leader>1 1gt
@@ -278,7 +278,11 @@
     noremap <leader>p N
 
 
+    "QuickBuf Select Buffer
+    "let g:qb_hotkey = "<leader>f" 
+    let g:qb_hotkey = "<F4>" 
     "CtrlP
+    "nmap <F4> :CtrlPBuffer<cr>
     nmap <leader>f :CtrlPBuffer<cr>
     nmap <C-f> :CtrlP<cr>
     "let g:ctrlp_map = '<leader>e'

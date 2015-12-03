@@ -144,14 +144,17 @@ alias cdj='cd $MYHOME/01_thesis/mypapers/journals/201510_aiaaj/publication'
 alias cdr='cd $MYHOME/01_thesis/mypapers/reviews/ctar2015'
 alias cds='cd $MYWORK'
 alias cdt='cd $MYHOME/01_thesis/phd'
+alias cdtd='cd $MYHOME/01_thesis/phd/dds'
+alias cdtf='cd $MYHOME/01_thesis/phd/foe'
 alias cdvooo='cd $MYWORK/y2014/m11/d06-optCasesMidCruise'
 alias cdvoo='cd $MYWORK/y2015/m04'
 alias cdvo='cd $MYWORK/y2015/m06'
 alias cdwd='cd /windows/Users/ramy/Documents'
 alias cdwdm='cd /windows/Users/ramy/Music'
 
-alias checkSpellTex='aspell --lang=en --mode=tex check '
-alias checkSpellTexAll='find . -name "*.tex" -exec aspell --lang=en --mode=tex check "{}" \;'
+alias texSpellCheck='aspell --lang=en --mode=tex check '
+alias texSpellCheckAll='find . -name "*.tex" -exec aspell --lang=en --mode=tex check "{}" \;'
+alias texCountWords='texcount -inc -merge -relaxed'
 alias cj='checkjob'
 alias cll='clear'                                # Clear the screen
 alias cl='clear; ls'                             # Clear and list
@@ -295,7 +298,8 @@ alias rmout='rm output.201* -rf'
 alias rmrest='rm rest* screen -f'
 alias rename0100='rename "s/01/00/g" rest01*' # rename all rest01 files to rest00 in a directory
 
-alias sbash='source $HOME/.bashrc-global; source $HOME/.bashrc'
+#alias sbash='source $HOME/.bashrc-global; source $HOME/.bashrc'
+alias sbash='source $HOME/.bashrc'
 alias sb='sbash'
 alias scr='cd $MYWORK" "'
 alias sn='tail -100f SNOPT.sum00'
@@ -382,6 +386,7 @@ fi
 # Export editor
 #
 export EDITOR="vi"
+
 
 #
 # Custom functions definitions
@@ -577,6 +582,22 @@ function rpca
   rubber --clean --pdf "$@"tex;
   rm -f screen;
 }
+
+#
+# bash-git-prompt
+#
+
+# Set config variables first
+GIT_PROMPT_ONLY_IN_REPO=0
+# GIT_PROMPT_FETCH_REMOTE_STATUS=0   # uncomment to avoid fetching remote status
+# GIT_PROMPT_SHOW_UPSTREAM=1 # uncomment to show upstream tracking branch
+# GIT_PROMPT_STATUS_COMMAND=gitstatus_pre-1.7.10.sh # uncomment to support Git older than 1.7.10
+# GIT_PROMPT_START=...    # uncomment for custom prompt start sequence
+# GIT_PROMPT_END=...      # uncomment for custom prompt end sequence
+# GIT_PROMPT_THEME=Custom # use custom .git-prompt-colors.sh
+GIT_PROMPT_THEME=Razzle_NoExitState # use theme optimized for solarized color scheme
+# as last entry source the gitprompt script
+source $HOME/dotfiles/bash-git-prompt/gitprompt.sh
 
 #
 # END OF BASHRC-GLOBAL
