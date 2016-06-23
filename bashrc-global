@@ -114,10 +114,20 @@ if [ "$TERM" != "dumb" ]; then
   fi
   #-- set and evaluate
   [ -e "$DIR_COLORS" ] || DIR_COLORS=""
-  eval "`dircolors -b $DIR_COLORS`"
-  alias ls='ls --color=auto'
-  alias dir='ls --color=auto --format=vertical'
-  alias vdir='ls --color=auto --format=long'
+  # check is dircolors command exists (does not exist on mac/unix, only gnu/linux)
+  if type "dircolors" > /dev/null; then
+    # dircolors command exists:
+    eval "`dircolors -b $DIR_COLORS`"
+    alias ls='ls --color=auto'
+    alias dir='ls --color=auto --format=vertical'
+    alias vdir='ls --color=auto --format=long'
+  else
+    # dircolors command does not exist
+    export CLICOLOR=1
+    alias ls='ls'
+    alias dir='ls --format=vertical'
+    alias vdir='ls --format=long'
+  fi
 fi
 
 #
@@ -597,7 +607,8 @@ GIT_PROMPT_ONLY_IN_REPO=0
 # GIT_PROMPT_THEME=Custom # use custom .git-prompt-colors.sh
 GIT_PROMPT_THEME=Razzle2_NoExitState # use theme optimized for solarized color scheme
 # as last entry source the gitprompt script
-source $HOME/dotfiles/bash-git-prompt/gitprompt.sh
+# -- uncomment this to display git repository information on command prompt (may slow navigation/loading)
+#source $HOME/dotfiles/bash-git-prompt/gitprompt.sh
 
 #
 # END OF BASHRC-GLOBAL
