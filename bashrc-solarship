@@ -1,6 +1,17 @@
 #
-# BASHRC for LAPTOP
+# BASHRC for SOLARSHIP
 #
+
+#
+# Solarship Related
+#
+# set variable identifying the chroot you work in (used in the prompt below)
+if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
+    debian_chroot=$(cat /etc/debian_chroot)
+fi
+source $HOME/OpenFOAM/OpenFOAM-2.3.x/etc/bashrc
+#export PATH=/home/ramy/OpenFOAM/OpenFOAM-2.3.x/wmake:$PATH
+alias scr='cd $FOAM_RUN/; ls'
 
 #
 # Export Path and other useful variables
@@ -8,8 +19,8 @@
 #-- terminal
 export TERM=screen-256color
 #-- home and work directories
-export MYHOME=/home/ramy/01_utias/01_local
-export MYWORK=/home/ramy/01_utias/02_oddjob/optima-verify/08_optimize
+export MYHOME=/home/ramy/
+export MYWORK=/home/ramy/OpenFOAM/ramy-2.3.x
 export HOST=$(uname)
 export ARCH=$(uname)_$(uname -m)
 #-- vim
@@ -124,13 +135,6 @@ function run() { nice -19 $HOME/optima/optima2D/OPTIMA2D_x86_64; }
 if [ -f $HOME/.bashrc-global ]; then
 	. $HOME/.bashrc-global
 fi
-
-#
-# Solarship Related
-#
-source $HOME/OpenFOAM/OpenFOAM-2.3.x/etc/bashrc
-#export PATH=/home/ramy/OpenFOAM/OpenFOAM-2.3.x/wmake:$PATH
-alias scr='cd $FOAM_RUN/; ls'
 
 #
 # END OF BASHRC

@@ -311,7 +311,7 @@ alias rename0100='rename "s/01/00/g" rest01*' # rename all rest01 files to rest0
 #alias sbash='source $HOME/.bashrc-global; source $HOME/.bashrc'
 alias sbash='source $HOME/.bashrc'
 alias sb='sbash'
-alias scr='cd $MYWORK" "'
+alias scr='cd $MYWORK'
 alias sn='tail -100f SNOPT.sum00'
 alias snd='tail -n5 */SNOPT.sum00'
 #-- gnu screen
