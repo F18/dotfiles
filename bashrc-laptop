@@ -131,12 +131,5 @@ if [ -f $HOME/.bashrc-global ]; then
 fi
 
 #
-# Solarship Related
-#
-source $HOME/OpenFOAM/OpenFOAM-2.3.x/etc/bashrc
-#export PATH=/home/ramy/OpenFOAM/OpenFOAM-2.3.x/wmake:$PATH
-alias scr='cd $FOAM_RUN/; ls'
-
-#
 # END OF BASHRC
 
