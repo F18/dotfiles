@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo " "
-echo -n "Pick a system from (case sensitive) options: laptop, oddjob, guillimin, scinet, westgrid: "
+echo -n "Pick a system from (case sensitive) options: laptop, mac, oddjob, guillimin, scinet, westgrid, solarship: "
 read -e LOCALSYS
 
 DIRBKP=~/dotfiles/backups/.dotfiles-bkp-$(date +%Y%m%d.%H%M)
