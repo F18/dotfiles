@@ -59,7 +59,7 @@ if [ "$MYCOLORS" == "zenburn" ]; then
   BRACE_COLOR=$LIGHT_GREY
   LBRACE=$BRACE_COLOR[$BRACE_COLOR
   RBRACE=$BRACE_COLOR]$BRACE_COLOR
-  PS1="$RED\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $ZENBURN_BLUE\W$RBRACE$NONE$ "
+  PS1="$LIGHT_RED\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $ZENBURN_BLUE\W$RBRACE$NONE$ "
 #-- solarized-light OR solarized-gruvbox-light
 elif [ "$MYCOLORS" == "solarized-light" -o "$MYCOLORS" == "solarized-gruvbox-light" ]; then
   NONE='\[\e[01;248m\]'
@@ -142,6 +142,7 @@ alias alltpld='cat *tpld > history/all.tpld'     # write tpld_unit data to histo
 
 alias bye='exit'                                 # Close connection
 
+alias ca='conda'
 alias cdc='cd $MYHOME/02_courses'
 alias cdd='cd $MYHOME/01_thesis/DECs/dec5'
 alias cdg='cd $MYHOME/optima-grids'
