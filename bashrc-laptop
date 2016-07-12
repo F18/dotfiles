@@ -3,6 +3,11 @@
 #
 
 #
+# Shutdown
+#
+alias shutdownRR='qdbus org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout 0 -1 -1'
+#
+#
 # Export Path and other useful variables
 #
 #-- terminal
@@ -124,13 +129,6 @@ function run() { nice -19 $HOME/optima/optima2D/OPTIMA2D_x86_64; }
 if [ -f $HOME/.bashrc-global ]; then
 	. $HOME/.bashrc-global
 fi
-
-#
-# Solarship Related
-#
-source $HOME/OpenFOAM/OpenFOAM-2.3.x/etc/bashrc
-#export PATH=/home/ramy/OpenFOAM/OpenFOAM-2.3.x/wmake:$PATH
-alias scr='cd $FOAM_RUN/; ls'
 
 #
 # END OF BASHRC

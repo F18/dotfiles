@@ -332,7 +332,10 @@ bindsym XF86AudioLowerVolume exec amixer -q set Master 4dB- unmute
 bindsym XF86AudioMute exec amixer -q set Master toggle
 bindsym $mod+F4 exec amixer -q set Master 4dB+ unmute 
 bindsym $mod+F3 exec amixer -q set Master 4dB- unmute
-bindsym $mod+F2 exec amixer -q set Master toggle
+#bindsym $mod+F2 exec amixer -c 0 set Master playback toggle
+#bindsym $mod+Shift+F2 exec amixer -c 0 set Master playback toggle
+#bindsym $mod+F2 exec amixer -q set Master mute
+#bindsym $mod+Shift+F2 exec amixer -q set Master unmute
 # Media player controls (not working)
 bindsym XF86AudioPlay exec playerctl play
 bindsym XF86AudioPause exec playerctl pause
@@ -344,9 +347,9 @@ bindsym Shift+F7 exec monitor0
 bindsym F8 exec myi3lock
 
 # wallpaper
-exec_always --no-startup-id feh --bg-scale /home/ramy/Pictures/AVIATION/aircraft-headon.jpg
-#exec --no-startup-id feh --bg-scale /home/ramy/Pictures/AVIATION/aircraft-headon.jpg
+#exec_always --no-startup-id feh --bg-scale /home/ramy/Pictures/AVIATION/aircraft-headon.jpg
 #exec --no-startup-id feh --bg-fill /home/ramy/Pictures/AVIATION/aircraft-headon.jpg
+exec_always --no-startup-id feh --bg-scale /home/ramy/Pictures/Backgrounds/linuxmint/linuxmint-nadia/stars.jpg
 
 # disable caps lock
 exec_always --no-startup-id xmodmap ~/.xmodmap
