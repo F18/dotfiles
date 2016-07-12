@@ -3,6 +3,11 @@
 #
 
 #
+# Shutdown
+#
+alias shutdownRR='qdbus org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout 0 -1 -1'
+#
+#
 # Export Path and other useful variables
 #
 #-- terminal

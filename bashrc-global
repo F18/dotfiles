@@ -59,7 +59,7 @@ if [ "$MYCOLORS" == "zenburn" ]; then
   BRACE_COLOR=$LIGHT_GREY
   LBRACE=$BRACE_COLOR[$BRACE_COLOR
   RBRACE=$BRACE_COLOR]$BRACE_COLOR
-  PS1="$RED\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $ZENBURN_BLUE\W$RBRACE$NONE$ "
+  PS1="$LIGHT_RED\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $ZENBURN_BLUE\W$RBRACE$NONE$ "
 #-- solarized-light OR solarized-gruvbox-light
 elif [ "$MYCOLORS" == "solarized-light" -o "$MYCOLORS" == "solarized-gruvbox-light" ]; then
   NONE='\[\e[01;248m\]'
@@ -114,10 +114,20 @@ if [ "$TERM" != "dumb" ]; then
   fi
   #-- set and evaluate
   [ -e "$DIR_COLORS" ] || DIR_COLORS=""
-  eval "`dircolors -b $DIR_COLORS`"
-  alias ls='ls --color=auto'
-  alias dir='ls --color=auto --format=vertical'
-  alias vdir='ls --color=auto --format=long'
+  # check is dircolors command exists (does not exist on mac/unix, only gnu/linux)
+  if type "dircolors" > /dev/null; then
+    # dircolors command exists:
+    eval "`dircolors -b $DIR_COLORS`"
+    alias ls='ls --color=auto'
+    alias dir='ls --color=auto --format=vertical'
+    alias vdir='ls --color=auto --format=long'
+  else
+    # dircolors command does not exist
+    export CLICOLOR=1
+    alias ls='ls'
+    alias dir='ls --format=vertical'
+    alias vdir='ls --format=long'
+  fi
 fi
 
 #
@@ -132,6 +142,7 @@ alias alltpld='cat *tpld > history/all.tpld'     # write tpld_unit data to histo
 
 alias bye='exit'                                 # Close connection
 
+alias ca='conda'
 alias cdc='cd $MYHOME/02_courses'
 alias cdd='cd $MYHOME/01_thesis/DECs/dec5'
 alias cdg='cd $MYHOME/optima-grids'
@@ -301,7 +312,7 @@ alias rename0100='rename "s/01/00/g" rest01*' # rename all rest01 files to rest0
 #alias sbash='source $HOME/.bashrc-global; source $HOME/.bashrc'
 alias sbash='source $HOME/.bashrc'
 alias sb='sbash'
-alias scr='cd $MYWORK" "'
+alias scr='cd $MYWORK'
 alias sn='tail -100f SNOPT.sum00'
 alias snd='tail -n5 */SNOPT.sum00'
 #-- gnu screen
@@ -597,7 +608,8 @@ GIT_PROMPT_ONLY_IN_REPO=0
 # GIT_PROMPT_THEME=Custom # use custom .git-prompt-colors.sh
 GIT_PROMPT_THEME=Razzle2_NoExitState # use theme optimized for solarized color scheme
 # as last entry source the gitprompt script
-source $HOME/dotfiles/bash-git-prompt/gitprompt.sh
+# -- uncomment this to display git repository information on command prompt (may slow navigation/loading)
+#source $HOME/dotfiles/bash-git-prompt/gitprompt.sh
 
 #
 # END OF BASHRC-GLOBAL

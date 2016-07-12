@@ -1,0 +1,129 @@
+#
+# BASHRC for SOLARSHIP
+#
+
+#
+
+#
+# Build OpenFOAM Paths relative to version
+#
+OF2=$HOME/OpenFOAM/OpenFOAM-2.3.x
+OFP=$HOME/OpenFOAM/OpenFOAM-plus
+
+#-- Uncomment for OpenFOAM Version 2.3.x
+source $OF2/etc/bashrc
+export PATH_OF=$PATH
+PATH=$PATH_ORIGINAL #-- resets PATH
+
+#-- Uncomment for OpenFOAM Version "plus"
+#source $OFP/etc/bashrc
+#export PATH_OF=$PATH
+#PATH=$PATH_ORIGINAL #-- resets PATH
+
+#
+# Export Path and other useful variables
+#
+#-- terminal
+export TERM=screen-256color
+#-- home and work directories
+export MYHOME=/home/ramy/
+export MYWORK=/home/ramy/OpenFOAM/
+export HOST=$(uname)
+export ARCH=$(uname)_$(uname -m)
+#-- vim
+export MYVIM=vim
+#-- bin
+export ODD=ramy@oddjob.utias.utoronto.ca:/nfs/carv/d1/people/ramy
+export SCI=rashad@login.scinet.utoronto.ca:
+#-- latex
+if [ '$HOST != oddjob.utias.utoronto.ca' ]; then
+     BIBINPUTS=.:${HOME}/01_thesis/BibTeX_Database:${BIBINPUTS}
+     export BIBINPUTS
+fi
+
+#
+# BUILD PATH
+#
+#-- PATH_ORIGINAL is exported in .profile upon login only
+PATH_ORIG=$PATH_ORIGINAL
+#-- Append all of your own paths to MYPATH:
+MYPATH=$HOME/bin:$HOME/bin/scripts:$HOME/usr/local/bin:/nfs/people/nick/bin:/home/ramy/usr/local/anaconda2/bin
+#-- Reset PATH
+PATH=
+#-- Create and export final PATH
+PATH=$MYPATH:$PATH_OF:$PATH_ORIG
+export PATH
+
+#
+# Source global aliases, funcitons, and definitions
+# -- must come after export of $MYHOME and $MYWORK variable
+#
+if [ -f $HOME/.bashrc-global ]; then
+	. $HOME/.bashrc-global
+fi
+
+
+#
+# Aliases specific to solarship
+#
+alias whichFOAM='echo $FOAM_SOLVERS'
+alias scr='cd $FOAM_RUN/; ls'
+alias cd2='cd $HOME/OpenFOAM/ramy-2.3.x'
+alias cdp='cd $HOME/OpenFOAM/ramy-plus'
+alias cdo2='cd $OF2'
+alias cdop='cd $OFP'
+
+#alias sof2='PATH=; export PATH=$MYPATH:$PATH_OF2:$PATH_ORIG'
+#alias sofp='PATH=; export PATH=$MYPATH:$PATH_OFP:$PATH_ORIG'
+#alias of2='[ -n "$WM_PROJECT_DIR" ] && source $HOME/OpenFOAM/OpenFOAM-2.3.x/etc/config/unset.sh; source $HOME/OpenFOAM/OpenFOAM-2.3.x/etc/bashrc; export PATH=$MYPATH:$PATH_OF2:$PATH_ORIG'
+#alias ofp='[ -n "$WM_PROJECT_DIR" ] && source $HOME/OpenFOAM/OpenFOAM-plus/etc/config.sh/unset; source $HOME/OpenFOAM/OpenFOAM-plus/etc/bashrc; export PATH=$MYPATH:$PATH_OFP:$PATH_ORIG'
+
+
+#
+# Aliases specific to system
+# -- should come after bashrc-global
+#
+#alias tecplot='tec360 -sgiopengl'
+alias cdvs='cd ~/01_utias/04_scinet/optima-verify/08_optimize/y2012/m09'
+#-- Login to remote servers
+alias hpacf='cd ~/01_utias/03_hpacf; ssh -X ramy@hpacf.utias.utoronto.ca'
+alias oddjob='cd ~/01_utias/; ssh -X ramy@oddjob.utias.utoronto.ca;'
+alias scinet='ssh -X -l rashad login.scinet.utoronto.ca'
+alias guill='ssh -X -l rashad guillimin.clumeq.ca'
+alias para='ssh -X rashad@parallel.westgrid.ca'
+alias latt='ssh -X rashad@lattice.westgrid.ca'
+#-- Mounting/Unmounting File Systems using SSHFS - from personal laptop ###
+#-- oddjob
+alias moddjob='cd ~/01_utias/; sshfs ramy@oddjob.utias.utoronto.ca: 02_oddjob/; cd 02_oddjob/'
+alias uoddjob='cd ~/01_utias/; fusermount -u 02_oddjob/'
+#-- hpacf
+alias mhpacf='cd ~/01_utias/; sshfs ramy@hpacf.utias.utoronto.ca: 03_hpacf/; cd 03_hpacf/'
+alias uhpacf='cd ~/01_utias/; fusermount -u 03_hpacf/'
+#-- scinet
+alias mscinet='cd ~/01_utias/; sshfs rashad@login.scinet.utoronto.ca: 04_scinet/; cd 04_scinet/'
+alias uscinet='cd ~/01_utias/; fusermount -u 04_scinet/'
+#-- guillimin
+alias mguill='cd ~/01_utias/; sshfs rashad@guillimin.clumeq.ca: 05_guillimin/; cd 05_guillimin/'  
+alias uguill='cd ~/01_utias/; fusermount -u 05_guillimin/'
+#-- guillimin
+alias mwest='cd ~/01_utias/; sshfs rashad@parallel.westgrid.ca: 06_westgrid/; cd 06_westgrid/'  
+alias uwest='cd ~/01_utias/; fusermount -u 06_westgrid/'
+
+#
+# Custom function defintions
+#
+function subdir-run() 
+{ 
+  for dir in */; do
+    echo $dir;
+    cd $dir;
+    nice -19 $HOME/optima/optima2D/OPTIMA2D_x86_64;
+    cd ../
+  done
+}
+function run() { nice -19 $HOME/optima/optima2D/OPTIMA2D_x86_64; }
+
+#
+# END OF BASHRC
+
+
