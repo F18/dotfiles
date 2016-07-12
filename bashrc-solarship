@@ -3,15 +3,22 @@
 #
 
 #
-# Solarship Related
+
 #
-# set variable identifying the chroot you work in (used in the prompt below)
-if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
-fi
-source $HOME/OpenFOAM/OpenFOAM-2.3.x/etc/bashrc
-#export PATH=/home/ramy/OpenFOAM/OpenFOAM-2.3.x/wmake:$PATH
-alias scr='cd $FOAM_RUN/; ls'
+# Build OpenFOAM Paths relative to version
+#
+OF2=$HOME/OpenFOAM/OpenFOAM-2.3.x
+OFP=$HOME/OpenFOAM/OpenFOAM-plus
+
+#-- Uncomment for OpenFOAM Version 2.3.x
+source $OF2/etc/bashrc
+export PATH_OF=$PATH
+PATH=$PATH_ORIGINAL #-- resets PATH
+
+#-- Uncomment for OpenFOAM Version "plus"
+#source $OFP/etc/bashrc
+#export PATH_OF=$PATH
+#PATH=$PATH_ORIGINAL #-- resets PATH
 
 #
 # Export Path and other useful variables
@@ -20,7 +27,7 @@ alias scr='cd $FOAM_RUN/; ls'
 export TERM=screen-256color
 #-- home and work directories
 export MYHOME=/home/ramy/
-export MYWORK=/home/ramy/OpenFOAM/ramy-2.3.x
+export MYWORK=/home/ramy/OpenFOAM/
 export HOST=$(uname)
 export ARCH=$(uname)_$(uname -m)
 #-- vim
@@ -28,60 +35,48 @@ export MYVIM=vim
 #-- bin
 export ODD=ramy@oddjob.utias.utoronto.ca:/nfs/carv/d1/people/ramy
 export SCI=rashad@login.scinet.utoronto.ca:
-#-- screen window naming
-PROMPT_COMMAND= 
-if [ $TERM = "screen" ]; then 
-   MYPWD="${PWD/#$HOME/~}" 
-   [ ${#MYPWD} -gt 10 ] && MYPWD=..${MYPWD:${#MYPWD}-18} 
-   echo -n -e "\033k$MYPWD\033\\" 
-fi 
-#-- figures
-export FIGS=/home/ramy/01_utias/01_local/01_thesis/myPapers/conferences/201306_aiaa_sandiego/figures
 #-- latex
 if [ '$HOST != oddjob.utias.utoronto.ca' ]; then
      BIBINPUTS=.:${HOME}/01_thesis/BibTeX_Database:${BIBINPUTS}
      export BIBINPUTS
 fi
-#-- tecplot
-#export TEC360HOME=$HOME/usr/local/tec360_2013R1
-export TEC360HOME=$HOME/usr/local/tec360ex2014R2
-export TECPHYFILE=$HOME/tmp/.tecplot.phy
-export ICEM_ACN=$HOME/usr/local/ansys_inc/v130/icemcfd/linux64_amd
-export PATH=$TEC360HOME/bin:$PATH
-#-- To disable the translucency you may instruct Linux xlib to manage the colors natively as RGB.
-export XLIB_SKIP_ARGB_VISUALS=1
-#-- CFFC
-export CFFC_Path=~/01_utias/01_local/CFFC
-export PATH=$CFFC_Path/bin:$PATH
-#-- MSES and XFOIL
-PATH=~/01_utias/01_local/01_thesis/Xfoil/bin:$PATH
-#-- OPTIMA2D
-export PATH=~/01_utias/01_local/optima-grids/grid_utils:$PATH
-#-- Set environment variable that controls how Fortran unformatted in/out operations are handled
-export F_UFMTENDIAN=big
-#-- Set memory limits
-ulimit -c 0         # limit coredumpsize 0
-ulimit -s unlimited # limit stacksize unlimited
-#-- bin and path
-export PATH=$HOME/usr/local/bin:/usr/bin:$PATH
-export PATH=/home/ramy/01_utias/01_local/bin:$PATH
-export PATH=/home/ramy/01_utias/01_local/bin/scripts:$PATH
-export PATH=/home/ramy/bin:$PATH
-export PATH=/home/ramy/bin/scripts:$PATH
-export PATH=/home/ramy/usr/intel/bin:$PATH
-export PATH=/home/ramy/usr/mpich/bin:$PATH
-#-- OPTIMA2D related
-export LD_LIBRARY_PATH=/home/ramy/usr/mpich/lib:$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=/home/ramy/usr/intel/lib/intel64:$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=/home/ramy/usr/intel/mkl/lib/intel64:$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=/home/ramy/usr/intel/mkl/lib/mic:$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=/home/ramy/usr/intel/mkl/lib:$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=/home/ramy/usr/intel/composer_xe_2013_sp1.3.174/bin:$LD_LIBRARY_PATH
-export MKLPATH=/home/ramy/usr/intel/mkl/lib/intel64
-export XLIB_PATH=-L/usr/X11R6/lib
-#source /home/ramy/usr/intel/composer_xe_2013_sp1.3.174/bin/ifortvars.sh intel64
-#-- Anaconda 2.2.0
-export PATH="/home/ramy/usr/local/anaconda/bin:$PATH"
+
+#
+# BUILD PATH
+#
+#-- PATH_ORIGINAL is exported in .profile upon login only
+PATH_ORIG=$PATH_ORIGINAL
+#-- Append all of your own paths to MYPATH:
+MYPATH=$HOME/bin:$HOME/bin/scripts:$HOME/usr/local/bin:/nfs/people/nick/bin:/home/ramy/usr/local/anaconda2/bin
+#-- Reset PATH
+PATH=
+#-- Create and export final PATH
+PATH=$MYPATH:$PATH_OF:$PATH_ORIG
+export PATH
+
+#
+# Source global aliases, funcitons, and definitions
+# -- must come after export of $MYHOME and $MYWORK variable
+#
+if [ -f $HOME/.bashrc-global ]; then
+	. $HOME/.bashrc-global
+fi
+
+
+#
+# Aliases specific to solarship
+#
+alias whichFOAM='echo $FOAM_SOLVERS'
+alias scr='cd $FOAM_RUN/; ls'
+alias cd2='cd $HOME/OpenFOAM/ramy-2.3.x'
+alias cdp='cd $HOME/OpenFOAM/ramy-plus'
+alias cdo2='cd $OF2'
+alias cdop='cd $OFP'
+
+#alias sof2='PATH=; export PATH=$MYPATH:$PATH_OF2:$PATH_ORIG'
+#alias sofp='PATH=; export PATH=$MYPATH:$PATH_OFP:$PATH_ORIG'
+#alias of2='[ -n "$WM_PROJECT_DIR" ] && source $HOME/OpenFOAM/OpenFOAM-2.3.x/etc/config/unset.sh; source $HOME/OpenFOAM/OpenFOAM-2.3.x/etc/bashrc; export PATH=$MYPATH:$PATH_OF2:$PATH_ORIG'
+#alias ofp='[ -n "$WM_PROJECT_DIR" ] && source $HOME/OpenFOAM/OpenFOAM-plus/etc/config.sh/unset; source $HOME/OpenFOAM/OpenFOAM-plus/etc/bashrc; export PATH=$MYPATH:$PATH_OFP:$PATH_ORIG'
 
 
 #
@@ -129,13 +124,6 @@ function subdir-run()
 function run() { nice -19 $HOME/optima/optima2D/OPTIMA2D_x86_64; }
 
 #
-# Source global aliases, funcitons, and definitions
-# -- must come after export of $MYHOME and $MYWORK variable
-#
-if [ -f $HOME/.bashrc-global ]; then
-	. $HOME/.bashrc-global
-fi
-
-#
 # END OF BASHRC
+
 
