@@ -56,3 +56,4 @@ dependencies:
   - traitlets==4.2.2
   - wcwidth==0.1.7
 prefix: /home/ramy/usr/local/anaconda2/envs/py2
+
