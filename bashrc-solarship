@@ -3,22 +3,20 @@
 #
 
 #
-
-#
 # Build OpenFOAM Paths relative to version
 #
 OF2=$HOME/OpenFOAM/OpenFOAM-2.3.x
-OFP=$HOME/OpenFOAM/OpenFOAM-plus
+OF4=$HOME/OpenFOAM/OpenFOAM-4.x
 
-#-- Uncomment for OpenFOAM Version 2.3.x
-source $OF2/etc/bashrc
+#-- Select version of OpenFOAM to use here:
+#OF=$OF2
+OF=$OF4
+
+#-- source OpenFOAM bashrc and add to PATH_OF
+source $OF/etc/bashrc
+#source $OF/bin/tools/RunFunctions
 export PATH_OF=$PATH
 PATH=$PATH_ORIGINAL #-- resets PATH
-
-#-- Uncomment for OpenFOAM Version "plus"
-#source $OFP/etc/bashrc
-#export PATH_OF=$PATH
-#PATH=$PATH_ORIGINAL #-- resets PATH
 
 #
 # Export Path and other useful variables
@@ -35,6 +33,7 @@ export MYVIM=vim
 #-- bin
 export ODD=ramy@oddjob.utias.utoronto.ca:/nfs/carv/d1/people/ramy
 export SCI=rashad@login.scinet.utoronto.ca:
+export legolasNickRun='scp -r 192.168.4.30:/home/nick/OpenFOAM/nick-2.3.x/run/'
 #-- latex
 if [ '$HOST != oddjob.utias.utoronto.ca' ]; then
      BIBINPUTS=.:${HOME}/01_thesis/BibTeX_Database:${BIBINPUTS}
@@ -47,12 +46,18 @@ fi
 #-- PATH_ORIGINAL is exported in .profile upon login only
 PATH_ORIG=$PATH_ORIGINAL
 #-- Append all of your own paths to MYPATH:
-MYPATH=$HOME/bin:$HOME/bin/scripts:$HOME/usr/local/bin:/nfs/people/nick/bin:/home/ramy/usr/local/anaconda2/bin
+MYPATH=$HOME/bin:$HOME/bin/solarship:$HOME/bin/scripts:$HOME/usr/local/bin:/nfs/people/nick/bin:/home/ramy/usr/local/anaconda2/bin
 #-- Reset PATH
 PATH=
 #-- Create and export final PATH
 PATH=$MYPATH:$PATH_OF:$PATH_ORIG
 export PATH
+
+#
+# PYTHON PATH
+#
+PYTHONPATH=$HOME/code/pyfoam:$HOME/code:$PYTHONPATH
+export PYTHONPATH
 
 #
 # Source global aliases, funcitons, and definitions
@@ -69,9 +74,13 @@ fi
 alias whichFOAM='echo $FOAM_SOLVERS'
 alias scr='cd $FOAM_RUN/; ls'
 alias cd2='cd $HOME/OpenFOAM/ramy-2.3.x'
-alias cdp='cd $HOME/OpenFOAM/ramy-plus'
+alias cdp='cd $HOME/play/pyfoam/'
 alias cdo2='cd $OF2'
 alias cdop='cd $OFP'
+alias py2='source activate py2'
+alias py3='source activate py3'
+alias plotResiduals='foamMonitor -l -r 1'
+
 
 #alias sof2='PATH=; export PATH=$MYPATH:$PATH_OF2:$PATH_ORIG'
 #alias sofp='PATH=; export PATH=$MYPATH:$PATH_OFP:$PATH_ORIG'
@@ -108,6 +117,12 @@ alias uguill='cd ~/01_utias/; fusermount -u 05_guillimin/'
 #-- guillimin
 alias mwest='cd ~/01_utias/; sshfs rashad@parallel.westgrid.ca: 06_westgrid/; cd 06_westgrid/'  
 alias uwest='cd ~/01_utias/; fusermount -u 06_westgrid/'
+#-- solarship
+alias mlegolas='sshfs ramy@192.168.4.30: /home/ramy/legolas; cd home/ramy/legolas'
+alias ulegolas='fusermount -u ~/legolas'
+alias maragorn='sshfs ramy@192.168.4.20: /home/ramy/aragorn; cd home/ramy/aragorn'
+alias uaragorn='fusermount -u ~/aragorn'
+
 
 #
 # Custom function defintions
@@ -121,7 +136,7 @@ function subdir-run()
     cd ../
   done
 }
-function run() { nice -19 $HOME/optima/optima2D/OPTIMA2D_x86_64; }
+#function run() { nice -19 $HOME/optima/optima2D/OPTIMA2D_x86_64; }
 
 #
 # END OF BASHRC

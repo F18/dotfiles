@@ -286,8 +286,13 @@ elseif (has("gui_running") && g:solarized_degrade == 1)
 elseif g:solarized_termcolors != 256 && &t_Co >= 16
     " RR: Try modifying colors here first:
     let s:vmode       = "cterm"
-    let s:base03      = "8"
-    let s:base02      = "0"
+    " RR: old value
+    "let s:base03      = "8"
+    " RR: default value
+    "let s:base03      = "234"
+    let s:base03      = "NONE"
+    "let s:base02      = "0" "RR: base02 (default)
+    let s:base02      = "235"
     let s:base01      = "10"
     "let s:base00      = "242"
     "let s:base0       = "12" "RR: normal 
@@ -295,7 +300,8 @@ elseif g:solarized_termcolors != 256 && &t_Co >= 16
     "let s:base00      = "242" "RR: normal  for light mode
     let s:base00      = "240" "RR: normal for light mode
     let s:base0       = "12" "RR: normal for dark mode
-    let s:base1       = "14" "RR: comment
+    "let s:base1       = "14" "RR: comment
+    let s:base1       = "245" "RR: comment (default)
     let s:base2       = "7"
     let s:base3       = "15"
     let s:yellow      = "3"
@@ -308,10 +314,13 @@ elseif g:solarized_termcolors != 256 && &t_Co >= 16
 "    let s:blue        = "242"
     "let s:blue        = "4"
     let s:blue        = "242" "RR: flipped the color blue
+    let s:myblue      = "4" "RR: custom color
+    let s:mymagenta   = "131" "RR: custom color
     let s:green       = "2"
 elseif g:solarized_termcolors == 256
     let s:vmode       = "cterm"
     let s:base03      = "234"
+    "let s:base03      = "NONE"
     let s:base02      = "235"
     let s:base01      = "239"
     let s:base00      = "240"
@@ -319,6 +328,7 @@ elseif g:solarized_termcolors == 256
     let s:base1       = "245"
     let s:base2       = "187"
     let s:base3       = "230"
+    "let s:base3       = "231" "RR: try to chane to match Putty color
     let s:yellow      = "136"
     let s:orange      = "166"
     let s:red         = "124"
@@ -328,6 +338,8 @@ elseif g:solarized_termcolors == 256
     let s:blue       = "244"
     let s:cyan        = "37"
     let s:green       = "64"
+    let s:myblue      = "4" "RR: custom color
+    let s:mymagenta   = "131" "RR: custom color
 else
     let s:vmode       = "cterm"
     let s:bright      = "* term=bold cterm=bold"
@@ -363,6 +375,8 @@ else
     let s:blue        = "DarkBlue"      " 4
     let s:cyan        = "DarkCyan"      " 6
     let s:green       = "DarkGreen"     " 2
+    let s:myblue      = "LightGray" "RR: custom color
+    let s:mymagenta      = "DarkMagenta" "RR: custom color
 
 endif
 "}}}
@@ -405,6 +419,11 @@ if &background == "light"
         let s:back    = s:base03
     endif
 endif
+"if &background == "dark"
+    "if (s:back != "NONE")
+        "let s:back    = s:base03
+    "endif
+"endif
 "}}}
 " Optional contrast schemes "{{{
 " ---------------------------------------------------------------------
@@ -483,6 +502,9 @@ exe "let s:fg_magenta   = ' ".s:vmode."fg=".s:magenta."'"
 exe "let s:fg_violet    = ' ".s:vmode."fg=".s:violet ."'"
 exe "let s:fg_blue      = ' ".s:vmode."fg=".s:blue   ."'"
 exe "let s:fg_cyan      = ' ".s:vmode."fg=".s:cyan   ."'"
+"RR: custome colors
+exe "let s:fg_myblue    = ' ".s:vmode."fg=".s:myblue ."'" 
+exe "let s:fg_mymagenta = ' ".s:vmode."fg=".s:mymagenta ."'" 
 
 exe "let s:fmt_none     = ' ".s:vmode."=NONE".          " term=NONE".    "'"
 exe "let s:fmt_bold     = ' ".s:vmode."=NONE".s:b.      " term=NONE".s:b."'"
@@ -566,11 +588,15 @@ exe "hi! Constant"       .s:fmt_none   .s:fg_cyan   .s:bg_none
 "        Boolean         a boolean constant: TRUE, false
 "        Float           a floating point constant: 2.3e10
 
-exe "hi! Identifier"     .s:fmt_none   .s:fg_green   .s:bg_none
+exe "hi! Identifier"     .s:fmt_none   .s:fg_myblue   .s:bg_none
 "       *Identifier      any variable name
 "        Function        function name (also: methods for classes)
 "
+"
+"RR: (default) Statement fg_green
 exe "hi! Statement"      .s:fmt_none   .s:fg_green  .s:bg_none
+"RR: (custom) Statement fg_mymagenta
+exe "hi! Statement"      .s:fmt_none   .s:fg_mymagenta  .s:bg_none
 "       *Statement       any statement
 "        Conditional     if, then, else, endif, switch, etc.
 "        Repeat          for, do, while, etc.

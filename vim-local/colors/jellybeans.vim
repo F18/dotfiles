@@ -332,9 +332,9 @@ call s:X("Visual","","404040","","",s:termBlack)
 call s:X("Cursor",g:jellybeans_background_color,"b0d0f0","","","")
 
 "1) default
-"call s:X("LineNr","605958",g:jellybeans_background_color,"none",s:termBlack,"")
+call s:X("LineNr","605958",g:jellybeans_background_color,"none",s:termBlack,"")
 "2) RR: custom
-call s:X("LineNr","303030",g:jellybeans_background_color,"none",s:termBlack,"")
+"call s:X("LineNr","303030",g:jellybeans_background_color,"none",s:termBlack,"")
 call s:X("CursorLineNr","ccc5c4","","none","White","")
 "1) default
 "call s:X("Comment","888888","","italic","Grey","")
@@ -377,7 +377,11 @@ call s:X("Identifier","FF99CC","","","","LightMagenta")
 "RR Structure :: .eq., .and., .not., etc.
 call s:X("Structure","8fbfdc","","","LightCyan","")
 call s:X("Function","fad07a","","","Yellow","")
-call s:X("Statement","8197bf","","","DarkBlue","")
+"RR Statement:
+"1) default
+"call s:X("Statement","8197bf","","","DarkBlue","")
+"2) custom
+call s:X("Statement","FF99CC","","","LightMagenta","")
 call s:X("PreProc","8fbfdc","","","LightBlue","")
 
 hi! link Operator Structure
@@ -391,6 +395,7 @@ call s:X("SpecialKey","444444","1c1c1c","",s:termBlack,"")
 "call s:X("Search","f0a0c0","302028","underline","Magenta","")
 "2) RR: custom search highlight
 "call s:X("Search","302028","f0a0c0","","Magenta","")
+"call s:X("Search","b7102f","f0a0c0","","Magenta","")
 call s:X("Search","b7102f","f0a0c0","","Magenta","")
 
 call s:X("Directory","dad085","","","Yellow","")
@@ -435,7 +440,7 @@ hi! link phpVarSelector Identifier
 
 " Python
 
-hi! link pythonOperator Statement
+"hi! link pythonOperator Statement
 
 " Ruby
 

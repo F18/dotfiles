@@ -174,6 +174,7 @@ hi Folded          guifg=#93b3a3 guibg=#3f4040
 " RR: Added by Ramy Rashad
 hi Function        guifg=#8cd0d3 gui=bold
 hi Keyword         guifg=#8cd0d3 gui=bold
+"hi Keyword         guifg=#262626 gui=bold
 hi Typedef         guifg=#8cd0d3
 hi Type            guifg=#8cd0d3
 " end additions by Ramy
@@ -279,6 +280,7 @@ if &t_Co > 255
     hi Keyword         ctermfg=116   cterm=bold
     hi Typedef         ctermfg=116
     hi Type            ctermfg=116
+    hi Include         ctermfg=116   cterm=bold
     " IncSearch = highlight as you type it
     " Search = results of search
     hi IncSearch       ctermfg=230   ctermbg=243 cterm=bold

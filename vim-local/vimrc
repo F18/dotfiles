@@ -1,5 +1,8 @@
 " MY CUSTOM VIM SETTINGS
 "
+  "let MYVIMCOLORS=$MYCOLORS
+  "let MYVIMCOLORS="jellybeans"
+  let MYVIMCOLORS="solarized-light"
 
   " Add plugin directories to runtimepath
   set runtimepath+=~/dotfiles/vim-local/myPlugins/bclose
@@ -49,52 +52,55 @@
   set t_ZR=[23m
 
   "
-  " Set color scheme based on env. variable $MYCOLORS
+  " Set color scheme based on variable &MYVIMCOLORS
   " set in bashrc-global
   "
-  if $MYCOLORS == "zenburn"
+  if MYVIMCOLORS == "zenburn"
     let g:zenburn_high_Contrast=1
     let g:zenburn_alternate_Visual = 1
     colorscheme zenburn
     let g:airline_theme = 'murmur'
     let g:airline#extensions#whitespace#enabled = 0
-  elseif $MYCOLORS == "kolor"
+  elseif MYVIMCOLORS == "kolor"
     let g:kolor_italic=1 " Enable italic. Default: 1
     let g:kolor_bold=0 " Enable bold. Default: 1
     let g:kolor_underlined=0 " Enable underline for 'Underlined'. Default: 0
     let g:kolor_alternative_matchparen=0 " Gray 'MatchParen' color. Default: 0
     let g:airline_theme = 'jellybeans'
     colorscheme kolor
-  elseif $MYCOLORS == "razzle"
+  elseif MYVIMCOLORS == "razzle"
     colorscheme razzle
     let g:airline_theme = 'jellybeans'
-  elseif $MYCOLORS == "wombat"
+  elseif MYVIMCOLORS == "wombat"
     colorscheme wombat256mod
     let g:airline_theme = 'jellybeans'
-  elseif $MYCOLORS == "vividchalk"
+  elseif MYVIMCOLORS == "vividchalk"
     set background=dark
     colorscheme vividchalk
     let g:airline_theme = 'jellybeans'
-  elseif $MYCOLORS == "jellybeans"
-    let g:jellybeans_use_lowcolor_black = 0
+  elseif MYVIMCOLORS == "jellybeans"
+    "let g:jellybeans_use_lowcolor_black = 0
     let g:airline_theme = 'jellybeans'
+    let g:airline#extensions#whitespace#enabled = 0
     colorscheme jellybeans
-  elseif $MYCOLORS == "solarized-light"
+  elseif MYVIMCOLORS == "solarized-light"
     let solarized_constrast='normal'
     colorscheme solarized
     set background=light
+    let g:solarized_termcolors=256
     let g:airline_theme = 'solarized'
-  elseif $MYCOLORS == "solarized-dark"
+  elseif MYVIMCOLORS == "solarized-dark"
     let solarized_constrast='normal'
     set background=dark
     colorscheme solarized
+    let g:solarized_termcolors=256
     let g:airline_theme = 'solarized'
-  elseif $MYCOLORS == "solarized-gruvbox-light"
+  elseif MYVIMCOLORS == "solarized-gruvbox-light"
     let solarized_constrast='normal'
-    set background=dark
+    set background=light
     colorscheme gruvbox
     let g:airline_theme = 'kolor'
-  elseif $MYCOLORS == "solarized-gruvbox-dark"
+  elseif MYVIMCOLORS == "solarized-gruvbox-dark"
     let solarized_constrast='normal'
     set background=dark
     colorscheme gruvbox
@@ -137,6 +143,9 @@
   " always move down a line, even if long line is not wrapped
   "noremap j gj
   "noremap k gk
+  " scrolling - always keep cursor centered on page
+  set so=999
+  :nnoremap <Leader>zz :let &scrolloff=999-&scrolloff<CR>
   "noremap j 1<C-D>zz:noh<CR>
   "noremap k 1<C-U>zz:noh<CR>
   map ; 30<C-U>zz
@@ -381,6 +390,7 @@
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     set expandtab
     set shiftwidth=2
+    autocmd FileType python setlocal shiftwidth=4
     set tabstop=3
     set smarttab
     set cindent
@@ -510,7 +520,8 @@
 
     "ACK search tool
     "https://github.com/mileszs/ack.vim.git
-    "Must download ack and place in bin directory or use synaptic: sudo apt-get install ack-grep
+    "Must download ack and place in bin directory or use synaptic: 
+    " >> sudo apt-get install ack-grep; cd ~/usr/local/bin; ln -s /usr/bin/ack-grep ack
     "wget http://beyondgrep.com/ack-2.04-single-file >> Place in ~/bin/ack and chmod 0755
     let g:ackprg="ack -H --nocolor --nogroup --column --smart-case"
     " search for something
@@ -602,6 +613,11 @@
     au BufNewFile,BufRead *.inp set filetype=cterm
     " the following sets the filetype for any fie that doesn't have a filetype
     au BufNewFile,BufRead * if &ft == '' | set ft=cpp | endif
+    au BufNewFile,BufRead *.py set filetype=python
+
+    " enable all python highlighting (see vim-local/syntax/python.vim)
+    let python_highlight_all = 1
+    let python_version_2 = 1 " python 3 is the default
 
     " ______________________
     " Fortran Customizations
@@ -668,6 +684,7 @@
   " Color Columns
   "
   " highlight the row or column under the cursor
+  autocmd FileType python set cursorcolumn " column under cursor
   "autocmd FileType fortran set cursorcolumn " column under cursor
   "autocmd FileType fortran set cursorline " row under cursor
   if exists('+colorcolumn')
@@ -677,10 +694,15 @@
      "hi ColorColumn guibg=#3d3d3d
      " RR: colorsheme related
      "hi ColorColumn ctermbg=234
-     if $MYCOLORS=="zenburn"
-     hi ColorColumn ctermbg=236
+     if MYVIMCOLORS=="zenburn"
+       hi ColorColumn ctermbg=236
+     endif
+     if MYVIMCOLORS=="solarized-light"
+       hi ColorColumn ctermbg=255
+       hi CursorColumn ctermbg=255
      endif
      autocmd FileType fortran set colorcolumn=6,73
+     autocmd FileType python set colorcolumn=79
   else
      "
      "vim 7.2 and older without colorcolumn
@@ -697,7 +719,7 @@
 
   " set text width for latex files
   au BufNewFile,BufRead *.tex set textwidth=90
-  if $MYCOLORS=="zenburn"
+  if MYVIMCOLORS=="zenburn"
     au BufNewFile,BufRead *.tex hi Error None
   endif
 
@@ -879,7 +901,21 @@ let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
 "hi link EasyMotionTarget Special " PreProc,Directory,Title,WarningMsg,ErrorMsg,Special
 "hi link EasyMotionShade  Comment
 
-if $MYCOLORS == "zenburn"
+if MYVIMCOLORS == "zenburn"
+  "hi EasyMotionTarget ctermfg=196
+  hi link EasyMotionTarget Search
+  hi link EasyMotionShade  Normal
+  hi EasyMotionTarget  ctermbg=181   ctermfg=237
+  hi EasyMotionTarget2First  ctermbg=228   ctermfg=237
+  hi EasyMotionTarget2Second  ctermbg=228   ctermfg=237
+  hi EasyMotionSearch ctermfg=230   ctermbg=243 cterm=bold
+  "hi EasyMotionIncSearch ctermfg=230   ctermbg=243 cterm=bold
+  hi link EasyMotionIncSearch IncSearch
+  hi link EasyMotionIncCursor IncSearch
+  hi link EasyMotionMoveHL IncSearch
+  hi link StupidEasyMotionTarget Search
+  hi link StupidEasyMotionTarget EasyMotionTarget
+elseif MYVIMCOLORS == "jellybeans"
   "hi EasyMotionTarget ctermfg=196
   hi link EasyMotionTarget Search
   hi link EasyMotionShade  Normal

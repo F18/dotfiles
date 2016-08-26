@@ -9,10 +9,10 @@
 # Select Color Scheme and store as env variable for
 # bash, vim, dircolors, and tmux config
 #
-MYCOLORS='zenburn'
+#MYCOLORS='zenburn'
 #MYCOLORS='jellybeans'
 #MYCOLORS='wombat'
-#MYCOLORS='solarized-light'
+MYCOLORS='solarized-light'
 #MYCOLORS='solarized-dark'
 #MYCOLORS='solarized-gruvbox-light'
 #MYCOLORS='solarized-gruvbox-dark'
@@ -62,12 +62,12 @@ if [ "$MYCOLORS" == "zenburn" ]; then
   PS1="$LIGHT_RED\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $ZENBURN_BLUE\W$RBRACE$NONE$ "
 #-- solarized-light OR solarized-gruvbox-light
 elif [ "$MYCOLORS" == "solarized-light" -o "$MYCOLORS" == "solarized-gruvbox-light" ]; then
-  NONE='\[\e[01;248m\]'
+  #NONE='\[\e[01;248m\]'
   NONE=$MYGREY
-  BRACE_COLOR=$LIGHT_CYAN
+  BRACE_COLOR=$ZENBURN_BLUE
   LBRACE=$BRACE_COLOR[$BRACE_COLOR
   RBRACE=$BRACE_COLOR]$BRACE_COLOR
-  PS1="$LIGHT_CYAN\w\n$LBRACE$MYGREY\D{%H:%M}$RBRACE$LBRACE$MYGREY\h $GREEN\W$RBRACE$NONE$ "
+  PS1="$MYGREY\w\n$LBRACE$MYGREY\D{%H:%M}$RBRACE$LBRACE$MYGREY\h $ZENGREEN\W$RBRACE$NONE$ "
   PS2="$GREEN$LBRACE$MYGREY\D{%H:%M}$RBRACE$LBRACE$MYGREY\h $CYAN\w$RBRACE$NONE$ "
 #-- solarized-dark OR solarized-gruvbox-dark
 elif [ "$MYCOLORS" == "solarized-dark" -o "$MYCOLORS" == "solarized-gruvbox-dark" ]; then
@@ -431,8 +431,7 @@ function gfs() { grep -irn --include=*.{f,F,f90,F90,inc} --exclude-dir=unused --
 function gfe() { grep -irn --include=*.{f,F,f90,F90,inc} --exclude-dir=unused -- "$@[\t ]*=[^=]" . ; }
 function gtex() { grep -irn --include=*.{tex,bib} --exclude-dir=unused -- "$@" . ; }
 #-- Python grep, only searches Python source
-function grepy() { grep -in --include="*.py" -- "$@" * ; }
-function rgrepy() { grep -irn --include="*.py" -- "$@" . ; }
+function gy() { grep -irn --include="*.py" -- "$@" * ; }
 #-- specify file type and expression
 function gg() { 
 args=("$@") ;
