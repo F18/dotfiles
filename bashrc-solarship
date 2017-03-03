@@ -18,6 +18,40 @@ source $OF/etc/bashrc
 export PATH_OF=$PATH
 PATH=$PATH_ORIGINAL #-- resets PATH
 
+#-- handy variable to export (not needed to run SOL)
+export SOL=$HOME/code/sol/sol
+
+#
+# Build CAPRI Paths relative to version
+#
+
+#-- Select version of CAPRI to use here:
+MY_CAPRI_PATH=$HOME/code/capri/CAPRI_SIK_LIN64_V3.22.0_12059_08_28_2016
+#-- Add the CAPRI library paths to your LD_LIBRARY_PATH
+#source $MY_CAPRI_PATH/source.bash
+MY_CAPRI_LIBS=$MY_CAPRI_PATH/lib:$MY_CAPRI_PATH/Cl-Ser:$MY_CAPRI_PATH/capripy
+if [ -z "$LD_LIBRARY_PATH" ]
+then
+  export LD_LIBRARY_PATH=$MY_CAPRI_LIBS
+else
+  export LD_LIBRARY_PATH=$MY_CAPRI_LIBS:$LD_LIBRARY_PATH
+fi
+#export CAPRIkey=3100EAECDF20793A1EBA42F7007F108CE9D3EE9A826124E0 #-- expired Oct 31
+#export CAPRIkey=4E602CB831094C4CA8974ACA3264F55EE9D3EE9A826124E0 #-- expired Nov 28
+export CAPRIkey=01F6B232E1B1CB90EBD52A4072D50FD82147BB27E1FD7676 #-- expires Dec 31
+export capriSERVER=http://192.168.4.31:18081
+export CAPRI_INST=$MY_CAPRI_PATH
+
+#CAPRI -- port forwarding from scinet
+#alias oddjobpf="while true ; do ssh -g -n -N -L`hostname`:18081:cfdwin:18081 truong@oddjob.utias.utoronto.ca ; sleep 5 ; done"
+#alias mvpart="scp partModified.CATPart truong@oddjob.utias.utoronto.ca:~/temp"
+#alias killCAPRIserver='ssh -n gpc-f104n084 -- ssh -n truong@oddjob.utias.utoronto.ca -- ssh -n -p 2222 Anh@cfdwin -- cmd /c c:/killCAPRIserver'
+#export capriSERVER=http://gpc-f104n084:18081
+#export CAPRI_INST=$HOME/jetstream/cad/CAPRI_LIN64
+#export LD_LIBRARY_PATH=$CAPRI_INST/lib:${LD_LIBRARY_PATH}
+#export CAPRIedge='NoFace'
+#export CAPRIdyn='Debug'
+
 #
 # Export Path and other useful variables
 #
@@ -28,6 +62,7 @@ export MYHOME=/home/ramy/
 export MYWORK=/home/ramy/OpenFOAM/
 export HOST=$(uname)
 export ARCH=$(uname)_$(uname -m)
+export SOL=/home/ramy/code/sol/
 #-- vim
 export MYVIM=vim
 #-- bin
@@ -46,7 +81,7 @@ fi
 #-- PATH_ORIGINAL is exported in .profile upon login only
 PATH_ORIG=$PATH_ORIGINAL
 #-- Append all of your own paths to MYPATH:
-MYPATH=$HOME/bin:$HOME/bin/solarship:$HOME/bin/scripts:$HOME/usr/local/bin:/nfs/people/nick/bin:/home/ramy/usr/local/anaconda2/bin
+MYPATH=$HOME/code/sol/bin:$HOME/code/capri/capri2stl:$HOME/code/capri/DriveMM:$HOME/bin:$HOME/bin/solarship:$HOME/bin/scripts:$HOME/usr/local/bin:/nfs/people/nick/bin:/home/ramy/usr/local/anaconda2/bin
 #-- Reset PATH
 PATH=
 #-- Create and export final PATH
@@ -56,8 +91,8 @@ export PATH
 #
 # PYTHON PATH
 #
-PYTHONPATH=$HOME/code/pyfoam:$HOME/code:$PYTHONPATH
-export PYTHONPATH
+#PYTHONPATH=$HOME/code/sol/src:$HOME/code:$PYTHONPATH
+#export PYTHONPATH
 
 #
 # Source global aliases, funcitons, and definitions
@@ -77,9 +112,17 @@ alias cd2='cd $HOME/OpenFOAM/ramy-2.3.x'
 alias cdp='cd $HOME/play/pyfoam/'
 alias cdo2='cd $OF2'
 alias cdop='cd $OFP'
+alias i='ipython'
 alias py2='source activate py2'
 alias py3='source activate py3'
 alias plotResiduals='foamMonitor -l -r 1'
+alias feh='feh -w'
+alias src_openmdao='cd ~/usr/local/anaconda2/envs/py3/lib/python3.5/site-packages/openmdao/'
+alias foamToVTK_Local='mpirun -np 36 foamToVTK -parallel -case . -latestTime -noInternal -allPatches -excludePatches "(top bottom front back port starboard)"'
+alias zipToVTK_Local='zip -r ./VTK.zip ./VTK ./postProcessing/cuttingPlane/'
+alias sol='cd $HOME/code/sol/sol/'
+alias sasol='source activate sol'
+
 
 
 #alias sof2='PATH=; export PATH=$MYPATH:$PATH_OF2:$PATH_ORIG'
@@ -122,7 +165,15 @@ alias mlegolas='sshfs ramy@192.168.4.30: /home/ramy/legolas; cd home/ramy/legola
 alias ulegolas='fusermount -u ~/legolas'
 alias maragorn='sshfs ramy@192.168.4.20: /home/ramy/aragorn; cd home/ramy/aragorn'
 alias uaragorn='fusermount -u ~/aragorn'
+alias mcapri='sudo mount -t cifs //192.168.4.31/CapriFiles /home/ramy/windows -o credentials=/home/ramy/.smbcredentials,uid=ramy,gid=ramy'
+alias ucapri='sudo umount /home/ramy/windows'
 
+export PAGER=$HOME/usr/local/bin/vimpager
+
+#
+# CADNexus CAPRI server settings
+#
+#export capriSERVER='http://192.168.4.31:18081'
 
 #
 # Custom function defintions

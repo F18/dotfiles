@@ -9,13 +9,13 @@
 # Select Color Scheme and store as env variable for
 # bash, vim, dircolors, and tmux config
 #
+MYCOLORS='solarized-gruvbox-light'
+#MYCOLORS='solarized-gruvbox-dark'
 #MYCOLORS='zenburn'
 #MYCOLORS='jellybeans'
 #MYCOLORS='wombat'
-MYCOLORS='solarized-light'
+#MYCOLORS='solarized-light'
 #MYCOLORS='solarized-dark'
-#MYCOLORS='solarized-gruvbox-light'
-#MYCOLORS='solarized-gruvbox-dark'
 #-- export:
 export MYCOLORS
 
@@ -69,9 +69,17 @@ elif [ "$MYCOLORS" == "solarized-light" -o "$MYCOLORS" == "solarized-gruvbox-lig
   RBRACE=$BRACE_COLOR]$BRACE_COLOR
   PS1="$MYGREY\w\n$LBRACE$MYGREY\D{%H:%M}$RBRACE$LBRACE$MYGREY\h $ZENGREEN\W$RBRACE$NONE$ "
   PS2="$GREEN$LBRACE$MYGREY\D{%H:%M}$RBRACE$LBRACE$MYGREY\h $CYAN\w$RBRACE$NONE$ "
-#-- solarized-dark OR solarized-gruvbox-dark
-elif [ "$MYCOLORS" == "solarized-dark" -o "$MYCOLORS" == "solarized-gruvbox-dark" ]; then
+#-- solarized-dark
+elif [ "$MYCOLORS" == "solarized-dark" ]; then
   NONE=$LIGHT_CYAN
+  BRACE_COLOR=$MYGREY4
+  LBRACE="$BRACE_COLOR[$BRACE_COLOR"
+  RBRACE="$BRACE_COLOR]$BRACE_COLOR"
+  PS1="$MYGREY2\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $CYAN\W$RBRACE$NONE$ "
+  PS2="$GREEN$LBRACE$MYGREY4\D{%H:%M}$RBRACE$LBRACE$MYGREY4\h $CYAN\w$RBRACE$NONE$ "
+#-- solarized-gruvbox-dark
+elif [ "$MYCOLORS" == "solarized-gruvbox-dark" ]; then
+  NONE=$MYGREY3
   BRACE_COLOR=$MYGREY4
   LBRACE="$BRACE_COLOR[$BRACE_COLOR"
   RBRACE="$BRACE_COLOR]$BRACE_COLOR"
@@ -107,7 +115,8 @@ if [ "$TERM" != "dumb" ]; then
     [ -e "$HOME/dotfiles/LS_COLORS-solarized-light" ] && DIR_COLORS="$HOME/dotfiles/LS_COLORS-solarized-light"
   elif [ "$MYCOLORS" == "solarized-dark" -o "$MYCOLORS" == "solarized-gruvbox-dark" ] ; then
     #-- solarized-dark
-    [ -e "$HOME/dotfiles/LS_COLORS-solarized-dark" ] && DIR_COLORS="$HOME/dotfiles/LS_COLORS-solarized-dark"
+    #[ -e "$HOME/dotfiles/LS_COLORS-solarized-dark" ] && DIR_COLORS="$HOME/dotfiles/LS_COLORS-solarized-dark"
+    [ -e "$HOME/dotfiles/LS_COLORS-solarized-dark" ] && DIR_COLORS="$HOME/dotfiles/LS_COLORS"
   else
     #-- default
     [ -e "$HOME/dotfiles/LS_COLORS" ] && DIR_COLORS="$HOME/dotfiles/LS_COLORS"
@@ -206,6 +215,8 @@ alias g='gvim'                                   # open gvim
 alias getkey='sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys'
 alias getclass='xprop | grep WM_CLASS'
 alias getresolution='xrandr --display :0 | grep " connected"'
+alias groupid='ps x -o  "%p %r %c"'
+alias groupkill='kill -TERM -- '
 alias gn='gnuplot'                               # run gnuplot 
 alias gnpa='gnp 1 1000 0'                        # run gnuplot 
 alias gnp2a='gnp2 1 1000 0'                        # run gnuplot 

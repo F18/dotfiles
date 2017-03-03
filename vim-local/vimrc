@@ -1,8 +1,10 @@
 " MY CUSTOM VIM SETTINGS
 "
-  "let MYVIMCOLORS=$MYCOLORS
+  let MYVIMCOLORS=$MYCOLORS
   "let MYVIMCOLORS="jellybeans"
-  let MYVIMCOLORS="solarized-light"
+  "let MYVIMCOLORS="solarized-light"
+  "let MYVIMCOLORS="solarized-gruvbox-dark"
+  "let MYVIMCOLORS="solarized-gruvbox-light"
 
   " Add plugin directories to runtimepath
   set runtimepath+=~/dotfiles/vim-local/myPlugins/bclose
@@ -16,6 +18,7 @@
   set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-easymotion
   set runtimepath+=~/dotfiles/vim-local/myPlugins/Stupid-EasyMotion
   set runtimepath+=~/dotfiles/vim-local/myPlugins/nerdtree
+  set runtimepath+=~/dotfiles/vim-local/colors/git-repos/gruvbox
   "set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-pathogen
   "set runtimepath+=~/dotfiles/vim-local/myPlugins/l9
   "set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-fuzzyfinder
@@ -43,7 +46,10 @@
 
   syntax enable "Enable syntax hl
 
-  set gfn=Monaco\ 10
+  set guifont=Operator\ Mono\ Light\ 15
+  "set gfn=Monaco\ 12
+  "set guifont=Droid\ Sans\ Mono\ 16
+  "set guifont=Monaco\ 14
   set shell=/bin/bash
   "
   " To get italics in vim terminal
@@ -96,15 +102,15 @@
     let g:solarized_termcolors=256
     let g:airline_theme = 'solarized'
   elseif MYVIMCOLORS == "solarized-gruvbox-light"
-    let solarized_constrast='normal'
     set background=light
+    let g:gruvbox_contrast_light='hard'
     colorscheme gruvbox
-    let g:airline_theme = 'kolor'
+    let g:airline_theme = 'gruvbox'
   elseif MYVIMCOLORS == "solarized-gruvbox-dark"
     let solarized_constrast='normal'
     set background=dark
     colorscheme gruvbox
-    let g:airline_theme = 'kolor'
+    let g:airline_theme = 'gruvbox'
   else 
     colorscheme default
   endif
@@ -391,6 +397,8 @@
     set expandtab
     set shiftwidth=2
     autocmd FileType python setlocal shiftwidth=4
+    autocmd FileType python set textwidth=79
+    autocmd FileType rst set textwidth=79
     set tabstop=3
     set smarttab
     set cindent
@@ -528,19 +536,21 @@
     "nmap \x :Ack ""<Left>
     nmap <leader>a :call MyAck()<CR>
     " search for the word under the cursor
-    nmap <leader>A :call MyAck()<CR>
+    nmap <leader>S :call MyAckWord()<CR>
     "nmap \X :Ack <C-r><C-w> ../. <CR>
-    nmap <leader>S :call MyAckWindow()<CR>
+    nmap <leader>* :call MyAckWindow()<CR>
 
     function! MyAck()
       call inputsave()
       let g:myname = input("Search: ")
       call inputrestore()
       execute 'Ack! "'.g:myname.'" ../'
+      "execute 'Ack! "'.g:myname.'" ./'
     endfunction
 
     function! MyAckWord()
-      execute 'Ack! "'. expand("<cword>") .'" ../'
+      "execute 'Ack! "'. expand("<cword>") .'" ../'
+      execute 'Ack! "'. expand("<cword>") .'" ./'
     endfunction
 
     function! MyAckWindow()
@@ -800,10 +810,22 @@
   "
   "" Nerd Tree Settings
   let g:NERDTreeWinSize=20
+  let g:NERDTreeWinPos = "right"
   map <F3> :NERDTreeToggle<cr>
-  "autocmd VimEnter * NERDTree | wincmd p " load NERDTree with vim startup
-  "autocmd BufEnter * NERDTreeMirror | wincmd p
-  
+  map <C-t> :NERDTreeToggle<cr>
+  map <C-i> :NERDTreeFind<cr>
+  " How can I open a NERDTree automatically when vim starts up?
+  autocmd VimEnter * NERDTreeCWD | wincmd p
+  autocmd BufEnter * NERDTreeMirror | wincmd p
+  "autocmd BufEnter * silent! if bufname('%') !~# 'NERD_tree_' | cd %:p:h | NERDTreeCWD | wincmd p | endif
+  " How can I close vim if the only window left open is a NERDTree:
+  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+  " How can I open a NERDTree automatically when vim starts up if no files were specified?
+  autocmd StdinReadPre * let s:std_in=1
+  autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+  " How can I ignore a certain file extension (ex: *.pyc)?
+  let NERDTreeIgnore = ['\.pyc$']
+
  
 
     

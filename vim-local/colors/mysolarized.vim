@@ -286,14 +286,9 @@ elseif (has("gui_running") && g:solarized_degrade == 1)
 elseif g:solarized_termcolors != 256 && &t_Co >= 16
     " RR: Try modifying colors here first:
     let s:vmode       = "cterm"
-    " RR: old value
-    "let s:base03      = "8"
-    " RR: default value
-    "let s:base03      = "234"
-    let s:base03      = "NONE"
+    let s:base03      = "8"
     "let s:base02      = "0" "RR: base02 (default)
-    "let s:base02      = "235"
-    let s:base02      = "23"
+    let s:base02      = "235"
     let s:base01      = "10"
     "let s:base00      = "242"
     "let s:base0       = "12" "RR: normal 
@@ -321,9 +316,7 @@ elseif g:solarized_termcolors != 256 && &t_Co >= 16
 elseif g:solarized_termcolors == 256
     let s:vmode       = "cterm"
     let s:base03      = "234"
-    "let s:base03      = "NONE"
-    "let s:base02      = "235"
-    let s:base02      = "23" "RR: custombackground for dark mode
+    let s:base02      = "235"
     let s:base01      = "239"
     let s:base00      = "240"
     let s:base0       = "244"
@@ -420,11 +413,6 @@ if &background == "light"
         let s:back    = s:base03
     endif
 endif
-"if &background == "dark"
-    "if (s:back != "NONE")
-        "let s:back    = s:base03
-    "endif
-"endif
 "}}}
 " Optional contrast schemes "{{{
 " ---------------------------------------------------------------------
