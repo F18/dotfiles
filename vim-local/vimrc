@@ -1,0 +1,1044 @@
+" MY CUSTOM VIM SETTINGS
+"
+  let MYVIMCOLORS=$MYCOLORS
+  "let MYVIMCOLORS="jellybeans"
+  "let MYVIMCOLORS="solarized-light"
+  "let MYVIMCOLORS="solarized-gruvbox-dark"
+  "let MYVIMCOLORS="solarized-gruvbox-light"
+
+  " Add plugin directories to runtimepath
+  set runtimepath+=~/dotfiles/vim-local/myPlugins/bclose
+  set runtimepath+=~/dotfiles/vim-local/myPlugins/ctrlp
+  set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-surround
+  set runtimepath+=~/dotfiles/vim-local/myPlugins/mpage
+  set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-indent-guides
+  set runtimepath+=~/dotfiles/vim-local/myPlugins/ack
+  set runtimepath+=~/dotfiles/vim-local/myPlugins/nerd-commenter
+  set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-airline
+  set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-easymotion
+  set runtimepath+=~/dotfiles/vim-local/myPlugins/Stupid-EasyMotion
+  set runtimepath+=~/dotfiles/vim-local/myPlugins/nerdtree
+  set runtimepath+=~/dotfiles/vim-local/colors/git-repos/gruvbox
+  "set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-pathogen
+  "set runtimepath+=~/dotfiles/vim-local/myPlugins/l9
+  "set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-fuzzyfinder
+  "set runtimepath+=~/dotfiles/vim-local/myPlugins/incsearch
+  "set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-markdown-folding
+  "set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-markdown-folding/t
+  "set runtimepath+=~/dotfiles/vim-local/myPlugins/tagbar
+  "set runtimepath+=~/dotfiles/vim-local/myPlugins/tmuxline
+  "set runtimepath+=~/dotfiles/vim-local/myPlugins/indentLine
+  "set runtimepath+=~/dotfiles/vim-local/myPlugins/vim-togglecursor
+
+  " first remap the "leader" key before setting , as the leader
+  " -- map the repeat keys to " for fwd and ' for bwkd
+  noremap " ,
+  " the following maps \ to ' before mapping ' to ;
+  noremap \ '
+  noremap ' ;
+  noremap F f
+  " the following maps s to z:
+  noremap s z
+  " Now map the leader key. With a map leader it's possible to do
+  " extra key combinations, such as <leader>w to save the current file
+  let mapleader = ","
+  let g:mapleader = ","
+
+  syntax enable "Enable syntax hl
+
+  set guifont=Operator\ Mono\ Light\ 15
+  "set gfn=Monaco\ 12
+  "set guifont=Droid\ Sans\ Mono\ 16
+  "set guifont=Monaco\ 14
+  set shell=/bin/bash
+  "
+  " To get italics in vim terminal
+  "
+  set t_ZH=[3m
+  set t_ZR=[23m
+
+  "
+  " Set color scheme based on variable &MYVIMCOLORS
+  " set in bashrc-global
+  "
+  if MYVIMCOLORS == "zenburn"
+    let g:zenburn_high_Contrast=1
+    let g:zenburn_alternate_Visual = 1
+    colorscheme zenburn
+    let g:airline_theme = 'murmur'
+    let g:airline#extensions#whitespace#enabled = 0
+  elseif MYVIMCOLORS == "kolor"
+    let g:kolor_italic=1 " Enable italic. Default: 1
+    let g:kolor_bold=0 " Enable bold. Default: 1
+    let g:kolor_underlined=0 " Enable underline for 'Underlined'. Default: 0
+    let g:kolor_alternative_matchparen=0 " Gray 'MatchParen' color. Default: 0
+    let g:airline_theme = 'jellybeans'
+    colorscheme kolor
+  elseif MYVIMCOLORS == "razzle"
+    colorscheme razzle
+    let g:airline_theme = 'jellybeans'
+  elseif MYVIMCOLORS == "wombat"
+    colorscheme wombat256mod
+    let g:airline_theme = 'jellybeans'
+  elseif MYVIMCOLORS == "vividchalk"
+    set background=dark
+    colorscheme vividchalk
+    let g:airline_theme = 'jellybeans'
+  elseif MYVIMCOLORS == "jellybeans"
+    "let g:jellybeans_use_lowcolor_black = 0
+    let g:airline_theme = 'jellybeans'
+    let g:airline#extensions#whitespace#enabled = 0
+    colorscheme jellybeans
+  elseif MYVIMCOLORS == "solarized-light"
+    let solarized_constrast='normal'
+    colorscheme solarized
+    set background=light
+    let g:solarized_termcolors=256
+    let g:airline_theme = 'solarized'
+  elseif MYVIMCOLORS == "solarized-dark"
+    let solarized_constrast='normal'
+    set background=dark
+    colorscheme solarized
+    let g:solarized_termcolors=256
+    let g:airline_theme = 'solarized'
+  elseif MYVIMCOLORS == "solarized-gruvbox-light"
+    set background=light
+    let g:gruvbox_contrast_light='hard'
+    colorscheme gruvbox
+    let g:airline_theme = 'gruvbox'
+  elseif MYVIMCOLORS == "solarized-gruvbox-dark"
+    let solarized_constrast='normal'
+    set background=dark
+    colorscheme gruvbox
+    let g:airline_theme = 'gruvbox'
+  else 
+    colorscheme default
+  endif
+  "
+  " Set colorscheme for gvim
+  "
+  "if has('gui_running')
+  "  colorscheme solarized
+  "  set t_Co=256
+  "  set nocompatible                                           
+  "  set background=light
+  "  let solarized_constrast='normal'
+  "endif
+
+  " faster buffering in xterm
+  set ttyfast
+  " faster buffering in tmux
+  set notimeout
+  set ttimeout
+  set timeoutlen=50
+
+  " new buffers opened to the right and below on split windows
+  set splitbelow
+  set splitright
+
+  " disable jump targets  (allows you to bind <C-J>)
+  let g:BASH_Ctrl_j = 'off'
+
+  " map the escape key
+  noremap! jk <Esc>l
+  noremap! jj <Esc>l
+  noremap <C-j> :w<cr> :noh<cr>h
+  inoremap <C-j> <Esc> hhh :w<cr> :noh<cr>
+  "
+  " scrolling
+  " always move down a line, even if long line is not wrapped
+  "noremap j gj
+  "noremap k gk
+  " scrolling - always keep cursor centered on page
+  set so=999
+  :nnoremap <Leader>zz :let &scrolloff=999-&scrolloff<CR>
+  "noremap j 1<C-D>zz:noh<CR>
+  "noremap k 1<C-U>zz:noh<CR>
+  map ; 30<C-U>zz
+  map <space> 30<C-D>zz
+  map <silent> <PageUp> 30<C-U>
+  map <silent> <PageDown> 30<C-D>
+  imap <silent> <PageUp> <C-O>30<C-U>
+  imap <silent> <PageDown> <C-O>30<C-D>
+  "imap <silent> <PageUp> <C-O>1000<C-U>
+  "imap <silent> <PageDown> <C-O>1000<C-D>
+  " move to end of line
+  map - $
+  set nostartofline
+  "set number " show line number
+
+  " Multi-pager
+  map <leader>e0 mu :MPage <CR> \u zt;
+  map <leader>e2 mu <C-w>o :2MPage <CR> \u zt;
+  map <leader>e3 mu <C-w>o :3MPage <CR> \u zt;
+  "map <leader>,  mu <C-w>o :3MPage <CR> \u zt;
+  map <leader>e4 mu <C-w>o :4MPage <CR> \u zt;
+  map <leader>e5 mu <C-w>o :5MPage <CR> \u zt;
+  "map <leader>l :MPN! 10<CR>Lzt<C-e>
+  "map <leader>h :MPP! 10<CR>Hzb<C-y>
+  "map <leader><space> :MPN! 10<CR>Lzt<C-e>M<C-W>h<C-W>hM
+  "map <leader>; :MPP! 10<CR>Hzb<C-y>M<C-W>l<C-W>lM
+  map <leader><space> :MPN! 10<CR>Lzt<C-e>M<C-W>hM
+  map <leader>; :MPP! 10<CR>Hzb<C-y>M<C-W>lM
+
+  " Tab control
+  map <leader>to :tabnew <CR>
+  map <leader>tp :tabprevious <CR>
+  map <leader>tn :tabnext <CR>
+  "map <leader>J  :tabprevious <CR>
+  "map <leader>j  :tabnext <CR>
+  map <leader>tc :tabclose <CR>
+  " Go to tab by number
+  noremap <leader>1 1gt
+  noremap <leader>2 2gt
+  noremap <leader>3 3gt
+  noremap <leader>4 4gt
+  noremap <leader>5 5gt
+  noremap <leader>6 6gt
+  noremap <leader>7 7gt
+  noremap <leader>8 8gt
+  noremap <leader>9 9gt
+  noremap <leader>0 :tablast<cr>
+
+  " return to the last tab page visited.
+  let g:lasttab = 1
+  nmap <Leader>k :exe "tabn ".g:lasttab<CR>
+  au TabLeave * let g:lasttab = tabpagenr()
+
+  ":map <leader>j :exe "tabn " . g:ltv<CR>
+  "" referred to by TabLeave autocmd.
+  ":function! Setlasttabpagevisited()
+  ":  let g:ltv = tabpagenr()
+  ":endfunction
+  ":augroup localtl
+  "" Remove all localtl autocommands
+  ":au!
+  "" keep tally of the last tab page visited.
+  ":autocmd TabLeave * call Setlasttabpagevisited()
+  ":augroup END
+  ":autocmd VimEnter * let g:ltv = 1
+
+
+"    "Rename tabs to show tab number.
+"    " (Based on http://stackoverflow.com/questions/5927952/whats-implementation-of-vims-default-tabline-function)
+"    if exists("+showtabline")
+"      function! MyTabLine()
+"        let s = ''
+"        let wn = ''
+"        let t = tabpagenr()
+"        let i = 1
+"        while i <= tabpagenr('$')
+"          let buflist = tabpagebuflist(i)
+"          let winnr = tabpagewinnr(i)
+"          let s .= '%' . i . 'T'
+"          let s .= (i == t ? '%1*' : '%2*')
+"          let s .= ' '
+"          let wn = tabpagewinnr(i,'$')
+"
+"          let s .= '%#TabNum#'
+"          let s .= i
+"          let s .= '%*'
+"          let s .= (i == t ? '%#TabLineSel#' : '%#TabLine#')
+"          let bufnr = buflist[winnr - 1]
+"          let file = bufname(bufnr)
+"          let buftype = getbufvar(bufnr, 'buftype')
+"          if buftype == 'nofile'
+"            if file =~ '\/.'
+"              let file = substitute(file, '.*\/\ze.', '', '')
+"            endif
+"          else
+"            let file = fnamemodify(file, ':p:t')
+"          endif
+"          if file == ''
+"            let file = '[No Name]'
+"          endif
+"          let s .= ' ' . file . ' '
+"          let i = i + 1
+"        endwhile
+"        let s .= '%T%#TabLineFill#%='
+"        let s .= (tabpagenr('$') > 1 ? '%999XX' : 'X')
+"        return s
+"      endfunction
+"      set stal=2
+"      set tabline=%!MyTabLine()
+"      set showtabline=1
+"      highlight link TabNum Special
+"    endif
+
+
+    " Custom Commands (ramy rashad)
+    "map <leader>bb :cd ..<cr>
+    "map <leader>co :cd ~/01_utias/02_oddjob/optima/optima2D<cr>
+    "map <leader>s :w <cr> ,ll <cr>
+    "map <leader>s :w <cr> :make
+    "map <leader>a :w <cr>:make <cr> <C-o>
+
+    "" Compile command in gnu-screen
+    "" - sends the command to window 1 in the same
+    ""   gnu-screen session the ^M is from typing (Ctrl-v Enter)
+    "function! GNUscreenCmd1()
+    "  :!screen -X at 1 stuff make
+    "endfunction
+    "function! GNUscreenCmd2()
+    "  :!screen -X at 1 stuff moo.sh
+    "endfunction
+    "map <leader>a :w <cr>:call GNUscreenCmd1() <cr><cr>
+    "map <leader>c :w <cr>:call GNUscreenCmd2() <cr><cr>
+    "
+    "map <leader>q <C-W><C-K>q
+    map <leader>d :noh<CR>kj
+    map <leader>/ <C-^>
+    " buffer movement
+    noremap <leader>n n
+    noremap <leader>p N
+
+
+    "QuickBuf Select Buffer
+    "let g:qb_hotkey = "<leader>f" 
+    let g:qb_hotkey = "<F4>" 
+    "CtrlP
+    "nmap <F4> :CtrlPBuffer<cr>
+    nmap <leader>f :CtrlPBuffer<cr>
+    nmap <C-f> :CtrlP<cr>
+    "let g:ctrlp_map = '<leader>e'
+    let g:ctrlp_cmd = 'CtrlP'
+    let g:ctrlp_root_markers = ['.ctrlp']
+    "let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+    "let g:ctrlp_custom_ignore = '\v[\/]\(optimaMB)$'
+    "let g:ctrlp_custom_ignore = '\v[\/]\(hybropt)$'
+    " fuzzy finder
+    "map <C-f> :FufBuffer<cr>
+    " "nmap <C-p> :FufFile<cr>
+    " "let g:fuf_maxMenuWidth = 150
+    " runs the buffer select plugin
+    "map <C-f> <F4>
+    " indent code in visual mode
+    "noremap <leader>f ==<Esc>
+    " Fast opening (replaced with buffer searcher)
+    "nmap <leader>e :e
+    " Fast close buffer
+    " closes buffer without closing window (bclose plugin)
+    nmap <leader>b :Bclose <CR>
+    "nmap <silent> <leader>b :Kwbd <cr>
+    "nmap <leader>b :bd<cr>
+    " Fast close window split
+    nmap <leader>B <C-w>c
+    " Fast saving
+    "nmap <leader>w :w!<cr>
+    " Fast save and quit vim
+    "nmap <leader>s :w <cr> :bd <cr>
+    " Fast quit vim
+    nmap <leader>q :qa <cr>
+    " Fast reload/reread of file
+    " The reason this requires another keystroke is because there must be another <leader>rX keybinding somewhere
+    nmap <leader>r :e<cr>
+    "map <C-C> "+y
+    "map <C-P> "+gP
+    " Format paragraph (auto wrap/fill)
+    map <leader>g gwap
+    " past from clipboard
+    "map <leader>P "+gP
+    "
+    " spell check
+    map <leader>z z=
+
+    " Use the arrows to something useful
+    map <right> :bn<cr>
+    map <left> :bp<cr>
+
+    " Enter Paste mode when you want to paste w/out formatting
+    map <C-p> set pastetoggle
+
+
+    " fontsize plugin
+    nmap <silent> <leader>+  <Plug>FontsizeBegin
+    nmap <silent> <leader>=  <Plug>FontsizeInc
+    nmap <silent> <leader>-  <Plug>FontsizeDec
+    nmap <silent> <leader>0  <Plug>FontsizeDefault
+
+
+    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    " => VIM user interface
+    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+    " Set to auto read when a file is changed from the outside
+    set autoread
+
+    " Set auto change directory to current file's directory
+    if exists('+autochdir')
+      set autochdir
+    endif
+
+    set hid "Change buffer - without saving
+
+    " Set backspace config
+    set backspace=eol,start,indent
+    set whichwrap+=<,>,h,l
+
+    set ignorecase "Ignore case when searching
+    set smartcase
+
+    set hlsearch "Highlight search things
+
+    set incsearch "Make search act like search in modern browsers
+    set nolazyredraw "Don't redraw while executing macros
+
+    " Center the search results
+    nnoremap n nzz
+    nnoremap N Nzz
+    nnoremap * *zz
+    nnoremap # #zz
+    nnoremap g* g*zz
+    nnoremap g# g#zz
+
+    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    " => Text, tab and indent related
+    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    set expandtab
+    set shiftwidth=2
+    autocmd FileType python setlocal shiftwidth=4
+    autocmd FileType python set textwidth=79
+    autocmd FileType rst set textwidth=79
+    set tabstop=3
+    set smarttab
+    set cindent
+
+    set lbr
+    set tw=500
+
+    set ai "Auto indent
+    set si "Smart indent
+    set wrap "Wrap lines
+
+    " bash-like tab completion with opening files
+    set wildmode=longest,list,full
+    set wildmenu
+
+    """"""""""""""""""""""""""""""
+    " => Command-T
+    """"""""""""""""""""""""""""""
+    let g:CommandTMaxHeight = 15
+    set wildignore+=*.o,*.obj,.git,*.pyc,*~
+    nnoremap <leader>y :CommandTFlush<cr>
+    "
+    """"""""""""""""""""""""""""""
+    " => Fuzzy Finder
+    """"""""""""""""""""""""""""""
+    function! ProjectFuzzyFind()
+      let origcurdir = getcwd()
+      let curdir = origcurdir
+      let prevdir = ""
+
+      while curdir != prevdir
+        if filereadable(".fuzzyfinder")
+          break
+        endif
+        cd ..
+        let prevdir = curdir
+        let curdir = getcwd()
+      endwhile
+
+      if filereadable(".fuzzyfinder")
+        let items = readfile(".fuzzyfinder")
+        let files = []
+        for n in items
+          let files += split(glob(curdir . "/" . n), "\n")
+        endfor
+
+        call fuf#givenfile#launch('', 0, '>', files)
+      endif
+    endfunction
+    "map <leader>, :call ProjectFuzzyFind()<CR>
+
+    """"""""""""""""""""""""""""""
+    " => No backups
+    """"""""""""""""""""""""""""""
+    set nobackup
+    set noswapfile
+    set history=1000         " remember more commands and search history
+    set undolevels=1000      " use many muchos levels of undo
+
+    """"""""""""""""""""""""""""""
+    " => Statusline
+    """"""""""""""""""""""""""""""
+
+
+    " Always hide the statusline
+    set laststatus=2
+
+    "  function! CurDir()
+    "      return substitute(getcwd(), '/Users/amir/', "~/", "g")
+    "  endfunction
+    "
+    "  function! HasPaste()
+    "      if &paste
+    "          return 'PASTE MODE  '
+    "      en
+    "      return ''
+    "  endfunction
+    "
+    "  " Format the statusline
+    "  " set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{CurDir()}%h\ \ \ Line:\ %l/%L
+    "  set statusline=\ %{HasPaste()}%f\ %y\ %.40F%m%r%h\ %w\ \ %h\ \ \ %=C:%c\ L:%l\ /\%L\ (%p%%)
+
+    " Replace with new statusline:
+    "set statusline=%2*%t%*\            "tail of the filename
+    " set statusline=\|\[\%t\]\|                  "tail of the filename
+    " set statusline+=%m                 "modified flag
+    " set statusline+=%r                 "read only flag
+    " set statusline+=\ \ (%<%F)         " file full path, truncate
+    " set statusline+=%=                 "left/right separator
+    " "set statusline+=%y                 "filetype
+    " "set statusline+=%10((%l,%c)%)\     " line and column
+    " set statusline+=\ \ C%c                 " percentage of file
+    " set statusline+=\ \ L%l\/              " percentage of file
+    " set statusline+=%L                 " total number of lines
+    " set statusline+=\ \ %P                 " percentage of file
+
+    ""
+    "" All statusline code above is overtaken by the vim-airline plugin
+    ""let g:airline_theme             = 'luna'
+    ""let g:airline_theme             = 'bubblegum'
+    "let g:airline_theme             = 'solarized'
+    ""let g:airline_theme             = 'sol'
+    ""let g:airline_theme             = 'jellybeans'
+    "let g:airline_enable_branch     = 1
+    "let g:airline_enable_syntastic  = 1
+    "let g:airline#extensions#tabline#enabled = 1
+    "let g:airline#extensions#tabline#tab_nr_type = 1
+    "let g:airline#extensions#tabline#left_sep = '|'
+    "let g:airline#extensions#tabline#left_alt_sep = ' '
+    ""trailing whitespace warning
+    "let g:airline_detect_whitespace=0 
+
+
+    """ Remove Gui Toolbar and scroll bars
+    set guioptions=
+    set guioptions-=mTrL
+
+
+    " redef C-j to C-g to move toward Latex <+>
+    inoremap <C-y> <C-k>
+    imap <C-k> <Plug>IMAP_JumpForward
+    nmap <C-k> <Plug>IMAP_JumpForward
+
+    "map <leader>sm :w <cr> :make <cr>
+
+    " Speed up vim over ssh
+
+    "ACK search tool
+    "https://github.com/mileszs/ack.vim.git
+    "Must download ack and place in bin directory or use synaptic: 
+    " >> sudo apt-get install ack-grep; cd ~/usr/local/bin; ln -s /usr/bin/ack-grep ack
+    "wget http://beyondgrep.com/ack-2.04-single-file >> Place in ~/bin/ack and chmod 0755
+    let g:ackprg="ack -H --nocolor --nogroup --column --smart-case"
+    " search for something
+    "nmap \x :Ack ""<Left>
+    nmap <leader>a :call MyAck()<CR>
+    " search for the word under the cursor
+    nmap <leader>S :call MyAckWord()<CR>
+    "nmap \X :Ack <C-r><C-w> ../. <CR>
+    nmap <leader>* :call MyAckWindow()<CR>
+
+    function! MyAck()
+      call inputsave()
+      let g:myname = input("Search: ")
+      call inputrestore()
+      execute 'Ack! "'.g:myname.'" ../'
+      "execute 'Ack! "'.g:myname.'" ./'
+    endfunction
+
+    function! MyAckWord()
+      "execute 'Ack! "'. expand("<cword>") .'" ../'
+      execute 'Ack! "'. expand("<cword>") .'" ./'
+    endfunction
+
+    function! MyAckWindow()
+      execute 'AckWindow! "'. expand("<cword>") .'"'
+    endfunction
+
+
+    " Grepping Tools
+    "
+    " Grep for word under cursor and change to quicklist window
+    " -- current file
+    map <F2> :execute "noautocmd vimgrep /\\<" . expand("<cword>") . "\\>/gj " .  expand("%") <Bar> :botright copen 5<CR><C-W>
+    " -- project directory
+    " -- current filetype in project directory:
+    map \X :execute "noautocmd vimgrep /\\<" . expand("<cword>") . "\\>/gj ../**/*." .  expand("%:e") <Bar> :copen 5<CR><C-W>K
+    "
+    " Grep user input and change to quicklist window (see MyGrep() function)
+    " -- current file
+    nmap \z :call MyGrep()<CR>:execute "noautocmd vimgrep /\\<" . Foo . "\\>/gj " .  expand("%") <Bar> :botright copen 5<CR><C-W>
+    " -- project directory
+    " -- current filetype in project directory:
+    nmap \x :call MyGrep()<CR>:execute "noautocmd vimgrep /\\<" . Foo . "\\>/gj ../**/*." .  expand("%:e") <Bar> :copen 5<CR><C-W>K
+    "
+    nmap \c :copen 5<CR>
+
+    function! MyGrep()
+      call inputsave()
+      let g:Foo = input("enter search pattern: ")
+      call inputrestore()
+    endfunction
+
+    " mappings to navigate the quickfix list
+    "nmap <S-F1>  :cc
+    " These don't work well for some reason
+    "nmap P :cn<CR>
+    "nmap N :cp<CR>
+    "map <F3>    :cnfile<CR>
+    "map <S-F3>  :cpfile<CR>
+    "map <F4>    :clast<CR>
+    "map <S-F4>  :cfirst<CR>
+    "
+    " move around windows quickly
+    nnoremap <C-n> <C-W>jM
+    nnoremap <C-k> <C-W>kM
+    nnoremap <C-h> <C-W>hM
+    nnoremap <C-l> <C-W>lM
+
+    " REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
+    filetype plugin indent on
+
+    " IMPORTANT: win32 users will need to have 'shellslash' set so that latex
+    " can be called correctly.
+    set shellslash
+
+    " IMPORTANT: grep will sometimes skip displaying the file name if you
+    " search in a singe file. This will confuse Latex-Suite. Set your grep
+    " program to always generate a file-name.
+    set grepprg=grep\ -nH\ $*
+
+    " OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
+    " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
+    " The following changes the default filetype back to 'tex':
+    let g:tex_flavor='latex'
+
+    " add filetypes to fortran
+    "syntax on
+    "filetype on
+    au BufNewFile,BufRead *.inc set filetype=fortran
+    au BufNewFile,BufRead *.INC set filetype=fortran
+    au BufNewFile,BufRead *.inp set filetype=cterm
+    " the following sets the filetype for any fie that doesn't have a filetype
+    au BufNewFile,BufRead * if &ft == '' | set ft=cpp | endif
+    au BufNewFile,BufRead *.py set filetype=python
+
+    " enable all python highlighting (see vim-local/syntax/python.vim)
+    let python_highlight_all = 1
+    let python_version_2 = 1 " python 3 is the default
+
+    " ______________________
+    " Fortran Customizations
+    "
+    " Indentation If you use only structured loops of the do/enddo form, you should
+    " declare this by setting the fortran_do_enddo:
+    let fortran_do_enddo=1
+    " only for f90 files:
+    "au! BufRead,BufNewFile *.f90 let b:fortran_do_enddo=1
+    "autocmd BufWritePre *.f :%s/\s\+$//e
+    "autocmd BufWritePre *.f90 :%s/\s\+$//e
+    "autocmd BufWritePre *.f70 :%s/\s\+$//e
+    "
+    " Code folding
+    map <leader>s zMzv
+    " move to beginning of current fold:
+    map [s [z zz
+    " move to end of current fold:
+    map ]s ]z zz
+    function! MarkdownLevel()
+      "if getline(v:lnum) =~ '!###### .*$'
+      "  return ">6"
+      "elseif getline(v:lnum) =~ '!##### .*$'
+      "  return ">5"
+      "elseif getline(v:lnum) =~ '!#### .*$'
+      "  return ">4"
+      "elseif getline(v:lnum) =~ '!### .*$'
+      "  return ">3"
+      "elseif getline(v:lnum) =~ '!## .*$'
+      "  return ">2"
+      "elseif getline(v:lnum) =~ '!# .*$'
+      "  return ">1"
+      "endif
+      if getline(v:lnum) =~ '!#.*$'
+        return ">1"
+      endif
+      return "=" 
+    endfunction
+    function! MarkdownFoldText()
+      let foldsize=(v:foldend-v:foldstart)
+      return getline(v:foldstart).' ('.foldsize.' lines)'
+    endfunction
+    autocmd FileType fortran setlocal foldtext=MarkdownFoldText()
+    autocmd FileType fortran setlocal foldexpr=MarkdownLevel()  
+    autocmd FileType fortran setlocal foldmethod=expr
+
+    "
+  " ________________
+  " Vim Indent Guides
+  let g:indent_guides_auto_colors = 0
+  autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=black   ctermbg=black
+  autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=darkgrey ctermbg=darkgrey
+  let g:indent_guides_start_level = 4
+
+  " ___________________
+  " Indent Lines Plugin
+  "
+  let g:indentLine_enabled=1
+  let g:indentLine_color_term = 108
+  "let g:indentLine_char = '|'
+
+  "
+  " _____________
+  " Color Columns
+  "
+  " highlight the row or column under the cursor
+  autocmd FileType python set cursorcolumn " column under cursor
+  "autocmd FileType fortran set cursorcolumn " column under cursor
+  "autocmd FileType fortran set cursorline " row under cursor
+  if exists('+colorcolumn')
+     "
+     "vim 7.3 and newer with colorcolumn
+     "
+     "hi ColorColumn guibg=#3d3d3d
+     " RR: colorsheme related
+     "hi ColorColumn ctermbg=234
+     if MYVIMCOLORS=="zenburn"
+       hi ColorColumn ctermbg=236
+     endif
+     if MYVIMCOLORS=="solarized-light"
+       hi ColorColumn ctermbg=255
+       hi CursorColumn ctermbg=255
+     endif
+     autocmd FileType fortran set colorcolumn=6,73
+     autocmd FileType python set colorcolumn=79
+  else
+     "
+     "vim 7.2 and older without colorcolumn
+     "
+     hi ColorColumn guibg=#3d3d3d
+     "if &t_Co > 255
+     "   hi ColorColumn ctermbg=236
+     "endif
+     hi ColorColumn ctermbg=236
+     :au BufWinEnter *.f let w:m1=matchadd('ColorColumn', '\%<75v.\%>72v', -1)
+     :au BufWinEnter *.f let w:m2=matchadd('ErrorMsg', '\%>72v.\+', -1)
+     :au BufWinEnter *.f let w:m3=matchadd('ColorColumn', '\%<7v.\%>6v', -1)
+  endif
+
+  " set text width for latex files
+  au BufNewFile,BufRead *.tex set textwidth=90
+  if MYVIMCOLORS=="zenburn"
+    au BufNewFile,BufRead *.tex hi Error None
+  endif
+
+  ""
+  "" RR - AUTO FORMATTING OF PARAGRAPHS IN LATEX - turned off for beamer
+  "" add auto formatting of paragraphs and with w option
+  ""
+  if has('autocmd')
+     autocmd FileType tex set list
+     autocmd FileType tex set listchars=tab:>>,trail:>
+     autocmd FileType tex set formatoptions+=aw
+     autocmd FileType tex set spell " use set nospell to TURN OFF
+  endif
+
+
+  " set initial gvim window size
+  if has("gui_running")
+    " GUI is running or is about to start.
+    " Maximize gvim window.
+    "set lines=999 columns=999
+    " Custom size
+    set lines=50 columns=105
+  endif
+
+  "augroup tex
+
+  "                \ call system('touch ' . 'errors.err') |
+  "                \ silent execute ":!make > errors.err 2>&1 &" |
+  "                \ redraw! |
+  "                \ cgetfile errors.err
+  "                "\ cw ~/vim-local/errors.err
+  "augroup END
+  "
+
+  " Swap and Backup files
+  " Automatically create .backup directory, writable by the group.
+  "if filewritable(".") && ! filewritable(".backup")
+  "  silent execute '!umask 002; mkdir .backup'
+  "endif
+  " Store swap files in fixed location, not current directory.
+  " set dir=~/.vimswap//,/var/tmp//,/tmp//,.
+  " set nobackup
+  " set nowritebackup
+  map <S-F12> :W <CR> ; :exec "!makebg" v:servername "'" . &makeprg . "'" &makeef<CR><CR>
+  "map <F12> :w <CR> ; :exec "!rm " &makeef "; makebg" v:servername "'" . &makeprg . "'"
+  map <F12> :w <CR> ; :exec "!rm error.err" "; makebg" v:servername "'" . &makeprg . "'" "&makeef<CR><CR>
+
+  ""
+  "" Place a continuation characters (& or |) in column number 6 and keep cursor position
+  ""
+  map <leader>o :call MyCol1()<cr>
+  map <leader>i :call MyCol2()<cr>
+  map <leader>I :call MyCol7()<cr>
+  function! MyCol1()
+    let g:colnum=col(".")
+    execute "norm 6|"
+    execute "normal r&"
+    execute "norm ".g:colnum."|"
+  endfunction
+  function! MyCol2()
+    let g:colnum=col(".")
+    execute "norm 6|"
+    execute "normal r|"
+    execute "norm ".g:colnum."|"
+  endfunction
+  function! MyCol7()
+    let g:colnum=col(".")
+    execute "norm 6|"
+    execute "normal r "
+    execute "norm ".g:colnum."|"
+  endfunction
+
+  ""
+  "" Nerd commenter keybindings (default from Documentation)
+  " [count]<leader>cc |NERDComComment|
+  " [count]<leader>cn |NERDComNestedComment|
+  " [count]<leader>c<space> |NERDComToggleComment|
+  "
+  "" Nerd Tree Settings
+  let g:NERDTreeWinSize=20
+  let g:NERDTreeWinPos = "right"
+  map <F3> :NERDTreeToggle<cr>
+  map <C-t> :NERDTreeToggle<cr>
+  map <C-i> :NERDTreeFind<cr>
+  " How can I open a NERDTree automatically when vim starts up?
+  autocmd VimEnter * NERDTreeCWD | wincmd p
+  autocmd BufEnter * NERDTreeMirror | wincmd p
+  "autocmd BufEnter * silent! if bufname('%') !~# 'NERD_tree_' | cd %:p:h | NERDTreeCWD | wincmd p | endif
+  " How can I close vim if the only window left open is a NERDTree:
+  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+  " How can I open a NERDTree automatically when vim starts up if no files were specified?
+  autocmd StdinReadPre * let s:std_in=1
+  autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+  " How can I ignore a certain file extension (ex: *.pyc)?
+  let NERDTreeIgnore = ['\.pyc$']
+
+ 
+
+    
+  ""
+  "" Insert/Remove a comment character (!)in column number 1 and keep cursor position
+  ""
+  "map <leader>/ :call MyCol3()<cr>
+  "map <leader>? :call MyCol4()<cr>
+  map <leader>m :call MyCol3()<cr>
+  map <leader>. :call MyCol4()<cr>
+  map <leader>R :call MyCol5()<cr>
+  map <leader>RR :call MyCol6()<cr>
+  function! MyCol3()
+    let g:colnum=col(".")
+    execute "norm 1|"
+    execute "normal r!"
+    execute "norm ".g:colnum."|"
+  endfunction
+  function! MyCol4()
+    let g:colnum=col(".")
+    execute "norm 1|"
+    execute "normal r "
+    execute "norm ".g:colnum."|"
+  endfunction
+  function! MyCol5()
+    let g:colnum=col(".")
+    execute "norm 1|"
+    execute "normal r!"
+    execute "norm 2|"
+    execute "normal rR"
+    execute "norm 3|"
+    execute "normal rR"
+    execute "norm ".g:colnum."|"
+  endfunction
+  function! MyCol6()
+    let g:colnum=col(".")
+    execute "norm 1|"
+    execute "normal r "
+    execute "norm 2|"
+    execute "normal r "
+    execute "norm 3|"
+    execute "normal r "
+    execute "norm ".g:colnum."|"
+  endfunction
+"
+" EasyMotion and IncSearch Settings and Keybindings
+"
+" Search commands
+"map /  <Plug>(incsearch-forward)
+"map ?  <Plug>(incsearch-backward)
+"map g/ <Plug>(incsearch-stay)
+omap <leader>w /
+omap <leader>W ?
+noremap <leader>w /
+noremap <leader>W ?
+map  / <Plug>(easymotion-sn)
+map  ? <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+omap ? <Plug>(easymotion-tn)
+"omap  ? <Plug>(easymotion-bd-tn)
+" These `n` & `N` mappings are options. You do not have to map `n` & `N` to EasyMotion.
+" " Without these mappings, `n` & `N` works fine. (These mappings just provide
+" " different highlight method and have some other features )
+map  n <Plug>(easymotion-next)zz
+map  N <Plug>(easymotion-prev)zz
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+nmap * <Plug>(easymotion-sn)\(<c-r>=expand("<cword>")<cr>\)<cr>
+
+" Bi-directional find motion
+" " Jump to anywhere you want with minimal keystrokes, with just one key binding.
+" " `s{char}{label}`
+"nmap f <Plug>(easymotion-s)
+" " or
+" " `s{char}{char}{label}`
+" " Need one more keystroke, but on average, it may be more comfortable.
+" nmap s <Plug>(easymotion-s2)
+"
+" Use uppercase target labels and type as a lower case
+let g:EasyMotion_use_upper = 1
+" Turn on case insensitive feature
+let g:EasyMotion_smartcase = 1
+" allow lower case to be used to go to upper case label (not vice versa)
+let g:EasyMotion_use_smartsign_us = 1 " US layout
+" JK motions: Line motions
+map <leader>l <Plug>(easymotion-lineforward)
+map <leader>j <Plug>(easymotion-j)
+map <leader>k <Plug>(easymotion-k)
+map <leader>h <Plug>(easymotion-linebackward)
+let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
+"
+"Color Linking
+"hi EasyMotionTarget ctermfg=0       ctermbg=206     cterm=d
+"hi EasyMotionShade  ctermfg=0       ctermbg=206     cterm=none
+"hi link EasyMotionTarget Special " PreProc,Directory,Title,WarningMsg,ErrorMsg,Special
+"hi link EasyMotionShade  Comment
+
+if MYVIMCOLORS == "zenburn"
+  "hi EasyMotionTarget ctermfg=196
+  hi link EasyMotionTarget Search
+  hi link EasyMotionShade  Normal
+  hi EasyMotionTarget  ctermbg=181   ctermfg=237
+  hi EasyMotionTarget2First  ctermbg=228   ctermfg=237
+  hi EasyMotionTarget2Second  ctermbg=228   ctermfg=237
+  hi EasyMotionSearch ctermfg=230   ctermbg=243 cterm=bold
+  "hi EasyMotionIncSearch ctermfg=230   ctermbg=243 cterm=bold
+  hi link EasyMotionIncSearch IncSearch
+  hi link EasyMotionIncCursor IncSearch
+  hi link EasyMotionMoveHL IncSearch
+  hi link StupidEasyMotionTarget Search
+  hi link StupidEasyMotionTarget EasyMotionTarget
+elseif MYVIMCOLORS == "jellybeans"
+  "hi EasyMotionTarget ctermfg=196
+  hi link EasyMotionTarget Search
+  hi link EasyMotionShade  Normal
+  hi EasyMotionTarget  ctermbg=181   ctermfg=237
+  hi EasyMotionTarget2First  ctermbg=228   ctermfg=237
+  hi EasyMotionTarget2Second  ctermbg=228   ctermfg=237
+  hi EasyMotionSearch ctermfg=230   ctermbg=243 cterm=bold
+  "hi EasyMotionIncSearch ctermfg=230   ctermbg=243 cterm=bold
+  hi link EasyMotionIncSearch IncSearch
+  hi link EasyMotionIncCursor IncSearch
+  hi link EasyMotionMoveHL IncSearch
+  hi link StupidEasyMotionTarget Search
+  hi link StupidEasyMotionTarget EasyMotionTarget
+else
+  " Other linking options: PreProc,Directory,Title,WarningMsg,ErrorMsg,Special
+  hi link EasyMotionTarget Special
+  hi link EasyMotionShade  Comment
+  hi link EasyMotionTarget2First MatchParen
+  hi link EasyMotionTarget2Second MatchParen
+  hi link EasyMotionIncSearch IncSearch
+endif
+
+" Easymotion shortcut (search in current line only)
+" F = original f style motion
+" f = search for target character
+" w/W = search for spaces
+nmap f <leader><leader>f
+nmap f<space> <leader><leader>w
+"map <leader>w <leader><leader>w
+"map <leader>W <leader><leader>W
+
+  "
+  " Change Cursor shape from bar to i-beam for Konsole terminal
+  " Use a blinking upright bar cursor in Insert mode, a blinking block in normal
+  "
+  if &term == 'xterm-256color' || &term == 'screen-256color'
+    "
+    " ALL Terminals
+    " highlight the line for insert mode (works with all terminals)
+    "
+    "autocmd InsertEnter * set cul
+    "autocmd InsertLeave * set nocul
+    "
+    " KDE Konsole Terminal
+    "
+    if exists('$TMUX')
+      let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\" 
+      let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+    else
+      let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+      let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+    endif
+    "
+    " GNOME Terminal
+    "
+    if has("autocmd")
+      "
+      " N.B. The following must be customized to the selected gnome-terminal profile name, 
+      "      which is different from the visible name in the menus. To find out the actual 
+      "      profile name, you need to install gconf-editor and gconftool-2.
+      "      In a terminal, type gconf-editor to open the gui then go to
+      "      apps/gnome-terminal/profiles and search the profiles for the one with 
+      "      the "visible name" the you're looking for.
+      "
+      "au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
+      "au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
+      "au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
+      "au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Profile35/cursor_shape ibeam"
+      " User-specified profile:
+      "au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Profile35/cursor_shape block"
+      "au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Profile35/cursor_shape block"
+    endif
+
+    "if exists('$TMUX')
+    "  ":silent !echo -ne "\<Esc>Ptmux;\<Esc>\033]12;lightgrey\007\<Esc>\\"
+    "  let &t_SI = "\<Esc>Ptmux;\<Esc>\033]12;green\007\<Esc>\\"
+    "  let &t_EI = "\<Esc>Ptmux;\<Esc>\033]12;lightgrey\007\<Esc>\\"
+    "  "autocmd VimLeave * :silent !echo -ne "\<Esc>Ptmux;\<Esc>\033]12;grey\007\<Esc>\\"
+    "else
+    "  ":silent !echo -ne "\033]12;lightgrey\007"
+    "  let myCR = &t_EI
+    "  let &t_SI = "\033]12;green\007"
+    "  let &t_EI = "\033]12;lightgrey\007"
+    "  autocmd VimLeave * :silent !echo -ne "\033]12;lightgrey\007"
+    "endif
+  endif
+
+  "if &term =~ "xterm\\|rxvt"
+  "  :silent !echo -ne "\033]12;red\007"
+  "  let &t_SI = "\033]12;green\007"
+  "  let &t_EI = "\033]12;red\007"
+  "  autocmd VimLeave * :silent !echo -ne "\033]12;grey\007"
+  "endif
+  "if &term =~ "xterm\\|rxvt"
+  "  let &t_SI .= "\033]1 q"
+  "  let &t_EI .= "\033]3 q"
+  "  " 1 or 0 -> blinking block
+  "  " 2 -> solid block
+  "  " 3 -> blinking underscore
+  "  " 4 -> solid undersocore
+  "  " Recent versions of xterm (282 or above) also support
+  "  " 5 -> blinking vertical bar
+  "  " 6 -> solid vertical bar
+  "endif

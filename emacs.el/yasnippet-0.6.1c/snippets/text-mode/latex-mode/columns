@@ -1,0 +1,5 @@
+\begin{columns}[t] 
+  \column{${1:5cm}} 
+    $0 
+  \column[T]{${2:5cm}} 
+\end{columns} 

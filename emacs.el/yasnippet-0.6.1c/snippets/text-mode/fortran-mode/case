@@ -1,0 +1,12 @@
+#contributor: Li Zhu <http://www.zhuli.name>
+#name : case
+# --
+select case (${1:switch})
+ case ($2)
+    $3
+ case ($4)
+    $5
+ case default
+    stop ' $1 assigned wrong value '
+ end select ! $1
+$0

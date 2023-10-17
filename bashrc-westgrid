@@ -1,0 +1,116 @@
+#
+# BASHRC for WESTGRID
+#
+
+#
+# Export Path and other useful variables
+#
+#-- terminal
+export TERM=xterm-256color
+#-- home and work directories
+export MYHOME=/home/rashad
+export MYWORK=/global/scratch/rashad
+export HOST=$(uname)
+export ARCH=$(uname)_$(uname -m)
+#-- vim
+export MYVIM=$HOME/usr/local/bin/vim
+export VIMRUNTIME=$HOME/usr/local/vim73/runtime
+#-- git (adding your own installation)
+export PATH=~/usr/local/git-1.7.12.1:$PATH
+export PATH=~/usr/local/git-1.7.12.1/gitk-git:$PATH
+#-- bin and scripts
+export PATH=/home/rashad/bin:/home/rashad/bin/scripts:/home/rashad/grid_utils:$HOME/usr/local/bin:${PATH} 
+#-- Location of personal scratch space
+export SCRATCH=/global/scratch/rashad
+#-- Location of group project directory
+export PROJECT=/sb/project/syu-780-aa
+#-- Location of jetstream Test Suite
+export JSTS=$PROJECT/jetstream_testSuite
+#-- Location of grid library
+export GRIDLIB=$PROJECT/grid_library
+#-- Copy command shortcut
+export ODD=ramy@oddjob.utias.utoronto.ca:/nfs/carv/d1/people/ramy
+export ODDT=ramy@oddjob.utias.utoronto.ca:/nfs/carv/d1/people/ramy/transfer
+export SCI=rashad@login.scinet.utoronto.ca:/home/z/zingg/rashad
+export SCIT=rashad@login.scinet.utoronto.ca:/home/z/zingg/rashad/transfer
+#-- Jetstream related paths
+export PATH=$PATH:$HOME/jetstream/grid_utils
+export LD_LIBRARY_PATH={$LD_LIBRARY_PATH}:$HOME/$ARCH/lib:$HOME/jetstream/cgnslib_2.5/LINUX:$HOME/usr/local/lib
+export PYTHONPATH=/home/rashad/mdo_import_helper:${PYTHONPATH} 
+#-- Set environment variable that controls how Fortran unformatted in/out operations are handled
+export F_UFMTENDIAN=big
+#-- Set memory limits
+ulimit -c 0         # limit coredumpsize 0
+ulimit -s unlimited # limit stacksize unlimited
+#
+# Load modules
+# -- type "module avail" to see available modules
+#
+module unload intel/11.1
+module load intel/12
+module load intel/2011-sp1.10.319
+module load python/2.7.2
+
+#
+# Aliases
+#
+#-- Login to remote servers
+alias hpacf='cd ~/01_utias/03_hpacf; ssh -X ramy@hpacf.utias.utoronto.ca'
+alias oddjob='cd ~/01_utias/; ssh -X ramy@oddjob.utias.utoronto.ca;'
+alias scinet='ssh -l rashad login.scinet.utoronto.ca' # ssh into scinet
+alias gpc='ssh -X gpc02'    # ssh into gpc node
+#-- Mounting File Systems and SSH commands - from personal laptop###
+alias moddjob='cd ~/01_utias/; sshfs ramy@oddjob.utias.utoronto.ca: 02_oddjob/; cd 02_oddjob/'  # Mount your file system from school
+alias uoddjob='cd ~/01_utias/; fusermount -u 02_oddjob/'  #Unmount your file system from school
+alias mhpacf='cd ~/01_utias/; sshfs ramy@hpacf.utias.utoronto.ca: 03_hpacf/; cd 03_hpacf/'
+alias uhpacf='cd ~/01_utias/; fusermount -u 03_hpacf/'  #Unmount your file system from school
+alias mscinet='cd /home/rashad/; sshfs rashad@login.scinet.utoronto.ca: 04_scinet/; cd 04_scinet/'  # Mount your file system from school
+alias uscinet='cd /home/rashad/; fusermount -u 04_scinet/'  #Unmount your file system from school
+#-- scratch
+alias scr='cd /global/scratch/rashad'
+#-- queue related aliases
+alias qr='showq | grep "rashad"'
+alias qs='qstat -u rashad'
+alias qss='showq -u rashad'
+alias qc='qstat -f | grep -A 1 "Job Id\|work_dir" | grep -A 1 -B 4 rashad'
+alias qg='clear; showq -w group=syu-780-01'
+alias qw='clear; showq -i -w group=syu-780-01'
+alias tr='top | grep "rashad"'
+alias ss='showstart'
+alias cj='checkjob'
+#-- interactive jobs
+alias debug1='qsub -X -I -q interactive -l walltime=03:00:00,nodes=1:ppn=12,mem=23gb'
+alias debug2='qsub -X -I -q interactive -l walltime=03:00:00,nodes=2:ppn=12,mem=46gb'
+alias debug3='qsub -X -I -q interactive -l walltime=03:00:00,nodes=3:ppn=12,mem=69gb'
+alias debug4='qsub -X -I -q interactive -l walltime=03:00:00,nodes=4:ppn=12,mem=92gb'
+alias debug5='qsub -X -I -q interactive -l walltime=03:00:00,nodes=5:ppn=12,mem=105gb'
+alias debug1latt='qsub -X -I -q interactive -l walltime=03:00:00,nodes=1:ppn=8,mem=11gb'
+alias debug2latt='qsub -X -I -q interactive -l walltime=03:00:00,nodes=2:ppn=8,mem=22gb'
+alias debug3latt='qsub -X -I -q interactive -l walltime=03:00:00,nodes=3:ppn=8,mem=33gb'
+alias debug4latt='qsub -X -I -q interactive -l walltime=03:00:00,nodes=4:ppn=8,mem=44gb'
+alias debug5latt='qsub -X -I -q interactive -l walltime=03:00:00,nodes=5:ppn=8,mem=55gb'
+
+#
+# Source global aliases, funcitons, and definitions
+# -- must come after export of $MYHOME and $MYWORK variable
+#
+if [ -f $HOME/.bashrc-global ]; then
+	. $HOME/.bashrc-global
+fi
+
+#
+# Custom function defintions
+#
+function subdir-run() 
+{ 
+  for dir in */; do
+    echo $dir;
+    cd $dir;
+    qsub runpar.pbs; 
+    cd ../
+  done
+}
+function run() { qsub runpar.pbs; }
+
+#
+# END OF BASHRC

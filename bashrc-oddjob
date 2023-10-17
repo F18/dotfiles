@@ -1,0 +1,115 @@
+#
+# BASHRC for ODDJOB
+#
+
+#
+# Export Path and other useful variables
+#
+#-- terminal
+export TERM=screen-256color # works for tmux
+#export TERM=screen # works for tmux
+#-- home and work directories
+export MYHOME=/nfs/carv/d1/people/ramy
+export MYWORK=/nfs/carv/d1/people/ramy/optima-verify/08_optimize
+export MYVIM=/nfs/carv/d1/people/ramy/usr/local/bin/vim
+#-- scp
+export SCPGUILL=rashad@guillimin.clumeq.ca:/home/rashad/
+export SCI=rashad@login.scinet.utoronto.ca:/home/z/zingg/rashad/
+export SCIT=rashad@login.scinet.utoronto.ca:/home/z/zingg/rashad/transfer/
+export SCPPARA=rashad@parallel.westgrid.ca:/home/rashad/
+#-- vim
+export VIMRUNTIME=~/usr/local/vim74b/runtime
+#-- bin and scripts
+export PATH=~/usr/local/bin:$PATH
+export PATH=~/usr/local/emacs-23.3/src/:$PATH
+export PATH=~/bin/scripts:$PATH
+export PATH=~/bin/scripts/ConvergenceOrder:$PATH
+#-- CFFC
+export CFFC_Path=~/CFFC
+export PATH=$CFFC_Path/src_2D/:$PATH
+export PATH=$CFFC_Path/src_3D/:$PATH
+export PATH=$CFFC_Path/bin:${HOME}/bin:$PATH
+#-- XFOIL & MSES
+export PATH=~/usr/local/MSES/bin:$PATH
+export PATH=~/01_thesis/Xfoil/bin:$PATH
+export XPLOT11_BACKGROUND=black # for MSES
+#-- Latex
+export PATH=~/scripts/LatexProject:$PATH
+if [ '$HOST != oddjob.utias.utoronto.ca' ]; then
+  BIBINPUTS=.:${HOME}/thesis/BibTeX_Database:${BIBINPUTS}
+  export BIBINPUTS
+fi
+#-- Tecplot (tec360ex)
+export TECPLOT_PATH=/nfs/kris/usr2/local_net2/tecplot360ex
+export PATH=$TECPLOT_PATH/bin:${HOME}/bin:$PATH
+#-- OPTIMA2D 
+export PATH=~/optima-grids/grid_utils:$PATH
+#-- Set environment variable that controls how Fortran unformatted in/out operations are handled
+export F_UFMTENDIAN=big
+#-- Set memory limits
+ulimit -c 0         # limit coredumpsize 0
+ulimit -s unlimited # limit stacksize unlimited
+#-- add compilers to path
+export PATH=/usr2/local_net2/mpich2-1.3.2p1/intel-11.1/bin/:$PATH
+source /usr2/local_net2/intel/Compiler/11.1/073/bin/intel64/iccvars_intel64.sh intel64
+source /usr2/local_net2/intel/Compiler/11.1/073/bin/intel64/ifortvars_intel64.sh intel64
+#-- location of libraries
+export XLIB_PATH=-L/usr/X11R6/lib
+export LD_LIBRARY_PATH=$HOME/usr/local/lib:$LD_LIBRARY_PATH
+
+#
+# Aliases
+#
+#-- vim
+alias v='vim -X'
+#-- firefox
+alias CleanFirefox='rm -f .mozilla/firefox/3rd8d8wt.default/.parentlock .mozilla/firefox/h4p7qmwr.default/lock  .mozilla/firefox/3rd8d8wt.default/places.sqlite .mozilla/firefox/3rd8d8wt.default/places.sqlite-journal'
+#-- thunderbird
+alias CleanThunderbird='rm -f  .thunderbird/8ii90idi.default/.parentlock .thunderbird/5yd1918j.default/lock'
+#-- ssh to some local machines
+alias ssh='ssh -X -i ~/.ssh/id_rsa_oddjob' # hack to get ssh keys working (use as 'ssh zaphod')
+alias zaphod='ssh zaphod'
+alias drax='ssh drax'
+alias slarti='ssh slartibartfast'
+#-- Mounting File Systems and SSH commands - from school computer###
+alias mhpacf='cd ~/03_hpacf/ramy/'
+#alias uhpacf='fusermount -u 03_hpacf/'  #Unmount your file system from school
+alias hpacf='cd ~/03_hpacf; ssh fe03'
+alias scinet='ssh -l rashad login.scinet.utoronto.ca'
+#alias mscinet='cd ~/04_scinet; sshfs rashad login.scinet.utoronto.ca: ~/04_scinet/'
+alias mscinet='cd ~; sshfs rashad@login.scinet.utoronto.ca: 04_scinet/; cd 04_scinet/'
+alias uscinet='fusermount -u ~/04_scinet/'  #Unmount your file system from scinet
+alias guill='ssh -X guillimin.clumeq.ca -l rashad'
+alias mguill='cd ~; sshfs rashad@guillimin.clumeq.ca: 05_guill/; cd 05_guill/'
+alias uguill='fusermount -u ~/05_guill/'  #Unmount your file system from scinet
+#-- westgrid
+alias latt='ssh -X rashad@lattice.westgrid.ca'
+alias para='ssh -X rashad@parallel.westgrid.ca'
+alias mwest='cd ~; sshfs rashad@parallel.westgrid.ca: 06_westgrid/; cd 06_westgrid/'
+alias uwest='fusermount -u ~/06_westgrid/'  #Unmount your file system from scinet
+
+
+#
+# Source global aliases, funcitons, and definitions
+# -- must come after export of $MYHOME and $MYWORK variable
+#
+if [ -f $HOME/.bashrc-global ]; then
+	. $HOME/.bashrc-global
+fi
+
+#
+# Custom function defintions
+#
+function subdir-run() 
+{ 
+  for dir in */; do
+    echo $dir;
+    cd $dir;
+    nice -19 $HOME/optima/optima2D/OPTIMA2D_x86_64; 
+    cd ../
+  done
+}
+function run() { nice -19 $HOME/optima/optima2D/OPTIMA2D_x86_64; }
+
+#
+# END OF BASHRC

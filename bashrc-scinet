@@ -1,0 +1,172 @@
+#
+# BASHRC for SCINET
+#
+
+#
+# Export Path and other useful variables
+#
+#-- terminal
+export TERM=screen-256color
+#export TERM=screen
+#export TERM=xterm-256color
+#-- home and work directories
+export MYHOME=/home/z/zingg/rashad
+export MYWORK=/scratch/z/zingg/rashad/optima-verify/08_optimize
+export HOST=$(uname)
+export ARCH=$(uname)_$(uname -m)
+#-- vim
+export MYVIM=$HOME/usr/local/bin/vim
+export VIMRUNTIME=$MYHOME/usr/local/vim74/runtime
+export LANG=en_US.UTF-8
+#-- git (adding your own installation)
+export PATH=~/usr/local/git-1.7.12.1:$PATH
+export PATH=~/usr/local/git-1.7.12.1/gitk-git:$PATH
+#-- bin and scripts
+export PATH=$PATH:$HOME/bin:$HOME/bin/scripts:$HOME/usr/local/bin
+export PATH=/home/z/zingg/rashad/bin:/home/z/zingg/rashad/grid_utils:${PATH} 
+#-- python
+export PYTHONPATH=/home/z/zingg/rashad/mdo_import_helper:${PYTHONPATH} 
+#export PYTHONPATH=/home/z/zingg/rashad/usr/local/lib/python2.7/site-packages/:$PYTHONPATH
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/$ARCH/lib:$HOME/jetstream/cgnslib_2.5/LINUX:$HOME/usr/local/lib
+#-- Location of jetstream Test Suite 
+export JSTS=/project/z/zingg/jetstream_testSuite 
+#-- Location of grid library 
+export GRIDLIB=/project/z/zingg/grid_library 
+#-- Location of X11 Libraries 
+export XLIB_PATH=-L/scinet/gpc/lib64 
+#-- Location of personal scratch space
+export SCRATCH=/scratch/z/zingg/rashad
+#-- Location of group project directory
+export PROJECT=/project/z/zingg
+#-- Location of jetstream Test Suite
+export JSTS=$PROJECT/jetstream_testSuite
+#-- Location of grid library
+export GRIDLIB=$PROJECT/grid_library
+#-- MPI
+export MPI_DEBUG='mpirun -env I_MPI_FABRICS shm:tcp' 
+#-- Copy command shortcut
+export ODD=ramy@oddjob.utias.utoronto.ca:/nfs/carv/d1/people/ramy
+export ODDT=ramy@oddjob.utias.utoronto.ca:/nfs/carv/d1/people/ramy/transfer
+export SCI=rashad@login.scinet.utoronto.ca:/home/z/zingg/rashad
+export SCIT=rashad@login.scinet.utoronto.ca:/home/z/zingg/rashad
+#-- Jetstream related paths
+export PATH=$PATH:$HOME/jetstream/grid_utils
+#-- Set environment variable that controls how Fortran unformatted in/out operations are handled
+export F_UFMTENDIAN=big
+#-- Set memory limits
+ulimit -c 0         # limit coredumpsize 0
+ulimit -s unlimited # limit stacksize unlimited
+#
+# Load modules
+# -- type "module avail" to see available modules
+#
+if [ "${HOST}" == "AIX" ]; then 
+   # do things for the TCS machine 
+   # user environment for all shells goes here 
+   # replace colon with your own commands 
+   : 
+else 
+   # do things for the GPC machine 
+ 
+   module load intel  
+   module load intelmpi 
+   module load extras 
+   module load git  
+   module load gcc  
+   module load python
+   #module load emacs 
+   module load Xlibraries/X11-64 
+   module load gnuplot
+   module load ImageMagick
+   module load gnu-parallel
+   module load valgrind
+   #module load hdf5/187-v18-serial-intel # Req'd for Graham's TACS code? 
+   #module load intelmpi intel utils  
+        #module load intelmpi intel/intel-v11.1.056 utils 
+ 
+        #module load intel openmpi/1.3.2-intel-v11.0-ofed utils 
+ 
+   # user environment for all shells goes here 
+   # replace colon with your own commands 
+   : 
+fi 
+
+#
+# Aliases
+#
+#-- Login to remote servers
+alias hpacf='cd ~/01_utias/03_hpacf; ssh -X ramy@hpacf.utias.utoronto.ca'
+alias oddjob='cd ~/01_utias/; ssh -X ramy@oddjob.utias.utoronto.ca;'
+alias scinet='ssh -l rashad login.scinet.utoronto.ca' # ssh into scinet
+#-- Mounting File Systems and SSH commands
+alias moddjob='cd ~/01_utias/; sshfs ramy@oddjob.utias.utoronto.ca: 02_oddjob/; cd 02_oddjob/'
+alias uoddjob='cd ~/01_utias/; fusermount -u 02_oddjob/'
+alias mhpacf='cd ~/01_utias/; sshfs ramy@hpacf.utias.utoronto.ca: 03_hpacf/; cd 03_hpacf/'
+alias uhpacf='cd ~/01_utias/; fusermount -u 03_hpacf/'
+alias mscinet='cd /home/rashad/; sshfs rashad@login.scinet.utoronto.ca: 04_scinet/; cd 04_scinet/'
+alias uscinet='cd /home/rashad/; fusermount -u 04_scinet/'
+#-- scratch
+alias scr='cd /global/scratch/rashad'
+#-- gpc
+alias gpc='ssh -X gpc04'
+alias gpc1='ssh -X gpc01'
+alias gpc2='ssh -X gpc02'
+alias gpc3='ssh -X gpc03'
+alias gpc4='ssh -X gpc04'
+#-- queue
+alias qa='showbf'
+alias qr='showq | grep "rashad"'
+alias qs='qstat -u rashad'
+alias qg='showq -w group=zingg'
+alias qgr='showq -r | grep "zingg"'
+alias qgg='showqgroup.sh'
+alias qc='qstat -f | grep -A 2 "Job Id\|Output_Path"'
+alias qss='showq -u rashad'
+alias qlargemem='showq -w class=largemem'
+alias qsandy='showq -w class=sandy'
+alias qdebug='showq -w class=debug'
+alias qpriority='showq -i | grep zingg'
+alias tr='top | grep "rashad"'
+#-- iteractive jobs
+alias debug1='qsub -l nodes=1:ppn=8,walltime=2:00:00 -q debug -I'
+alias debug2='qsub -l nodes=2:ppn=8,walltime=1:00:00 -q debug -I'
+alias debug3='qsub -l nodes=3:ppn=8,walltime=00:30:00 -q debug -I'
+alias debug4='qsub -l nodes=4:ppn=8,walltime=00:30:00 -q debug -I'
+alias debug5='qsub -l nodes=5:ppn=8,walltime=00:30:00 -q debug -I'
+alias debug6='qsub -l nodes=6:ppn=8,walltime=00:30:00 -q debug -I'
+alias debug7='qsub -l nodes=7:ppn=8,walltime=00:30:00 -q debug -I'
+alias debug8='qsub -l nodes=8:ppn=8,walltime=00:30:00 -q debug -I'
+alias mydu='/scinet/gpc/bin/diskUsage'
+alias cdvc='cd /scratch/z/zingg/rashad/optima-verify/08_optimize/y2013/m12/d26-debugFDgrad/02-rae2822-R15M60A01-575x224/03-freeTransition/SN/min-turmu/02-warm'
+alias cdvc2='cd /scratch/z/zingg/rashad/optima-verify/08_optimize/y2013/m12/d26-debugFDgrad/02-rae2822-R15M60A01-575x224/03-freeTransition/AD/min-turmu/02-warm'
+
+#
+# Source global aliases, funcitons, and definitions
+# -- must come after export of $MYHOME and $MYWORK variable
+#
+if [ -f $HOME/.bashrc-global ]; then
+	. $HOME/.bashrc-global
+fi
+
+#
+# Custom function defintions
+#
+function subdir-run() 
+{ 
+  for dir in */; do
+    echo $dir;
+    cd $dir;
+    qsub runsci.pbs; 
+    cd ../
+  done
+}
+function run() { qsub runsci.pbs; }
+function run-clean() 
+{  
+  2-cleanup-snopt
+  /bin/cp -f $MYHOME/optima/optima2D/OPTIMA2D_x86_64
+  qsub runsci.pbs;
+}
+
+#
+# END OF BASHRC

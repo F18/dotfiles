@@ -1,0 +1,6 @@
+\frame 
+{ 
+  \frametitle{$1} 
+  ${2:\framesubtitle{$3}} 
+  $0 
+} 

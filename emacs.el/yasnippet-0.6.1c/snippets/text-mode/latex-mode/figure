@@ -1,0 +1,9 @@
+\begin{figure}[h] 
+  \begin{center} 
+    \includegraphics[${1:$$(yas/choose-value '("width" "height" 
+"scale"))}=${2:0.6}\\${3:$$(yas/choose-value '("textwidth" "linewidth" 
+"textheight"))}]{${4:filename}} 
+  \end{center} 
+  \caption{$5} 
+  \label{fig:$6} 
+\end{figure} 
