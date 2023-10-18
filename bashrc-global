@@ -103,7 +103,7 @@ else
   PS2="$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $LIGHT_PURPLE\w$RBRACE$NONE$ "
 fi 
 export PS1
-export PS0=$PS1
+#export PS0=$PS1
 export PS2
 
 #
