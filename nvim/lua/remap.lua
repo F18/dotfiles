@@ -2,13 +2,13 @@
 -- vim.keymap.set("n", ";", ".")
 
 -- unhighlight search results
-vim.keymap.set("n", "<leader>d", ":noh<cr>")
+vim.keymap.set("n", "<leader>x", ":noh<cr>", { desc = "unhighlight search" })
 
 -- wrap paragraph
-vim.keymap.set("n", "W", "gwap")
+vim.keymap.set("n", "W", "gwap", { desc = "[W]rap paragraph" })
 
 -- open netrw directory explorer
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "netrw explorer" })
 
 -- move blocks of code around in viusual mode
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
