@@ -15,6 +15,7 @@ vim.opt.rtp:prepend(lazypath)
 -- Load your custom vim settings
 require("set")
 require("remap")
+require("autocmd")
 
 -- Initialize and activate Lazy package manager
 require("lazy").setup("plugins")
