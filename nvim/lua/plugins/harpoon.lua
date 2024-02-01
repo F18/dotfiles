@@ -5,24 +5,22 @@ return {
     config = function()
 
         local harpoon = require("harpoon")
-        -- local harpoonui = require("harpoon.ui")
 
         harpoon:setup()
 
-        vim.keymap.set("n", "<leader>a", function() harpoon:list():append() end)
-        vim.keymap.set("n", "<C-i>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+        --  Harpoon marked files 1 through 4
+        vim.keymap.set("n", "<a-1>", function() harpoon:list():select(1) end)
+        vim.keymap.set("n", "<a-2>", function() harpoon:list():select(2) end)
+        vim.keymap.set("n", "<a-3>", function() harpoon:list():select(3) end)
+        vim.keymap.set("n", "<a-4>", function() harpoon:list():select(4) end)
 
-        -- Map Ctrl+1  and Ctrl+2. These are special characters.
-        -- Go into insert mode and type "CtrL+v Ctrl+1" to generate specifal character
-        vim.keymap.set("n", "<C-1>", function() harpoon:list():select(1) end)
-        vim.keymap.set("n", "<C-2>", function() harpoon:list():select(2) end)
+        -- Harpoon next and previous.
+        vim.keymap.set("n", "<a-5>", function() harpoon:list():prev() end)
+        vim.keymap.set("n", "<a-6>", function() harpoon:list():next() end)
 
-        -- Toggle previous & next buffers stored within Harpoon list
-        vim.keymap.set("n", "<C-n>", function() harpoon:list():next() end)
-        vim.keymap.set("n", "<C-p>", function() harpoon:list():prev() end)
-        -- vim.keymap.set("n", "<C-n>", function() harpoon.ui:nav_next() end)
-        -- vim.keymap.set("n", "<C-p>", function() harpoon.ui:nav_next() end)
-        -- vim.keymap.set("n", "<C-n>", function() harpoonui.next() end)
-        --vim.keymap.set("n", "<C-p>", function() harpoonui.prev() end)
+        -- Harpoon user interface.
+        vim.keymap.set("n", "<a-7>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+        vim.keymap.set("n", "<a-8>", function() harpoon:list():append() end)
+
     end
 }
