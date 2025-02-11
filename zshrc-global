@@ -51,69 +51,13 @@ SYMBOL="\\$"
 WD="\W"
 
 #
-# PROMPT DISPLAY TEXT AND COLORS
-#
-#-- zenburn
-if [ "$MYCOLORS" == "zenburn" ]; then
-  NONE='\[\e[01;32m\]'
-  BRACE_COLOR=$LIGHT_GREY
-  LBRACE=$BRACE_COLOR[$BRACE_COLOR
-  RBRACE=$BRACE_COLOR]$BRACE_COLOR
-  PS1="$LIGHT_RED\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $ZENBURN_BLUE\W$RBRACE$NONE$ "
-#-- solarized-light OR solarized-gruvbox-light
-elif [ "$MYCOLORS" == "solarized-light" -o "$MYCOLORS" == "solarized-gruvbox-light" ]; then
-  #NONE='\[\e[01;248m\]'
-  NONE=$MYGREY
-  BRACE_COLOR=$ZENBURN_BLUE
-  LBRACE=$BRACE_COLOR[$BRACE_COLOR
-  RBRACE=$BRACE_COLOR]$BRACE_COLOR
-  PS1="$MYGREY\w\n$LBRACE$MYGREY\D{%H:%M}$RBRACE$LBRACE$MYGREY\h $ZENGREEN\W$RBRACE$NONE$ "
-  PS2="$GREEN$LBRACE$MYGREY\D{%H:%M}$RBRACE$LBRACE$MYGREY\h $CYAN\w$RBRACE$NONE$ "
-#-- solarized-dark
-elif [ "$MYCOLORS" == "solarized-dark" ]; then
-  NONE=$LIGHT_CYAN
-  BRACE_COLOR=$MYGREY4
-  LBRACE="$BRACE_COLOR[$BRACE_COLOR"
-  RBRACE="$BRACE_COLOR]$BRACE_COLOR"
-  PS1="$MYGREY2\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $CYAN\W$RBRACE$NONE$ "
-  PS2="$GREEN$LBRACE$MYGREY4\D{%H:%M}$RBRACE$LBRACE$MYGREY4\h $CYAN\w$RBRACE$NONE$ "
-#-- solarized-gruvbox-dark
-elif [ "$MYCOLORS" == "solarized-gruvbox-dark" ]; then
-  NONE=$MYGREY3
-  BRACE_COLOR=$MYGREY4
-  LBRACE="$BRACE_COLOR[$BRACE_COLOR"
-  RBRACE="$BRACE_COLOR]$BRACE_COLOR"
-  PS1="$MYGREY2\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $CYAN\W$RBRACE$NONE$ "
-  PS2="$GREEN$LBRACE$MYGREY4\D{%H:%M}$RBRACE$LBRACE$MYGREY4\h $CYAN\w$RBRACE$NONE$ "
-#-- wombat OR jellybeans
-elif [ "$MYCOLORS" == "jellybeans" -o "$MYCOLORS" == "wombat" ]; then
-  NONE=$MYGREY3
-  BRACE_COLOR=$ZENGREEN
-  LBRACE=$BRACE_COLOR[$BRACE_COLOR
-  RBRACE=$BRACE_COLOR]$BRACE_COLOR
-  PS1="$MYORANGE\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $LIGHT_PURPLE\W$RBRACE$NONE$ "
-  PS2="$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $LIGHT_PURPLE\w$RBRACE$NONE$ "
-#-- DEFAULT: wombat/jellybeans
-else
-  NONE=$WHITE
-  BRACE_COLOR=$ZENGREEN
-  LBRACE=$BRACE_COLOR[$BRACE_COLOR
-  RBRACE=$BRACE_COLOR]$BRACE_COLOR
-  PS1="$MYGREY\w\n$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $LIGHT_PURPLE\W$RBRACE$NONE$ "
-  PS2="$LBRACE\D{%H:%M}$RBRACE$LBRACE\h $LIGHT_PURPLE\w$RBRACE$NONE$ "
-fi 
-export PS1
-#export PS0=$PS1
-export PS2
-
-#
 # DIRECTORY and LS COLORS 
 #
 if [ "$TERM" != "dumb" ]; then
-  if [ "$MYCOLORS" == "solarized-light" -o "$MYCOLORS" == "solarized-gruvbox-light" ]; then
+  if [ "$MYCOLORS" = "solarized-light" -o "$MYCOLORS" = "solarized-gruvbox-light" ]; then
     #-- solarized-light
     [ -e "$HOME/dotfiles/LS_COLORS-solarized-light" ] && DIR_COLORS="$HOME/dotfiles/LS_COLORS-solarized-light"
-  elif [ "$MYCOLORS" == "solarized-dark" -o "$MYCOLORS" == "solarized-gruvbox-dark" ] ; then
+  elif [ "$MYCOLORS" = "solarized-dark" -o "$MYCOLORS" = "solarized-gruvbox-dark" ] ; then
     #-- solarized-dark
     #[ -e "$HOME/dotfiles/LS_COLORS-solarized-dark" ] && DIR_COLORS="$HOME/dotfiles/LS_COLORS-solarized-dark"
     [ -e "$HOME/dotfiles/LS_COLORS-solarized-dark" ] && DIR_COLORS="$HOME/dotfiles/LS_COLORS"
@@ -622,6 +566,9 @@ GIT_PROMPT_THEME=Razzle2_NoExitState # use theme optimized for solarized color s
 # as last entry source the gitprompt script
 # -- uncomment this to display git repository information on command prompt (may slow navigation/loading)
 #source $HOME/dotfiles/bash-git-prompt/gitprompt.sh
+#
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 #
 # END OF BASHRC-GLOBAL
